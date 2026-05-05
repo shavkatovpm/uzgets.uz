@@ -198,7 +198,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-[var(--muted)]"
               >
-                {lang === 'ru' ? 'О Uzgets' : 'Uzgets haqida'}
+                {dict.nav.about}
               </Link>
               <Link
                 href={`/${lang}/privacy`}

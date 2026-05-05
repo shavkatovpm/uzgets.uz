@@ -34,6 +34,7 @@ export type Dictionary = {
   nav: {
     premium: string
     stars: string
+    about: string
     contact: string
     privacy: string
     terms: string
@@ -133,6 +134,7 @@ const uz: Dictionary = {
   nav: {
     premium: 'Premium',
     stars: 'Stars',
+    about: 'Haqimizda',
     contact: 'Aloqa',
     privacy: 'Maxfiylik siyosati',
     terms: 'Foydalanish shartlari',
@@ -261,6 +263,7 @@ const ru: Dictionary = {
   nav: {
     premium: 'Premium',
     stars: 'Stars',
+    about: 'О нас',
     contact: 'Контакты',
     privacy: 'Политика конфиденциальности',
     terms: 'Условия использования',

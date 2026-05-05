@@ -61,7 +61,7 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </li>
             <li>
               <Link href={`/${lang}/haqimizda`} className="hover:text-[var(--foreground)]">
-                {lang === 'ru' ? 'О Uzgets' : 'Uzgets haqida'}
+                {dict.nav.about}
               </Link>
             </li>
           </ul>

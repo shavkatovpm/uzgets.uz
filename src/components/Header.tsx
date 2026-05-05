@@ -98,6 +98,12 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <nav className="hidden items-center gap-2 text-[var(--text-muted)] sm:flex">
           <NavMenu label={dict.nav.premium} allLabel={dict.common.all} href={`/${lang}/premium`} items={premiumNav} />
           <NavMenu label={dict.nav.stars} allLabel={dict.common.all} href={`/${lang}/stars`} items={starsNav} />
+          <Link
+            href={`/${lang}/haqimizda`}
+            className="flex min-h-11 items-center px-3 text-sm font-medium transition-colors hover:text-[var(--foreground)]"
+          >
+            {dict.nav.about}
+          </Link>
           <LanguageSwitcher current={lang} />
           <a
             href={siteConfig.botUrl}
