@@ -291,7 +291,7 @@ export default async function HomePage({
         <h2 id="why-heading" className="mb-6 text-2xl font-bold sm:text-3xl">
           {t.whyHeading}
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {t.whyCards.map((item) => (
             <div key={item.title} className="uz-card rounded-xl border border-[var(--border)] p-5">
               <div className="font-semibold">{item.title}</div>

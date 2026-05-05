@@ -173,37 +173,37 @@ const STARS_USE_CASES_RU: FeatureItem[] = [
 
 const PAYMENT_METHODS_UZ: FeatureItem[] = [
   {
-    title: 'UzCard',
+    title: 'UzCard / Humo karta',
     description:
-      "O'zbekistondagi eng keng tarqalgan to'lov kartasi. Botda UzCard variantini tanlab, ma'lumotlaringizni kiritish orqali to'lash mumkin.",
-  },
-  {
-    title: 'Humo',
-    description:
-      "Mahalliy alternativ to'lov tizimi. UzCard bo'lmasa Humo orqali ham bemalol to'lov amalga oshiriladi.",
+      "Bot ko'rsatadigan karta raqamiga aynan belgilangan summani o'tkazasiz — UzCard yoki Humo karta orqali. To'lov tasdiqlangach, mahsulot avtomatik faollashadi.",
   },
   {
     title: 'Click',
     description:
-      "Mobil ilovada keng ishlatiladigan to'lov xizmati. Click orqali to'lasangiz, tasdiqlash darhol ilovangiz orqali keladi.",
+      "Click ilovasi orqali to'g'ridan-to'g'ri to'lov — kartaga o'tkazish kerak emas. Tasdiqlash darhol Click ilovangiz orqali keladi.",
+  },
+  {
+    title: 'Payme va boshqa banking ilovalar',
+    description:
+      "Payme, Apelsin yoki istalgan banking ilovasi orqali bot ko'rsatadigan kartaga belgilangan summani o'tkazasiz.",
   },
 ]
 
 const PAYMENT_METHODS_RU: FeatureItem[] = [
   {
-    title: 'UzCard',
+    title: 'Карта UzCard / Humo',
     description:
-      'Самая распространённая платёжная карта в Узбекистане. В боте выберите UzCard и введите данные карты для оплаты.',
-  },
-  {
-    title: 'Humo',
-    description:
-      'Локальная альтернативная платёжная система. Если у вас нет UzCard, Humo тоже отлично работает.',
+      'Перевод точной указанной суммы на карту, которую покажет бот — через UzCard или Humo. После подтверждения оплаты товар активируется автоматически.',
   },
   {
     title: 'Click',
     description:
-      'Популярный мобильный платёжный сервис. При оплате через Click подтверждение приходит прямо в ваше приложение.',
+      'Прямая оплата через приложение Click — перевод на карту не нужен. Подтверждение приходит сразу в ваше приложение Click.',
+  },
+  {
+    title: 'Payme и другие банковские приложения',
+    description:
+      'Через Payme, Apelsin или любое банковское приложение переведите точную сумму на карту, которую покажет бот.',
   },
 ]
 

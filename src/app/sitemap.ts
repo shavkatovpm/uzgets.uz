@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: [50, 100, 500].includes(s.amount) ? 0.8 : 0.6,
       }),
     ),
+    ...withLanguages('/haqimizda', now, { changeFrequency: 'monthly', priority: 0.7 }),
     ...withLanguages('/aloqa', now, { changeFrequency: 'monthly', priority: 0.5 }),
     ...withLanguages('/privacy', now, { changeFrequency: 'yearly', priority: 0.3 }),
     ...withLanguages('/terms', now, { changeFrequency: 'yearly', priority: 0.3 }),

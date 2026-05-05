@@ -194,6 +194,13 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {dict.footer.contactLink}
               </Link>
               <Link
+                href={`/${lang}/haqimizda`}
+                onClick={close}
+                className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-[var(--muted)]"
+              >
+                {lang === 'ru' ? 'О Uzgets' : 'Uzgets haqida'}
+              </Link>
+              <Link
                 href={`/${lang}/privacy`}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 text-[var(--text-muted)] transition-colors hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
