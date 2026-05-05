@@ -64,6 +64,11 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {dict.nav.about}
               </Link>
             </li>
+            <li>
+              <Link href={`/${lang}/blog`} className="hover:text-[var(--foreground)]">
+                {dict.nav.blog}
+              </Link>
+            </li>
           </ul>
         </div>
         <div>

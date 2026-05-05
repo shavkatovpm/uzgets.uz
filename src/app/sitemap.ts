@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS, STARS_PACKS } from '@/config/products'
 import { LOCALES, type Locale } from '@/i18n/config'
+import { getPostsSorted } from '@/content/blog'
 
 type Entry = MetadataRoute.Sitemap[number]
 
@@ -17,6 +18,7 @@ const LAST_MODIFIED = {
   aloqa: new Date('2026-05-01'),
   privacy: new Date('2026-05-01'),
   terms: new Date('2026-05-01'),
+  blogIndex: new Date('2026-05-06'),
 } as const
 
 function withLanguages(path: string, lastModified: Date, opts: { changeFrequency: Entry['changeFrequency']; priority: number }): Entry[] {
@@ -48,6 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       withLanguages(`/stars/${s.slug}`, LAST_MODIFIED.starsInstance, {
         changeFrequency: 'monthly',
         priority: [50, 100, 500].includes(s.amount) ? 0.8 : 0.6,
+      }),
+    ),
+    ...withLanguages('/blog', LAST_MODIFIED.blogIndex, { changeFrequency: 'weekly', priority: 0.8 }),
+    ...getPostsSorted().flatMap((post) =>
+      withLanguages(`/blog/${post.slug}`, new Date(post.updatedAt), {
+        changeFrequency: 'monthly',
+        priority: 0.7,
       }),
     ),
     ...withLanguages('/haqimizda', LAST_MODIFIED.haqimizda, { changeFrequency: 'monthly', priority: 0.7 }),

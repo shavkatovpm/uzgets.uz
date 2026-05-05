@@ -99,6 +99,12 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <NavMenu label={dict.nav.premium} allLabel={dict.common.all} href={`/${lang}/premium`} items={premiumNav} />
           <NavMenu label={dict.nav.stars} allLabel={dict.common.all} href={`/${lang}/stars`} items={starsNav} />
           <Link
+            href={`/${lang}/blog`}
+            className="flex min-h-11 items-center px-3 text-sm font-medium transition-colors hover:text-[var(--foreground)]"
+          >
+            {dict.nav.blog}
+          </Link>
+          <Link
             href={`/${lang}/haqimizda`}
             className="flex min-h-11 items-center px-3 text-sm font-medium transition-colors hover:text-[var(--foreground)]"
           >

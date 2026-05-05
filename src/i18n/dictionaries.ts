@@ -34,10 +34,24 @@ export type Dictionary = {
   nav: {
     premium: string
     stars: string
+    blog: string
     about: string
     contact: string
     privacy: string
     terms: string
+  }
+  blog: {
+    indexTitle: string
+    indexMetaTitle: string
+    indexMetaDescription: string
+    indexSubtitle: string
+    publishedOn: string
+    updatedOn: string
+    readMore: string
+    backToBlog: string
+    relatedHeading: string
+    typeLabel: string
+    empty: string
   }
   header: {
     products: string
@@ -134,10 +148,26 @@ const uz: Dictionary = {
   nav: {
     premium: 'Premium',
     stars: 'Stars',
+    blog: 'Blog',
     about: 'Haqimizda',
     contact: 'Aloqa',
     privacy: 'Maxfiylik siyosati',
     terms: 'Foydalanish shartlari',
+  },
+  blog: {
+    indexTitle: 'Uzgets blogi',
+    indexMetaTitle: "Uzgets blogi — Telegram Premium va Stars haqida qo'llanmalar",
+    indexMetaDescription:
+      "Telegram Premium va Stars'ni O'zbekistondan sotib olish bo'yicha qo'llanmalar, taqqoslashlar va savol-javoblar. Mahalliy karta, narxlar, xavfsizlik.",
+    indexSubtitle:
+      "Telegram Premium va Stars haqida bilish kerak bo'lgan narsalar — qisqa va aniq.",
+    publishedOn: 'Nashr qilingan',
+    updatedOn: 'Yangilangan',
+    readMore: "O'qish",
+    backToBlog: 'Blogga qaytish',
+    relatedHeading: 'Boshqa maqolalar',
+    typeLabel: 'Turkum',
+    empty: "Hozircha maqolalar yo'q.",
   },
   header: {
     products: 'Mahsulotlar',
@@ -263,10 +293,26 @@ const ru: Dictionary = {
   nav: {
     premium: 'Premium',
     stars: 'Stars',
+    blog: 'Блог',
     about: 'О нас',
     contact: 'Контакты',
     privacy: 'Политика конфиденциальности',
     terms: 'Условия использования',
+  },
+  blog: {
+    indexTitle: 'Блог Uzgets',
+    indexMetaTitle: 'Блог Uzgets — руководства по Telegram Premium и Stars',
+    indexMetaDescription:
+      'Руководства, сравнения и ответы по покупке Telegram Premium и Stars из Узбекистана. Локальная карта, цены, безопасность.',
+    indexSubtitle:
+      'Что нужно знать о Telegram Premium и Stars — кратко и по делу.',
+    publishedOn: 'Опубликовано',
+    updatedOn: 'Обновлено',
+    readMore: 'Читать',
+    backToBlog: 'К блогу',
+    relatedHeading: 'Другие статьи',
+    typeLabel: 'Категория',
+    empty: 'Пока нет статей.',
   },
   header: {
     products: 'Продукты',

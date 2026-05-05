@@ -187,6 +187,13 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
             <div className="mt-3 border-t border-[var(--border)] pt-3">
               <Link
+                href={`/${lang}/blog`}
+                onClick={close}
+                className="block rounded-lg px-3 py-2.5 font-semibold transition-colors hover:bg-[var(--muted)]"
+              >
+                {dict.nav.blog}
+              </Link>
+              <Link
                 href={`/${lang}/aloqa`}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-[var(--muted)]"
