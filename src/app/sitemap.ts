@@ -5,6 +5,20 @@ import { LOCALES, type Locale } from '@/i18n/config'
 
 type Entry = MetadataRoute.Sitemap[number]
 
+// Per-route last-modified dates. Bump only when the route's content actually changes.
+// Don't use `new Date()` — it makes every deploy look like a content update to crawlers.
+const LAST_MODIFIED = {
+  home: new Date('2026-05-01'),
+  premium: new Date('2026-05-01'),
+  stars: new Date('2026-05-01'),
+  premiumInstance: new Date('2026-05-01'),
+  starsInstance: new Date('2026-05-01'),
+  haqimizda: new Date('2026-05-01'),
+  aloqa: new Date('2026-05-01'),
+  privacy: new Date('2026-05-01'),
+  terms: new Date('2026-05-01'),
+} as const
+
 function withLanguages(path: string, lastModified: Date, opts: { changeFrequency: Entry['changeFrequency']; priority: number }): Entry[] {
   return LOCALES.map((lang: Locale) => {
     const url = `${siteConfig.url}/${lang}${path}`
@@ -23,23 +37,22 @@ function withLanguages(path: string, lastModified: Date, opts: { changeFrequency
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
   return [
-    ...withLanguages('', now, { changeFrequency: 'weekly', priority: 1 }),
-    ...withLanguages('/premium', now, { changeFrequency: 'weekly', priority: 0.95 }),
-    ...withLanguages('/stars', now, { changeFrequency: 'weekly', priority: 0.9 }),
+    ...withLanguages('', LAST_MODIFIED.home, { changeFrequency: 'weekly', priority: 1 }),
+    ...withLanguages('/premium', LAST_MODIFIED.premium, { changeFrequency: 'weekly', priority: 0.95 }),
+    ...withLanguages('/stars', LAST_MODIFIED.stars, { changeFrequency: 'weekly', priority: 0.9 }),
     ...PREMIUM_PERIODS.flatMap((p) =>
-      withLanguages(`/premium/${p.slug}`, now, { changeFrequency: 'monthly', priority: 0.85 }),
+      withLanguages(`/premium/${p.slug}`, LAST_MODIFIED.premiumInstance, { changeFrequency: 'monthly', priority: 0.85 }),
     ),
     ...STARS_PACKS.flatMap((s) =>
-      withLanguages(`/stars/${s.slug}`, now, {
+      withLanguages(`/stars/${s.slug}`, LAST_MODIFIED.starsInstance, {
         changeFrequency: 'monthly',
         priority: [50, 100, 500].includes(s.amount) ? 0.8 : 0.6,
       }),
     ),
-    ...withLanguages('/haqimizda', now, { changeFrequency: 'monthly', priority: 0.7 }),
-    ...withLanguages('/aloqa', now, { changeFrequency: 'monthly', priority: 0.5 }),
-    ...withLanguages('/privacy', now, { changeFrequency: 'yearly', priority: 0.3 }),
-    ...withLanguages('/terms', now, { changeFrequency: 'yearly', priority: 0.3 }),
+    ...withLanguages('/haqimizda', LAST_MODIFIED.haqimizda, { changeFrequency: 'monthly', priority: 0.7 }),
+    ...withLanguages('/aloqa', LAST_MODIFIED.aloqa, { changeFrequency: 'monthly', priority: 0.5 }),
+    ...withLanguages('/privacy', LAST_MODIFIED.privacy, { changeFrequency: 'yearly', priority: 0.3 }),
+    ...withLanguages('/terms', LAST_MODIFIED.terms, { changeFrequency: 'yearly', priority: 0.3 }),
   ]
 }

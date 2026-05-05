@@ -8,8 +8,8 @@ export type PremiumPeriod = {
 
 export const PREMIUM_PERIODS: PremiumPeriod[] = [
   { months: 3, slug: '3-oylik', priceUzs: 168_000, perMonthHint: Math.round(168_000 / 3) },
-  { months: 6, slug: '6-oylik', priceUzs: 228_000, badge: 'Mashhur', perMonthHint: Math.round(228_000 / 6) },
-  { months: 12, slug: '12-oylik', priceUzs: 408_000, badge: 'Eng tejamli', perMonthHint: Math.round(408_000 / 12) },
+  { months: 6, slug: '6-oylik', priceUzs: 228_000, perMonthHint: Math.round(228_000 / 6) },
+  { months: 12, slug: '12-oylik', priceUzs: 408_000, perMonthHint: Math.round(408_000 / 12) },
 ]
 
 export const STARS_BASE = { amount: 50, priceUzs: 12_700 } as const
@@ -31,7 +31,6 @@ export const STARS_PACKS: StarsPack[] = STARS_PACK_AMOUNTS.map((amount) => ({
   amount,
   slug: String(amount),
   priceUzs: starsPrice(amount),
-  badge: amount === 500 ? 'Mashhur' : amount === 2500 ? 'Eng tejamli' : undefined,
 }))
 
 export function getPremiumBySlug(slug: string): PremiumPeriod | undefined {
