@@ -41,7 +41,7 @@ const T = {
     missionPara1:
       "Telegram'ning rasmiy obuna va yulduzcha tizimi O'zbekistondagi foydalanuvchilarga to'g'ridan-to'g'ri ulanmagan — chet el kartasi yoki murakkab usullar talab etiladi. Uzgets shu bo'shliqni to'ldiradi: mahalliy to'lov bilan, mahalliy tilda, mahalliy qo'llab-quvvatlash bilan.",
     missionPara2:
-      "Biz bir narsaga e'tibor qaratamiz — sotib olish jarayoni tez, oddiy va ishonchli bo'lishi. Buyurtmangiz aniq vaqtda yetkaziladi yoki to'lovingiz qaytariladi.",
+      "Biz bir narsaga e'tibor qaratamiz — sotib olish jarayoni tez, oddiy va ishonchli bo'lishi. Mahsulot yetkazilmasa, to'lovingiz qaytariladi.",
     advHeading: "Uzgets'ning ustunliklari",
     advCards: [
       {
@@ -57,7 +57,7 @@ const T = {
       {
         title: '🕒 24/7 qo\'llab-quvvatlash',
         description:
-          "Bot va qo'llab-quvvatlash xizmati har kuni 24 soat ishlaydi. Savolingiz bo'lsa darhol javob olasiz.",
+          "Bot va qo'llab-quvvatlash kanali har kuni 24 soat ishlaydi. Murojaatlaringizga tezda javob beriladi.",
       },
       {
         title: '🎯 Bir botda — Stars VA Premium',
@@ -76,8 +76,7 @@ const T = {
       },
     ] as AdvCard[],
     howHeading: 'Sotib olish jarayoni',
-    howIntro:
-      'Buyurtma berish bir necha qadamda amalga oshiriladi — odatda hammasi 2-3 daqiqada tugaydi.',
+    howIntro: 'Buyurtma berish bir necha qadamda amalga oshiriladi — qisqa vaqtda yakunlanadi.',
     howSteps: [
       { num: 1, title: 'Botga kirish', desc: `Telegram'da ${siteConfig.bot} botiga o'tib START tugmasini bosing.` },
       { num: 2, title: 'Mahsulot tanlash', desc: 'Premium yoki Stars bo\'limini tanlang.' },
@@ -125,7 +124,7 @@ const T = {
       "Sayt va bot bir brend ostida — hammasi bog'langan",
       'Shartlar va siyosat saytda ochiq yozilgan, har kim ko\'rishi mumkin',
       "Yetkazib berish kafolati: yetkazilmasa to'lov qaytariladi",
-      'Real qo\'llab-quvvatlash 24/7 — bot va inson aralashuvi',
+      "24/7 qo'llab-quvvatlash kanali — savol berish istalgan vaqtda",
       "Faqat mahalliy to'lov — chet el operatorlari yo'q, hammasi O'zbekistonda",
       "Buyurtma o'sha akkauntga to'g'ridan-to'g'ri Telegram tomonidan biriktiriladi",
     ],
@@ -191,7 +190,7 @@ const T = {
     missionPara1:
       'Официальные подписки Telegram Premium и звёзды Stars напрямую недоступны для пользователей в Узбекистане — нужны иностранные карты или сложные обходные пути. Uzgets закрывает эту дыру: локальные методы оплаты, локальный язык, локальная поддержка.',
     missionPara2:
-      'Мы концентрируемся на одном — чтобы покупка была быстрой, простой и надёжной. Ваш заказ либо доставляется в срок, либо деньги возвращаются.',
+      'Мы концентрируемся на одном — чтобы покупка была быстрой, простой и надёжной. Если товар не доставлен, оплата возвращается.',
     advHeading: 'Преимущества Uzgets',
     advCards: [
       {
@@ -207,7 +206,7 @@ const T = {
       {
         title: '🕒 Поддержка 24/7',
         description:
-          'Бот и служба поддержки работают круглосуточно. Ответ на ваш вопрос придёт сразу.',
+          'Бот и канал поддержки работают круглосуточно. На ваш вопрос ответят быстро.',
       },
       {
         title: '🎯 В одном боте — Stars и Premium',
@@ -224,7 +223,7 @@ const T = {
       },
     ] as AdvCard[],
     howHeading: 'Процесс покупки',
-    howIntro: 'Заказ оформляется в несколько шагов — обычно всё занимает 2–3 минуты.',
+    howIntro: 'Заказ оформляется в несколько шагов — занимает совсем немного времени.',
     howSteps: [
       { num: 1, title: 'Открыть бот', desc: `Откройте бот ${siteConfig.bot} в Telegram и нажмите START.` },
       { num: 2, title: 'Выбрать товар', desc: 'Выберите раздел Premium или Stars.' },
@@ -272,7 +271,7 @@ const T = {
       'Сайт и бот под одним брендом — всё связано',
       'Условия и политика опубликованы на сайте, доступны каждому',
       'Гарантия доставки: при недоставке оплата возвращается',
-      'Реальная поддержка 24/7 — бот плюс участие человека',
+      'Канал поддержки 24/7 — задать вопрос можно в любое время',
       'Только локальная оплата — никаких иностранных операторов, всё в Узбекистане',
       'Заказ привязывается к указанному аккаунту напрямую от Telegram',
     ],
