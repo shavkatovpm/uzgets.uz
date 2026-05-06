@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
+import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
 const SLUG = 'telegram-stars-nima'
@@ -199,6 +200,8 @@ function UzBody() {
         />
       </div>
 
+      <InlineBotCTA lang="uz" text="Stars sizga ham kerakmi? O'zbek karta bilan botda darhol bo'shab oling." />
+
       <h2 id="qanday-ishlaydi">Stars qanday ishlaydi?</h2>
       <p>
         Stars sof Telegram ichida ishlaydigan virtual hisob-kitob birligi. Quyidagi qoidalar Telegram&apos;ning rasmiy
@@ -229,6 +232,8 @@ function UzBody() {
       </p>
       <ComparisonTable lang="uz" />
 
+      <InlineBotCTA lang="uz" text="Stars haqida hammasini bilib oldingiz — endi botga o'tib boshlang." />
+
       <h2 id="qayerdan">Stars qayerdan olinadi?</h2>
       <p>
         Stars sotib olishning ikki rasmiy yo&apos;li bor: Telegram ilovasi orqali (Apple/Google to&apos;lov tizimlari
@@ -249,6 +254,8 @@ function UzBody() {
         </Link>
         . Eng kichik paket 50 ta yulduzcha; ommabop paketlar — 500, 1000, 2500.
       </p>
+
+      <InlineBotCTA lang="uz" text="Eng kichik paket — 50 ta yulduzcha. Botda buyurtma bering." />
 
       <h2 id="bilish-kerak">Stars haqida bilish kerak bo&apos;lgan eslatmalar</h2>
       <ul>
@@ -335,6 +342,8 @@ function RuBody() {
         />
       </div>
 
+      <InlineBotCTA lang="ru" text="Stars нужны и вам? Купите через бот локальной картой за пару минут." />
+
       <h2 id="qanday-ishlaydi">Как работают Stars?</h2>
       <p>
         Stars — виртуальная расчётная единица, действующая исключительно внутри Telegram. Правила установлены в
@@ -364,6 +373,8 @@ function RuBody() {
       </p>
       <ComparisonTable lang="ru" />
 
+      <InlineBotCTA lang="ru" text="Теперь вы знаете о Stars всё — пора зайти в бот и оформить заказ." />
+
       <h2 id="qayerdan">Откуда берутся Stars?</h2>
       <p>
         Купить Stars можно двумя официальными способами: через приложение Telegram (Apple/Google Pay — нужна
@@ -384,6 +395,8 @@ function RuBody() {
         </Link>
         . Минимальный пакет — 50 звёзд; популярные пакеты — 500, 1000, 2500.
       </p>
+
+      <InlineBotCTA lang="ru" text="Минимальный пакет — 50 звёзд. Оформите заказ в боте." />
 
       <h2 id="bilish-kerak">Что важно знать про Stars</h2>
       <ul>

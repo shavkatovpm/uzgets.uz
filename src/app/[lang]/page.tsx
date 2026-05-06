@@ -26,7 +26,7 @@ const PAGE_STRINGS = {
       'Premium 3 / 6 / 12 oylik obunalar',
       `Stars ${STARS_BASE.amount} dan boshlab`,
     ],
-    heroCtaLabel: "Botga o'tish",
+    heroCtaLabel: "Sotib olish",
     answerBoxTitle: 'Qisqa javob: nima qilish kerak?',
     answerBoxBefore: 'Telegramda ',
     answerBoxAfter:
@@ -125,7 +125,7 @@ const PAGE_STRINGS = {
       'Premium на 3 / 6 / 12 месяцев',
       `Stars от ${STARS_BASE.amount}`,
     ],
-    heroCtaLabel: 'Перейти в бот',
+    heroCtaLabel: 'Купить',
     answerBoxTitle: 'Краткий ответ: что делать?',
     answerBoxBefore: 'Откройте в Telegram ',
     answerBoxAfter:

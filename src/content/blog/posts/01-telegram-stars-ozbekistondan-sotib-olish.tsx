@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { STARS_BASE, STARS_PACKS } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
+import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
 const SLUG = 'telegram-stars-ozbekistondan-sotib-olish'
@@ -112,6 +113,8 @@ function UzBody() {
         o&apos;chirilsa balans yo&apos;qoladi.
       </p>
 
+      <InlineBotCTA lang="uz" text="Stars hoziroq kerakmi? Bot orqali bir necha daqiqada bo'shab oling." />
+
       <h2 id="ozbekistondan-qanday">O&apos;zbekistondan Telegram Stars qanday sotib olinadi?</h2>
       <p>
         O&apos;zbekistondagi foydalanuvchi uchun ikkita asosiy yo&apos;l mavjud:
@@ -166,6 +169,8 @@ function UzBody() {
         </li>
       </ol>
 
+      <InlineBotCTA lang="uz" text="Qadamlarni o'qidingiz — endi botga o'tib bir necha daqiqada xarid qiling." />
+
       <h2 id="narxlar">Telegram Stars narxlari</h2>
       <p>
         Narx miqdorga proportsional — har Stars uchun bir xil baho. Eng kichik paket{' '}
@@ -195,6 +200,8 @@ function UzBody() {
         </li>
       </ul>
 
+      <InlineBotCTA lang="uz" text="Narxlarni ko'rdingizmi? Eng mos paketni tanlash uchun botga o'ting." />
+
       <h2 id="xavfsizlik">Xavfsizlik va kafolat</h2>
       <p>
         Stars to&apos;g&apos;ridan-to&apos;g&apos;ri Telegram tomonidan akkauntga biriktiriladi —
@@ -211,6 +218,8 @@ function UzBody() {
       </p>
 
       <Sources lang="uz" />
+
+      <InlineBotCTA lang="uz" text="Xavfsizlik shartlari aniq — endi botda buyurtmangizni rasmiylashtiring." />
 
       <h2 id="muhim-eslatma">Muhim eslatmalar</h2>
       <ul>
@@ -245,6 +254,8 @@ function RuBody() {
         По официальной документации Telegram, Stars — единая внутренняя валюта: баланс
         привязан к аккаунту, потери не возмещаются, при удалении аккаунта баланс пропадает.
       </p>
+
+      <InlineBotCTA lang="ru" text="Stars нужны прямо сейчас? Купите через бот за пару минут." />
 
       <h2 id="ozbekistondan-qanday">Как купить Telegram Stars из Узбекистана?</h2>
       <p>Для пользователя из Узбекистана есть два основных способа:</p>
@@ -296,6 +307,8 @@ function RuBody() {
         </li>
       </ol>
 
+      <InlineBotCTA lang="ru" text="Шаги ясны — теперь зайдите в бот и оформите заказ за пару минут." />
+
       <h2 id="narxlar">Цены Telegram Stars</h2>
       <p>
         Цена пропорциональна количеству — стоимость каждой звезды одинаковая. Минимальный
@@ -326,6 +339,8 @@ function RuBody() {
         </li>
       </ul>
 
+      <InlineBotCTA lang="ru" text="Цены посмотрели? Зайдите в бот, чтобы выбрать подходящий пакет." />
+
       <h2 id="xavfsizlik">Безопасность и гарантия</h2>
       <p>
         Stars зачисляются на аккаунт напрямую от Telegram — бот выступает только средством
@@ -342,6 +357,8 @@ function RuBody() {
       </p>
 
       <Sources lang="ru" />
+
+      <InlineBotCTA lang="ru" text="Условия безопасности понятны — оформите заказ в боте." />
 
       <h2 id="muhim-eslatma">Важные замечания</h2>
       <ul>

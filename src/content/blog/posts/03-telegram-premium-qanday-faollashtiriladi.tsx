@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
+import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
 const SLUG = 'telegram-premium-qanday-faollashtiriladi'
@@ -208,6 +209,8 @@ function UzBody() {
         }
       />
 
+      <InlineBotCTA lang="uz" text="Premium o'zingiz uchun olishni xohlaysizmi? Botda 3, 6 yoki 12 oylikni tanlang." />
+
       <h2 id="stsenariy-2">Stsenariy 2: Sizga Premium hadya qilinganda</h2>
       <p>
         Boshqa odam sizga Premium sovg&apos;a qilsa, jarayon shunday bo&apos;ladi:
@@ -243,6 +246,8 @@ function UzBody() {
         yangi to&apos;lov tasdiqlangan vaqtdan boshlab hisoblanadi.
       </p>
 
+      <InlineBotCTA lang="uz" text="Premium muddatini yangilash kerakmi? Botda yangi paketni rasmiylashtiring." />
+
       <h2 id="qanday-tekshirish">Premium faol ekanligini qanday tekshirish? — 5 ta yo&apos;l</h2>
       <VerifyChecklist lang="uz" />
 
@@ -259,6 +264,8 @@ function UzBody() {
         </Link>{' '}
         murojaat qiling — to&apos;lov chekini va @username&apos;ni yuboring, qo&apos;lda tekshiriladi.
       </p>
+
+      <InlineBotCTA lang="uz" text="Premium hali yo'q yoki muddati tugaganmi? Bir necha daqiqada faollashtiring." />
 
       <h2 id="muddat">Muddat qachon boshlanadi va tugaydi?</h2>
       <p>
@@ -315,6 +322,8 @@ function RuBody() {
         }
       />
 
+      <InlineBotCTA lang="ru" text="Хотите Premium для себя? Выберите в боте 3, 6 или 12 месяцев." />
+
       <h2 id="stsenariy-2">Сценарий 2: Когда вам подарили Premium</h2>
       <p>Если кто-то подарил вам Premium, всё происходит так:</p>
       <ul>
@@ -343,6 +352,8 @@ function RuBody() {
         новой оплаты.
       </p>
 
+      <InlineBotCTA lang="ru" text="Нужно продлить Premium? Оформите новый пакет в боте." />
+
       <h2 id="qanday-tekshirish">Как проверить, что Premium активен — 5 способов</h2>
       <VerifyChecklist lang="ru" />
 
@@ -358,6 +369,8 @@ function RuBody() {
         </Link>{' '}
         — пришлите чек об оплате и @username, проверим вручную.
       </p>
+
+      <InlineBotCTA lang="ru" text="Premium ещё нет или закончился? Активируйте за пару минут." />
 
       <h2 id="muddat">Когда срок начинается и заканчивается?</h2>
       <p>
