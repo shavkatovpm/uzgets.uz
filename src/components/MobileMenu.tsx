@@ -116,7 +116,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </button>
           </div>
 
-          <nav className="flex-1 overflow-y-auto p-3 text-sm">
+          <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3 text-sm">
             <Link
               href={`/${lang}`}
               onClick={close}
@@ -235,7 +235,10 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </div>
           </nav>
 
-          <div className="shrink-0 border-t-2 border-[var(--border)] p-3">
+          <div
+            className="shrink-0 border-t-2 border-[var(--border)] p-3"
+            style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
+          >
             <a
               href={siteConfig.botUrl}
               target="_blank"
