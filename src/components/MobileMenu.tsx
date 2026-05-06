@@ -48,7 +48,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         aria-expanded={open}
         aria-controls="uz-mobile-drawer"
         onClick={() => setOpen(true)}
-        className="flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-[var(--muted)] active:bg-[var(--muted)]"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[var(--border)] text-[var(--foreground)] transition-colors hover:bg-[var(--muted)] active:bg-[var(--muted)]"
       >
         <svg
           width="22"
@@ -90,6 +90,8 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           style={{
             borderLeft: '2px solid var(--border)',
             boxShadow: '-6px 0 0 var(--pastel-shadow)',
+            height: '100dvh',
+            maxHeight: '100dvh',
           }}
         >
           <div className="flex shrink-0 items-center justify-between border-b-2 border-[var(--border)] px-4 py-3">
