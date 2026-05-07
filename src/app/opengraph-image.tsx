@@ -7,8 +7,9 @@ export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 export const alt = `${siteConfig.name} — Telegram Premium va Stars O'zbekistonda`
 
+// Same star geometry as src/app/icon.svg / src/components/Logo.tsx (96-unit canvas).
 const STAR_PATH =
-  'M180 30 L218.4 130.8 L327.6 134.4 L240.6 198 L264.4 290.4 L180 240 L95.6 290.4 L119.4 198 L32.4 134.4 L141.6 130.8 Z'
+  'M48 14 L56.2 36.7 L80.3 37.5 L61.3 52.3 L68 75.5 L48 62 L28 75.5 L34.7 52.3 L15.7 37.5 L39.8 36.7 Z'
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -38,8 +39,9 @@ export default function OpenGraphImage() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            <svg width="120" height="120" viewBox="0 0 360 360" fill="none">
-              <path d={STAR_PATH} stroke="#0d9488" strokeWidth="22" strokeLinejoin="round" strokeLinecap="round" />
+            <svg width="120" height="120" viewBox="0 0 96 96">
+              <rect width="96" height="96" rx="20" fill="#0a6d65" />
+              <path d={STAR_PATH} fill="#ecf6f3" />
             </svg>
             <div
               style={{
@@ -50,7 +52,7 @@ export default function OpenGraphImage() {
                 display: 'flex',
               }}
             >
-              <span style={{ color: '#0d9488' }}>uz</span>
+              <span style={{ color: '#0a6d65' }}>uz</span>
               <span>gets</span>
             </div>
           </div>
@@ -68,7 +70,7 @@ export default function OpenGraphImage() {
               }}
             >
               <span>Telegram Premium va Stars</span>
-              <span style={{ color: '#0d9488' }}>O&apos;zbekistonda</span>
+              <span style={{ color: '#0a6d65' }}>O&apos;zbekistonda</span>
             </div>
             <div
               style={{
@@ -89,12 +91,12 @@ export default function OpenGraphImage() {
               gap: 16,
               fontSize: 28,
               fontWeight: 700,
-              color: '#0d9488',
+              color: '#0a6d65',
             }}
           >
             <div
               style={{
-                background: '#0d9488',
+                background: '#0a6d65',
                 color: 'white',
                 padding: '14px 28px',
                 borderRadius: 14,
@@ -106,7 +108,7 @@ export default function OpenGraphImage() {
             >
               {siteConfig.domain}
             </div>
-            <span style={{ color: '#5b6b67', fontSize: 26, display: 'flex' }}>UzCard • Humo • Click</span>
+            <span style={{ color: '#5b6b67', fontSize: 26, display: 'flex' }}>UzCard • Humo • Click • Payme</span>
           </div>
         </div>
       </div>
