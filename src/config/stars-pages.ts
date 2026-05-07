@@ -17,10 +17,10 @@ export type StarsPageContent = {
 
 const FEATURED_UZ: Record<string, StarsPageContent> = {
   '50': {
-    metaTitle: "50 Telegram Stars sotib olish — 12 700 so'm — O'zbekistonda",
+    metaTitle: "50 Telegram Stars sotib olish — 11 000 so'm — O'zbekistonda",
     metaDescription:
-      "50 ta Telegram Stars yulduzchasi O'zbekistonda 12 700 so'm. Eng kichik buyurtma. UzCard, Humo va Click orqali to'lov, @uzgetsbot orqali tezkor faollashtirish.",
-    oneLineSummary: "50 ta Telegram Stars — Uzgetsda eng kichik kirish paketi, 12 700 so'mga.",
+      "50 ta Telegram Stars yulduzchasi O'zbekistonda 11 000 so'm. Eng kichik buyurtma. UzCard, Humo va Click orqali to'lov, @uzgetsbot orqali tezkor faollashtirish.",
+    oneLineSummary: "50 ta Telegram Stars — Uzgetsda eng kichik kirish paketi, 11 000 so'mga.",
     whyThisAmount:
       "50 — Telegram Stars'ning eng kichik buyurtma miqdori. Tizimni sinab ko'rmoqchilar, bir martalik kichik xarid yoki sovg'a qilmoqchilar uchun ideal kirish nuqtasi. Bundan kichik miqdor sotib olib bo'lmaydi.",
     audience: [
@@ -75,12 +75,12 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
       {
         question: 'Eng arzon Telegram Stars buyurtmasi qaysi?',
         answer:
-          "Uzgetsdagi eng arzon variant — 50 ta Stars 12 700 so'm. Bundan kam buyurtma berish texnik jihatdan mumkin emas — bu Telegram tarafida o'rnatilgan minimal chegara.",
+          "Uzgetsdagi eng arzon variant — 50 ta Stars 11 000 so'm. Bundan kam buyurtma berish texnik jihatdan mumkin emas — bu Telegram tarafida o'rnatilgan minimal chegara.",
       },
       {
         question: '50 ta Stars 100 ta yoki 500 tadan farqi nima?',
         answer:
-          "Faqat miqdor jihatidan farq. Har Stars'ning narxi taxminan 254 so'm — barcha paketlarda bir xil. Katta paket bilan kam buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli bo'ladi.",
+          "Faqat miqdor jihatidan farq. Har Stars'ning narxi taxminan 220 so'm — barcha paketlarda bir xil. Katta paket bilan kam buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli bo'ladi.",
       },
     ],
   },
@@ -135,7 +135,7 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
       {
         question: '100 Stars sotib olganda bir Stars necha so\'mga tushadi?',
         answer:
-          "Bir yulduzcha taxminan 254 so'mga tushadi. Bu narx 50, 100, 500 va boshqa miqdorlar uchun bir xil — sotib olgan miqdoringizga proportsional hisoblanadi.",
+          "Bir yulduzcha taxminan 220 so'mga tushadi. Bu narx 50, 100, 500 va boshqa miqdorlar uchun bir xil — sotib olgan miqdoringizga proportsional hisoblanadi.",
       },
       {
         question: '100 va 500 — qaysini tanlash kerak?',
@@ -229,7 +229,7 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
       {
         question: '500 Stars sotib olganda chegirma yoki bonus bormi?',
         answer:
-          "Narx miqdorga proportsional hisoblanadi — har Stars taxminan 254 so'm, miqdor o'zgarganda ham. Lekin katta paket bilan kam marta buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli.",
+          "Narx miqdorga proportsional hisoblanadi — har Stars taxminan 220 so'm, miqdor o'zgarganda ham. Lekin katta paket bilan kam marta buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli.",
       },
       {
         question: '500 Stars akkauntda muddatli saqlanadimi?',
@@ -247,10 +247,10 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
 
 const FEATURED_RU: Record<string, StarsPageContent> = {
   '50': {
-    metaTitle: 'Купить 50 Telegram Stars — 12 700 сум — в Узбекистане',
+    metaTitle: 'Купить 50 Telegram Stars — 11 000 сум — в Узбекистане',
     metaDescription:
-      '50 звёзд Telegram Stars в Узбекистане — 12 700 сум. Минимальный заказ. Оплата UzCard, Humo и Click, быстрая активация через @uzgetsbot.',
-    oneLineSummary: '50 Telegram Stars — самый маленький стартовый пакет в Uzgets, за 12 700 сум.',
+      '50 звёзд Telegram Stars в Узбекистане — 11 000 сум. Минимальный заказ. Оплата UzCard, Humo и Click, быстрая активация через @uzgetsbot.',
+    oneLineSummary: '50 Telegram Stars — самый маленький стартовый пакет в Uzgets, за 11 000 сум.',
     whyThisAmount:
       '50 — минимальное количество для заказа Telegram Stars. Идеальная точка входа для тех, кто хочет попробовать систему, разово сделать небольшую покупку или подарок. Меньше купить технически нельзя.',
     audience: [
@@ -305,12 +305,12 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
       {
         question: 'Какой самый дешёвый заказ Telegram Stars?',
         answer:
-          'Самый дешёвый вариант в Uzgets — 50 Stars за 12 700 сум. Меньше заказать технически нельзя — это минимальная граница, установленная Telegram.',
+          'Самый дешёвый вариант в Uzgets — 50 Stars за 11 000 сум. Меньше заказать технически нельзя — это минимальная граница, установленная Telegram.',
       },
       {
         question: 'Чем 50 отличается от 100 или 500?',
         answer:
-          'Только количеством. Цена за одну Stars одинакова — около 254 сум во всех пакетах. С большим пакетом вы делаете меньше заказов, что удобно по времени и удобству.',
+          'Только количеством. Цена за одну Stars одинакова — около 220 сум во всех пакетах. С большим пакетом вы делаете меньше заказов, что удобно по времени и удобству.',
       },
     ],
   },
@@ -367,7 +367,7 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
       {
         question: 'Сколько стоит одна звезда при покупке 100?',
         answer:
-          'Одна звезда стоит примерно 254 сум. Эта цена одинакова для пакетов в 50, 100, 500 и других — рассчитывается пропорционально объёму.',
+          'Одна звезда стоит примерно 220 сум. Эта цена одинакова для пакетов в 50, 100, 500 и других — рассчитывается пропорционально объёму.',
       },
       {
         question: '100 или 500 — что выбрать?',
@@ -461,7 +461,7 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
       {
         question: 'Есть ли скидки или бонусы при покупке 500?',
         answer:
-          'Цена пропорциональна количеству — около 254 сум за каждую Stars при любом объёме. Но с большим пакетом вы реже делаете заказы, что удобнее по времени и управлению.',
+          'Цена пропорциональна количеству — около 220 сум за каждую Stars при любом объёме. Но с большим пакетом вы реже делаете заказы, что удобнее по времени и управлению.',
       },
       {
         question: 'Хранятся ли 500 звёзд на аккаунте по сроку?',
@@ -522,7 +522,7 @@ function deriveStarsContentUz(amount: number): StarsPageContent {
       {
         question: `${amountStr} Stars sotib olishda 1 ta Stars necha so'mga tushadi?`,
         answer:
-          "Bir Stars taxminan 254 so'mga tushadi. Bu narx barcha miqdorlar uchun bir xil — proportsional hisoblanadi.",
+          "Bir Stars taxminan 220 so'mga tushadi. Bu narx barcha miqdorlar uchun bir xil — proportsional hisoblanadi.",
       },
       {
         question: `${amountStr} ta Stars qaysi muddatga yetadi?`,
@@ -577,7 +577,7 @@ function deriveStarsContentRu(amount: number): StarsPageContent {
       {
         question: `Сколько стоит одна звезда при покупке ${amountStr}?`,
         answer:
-          'Одна Stars стоит примерно 254 сум. Эта цена одинакова для всех количеств — рассчитывается пропорционально.',
+          'Одна Stars стоит примерно 220 сум. Эта цена одинакова для всех количеств — рассчитывается пропорционально.',
       },
       {
         question: `На сколько хватит ${amountStr} звёзд?`,

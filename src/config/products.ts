@@ -12,7 +12,7 @@ export const PREMIUM_PERIODS: PremiumPeriod[] = [
   { months: 12, slug: '12-oylik', priceUzs: 408_000, perMonthHint: Math.round(408_000 / 12) },
 ]
 
-export const STARS_BASE = { amount: 50, priceUzs: 12_700 } as const
+export const STARS_BASE = { amount: 50, priceUzs: 11_000 } as const
 
 export function starsPrice(amount: number) {
   return Math.round((amount / STARS_BASE.amount) * STARS_BASE.priceUzs)
