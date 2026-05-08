@@ -3,6 +3,8 @@ import { post as telegramStarsNima } from './posts/02-telegram-stars-nima'
 import { post as premiumQandayFaollashtiriladi } from './posts/03-telegram-premium-qanday-faollashtiriladi'
 import { post as engArzonStars } from './posts/04-eng-arzon-telegram-stars-ozbekistonda'
 import { post as engArzonPremium } from './posts/05-eng-arzon-telegram-premium-ozbekistonda'
+import { post as premiumOzbekistondanSotibOlish } from './posts/06-telegram-premium-ozbekistondan-sotib-olish'
+import { post as arzonStars3Belgi } from './posts/07-arzon-stars-qayerdan-olinadi-3-belgi'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -11,6 +13,8 @@ export const BLOG_POSTS: BlogPost[] = [
   premiumQandayFaollashtiriladi,
   engArzonStars,
   engArzonPremium,
+  premiumOzbekistondanSotibOlish,
+  arzonStars3Belgi,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
