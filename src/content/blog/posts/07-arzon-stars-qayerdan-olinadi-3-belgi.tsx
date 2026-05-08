@@ -13,10 +13,11 @@ function UzAnswerBox() {
     <p>
       Arzon Telegram Stars sotaman degan e&apos;lonlar ko&apos;p, lekin barchasi xavfsiz emas.
       Ishonchli sotuvchini 3 ta belgi orqali ajratish mumkin: <strong>(1)</strong> avtomatik
-      bot tizimi (operator emas), <strong>(2)</strong> rasmiy mahalliy to&apos;lov tizimlari
-      (UzCard/Humo/Click/Payme — &quot;shaxsiy karta&quot; emas), <strong>(3)</strong> parol va
-      kod talab qilmaslik (faqat @username yetarli). Uchchovi bir vaqtda mavjud bo&apos;lsa —
-      sotuvchi xavfsiz. Bittasi yo&apos;q bo&apos;lsa — to&apos;xtang.{' '}
+      bot tizimi (operator emas), <strong>(2)</strong> to&apos;lov bot tomonidan
+      kuzatiladi va avtomatik tekshiriladi (chat&apos;da yozilgan tasodifiy karta raqamiga emas),
+      <strong>(3)</strong> parol va kod talab qilmaslik (faqat @username yetarli). Uchchovi
+      bir vaqtda mavjud bo&apos;lsa — sotuvchi xavfsiz. Bittasi yo&apos;q bo&apos;lsa —
+      to&apos;xtang.{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       uchchala mezonni bajaradi va 50 ⭐ {formatUzs(STARS_BASE.priceUzs)}dan boshlanadi.
     </p>
@@ -28,9 +29,10 @@ function RuAnswerBox() {
     <p>
       Объявлений «дешёвые Telegram Stars» много, но не все безопасны. Надёжного продавца
       отличают 3 признака: <strong>(1)</strong> автоматизированный бот (а не оператор вручную),{' '}
-      <strong>(2)</strong> оплата через официальные локальные системы (UzCard/Humo/Click/Payme —
-      не «личная карта»), <strong>(3)</strong> отсутствие запроса пароля и кода (хватает
-      @username). Все три должны быть одновременно. Если хоть одного нет — остановитесь.{' '}
+      <strong>(2)</strong> оплата отслеживается и проверяется ботом автоматически (а не на
+      случайный номер карты из чата), <strong>(3)</strong> отсутствие запроса пароля и кода
+      (хватает @username). Все три должны быть одновременно. Если хоть одного нет —
+      остановитесь.{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       соответствует всем трём, цена начинается с {formatUzs(STARS_BASE.priceUzs)} за 50 ⭐.
     </p>
@@ -196,38 +198,44 @@ function UzBody() {
         bilan kiritiladigan, operator javob beradigan bo&apos;lsa — bu ishonchli emas.
       </p>
 
-      <h2 id="belgi-2">2-belgi: To&apos;lov rasmiy mahalliy tizimlar orqali</h2>
+      <h2 id="belgi-2">2-belgi: To&apos;lov bot tomonidan kuzatiladi va avtomatik tekshiriladi</h2>
       <SignalCard
         num={2}
-        title="UzCard/Humo/Click/Payme — shaxsiy karta emas"
+        title="Buyurtma ID, aniq summa, avtomatik tasdiq"
         body={
           <>
             <p>
-              Ishonchli sotuvchi to&apos;lovni <strong>rasmiy to&apos;lov tizimi</strong>{' '}
-              orqali oladi: UzCard/Humo (banking gateway orqali), Click yoki Payme. Bu
-              tizimlarda har to&apos;lov ro&apos;yxatga olinadi, kelishmovchilik bo&apos;lsa
-              chargeback (pul qaytarish) yo&apos;li ochiq.
+              Ishonchli sotuvchida to&apos;lov bot ichidagi <strong>aniq buyurtmaga
+              bog&apos;langan</strong>: siz @username va miqdorni kiritasiz, bot sizga
+              ko&apos;rsatadigan to&apos;lov ma&apos;lumotini (karta raqami yoki Click/Payme
+              link) beradi va aynan o&apos;sha summani ko&apos;rsatilgan manzilga
+              o&apos;tkazasiz. Bot kelgan to&apos;lovni summa va boshqa belgilar bo&apos;yicha
+              avtomatik aniqlaydi va Stars/Premium darhol biriktiriladi. Bu — minglab
+              foydalanuvchi tomonidan sinalgan, takrorlanadigan jarayon.
             </p>
             <p className="mt-2">
-              Firibgar sotuvchi esa <strong>shaxsiy karta raqamiga</strong> to&apos;lash
-              taklif qiladi: &quot;HUMO: 9860 1234... ga 11 000 so&apos;m yuboring&quot;.
-              Bunday to&apos;lov — bevosita o&apos;tkazma. Pul yo&apos;qoldimi — qaytarish
-              imkoniyati deyarli yo&apos;q. Banklar shunday o&apos;tkazmalarni odatda &quot;P2P
-              transfer&quot; deb belgilaydi va himoya qilmaydi.
+              Firibgar sotuvchi esa to&apos;lovni <strong>tasodifiy chat yoki kanaldan</strong>{' '}
+              tashlangan kartaga so&apos;raydi: &quot;9860 1234... ga 11 000 so&apos;m
+              tashla&quot; — buyurtma raqami yo&apos;q, summa nimaga ekani aniq emas, kim
+              ekani noma&apos;lum, hech qanday avtomatik tekshiruv yo&apos;q. Pul
+              o&apos;tdimi — natija oddiy javob bermaslik yoki bloklash. Farq <em>karta
+              raqami</em>da emas — <strong>kontekst va tekshirilishida</strong>: ishonchli
+              sotuvchida to&apos;lov bot tomonidan bog&apos;lanadi va kuzatiladi.
             </p>
           </>
         }
-        uzgets="To'lov tugmasini bossangiz, rasmiy ekran ochiladi (uzcard.uz, click.uz, payme.uz domenida). Karta raqamingiz Uzgets'da emas, to'lov tizimida kiritiladi."
-        scam="'9860 1234 5678 9012 ga 11 000 so'm tashlang, keyin chek skrinini yuboring' — bu klassik P2P firibgarlik. Pul shaxsiy kartaga ketadi, javobgar yo'q."
+        uzgets="Bot @username + miqdor olgach to'lov ma'lumotini ko'rsatadi (karta yoki Click/Payme link). Aynan o'sha summani o'tkazsangiz — bot avtomatik tekshiradi va Stars/Premium darhol biriktiriladi. Buyurtma ID bilan kuzatiladigan jarayon."
+        scam="Tasodifiy guruhda 'menga 11 000 ga 50 ⭐ bersam, 9860 1234... ga tashla' — buyurtma raqami yo'q, bot tekshirmaydi, Telegram tomonidan biriktirilmaydi. Pul o'tgach javob yo'q."
       />
 
       <p>
-        <strong>Tekshirish usuli:</strong> to&apos;lov tugmasi sizni Uzcard/Humo/Click/Payme
-        rasmiy domeniga olib boradimi? Yo&apos;q bo&apos;lsa — to&apos;xtang. Karta raqami
-        chat&apos;da yozilgan bo&apos;lsa — bu firibgarlikning birinchi belgisi.
+        <strong>Tekshirish usuli:</strong> to&apos;lov ma&apos;lumotini bot ichida olganmisiz
+        (avtomatik), yoki kim biron chat yoki shaxsiy yozishmada qo&apos;lda yuborganmi? Birinchi
+        — ishonchli, ikkinchi — risk. Bot to&apos;lovdan keyin avtomatik tekshiruv qilgan va
+        Stars/Premium o&apos;zi biriktirilganmi? Ha bo&apos;lsa — tizim ishlaydi.
       </p>
 
-      <InlineBotCTA lang="uz" text="Rasmiy to'lov tizimlari bilan — Uzgets botida buyurtmangizni qo'ying." />
+      <InlineBotCTA lang="uz" text="Avtomatik tekshiriladigan to'lov tizimi — Uzgets botida buyurtmangizni qo'ying." />
 
       <h2 id="belgi-3">3-belgi: Akkaunt parol va kod so&apos;ramaydi</h2>
       <SignalCard
@@ -333,8 +341,11 @@ function UzBody() {
           bilan, har qadam logikalashtirilgan. Operator emas, kod ishlaydi.
         </li>
         <li>
-          <strong>Rasmiy to&apos;lov tizimlari</strong> — UzCard/Humo/Click/Payme
-          to&apos;g&apos;ridan-to&apos;g&apos;ri, shaxsiy karta raqami yo&apos;q.
+          <strong>To&apos;lov bot tomonidan kuzatiladi</strong> — bot @username va miqdorni
+          olgach to&apos;lov ma&apos;lumotini ko&apos;rsatadi (karta raqami yoki Click/Payme
+          link), siz aynan o&apos;sha summani o&apos;tkazasiz, bot avtomatik tekshirib
+          biriktiradi. Buyurtma ID bilan kuzatiladi — minglab foydalanuvchi tomonidan
+          sinalgan.
         </li>
         <li>
           <strong>Faqat @username</strong> — parol, kod, 2FA hech qachon so&apos;ralmaydi.
@@ -432,36 +443,41 @@ function RuBody() {
         ненадёжно.
       </p>
 
-      <h2 id="belgi-2">Признак 2: Оплата через официальные локальные системы</h2>
+      <h2 id="belgi-2">Признак 2: Оплата отслеживается и проверяется ботом автоматически</h2>
       <SignalCardRu
         num={2}
-        title="UzCard/Humo/Click/Payme — не «личная карта»"
+        title="ID заказа, точная сумма, автоматическое подтверждение"
         body={
           <>
             <p>
-              Надёжный продавец принимает оплату через <strong>официальные платёжные
-              системы</strong>: UzCard/Humo (банковский шлюз), Click или Payme. Каждая
-              операция там регистрируется, при споре доступен chargeback (возврат средств).
+              У надёжного продавца оплата <strong>привязана к конкретному заказу</strong>{' '}
+              внутри бота: вы вводите @username и количество, бот показывает реквизиты
+              оплаты (номер карты или ссылка Click/Payme), вы переводите ровно ту же сумму
+              по указанному реквизиту. Бот автоматически распознаёт поступление по сумме и
+              другим признакам — Stars/Premium зачисляются сразу. Это процесс, проверенный
+              тысячами пользователей.
             </p>
             <p className="mt-2">
-              Мошенник предлагает <strong>перевести на номер карты</strong>: «HUMO: 9860
-              1234… отправь 11 000 сум». Это прямой P2P-перевод. Если деньги пропали —
-              шансов вернуть почти нет. Банки такие переводы обычно помечают как «P2P
-              transfer» и не защищают.
+              Мошенник же просит перевести деньги на карту, которую он скинул в{' '}
+              <strong>случайном чате или канале</strong>: «9860 1234… отправь 11 000 сум» —
+              без номера заказа, без понимания за что именно сумма, без автоматической
+              проверки. Перевели — в ответ либо тишина, либо блок. Дело <em>не в самом
+              номере карты</em>, а в <strong>контексте и проверяемости</strong>: у надёжного
+              продавца платёж привязан к боту и отслеживается.
             </p>
           </>
         }
-        uzgets="При нажатии «Оплатить» открывается официальный экран (uzcard.uz, click.uz, payme.uz). Номер карты вводится в платёжной системе, а не в Uzgets."
-        scam="«Переведи 11 000 сум на 9860 1234 5678 9012, потом скриншот пришли» — классический P2P-обман. Деньги уходят на личную карту, ответственного нет."
+        uzgets="После ввода @username и количества бот показывает реквизит оплаты (карту или ссылку Click/Payme). Переводите ту же сумму — бот проверит автоматически и сразу зачислит Stars/Premium. Заказ отслеживается по ID."
+        scam="В случайной группе: «закину 50 ⭐ за 11 000, переведи на 9860 1234…» — нет ID заказа, бот не проверяет, Telegram сам ничего не зачисляет. Деньги ушли — ответа нет."
       />
 
       <p>
-        <strong>Как проверить:</strong> ведёт ли кнопка оплаты на официальный домен
-        Uzcard/Humo/Click/Payme? Если нет — стоп. Если номер карты написан прямо в чате —
-        первый признак мошенничества.
+        <strong>Как проверить:</strong> реквизиты оплаты получены внутри бота (автоматически)
+        или их прислал кто-то в чате/личке вручную? Первый — надёжно, второй — риск. После
+        оплаты бот сам проверил поступление и зачислил Stars/Premium? Да — система работает.
       </p>
 
-      <InlineBotCTA lang="ru" text="С официальными платёжными системами — оформите заказ в боте Uzgets." />
+      <InlineBotCTA lang="ru" text="Автоматически проверяемая оплата — оформите в боте Uzgets." />
 
       <h2 id="belgi-3">Признак 3: Не запрашивает пароль и код от аккаунта</h2>
       <SignalCardRu
@@ -561,8 +577,10 @@ function RuBody() {
           оформляется кнопками, каждый шаг логически выстроен. Не оператор, а код.
         </li>
         <li>
-          <strong>Официальные платёжные системы</strong> — UzCard/Humo/Click/Payme напрямую,
-          без личной карты.
+          <strong>Оплата отслеживается ботом</strong> — после ввода @username и количества
+          бот показывает реквизит (карта или ссылка Click/Payme), вы переводите ту же сумму,
+          бот автоматически проверяет и зачисляет. Заказ отслеживается по ID — процесс,
+          проверенный тысячами пользователей.
         </li>
         <li>
           <strong>Только @username</strong> — пароль, код, 2FA не запрашиваются никогда.
@@ -632,7 +650,7 @@ export const post: BlogPost = {
         {
           question: 'Arzon Stars sotuvchi ishonchli ekanligini qanday bilish mumkin?',
           answer:
-            "3 ta universal belgi orqali: (1) buyurtma avtomatik bot ichida bajariladimi (operator emas), (2) to'lov rasmiy mahalliy tizim orqali ketadimi (UzCard/Humo/Click/Payme — shaxsiy kartaga emas), (3) parol/SMS-kod/2FA so'ralmaydimi (faqat @username yetarli). Uchchovi bo'lsa — ishonchli; bittasi yo'q bo'lsa — to'xtang.",
+            "3 ta universal belgi orqali: (1) buyurtma avtomatik bot ichida bajariladimi (operator emas), (2) to'lov bot tomonidan kuzatiladimi va avtomatik tekshiriladimi (chat'da yozilgan tasodifiy karta raqamiga emas), (3) parol/SMS-kod/2FA so'ralmaydimi (faqat @username yetarli). Uchchovi bo'lsa — ishonchli; bittasi yo'q bo'lsa — to'xtang.",
         },
         {
           question: "Nega narx past bo'lishi avtomatik firibgarlik degani emas?",
@@ -645,14 +663,14 @@ export const post: BlogPost = {
             "Darhol jarayonni to'xtating va botni @notoscam ga shikoyat qiling. Telegram Stars yoki Premium uchun parol, SMS-kod yoki 2FA hech qachon kerak emas — faqat @username yetarli. Parol so'raydigan har qanday sotuvchi — akkauntni o'g'irlashga uringan firibgar.",
         },
         {
-          question: 'Shaxsiy karta raqamiga to\'lasam xavfsizmi?',
+          question: 'Bot ko\'rsatgan kartaga o\'tkazma orqali to\'lash xavfsizmi?',
           answer:
-            "Yo'q. Banklar shaxsiy kartaga o'tkazmani odatda 'P2P transfer' deb belgilaydi va himoya qilmaydi — ya'ni firibgarlik bo'lsa pul qaytarib bo'lmaydi. Ishonchli sotuvchi rasmiy to'lov tizimi (UzCard/Humo/Click/Payme gateway) orqali to'lov oladi, shaxsiy kartaga emas.",
+            "Ha, agar to'lov ma'lumoti (karta raqami yoki Click/Payme link) avtomatik bot tomonidan @username va miqdor kiritilgandan keyin ko'rsatilgan bo'lsa va bot kelgan to'lovni avtomatik tekshirsa. Bu — Uzgets'da minglab foydalanuvchi tomonidan sinalgan ish jarayoni. Xavfli holat — karta raqami tasodifiy chat yoki guruhda yuborilgan, hech qanday buyurtma raqami va avtomatik tekshiruv yo'q bo'lsa.",
         },
         {
           question: 'Uzgets uchchala mezonni qanday bajaradi?',
           answer:
-            "Avtomatik bot — buyurtma t.me/uzgetsbot ichida tugmalar bilan bajariladi. To'lov rasmiy — UzCard/Humo/Click/Payme to'g'ridan-to'g'ri, shaxsiy karta yo'q. Faqat @username — parol, kod, 2FA hech qachon so'ralmaydi. Uchchovi bir vaqtda bajariladi.",
+            "Avtomatik bot — buyurtma t.me/uzgetsbot ichida tugmalar bilan bajariladi. To'lov kuzatiladi — bot @username va miqdorni olgach to'lov ma'lumotini ko'rsatadi, aynan o'sha summani o'tkazsangiz avtomatik tekshiradi va biriktiradi. Faqat @username — parol, kod, 2FA hech qachon so'ralmaydi.",
         },
         {
           question: 'Aldansam nima qilaman?',
@@ -667,7 +685,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: "Ishonchli va arzon Stars sotib olishga tayyormisiz?",
       finalCtaBody:
-        "Uzgets uchchala mezonni bajaradi: avtomatik bot, rasmiy to'lov, parolsiz. Botda START bosib, 50 ⭐ 11 000 so'mga buyurtma bering.",
+        "Uzgets uchchala mezonni bajaradi: avtomatik bot, kuzatiladigan to'lov, parolsiz. Botda START bosib, 50 ⭐ 11 000 so'mga buyurtma bering.",
     },
     ru: {
       title: 'Где купить дешёвые Stars — 3 признака надёжного продавца 2026',
@@ -685,7 +703,7 @@ export const post: BlogPost = {
         {
           question: 'Как понять, что продавец дешёвых Stars надёжный?',
           answer:
-            'По 3 универсальным признакам: (1) заказ выполняется в автоматизированном боте (а не оператором), (2) оплата идёт через официальную локальную систему (UzCard/Humo/Click/Payme — не на личную карту), (3) не запрашиваются пароль/SMS-код/2FA (хватает @username). Все три должны быть; если хоть одного нет — стоп.',
+            'По 3 универсальным признакам: (1) заказ выполняется в автоматизированном боте (а не оператором), (2) оплата отслеживается ботом и проверяется автоматически (а не на случайный номер карты, скинутый в чате), (3) не запрашиваются пароль/SMS-код/2FA (хватает @username). Все три должны быть; если хоть одного нет — стоп.',
         },
         {
           question: 'Почему низкая цена — не автоматически признак мошенничества?',
@@ -698,14 +716,14 @@ export const post: BlogPost = {
             'Сразу остановите процесс и пожалуйтесь на бота в @notoscam. Для зачисления Stars или Premium пароль, SMS-код или 2FA никогда не нужны — достаточно @username. Любой, кто просит пароль, — мошенник, пытающийся угнать аккаунт.',
         },
         {
-          question: 'Безопасно ли переводить на личный номер карты?',
+          question: 'Безопасно ли переводить на номер карты, который показывает бот?',
           answer:
-            'Нет. Банки такие переводы обычно помечают как «P2P transfer» и не защищают — то есть при мошенничестве деньги вернуть нельзя. Надёжный продавец принимает оплату через официальную платёжную систему (шлюз UzCard/Humo/Click/Payme), а не на личную карту.',
+            'Да, если реквизиты (номер карты или ссылка Click/Payme) показал автоматизированный бот после ввода @username и количества, и бот сам проверяет поступление. Это процесс Uzgets, проверенный тысячами пользователей. Опасный случай — если номер карты скинули в случайном чате/группе, без номера заказа и автоматической проверки.',
         },
         {
           question: 'Как Uzgets соответствует всем трём признакам?',
           answer:
-            'Автобот — заказ выполняется кнопками внутри t.me/uzgetsbot. Оплата официальная — UzCard/Humo/Click/Payme напрямую, без личной карты. Только @username — пароль, код, 2FA не запрашиваются никогда. Все три выполняются одновременно.',
+            'Автобот — заказ оформляется кнопками внутри t.me/uzgetsbot. Оплата отслеживается — после ввода @username и количества бот показывает реквизит, при переводе той же суммы автоматически проверяется и зачисляется. Только @username — пароль, код, 2FA никогда не запрашиваются.',
         },
         {
           question: 'Что делать, если уже обманули?',
@@ -720,7 +738,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: 'Готовы купить дешёвые и надёжные Stars?',
       finalCtaBody:
-        'Uzgets соответствует всем трём признакам: автобот, официальная оплата, без пароля. Нажмите START в боте — 50 ⭐ за 11 000 сум.',
+        'Uzgets соответствует всем трём признакам: автобот, отслеживаемая оплата, без пароля. Нажмите START в боте — 50 ⭐ за 11 000 сум.',
     },
   },
 }

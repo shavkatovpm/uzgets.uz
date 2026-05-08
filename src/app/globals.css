@@ -120,61 +120,68 @@ a {
 }
 
 /* ---- Blog prose ---- */
-.uz-prose {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--foreground);
-}
-.uz-prose h2 {
-  margin-top: 2.25rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  scroll-margin-top: 5rem;
-}
-.uz-prose h3 {
-  margin-top: 1.75rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  scroll-margin-top: 5rem;
-}
-.uz-prose p {
-  margin: 0 0 1rem;
-  color: var(--foreground);
-}
-.uz-prose strong {
-  font-weight: 600;
-  color: var(--foreground);
-}
-.uz-prose a {
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.uz-prose a:hover {
-  text-decoration-thickness: 2px;
-}
-.uz-prose ul,
-.uz-prose ol {
-  margin: 0 0 1rem 1.25rem;
-  padding-left: 0.5rem;
-}
-.uz-prose ul {
-  list-style: disc;
-}
-.uz-prose ol {
-  list-style: decimal;
-}
-.uz-prose li {
-  margin-bottom: 0.4rem;
-}
-.uz-prose li::marker {
-  color: var(--primary);
-}
-.uz-prose table {
-  margin: 0 0 1rem;
+@layer components {
+  .uz-prose {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--foreground);
+  }
+  .uz-prose h2 {
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 5rem;
+  }
+  .uz-prose h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    scroll-margin-top: 5rem;
+  }
+  .uz-prose p {
+    margin: 0 0 1rem;
+    color: var(--foreground);
+  }
+  .uz-prose strong {
+    font-weight: 600;
+    color: var(--foreground);
+  }
+  .uz-prose a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .uz-prose a:hover {
+    text-decoration-thickness: 2px;
+  }
+  .uz-prose ul,
+  .uz-prose ol {
+    margin: 0 0 1rem 1.25rem;
+    padding-left: 0.5rem;
+  }
+  .uz-prose ul {
+    list-style: disc;
+  }
+  .uz-prose ol {
+    list-style: decimal;
+  }
+  .uz-prose li {
+    margin-bottom: 0.4rem;
+  }
+  .uz-prose li::marker {
+    color: var(--primary);
+  }
+  .uz-prose table {
+    margin: 0 0 1rem;
+  }
+  /* InlineBotCTA, jadvallar va boshqa interaktiv bloklar uchun escape — Tailwind utilities prose qoidalardan ustun bo'lishi uchun */
+  .uz-prose .not-prose a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* ---- Header ---- */

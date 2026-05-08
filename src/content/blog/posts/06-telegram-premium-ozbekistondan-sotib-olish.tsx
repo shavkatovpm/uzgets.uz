@@ -279,9 +279,10 @@ function UzBody() {
         </li>
       </ul>
       <p>
-        To&apos;rttala usul ham bir xil narxga, qo&apos;shimcha komissiyasiz. Karta ma&apos;lumotlari
-        Uzgets&apos;da saqlanmaydi — to&apos;lov tizimi tomonidan to&apos;g&apos;ridan-to&apos;g&apos;ri
-        ishlov beriladi.
+        To&apos;rttala usul ham bir xil narxga, qo&apos;shimcha komissiyasiz. Bot @username va
+        muddatni olgach to&apos;lov ma&apos;lumotini ko&apos;rsatadi (karta raqami yoki
+        Click/Payme link), siz aynan o&apos;sha summani o&apos;tkazasiz va bot avtomatik tekshirib
+        Premium&apos;ni biriktiradi. Karta ma&apos;lumotlari Uzgets&apos;da saqlanmaydi.
       </p>
 
       <h2 id="sovga">Premium&apos;ni sovg&apos;a qilish — boshqa @username uchun</h2>
@@ -468,8 +469,10 @@ function RuBody() {
         </li>
       </ul>
       <p>
-        Все четыре способа — без дополнительной комиссии и по одной цене. Данные карты в Uzgets
-        не хранятся — оплату обрабатывает напрямую платёжная система.
+        Все четыре способа — без дополнительной комиссии и по одной цене. После ввода @username
+        и срока бот показывает реквизит оплаты (номер карты или ссылку Click/Payme), вы переводите
+        ту же сумму, бот автоматически проверяет поступление и зачисляет Premium. Данные карты
+        в Uzgets не хранятся.
       </p>
 
       <h2 id="sovga">Подарить Premium на другой @username</h2>
