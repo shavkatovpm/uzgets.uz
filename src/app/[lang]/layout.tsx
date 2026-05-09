@@ -155,8 +155,17 @@ export default async function RootLayout({
   const orgSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${siteConfig.url}/#organization`,
     name: siteConfig.name,
+    alternateName: ['uzgets.uz', '@uzgetsbot'],
     url: siteConfig.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteConfig.url}/icon.svg`,
+      width: 512,
+      height: 512,
+    },
+    image: `${siteConfig.url}/opengraph-image`,
     description: META_BY_LOCALE[lang].description,
     contactPoint: {
       '@type': 'ContactPoint',
@@ -165,7 +174,86 @@ export default async function RootLayout({
       availableLanguage: ['Uzbek', 'Russian'],
     },
     areaServed: { '@type': 'Country', name: 'Uzbekistan' },
-    sameAs: [siteConfig.botUrl],
+    knowsAbout: [
+      'Telegram Premium',
+      'Telegram Stars',
+      'Telegram subscriptions',
+      'UzCard payments',
+      'Humo card payments',
+      'Click payments',
+      'Payme payments',
+      'Digital goods reseller Uzbekistan',
+    ],
+    knowsLanguage: ['uz', 'ru'],
+    paymentAccepted: ['UzCard', 'Humo', 'Click', 'Payme'],
+    currenciesAccepted: 'UZS',
+    sameAs: [siteConfig.botUrl, `https://uzgets.uz/${lang}/haqimizda`],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Telegram Premium and Stars',
+      itemListElement: [
+        {
+          '@type': 'OfferCatalog',
+          name: 'Telegram Premium',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              name: 'Telegram Premium 3 oylik',
+              price: '168000',
+              priceCurrency: 'UZS',
+              url: `${siteConfig.url}/${lang}/premium/3-oylik`,
+              availability: 'https://schema.org/InStock',
+            },
+            {
+              '@type': 'Offer',
+              name: 'Telegram Premium 6 oylik',
+              price: '228000',
+              priceCurrency: 'UZS',
+              url: `${siteConfig.url}/${lang}/premium/6-oylik`,
+              availability: 'https://schema.org/InStock',
+            },
+            {
+              '@type': 'Offer',
+              name: 'Telegram Premium 12 oylik',
+              price: '408000',
+              priceCurrency: 'UZS',
+              url: `${siteConfig.url}/${lang}/premium/12-oylik`,
+              availability: 'https://schema.org/InStock',
+            },
+          ],
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Telegram Stars',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              name: 'Telegram Stars 50',
+              price: '11000',
+              priceCurrency: 'UZS',
+              url: `${siteConfig.url}/${lang}/stars/50`,
+              availability: 'https://schema.org/InStock',
+            },
+            {
+              '@type': 'Offer',
+              name: 'Telegram Stars 500',
+              price: '110000',
+              priceCurrency: 'UZS',
+              url: `${siteConfig.url}/${lang}/stars/500`,
+              availability: 'https://schema.org/InStock',
+            },
+            {
+              '@type': 'Offer',
+              name: 'Telegram Stars 1000',
+              price: '220000',
+              priceCurrency: 'UZS',
+              url: `${siteConfig.url}/${lang}/stars/1000`,
+              availability: 'https://schema.org/InStock',
+            },
+          ],
+        },
+      ],
+    },
   }
 
   const websiteSchema = {
