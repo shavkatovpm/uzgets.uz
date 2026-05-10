@@ -7,7 +7,7 @@ import { AnswerBox } from '@/components/AnswerBox'
 import { BotCTA } from '@/components/BotCTA'
 import { FAQ } from '@/components/FAQ'
 import { getDictionary } from '@/i18n/dictionaries'
-import { type Locale, isLocale, LOCALES } from '@/i18n/config'
+import { type Locale, isLocale, LOCALES, localePath, localeUrl } from '@/i18n/config'
 import { getPostBySlug, getPostsSorted, BLOG_POSTS } from '@/content/blog'
 import { BLOG_TYPE_LABELS } from '@/content/blog/types'
 
@@ -37,11 +37,11 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/blog/${slug}` },
+    alternates: { canonical: localePath(lang, `/blog/${slug}`) },
     openGraph: {
       title: t.metaTitle,
       description: t.ogDescription ?? t.metaDescription,
-      url: `${siteConfig.url}/${lang}/blog/${slug}`,
+      url: localeUrl(siteConfig.url, lang, `/blog/${slug}`),
       type: 'article',
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,
@@ -66,9 +66,9 @@ export default async function BlogPostPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: dict.common.home, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: dict.nav.blog, item: `${siteConfig.url}/${lang}/blog` },
-      { '@type': 'ListItem', position: 3, name: t.title, item: `${siteConfig.url}/${lang}/blog/${slug}` },
+      { '@type': 'ListItem', position: 1, name: dict.common.home, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: dict.nav.blog, item: localeUrl(siteConfig.url, lang, '/blog') },
+      { '@type': 'ListItem', position: 3, name: t.title, item: localeUrl(siteConfig.url, lang, `/blog/${slug}`) },
     ],
   }
 
@@ -81,7 +81,7 @@ export default async function BlogPostPage({
     dateModified: post.updatedAt,
     author: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
     publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteConfig.url}/${lang}/blog/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': localeUrl(siteConfig.url, lang, `/blog/${slug}`) },
     inLanguage: lang === 'ru' ? 'ru-RU' : 'uz-UZ',
   }
 
@@ -110,11 +110,11 @@ export default async function BlogPostPage({
 
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-6 sm:pt-16">
         <nav aria-label={dict.common.breadcrumb} className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">
             {dict.common.home}
           </Link>
           <span className="mx-2">/</span>
-          <Link href={`/${lang}/blog`} className="hover:text-[var(--foreground)]">
+          <Link href={localePath(lang, '/blog')} className="hover:text-[var(--foreground)]">
             {dict.nav.blog}
           </Link>
           <span className="mx-2">/</span>
@@ -170,7 +170,7 @@ export default async function BlogPostPage({
               return (
                 <li key={p.slug}>
                   <Link
-                    href={`/${lang}/blog/${p.slug}`}
+                    href={localePath(lang, `/blog/${p.slug}`)}
                     className="uz-card block rounded-xl border border-[var(--border)] p-4 transition-colors hover:border-[var(--primary)]/50"
                   >
                     <div className="font-semibold">{rt.title}</div>
@@ -184,7 +184,7 @@ export default async function BlogPostPage({
       )}
 
       <section className="mx-auto max-w-3xl px-4 pb-12">
-        <Link href={`/${lang}/blog`} className="text-sm font-medium text-[var(--primary)] hover:underline">
+        <Link href={localePath(lang, '/blog')} className="text-sm font-medium text-[var(--primary)] hover:underline">
           ← {dict.blog.backToBlog}
         </Link>
       </section>

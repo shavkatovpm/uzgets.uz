@@ -354,8 +354,8 @@ function UzBody() {
         </li>
         <li>
           <strong>Ochiq narx jadvali</strong> —{' '}
-          <Link href="/uz/stars" className="text-[var(--primary)] hover:underline">
-            /uz/stars
+          <Link href="/stars" className="text-[var(--primary)] hover:underline">
+            /stars
           </Link>{' '}
           sahifasida har paket uchun aniq narx, yashirin yig&apos;im yo&apos;q.
         </li>
@@ -366,7 +366,7 @@ function UzBody() {
       </ul>
       <p>
         Batafsil narx taqqoslama:{' '}
-        <Link href="/uz/blog/eng-arzon-telegram-stars-ozbekistonda" className="text-[var(--primary)] hover:underline">
+        <Link href="/blog/eng-arzon-telegram-stars-ozbekistonda" className="text-[var(--primary)] hover:underline">
           Eng arzon Telegram Stars O&apos;zbekistonda 2026
         </Link>
         .

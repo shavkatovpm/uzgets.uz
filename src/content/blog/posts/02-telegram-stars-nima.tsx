@@ -240,7 +240,7 @@ function UzBody() {
         — xorijiy karta talab etadi) yoki vositachi bot orqali mahalliy karta bilan. O&apos;zbekistondan UzCard,
         Humo, Click yoki Payme bilan sotib olish uchun{' '}
         <Link
-          href="/uz/blog/telegram-stars-ozbekistondan-sotib-olish"
+          href="/blog/telegram-stars-ozbekistondan-sotib-olish"
           className="font-semibold text-[var(--primary)] hover:underline"
         >
           to&apos;liq qo&apos;llanmamizda
@@ -249,7 +249,7 @@ function UzBody() {
       </p>
       <p>
         Joriy narxlar va paketlar —{' '}
-        <Link href="/uz/stars" className="font-semibold text-[var(--primary)] hover:underline">
+        <Link href="/stars" className="font-semibold text-[var(--primary)] hover:underline">
           Stars sahifasida
         </Link>
         . Eng kichik paket 50 ta yulduzcha; ommabop paketlar — 500, 1000, 2500.

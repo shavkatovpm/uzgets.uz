@@ -277,7 +277,7 @@ function UzBody() {
         <li>
           Telegram Premium avtomatik faollashadi (odatda bir necha daqiqada). Faollashtirish
           jarayoni haqida:{' '}
-          <Link href="/uz/blog/telegram-premium-qanday-faollashtiriladi" className="text-[var(--primary)] hover:underline">
+          <Link href="/blog/telegram-premium-qanday-faollashtiriladi" className="text-[var(--primary)] hover:underline">
             qanday faollashtiriladi
           </Link>
           .
@@ -351,7 +351,7 @@ function UzBody() {
         </li>
         <li>
           Telegram Premium&apos;ni{' '}
-          <Link href="/uz/blog/telegram-stars-ozbekistondan-sotib-olish" className="text-[var(--primary)] hover:underline">
+          <Link href="/blog/telegram-stars-ozbekistondan-sotib-olish" className="text-[var(--primary)] hover:underline">
             bot orqali sotib olish jarayoni
           </Link>{' '}
           Stars uchun ham, Premium uchun ham bir xil arxitekturada ishlaydi.
@@ -577,7 +577,7 @@ export const post: BlogPost = {
         {
           question: 'Premium qancha vaqtda faollashadi?',
           answer:
-            "Odatda to'lov tasdiqlanganidan so'ng bir necha daqiqada. Telegram avtomatik biriktiradi — qo'lda biror amal kerak emas. Faollashtirish jarayoni haqida alohida qo'llanma /uz/blog/telegram-premium-qanday-faollashtiriladi sahifasida.",
+            "Odatda to'lov tasdiqlanganidan so'ng bir necha daqiqada. Telegram avtomatik biriktiradi — qo'lda biror amal kerak emas. Faollashtirish jarayoni haqida alohida qo'llanma /blog/telegram-premium-qanday-faollashtiriladi sahifasida.",
         },
         {
           question: 'Sovg\'a sifatida arzon Premium yuborib bo\'ladimi?',

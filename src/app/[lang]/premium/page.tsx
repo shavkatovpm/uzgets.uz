@@ -11,7 +11,7 @@ import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS } from '@/config/products'
 import { getPremiumFeatures, getPaymentMethods } from '@/config/static-content'
 import { formatUzs } from '@/lib/format'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -373,11 +373,11 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/premium` },
+    alternates: { canonical: localePath(lang, '/premium') },
     openGraph: {
       title: t.ogTitle,
       description: t.ogDescription,
-      url: `${siteConfig.url}/${lang}/premium`,
+      url: localeUrl(siteConfig.url, lang, '/premium'),
     },
   }
 }
@@ -405,7 +405,7 @@ export default async function PremiumPage({
     itemListElement: PREMIUM_PERIODS.map((p, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${siteConfig.url}/${lang}/premium/${p.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/premium/${p.slug}`),
       name: t.premiumName(p.months),
     })),
   }
@@ -414,8 +414,8 @@ export default async function PremiumPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: t.breadcrumbPremium, item: `${siteConfig.url}/${lang}/premium` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: t.breadcrumbPremium, item: localeUrl(siteConfig.url, lang, '/premium') },
     ],
   }
 
@@ -493,7 +493,7 @@ export default async function PremiumPage({
               title={t.cardTitle(p.months)}
               subtitle="Telegram Premium"
               priceUzs={p.priceUzs}
-              href={`/${lang}/premium/${p.slug}`}
+              href={localePath(lang, `/premium/${p.slug}`)}
               badge={p.badge}
               highlight={p.months === 12}
               footerHint={`${lang === 'ru' ? 'В месяц' : 'Oyiga'} ~${formatUzs(p.perMonthHint)}`}
@@ -563,7 +563,7 @@ export default async function PremiumPage({
                 return (
                   <tr key={p.slug} className="border-t border-[var(--border)]">
                     <td className="px-3 py-3 sm:px-4">
-                      <Link href={`/${lang}/premium/${p.slug}`} className="text-[var(--primary)] hover:underline">
+                      <Link href={localePath(lang, `/premium/${p.slug}`)} className="text-[var(--primary)] hover:underline">
                         {p.months} {t.monthsShort}
                       </Link>
                     </td>
@@ -666,7 +666,7 @@ export default async function PremiumPage({
         <h2 className="text-2xl font-bold sm:text-3xl">{t.finalCtaHeading}</h2>
         <p className="mt-3 text-[var(--text-muted)]">
           {t.finalCtaText1}
-          <Link href={`/${lang}/stars`} className="text-[var(--primary)] hover:underline">
+          <Link href={localePath(lang, '/stars')} className="text-[var(--primary)] hover:underline">
             {t.finalCtaStarsLink}
           </Link>
           {t.finalCtaText2}

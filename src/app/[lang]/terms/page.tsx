@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -134,11 +134,11 @@ export async function generateMetadata({
   return {
     title: t.title,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/terms` },
+    alternates: { canonical: localePath(lang, '/terms') },
     openGraph: {
       title: `${t.title} | ${siteConfig.name}`,
       description: t.ogDescription,
-      url: `${siteConfig.url}/${lang}/terms`,
+      url: localeUrl(siteConfig.url, lang, '/terms'),
     },
   }
 }
@@ -157,8 +157,8 @@ export default async function TermsPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: t.title, item: `${siteConfig.url}/${lang}/terms` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: t.title, item: localeUrl(siteConfig.url, lang, '/terms') },
     ],
   }
 
@@ -173,7 +173,7 @@ export default async function TermsPage({
       <JsonLd data={breadcrumbSchema} />
       <article className="mx-auto max-w-3xl px-4 pt-12 pb-12 sm:pt-16">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">
             {t.breadcrumbHome}
           </Link>
           <span className="mx-2">/</span>
@@ -264,7 +264,7 @@ export default async function TermsPage({
               {t.s9Pre}
               {botLink}
               {t.s9Mid}
-              <Link href={`/${lang}/aloqa`} className="text-[var(--primary)] hover:underline">
+              <Link href={localePath(lang, '/aloqa')} className="text-[var(--primary)] hover:underline">
                 {t.s9PageLink}
               </Link>
               {t.s9End}

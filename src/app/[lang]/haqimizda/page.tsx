@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { BotCTA } from '@/components/BotCTA'
 import { FAQ, type FAQItem } from '@/components/FAQ'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -324,11 +324,11 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/haqimizda` },
+    alternates: { canonical: localePath(lang, '/haqimizda') },
     openGraph: {
       title: t.metaTitle,
       description: t.ogDescription,
-      url: `${siteConfig.url}/${lang}/haqimizda`,
+      url: localeUrl(siteConfig.url, lang, '/haqimizda'),
     },
   }
 }
@@ -347,8 +347,8 @@ export default async function HaqimizdaPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: t.breadcrumbAbout, item: `${siteConfig.url}/${lang}/haqimizda` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: t.breadcrumbAbout, item: localeUrl(siteConfig.url, lang, '/haqimizda') },
     ],
   }
 
@@ -356,7 +356,7 @@ export default async function HaqimizdaPage({
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: t.metaTitle,
-    url: `${siteConfig.url}/${lang}/haqimizda`,
+    url: localeUrl(siteConfig.url, lang, '/haqimizda'),
     description: t.metaDescription,
     mainEntity: {
       '@type': 'Organization',
@@ -401,7 +401,7 @@ export default async function HaqimizdaPage({
 
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-6 sm:pt-16">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">
             {t.breadcrumbHome}
           </Link>
           <span className="mx-2">/</span>
@@ -491,7 +491,7 @@ export default async function HaqimizdaPage({
         <p className="mb-8 leading-relaxed text-[var(--text-muted)]">{t.productsIntro}</p>
         <div className="grid gap-5 sm:grid-cols-2">
           <Link
-            href={`/${lang}/premium`}
+            href={localePath(lang, '/premium')}
             className="uz-card flex flex-col gap-3 rounded-2xl border border-[var(--border)] p-6"
           >
             <div className="text-lg font-bold">{t.productsPremium.title}</div>
@@ -499,7 +499,7 @@ export default async function HaqimizdaPage({
             <div className="mt-auto pt-2 font-medium text-[var(--primary)]">{t.productsPremium.cta}</div>
           </Link>
           <Link
-            href={`/${lang}/stars`}
+            href={localePath(lang, '/stars')}
             className="uz-card flex flex-col gap-3 rounded-2xl border border-[var(--border)] p-6"
           >
             <div className="text-lg font-bold">{t.productsStars.title}</div>

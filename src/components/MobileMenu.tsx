@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS, STARS_PACKS } from '@/config/products'
 import { formatUzs } from '@/lib/format'
-import type { Locale } from '@/i18n/config'
+import { localePath, type Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
 
 const FEATURED_STARS = [50, 100, 500]
@@ -120,7 +120,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
           <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3 text-sm">
             <Link
-              href={`/${lang}`}
+              href={localePath(lang)}
               onClick={close}
               className="block rounded-lg px-3 py-2.5 font-semibold transition-colors hover:bg-[var(--muted)] active:bg-[var(--muted)]"
             >
@@ -129,7 +129,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
             <div className="mt-3">
               <Link
-                href={`/${lang}/premium`}
+                href={localePath(lang, '/premium')}
                 onClick={close}
                 className="flex items-center justify-between rounded-lg px-3 py-2.5 font-semibold transition-colors hover:bg-[var(--muted)]"
               >
@@ -142,7 +142,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {PREMIUM_PERIODS.map((p) => (
                   <li key={p.slug}>
                     <Link
-                      href={`/${lang}/premium/${p.slug}`}
+                      href={localePath(lang, `/premium/${p.slug}`)}
                       onClick={close}
                       className="flex items-center justify-between rounded-lg px-6 py-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
                     >
@@ -158,7 +158,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
             <div className="mt-3">
               <Link
-                href={`/${lang}/stars`}
+                href={localePath(lang, '/stars')}
                 onClick={close}
                 className="flex items-center justify-between rounded-lg px-3 py-2.5 font-semibold transition-colors hover:bg-[var(--muted)]"
               >
@@ -174,7 +174,7 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   return (
                     <li key={pack.slug}>
                       <Link
-                        href={`/${lang}/stars/${pack.slug}`}
+                        href={localePath(lang, `/stars/${pack.slug}`)}
                         onClick={close}
                         className="flex items-center justify-between rounded-lg px-6 py-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
                       >
@@ -189,35 +189,35 @@ export function MobileMenu({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
             <div className="mt-3 border-t border-[var(--border)] pt-3">
               <Link
-                href={`/${lang}/blog`}
+                href={localePath(lang, '/blog')}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 font-semibold transition-colors hover:bg-[var(--muted)]"
               >
                 {dict.nav.blog}
               </Link>
               <Link
-                href={`/${lang}/aloqa`}
+                href={localePath(lang, '/aloqa')}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-[var(--muted)]"
               >
                 {dict.footer.contactLink}
               </Link>
               <Link
-                href={`/${lang}/haqimizda`}
+                href={localePath(lang, '/haqimizda')}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-[var(--muted)]"
               >
                 {dict.nav.about}
               </Link>
               <Link
-                href={`/${lang}/privacy`}
+                href={localePath(lang, '/privacy')}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 text-[var(--text-muted)] transition-colors hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
               >
                 {dict.nav.privacy}
               </Link>
               <Link
-                href={`/${lang}/terms`}
+                href={localePath(lang, '/terms')}
                 onClick={close}
                 className="block rounded-lg px-3 py-2.5 text-[var(--text-muted)] transition-colors hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
               >

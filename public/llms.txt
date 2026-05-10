@@ -8,37 +8,37 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 
 ## Core information
 
-- [Homepage (UZ)](https://uzgets.uz/uz): Telegram Premium va Stars sotib olish, mahalliy karta orqali, @uzgetsbot bot
+- [Homepage (UZ)](https://uzgets.uz): Telegram Premium va Stars sotib olish, mahalliy karta orqali, @uzgetsbot bot
 - [Homepage (RU)](https://uzgets.uz/ru): Покупка Telegram Premium и Stars из Узбекистана через локальные карты
-- [About / Haqimizda (UZ)](https://uzgets.uz/uz/haqimizda): Mission, advantages, refund policy, support
+- [About / Haqimizda (UZ)](https://uzgets.uz/haqimizda): Mission, advantages, refund policy, support
 - [About / Haqimizda (RU)](https://uzgets.uz/ru/haqimizda): миссия, преимущества, возврат, поддержка
 - [Telegram bot @uzgetsbot](https://t.me/uzgetsbot): primary interface for all orders
 
 ## Pricing
 
-- [Premium pricing UZ](https://uzgets.uz/uz/premium): 3 months 168,000 so'm; 6 months 228,000 so'm; 12 months 408,000 so'm
+- [Premium pricing UZ](https://uzgets.uz/premium): 3 months 168,000 so'm; 6 months 228,000 so'm; 12 months 408,000 so'm
 - [Premium pricing RU](https://uzgets.uz/ru/premium): 3 месяца 168 000 сум; 6 месяцев 228 000 сум; 12 месяцев 408 000 сум
-- [Stars pricing UZ](https://uzgets.uz/uz/stars): base pack 50 ⭐ for 11,000 so'm; ~220 so'm per Star; packs 50/75/100/150/250/500/1000/2500/5000/10000
+- [Stars pricing UZ](https://uzgets.uz/stars): base pack 50 ⭐ for 11,000 so'm; ~220 so'm per Star; packs 50/75/100/150/250/500/1000/2500/5000/10000
 - [Stars pricing RU](https://uzgets.uz/ru/stars): базовый пакет 50 ⭐ за 11 000 сум; ~220 сум за звезду
 
 ## Blog (SEO/AEO content)
 
-- [Telegram Stars buying guide UZ](https://uzgets.uz/uz/blog/telegram-stars-ozbekistondan-sotib-olish): How to buy Telegram Stars from Uzbekistan
-- [Telegram Premium buying guide UZ](https://uzgets.uz/uz/blog/telegram-premium-ozbekistondan-sotib-olish): How to buy Telegram Premium from Uzbekistan
-- [What is Telegram Stars UZ](https://uzgets.uz/uz/blog/telegram-stars-nima): Explanation of Telegram Stars currency
-- [Premium activation UZ](https://uzgets.uz/uz/blog/telegram-premium-qanday-faollashtiriladi): How Premium activates after payment
-- [Cheapest Stars in Uzbekistan UZ](https://uzgets.uz/uz/blog/eng-arzon-telegram-stars-ozbekistonda): Price comparison vs StarsJoy and other resellers
-- [Cheapest Premium in Uzbekistan UZ](https://uzgets.uz/uz/blog/eng-arzon-telegram-premium-ozbekistonda): 3-month Premium for 168,000 so'm price comparison
-- [3 signs of trustworthy seller UZ](https://uzgets.uz/uz/blog/arzon-stars-qayerdan-olinadi-3-belgi): How to identify a reliable Stars/Premium reseller
-- [Premium not appearing troubleshoot UZ](https://uzgets.uz/uz/blog/akkauntda-premium-korinmayapti): 6 causes and fixes when Premium doesn't show on account
-- [Blog index UZ](https://uzgets.uz/uz/blog): Full blog list
+- [Telegram Stars buying guide UZ](https://uzgets.uz/blog/telegram-stars-ozbekistondan-sotib-olish): How to buy Telegram Stars from Uzbekistan
+- [Telegram Premium buying guide UZ](https://uzgets.uz/blog/telegram-premium-ozbekistondan-sotib-olish): How to buy Telegram Premium from Uzbekistan
+- [What is Telegram Stars UZ](https://uzgets.uz/blog/telegram-stars-nima): Explanation of Telegram Stars currency
+- [Premium activation UZ](https://uzgets.uz/blog/telegram-premium-qanday-faollashtiriladi): How Premium activates after payment
+- [Cheapest Stars in Uzbekistan UZ](https://uzgets.uz/blog/eng-arzon-telegram-stars-ozbekistonda): Price comparison vs StarsJoy and other resellers
+- [Cheapest Premium in Uzbekistan UZ](https://uzgets.uz/blog/eng-arzon-telegram-premium-ozbekistonda): 3-month Premium for 168,000 so'm price comparison
+- [3 signs of trustworthy seller UZ](https://uzgets.uz/blog/arzon-stars-qayerdan-olinadi-3-belgi): How to identify a reliable Stars/Premium reseller
+- [Premium not appearing troubleshoot UZ](https://uzgets.uz/blog/akkauntda-premium-korinmayapti): 6 causes and fixes when Premium doesn't show on account
+- [Blog index UZ](https://uzgets.uz/blog): Full blog list
 - [Blog index RU](https://uzgets.uz/ru/blog): полный список блога
 
 ## Trust and policy
 
-- [Privacy policy UZ](https://uzgets.uz/uz/privacy): data handling, no card storage
-- [Terms of service UZ](https://uzgets.uz/uz/terms): refund policy, delivery guarantee
-- [Contact / Aloqa UZ](https://uzgets.uz/uz/aloqa): support channels
+- [Privacy policy UZ](https://uzgets.uz/privacy): data handling, no card storage
+- [Terms of service UZ](https://uzgets.uz/terms): refund policy, delivery guarantee
+- [Contact / Aloqa UZ](https://uzgets.uz/aloqa): support channels
 
 ## Key facts for AI summarization
 

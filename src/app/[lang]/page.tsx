@@ -9,7 +9,7 @@ import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS, STARS_PACKS, STARS_BASE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -245,7 +245,7 @@ export default async function HomePage({
       position: i + 1,
       name: s.name,
       text: s.text,
-      ...(i === 0 ? { url: `${siteConfig.url}/${lang}/#qadamlar` } : {}),
+      ...(i === 0 ? { url: `${localeUrl(siteConfig.url, lang)}#qadamlar` } : {}),
     })),
   }
 
@@ -253,7 +253,7 @@ export default async function HomePage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
     ],
   }
 
@@ -307,7 +307,7 @@ export default async function HomePage({
             <h2 id="premium-prices" className="text-2xl font-bold sm:text-3xl">{t.premiumHeading}</h2>
             <p className="mt-1 text-[var(--text-muted)]">{t.premiumSubtitle}</p>
           </div>
-          <Link href={`/${lang}/premium`} className="hidden text-sm font-medium text-[var(--primary)] hover:underline sm:block">
+          <Link href={localePath(lang, '/premium')} className="hidden text-sm font-medium text-[var(--primary)] hover:underline sm:block">
             {t.premiumReadMore}
           </Link>
         </div>
@@ -318,7 +318,7 @@ export default async function HomePage({
               title={t.premiumPeriodTitle(p.months)}
               subtitle={t.premiumPeriodSubtitle}
               priceUzs={p.priceUzs}
-              href={`/${lang}/premium/${p.slug}`}
+              href={localePath(lang, `/premium/${p.slug}`)}
               badge={p.badge}
               highlight={p.months === 12}
               footerHint={t.premiumPeriodFooter(formatUzs(p.perMonthHint))}
@@ -333,7 +333,7 @@ export default async function HomePage({
             <h2 id="stars-prices" className="text-2xl font-bold sm:text-3xl">{t.starsHeading}</h2>
             <p className="mt-1 text-[var(--text-muted)]">{t.starsSubtitle}</p>
           </div>
-          <Link href={`/${lang}/stars`} className="hidden text-sm font-medium text-[var(--primary)] hover:underline sm:block">
+          <Link href={localePath(lang, '/stars')} className="hidden text-sm font-medium text-[var(--primary)] hover:underline sm:block">
             {t.starsReadAll}
           </Link>
         </div>
@@ -344,7 +344,7 @@ export default async function HomePage({
               title={`${formatNumber(s.amount)} ⭐`}
               subtitle={t.starsCardSubtitle}
               priceUzs={s.priceUzs}
-              href={`/${lang}/stars/${s.slug}`}
+              href={localePath(lang, `/stars/${s.slug}`)}
               badge={s.badge}
             />
           ))}

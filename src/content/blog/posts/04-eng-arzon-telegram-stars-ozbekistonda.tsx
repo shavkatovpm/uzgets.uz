@@ -258,8 +258,8 @@ function UzBody() {
       <PriceTable lang="uz" />
       <p>
         To&apos;liq ro&apos;yxat va har bir paket uchun alohida sahifa{' '}
-        <Link href="/uz/stars" className="font-semibold text-[var(--primary)] hover:underline">
-          /uz/stars
+        <Link href="/stars" className="font-semibold text-[var(--primary)] hover:underline">
+          /stars
         </Link>{' '}
         bo&apos;limida.
       </p>
@@ -284,7 +284,7 @@ function UzBody() {
       </ol>
       <p>
         Batafsil qo&apos;llanma:{' '}
-        <Link href="/uz/blog/telegram-stars-ozbekistondan-sotib-olish" className="text-[var(--primary)] hover:underline">
+        <Link href="/blog/telegram-stars-ozbekistondan-sotib-olish" className="text-[var(--primary)] hover:underline">
           Telegram Stars O&apos;zbekistondan qanday sotib olinadi
         </Link>
         .
@@ -338,7 +338,7 @@ function UzBody() {
       </ul>
       <p>
         Stars haqida umumiy ma&apos;lumot:{' '}
-        <Link href="/uz/blog/telegram-stars-nima" className="text-[var(--primary)] hover:underline">
+        <Link href="/blog/telegram-stars-nima" className="text-[var(--primary)] hover:underline">
           Telegram Stars nima va nima uchun kerak
         </Link>
         .

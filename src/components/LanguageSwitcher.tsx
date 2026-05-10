@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, usePathname } from 'next/navigation'
-import { LOCALES, type Locale, isLocale } from '@/i18n/config'
+import { LOCALES, type Locale, isLocale, localePath } from '@/i18n/config'
 
 const LABEL: Record<Locale, string> = {
   uz: 'UZ',
@@ -14,14 +14,11 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
 
   const switchTo = (target: Locale) => {
     if (target === current) return
-    const segments = (pathname ?? `/${current}`).split('/').filter(Boolean)
-    if (segments.length > 0 && isLocale(segments[0])) {
-      segments[0] = target
-    } else {
-      segments.unshift(target)
-    }
-    const newPath = '/' + segments.join('/')
-    router.push(newPath)
+    const segments = (pathname ?? '/').split('/').filter(Boolean)
+    // Strip any existing locale prefix; the rest is the locale-agnostic path.
+    const restSegments = segments.length > 0 && isLocale(segments[0]) ? segments.slice(1) : segments
+    const restPath = restSegments.length > 0 ? '/' + restSegments.join('/') : '/'
+    router.push(localePath(target, restPath))
   }
 
   return (

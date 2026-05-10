@@ -224,8 +224,8 @@ function UzBody() {
       </p>
       <p>
         Premium muddatini uzaytirish bo&apos;yicha to&apos;liq qo&apos;llanma:{' '}
-        <Link href="/uz/premium" className="text-[var(--primary)] hover:underline">
-          /uz/premium
+        <Link href="/premium" className="text-[var(--primary)] hover:underline">
+          /premium
         </Link>
         .
       </p>

@@ -10,7 +10,7 @@ import { PREMIUM_PERIODS, getPremiumBySlug } from '@/config/products'
 import { getPremiumPageContent } from '@/config/premium-pages'
 import { getPremiumFeatures, getPaymentMethods } from '@/config/static-content'
 import { formatUzs } from '@/lib/format'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string; period: string }
 type StaticParams = { period: string }
@@ -33,11 +33,11 @@ export async function generateMetadata({
   return {
     title: content.metaTitle,
     description: content.metaDescription,
-    alternates: { canonical: `/${lang}/premium/${item.slug}` },
+    alternates: { canonical: localePath(lang, `/premium/${item.slug}`) },
     openGraph: {
       title: content.metaTitle,
       description: content.metaDescription,
-      url: `${siteConfig.url}/${lang}/premium/${item.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/premium/${item.slug}`),
       type: 'website',
     },
   }
@@ -68,7 +68,7 @@ export default async function PremiumPeriodPage({
     category: 'Digital Subscription',
     offers: {
       '@type': 'Offer',
-      url: `${siteConfig.url}/${lang}/premium/${item.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/premium/${item.slug}`),
       priceCurrency: 'UZS',
       price: item.priceUzs,
       availability: 'https://schema.org/InStock',
@@ -81,13 +81,13 @@ export default async function PremiumPeriodPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Bosh sahifa', item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: 'Telegram Premium', item: `${siteConfig.url}/${lang}/premium` },
+      { '@type': 'ListItem', position: 1, name: 'Bosh sahifa', item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: 'Telegram Premium', item: localeUrl(siteConfig.url, lang, '/premium') },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${item.months} oylik`,
-        item: `${siteConfig.url}/${lang}/premium/${item.slug}`,
+        item: localeUrl(siteConfig.url, lang, `/premium/${item.slug}`),
       },
     ],
   }
@@ -178,9 +178,9 @@ export default async function PremiumPeriodPage({
       {/* Header */}
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-6 sm:pt-16">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">Bosh sahifa</Link>
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">Bosh sahifa</Link>
           <span className="mx-2">/</span>
-          <Link href={`/${lang}/premium`} className="hover:text-[var(--foreground)]">Premium</Link>
+          <Link href={localePath(lang, '/premium')} className="hover:text-[var(--foreground)]">Premium</Link>
           <span className="mx-2">/</span>
           <span className="text-[var(--foreground)]">{item.months} oylik</span>
         </nav>
@@ -376,7 +376,7 @@ export default async function PremiumPeriodPage({
                           {p.months} oy <span className="text-xs text-[var(--primary)]">(joriy)</span>
                         </span>
                       ) : (
-                        <Link href={`/${lang}/premium/${p.slug}`} className="text-[var(--primary)] hover:underline">
+                        <Link href={localePath(lang, `/premium/${p.slug}`)} className="text-[var(--primary)] hover:underline">
                           {p.months} oy
                         </Link>
                       )}
@@ -429,7 +429,7 @@ export default async function PremiumPeriodPage({
         </h2>
         <p className="mt-3 text-[var(--text-muted)]">
           Botda bir necha qadamda buyurtma bering. Telegram Stars'ga qiziqsangiz —{' '}
-          <Link href={`/${lang}/stars`} className="text-[var(--primary)] hover:underline">Stars sahifasiga</Link> o'ting.
+          <Link href={localePath(lang, '/stars')} className="text-[var(--primary)] hover:underline">Stars sahifasiga</Link> o'ting.
         </p>
         <div className="mt-6 flex justify-center">
           <BotCTA size="lg" prefill={`premium_${item.months}`} />
@@ -438,7 +438,7 @@ export default async function PremiumPeriodPage({
           {others.map((p) => (
             <Link
               key={p.slug}
-              href={`/${lang}/premium/${p.slug}`}
+              href={localePath(lang, `/premium/${p.slug}`)}
               className="uz-card flex items-center justify-between rounded-lg border border-[var(--border)] p-4"
             >
               <span className="font-semibold">{p.months} oylik</span>

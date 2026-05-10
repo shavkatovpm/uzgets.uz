@@ -130,7 +130,7 @@ function UzBody() {
 
       <h3 id="usul-2-bot">2-usul: {siteConfig.bot} orqali (mahalliy karta)</h3>
       <p>
-        <Link href="/uz/stars" className="font-semibold text-[var(--primary)] hover:underline">
+        <Link href="/stars" className="font-semibold text-[var(--primary)] hover:underline">
           Uzgets
         </Link>{' '}
         bu bo&apos;shliqni to&apos;ldiradi: Stars{' '}
@@ -180,7 +180,7 @@ function UzBody() {
       <PriceTable lang="uz" />
       <p>
         Barcha mavjud paketlar va to&apos;liq narxlar uchun{' '}
-        <Link href="/uz/stars" className="font-semibold text-[var(--primary)] hover:underline">
+        <Link href="/stars" className="font-semibold text-[var(--primary)] hover:underline">
           Stars sahifasi
         </Link>{' '}
         ga o&apos;ting.

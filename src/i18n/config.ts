@@ -21,3 +21,18 @@ export const LOCALE_OG: Record<Locale, string> = {
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value)
 }
+
+// Default locale (uz) is served at the root (no /uz prefix).
+// Non-default locales keep their prefix (e.g. /ru/blog).
+export function localePath(lang: Locale, path: string = '/'): string {
+  const normalized = path === '' || path === '/' ? '/' : path.startsWith('/') ? path : `/${path}`
+  if (lang === DEFAULT_LOCALE) return normalized
+  if (normalized === '/') return `/${lang}`
+  return `/${lang}${normalized}`
+}
+
+export function localeUrl(siteUrl: string, lang: Locale, path: string = '/'): string {
+  const p = localePath(lang, path)
+  const base = siteUrl.replace(/\/$/, '')
+  return p === '/' ? `${base}/` : `${base}${p}`
+}

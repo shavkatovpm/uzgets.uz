@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { LOCALES, LOCALE_HTML_LANG, LOCALE_OG, isLocale, type Locale } from '@/i18n/config'
+import { LOCALES, LOCALE_HTML_LANG, LOCALE_OG, isLocale, localePath, localeUrl, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import '../globals.css'
 
@@ -97,11 +97,11 @@ export async function generateMetadata({
     generator: 'Next.js',
     keywords: meta.keywords,
     alternates: {
-      canonical: `/${lang}`,
+      canonical: localePath(lang),
       languages: {
-        uz: `/uz`,
-        ru: `/ru`,
-        'x-default': `/uz`,
+        uz: localePath('uz'),
+        ru: localePath('ru'),
+        'x-default': localePath('uz'),
       },
     },
     openGraph: {
@@ -109,7 +109,7 @@ export async function generateMetadata({
       locale: LOCALE_OG[lang],
       alternateLocale: LOCALES.filter((l) => l !== lang).map((l) => LOCALE_OG[l]),
       siteName: siteConfig.name,
-      url: `${siteConfig.url}/${lang}`,
+      url: localeUrl(siteConfig.url, lang),
       title: meta.ogTitle,
       description: meta.description,
     },
@@ -187,7 +187,7 @@ export default async function RootLayout({
     knowsLanguage: ['uz', 'ru'],
     paymentAccepted: ['UzCard', 'Humo', 'Click', 'Payme'],
     currenciesAccepted: 'UZS',
-    sameAs: [siteConfig.botUrl, `https://uzgets.uz/${lang}/haqimizda`],
+    sameAs: [siteConfig.botUrl, localeUrl(siteConfig.url, lang, '/haqimizda')],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Telegram Premium and Stars',
@@ -201,7 +201,7 @@ export default async function RootLayout({
               name: 'Telegram Premium 3 oylik',
               price: '168000',
               priceCurrency: 'UZS',
-              url: `${siteConfig.url}/${lang}/premium/3-oylik`,
+              url: localeUrl(siteConfig.url, lang, '/premium/3-oylik'),
               availability: 'https://schema.org/InStock',
             },
             {
@@ -209,7 +209,7 @@ export default async function RootLayout({
               name: 'Telegram Premium 6 oylik',
               price: '228000',
               priceCurrency: 'UZS',
-              url: `${siteConfig.url}/${lang}/premium/6-oylik`,
+              url: localeUrl(siteConfig.url, lang, '/premium/6-oylik'),
               availability: 'https://schema.org/InStock',
             },
             {
@@ -217,7 +217,7 @@ export default async function RootLayout({
               name: 'Telegram Premium 12 oylik',
               price: '408000',
               priceCurrency: 'UZS',
-              url: `${siteConfig.url}/${lang}/premium/12-oylik`,
+              url: localeUrl(siteConfig.url, lang, '/premium/12-oylik'),
               availability: 'https://schema.org/InStock',
             },
           ],
@@ -231,7 +231,7 @@ export default async function RootLayout({
               name: 'Telegram Stars 50',
               price: '11000',
               priceCurrency: 'UZS',
-              url: `${siteConfig.url}/${lang}/stars/50`,
+              url: localeUrl(siteConfig.url, lang, '/stars/50'),
               availability: 'https://schema.org/InStock',
             },
             {
@@ -239,7 +239,7 @@ export default async function RootLayout({
               name: 'Telegram Stars 500',
               price: '110000',
               priceCurrency: 'UZS',
-              url: `${siteConfig.url}/${lang}/stars/500`,
+              url: localeUrl(siteConfig.url, lang, '/stars/500'),
               availability: 'https://schema.org/InStock',
             },
             {
@@ -247,7 +247,7 @@ export default async function RootLayout({
               name: 'Telegram Stars 1000',
               price: '220000',
               priceCurrency: 'UZS',
-              url: `${siteConfig.url}/${lang}/stars/1000`,
+              url: localeUrl(siteConfig.url, lang, '/stars/1000'),
               availability: 'https://schema.org/InStock',
             },
           ],
@@ -260,7 +260,7 @@ export default async function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: siteConfig.name,
-    url: `${siteConfig.url}/${lang}`,
+    url: localeUrl(siteConfig.url, lang),
     inLanguage: lang === 'uz' ? 'uz-UZ' : 'ru-RU',
   }
 

@@ -5,7 +5,7 @@ import { MobileMenu } from './MobileMenu'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { PREMIUM_PERIODS, STARS_PACKS } from '@/config/products'
 import { formatUzs } from '@/lib/format'
-import type { Locale } from '@/i18n/config'
+import { localePath, type Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
 
 const FEATURED_STARS = [50, 100, 500]
@@ -72,7 +72,7 @@ function NavMenu({ label, allLabel, href, items }: NavMenuProps) {
 export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const monthsLabel = dict.common.monthsShort
   const premiumNav = PREMIUM_PERIODS.map((p) => ({
-    href: `/${lang}/premium/${p.slug}`,
+    href: localePath(lang, `/premium/${p.slug}`),
     label: lang === 'uz' ? `${p.months} oylik` : `${p.months} ${monthsLabel}`,
     hint: formatUzs(p.priceUzs),
   }))
@@ -81,7 +81,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     const pack = STARS_PACKS.find((s) => s.amount === amount)
     if (!pack) throw new Error(`Featured stars pack not found: ${amount}`)
     return {
-      href: `/${lang}/stars/${pack.slug}`,
+      href: localePath(lang, `/stars/${pack.slug}`),
       label: `${pack.amount} ⭐`,
       hint: formatUzs(pack.priceUzs),
     }
@@ -90,22 +90,22 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <header className="uz-header sticky top-0 z-40 border-b border-[var(--border)]">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-        <Link href={`/${lang}`} aria-label={siteConfig.name}>
+        <Link href={localePath(lang)} aria-label={siteConfig.name}>
           <Logo />
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-2 text-[var(--text-muted)] sm:flex">
-          <NavMenu label={dict.nav.premium} allLabel={dict.common.all} href={`/${lang}/premium`} items={premiumNav} />
-          <NavMenu label={dict.nav.stars} allLabel={dict.common.all} href={`/${lang}/stars`} items={starsNav} />
+          <NavMenu label={dict.nav.premium} allLabel={dict.common.all} href={localePath(lang, '/premium')} items={premiumNav} />
+          <NavMenu label={dict.nav.stars} allLabel={dict.common.all} href={localePath(lang, '/stars')} items={starsNav} />
           <Link
-            href={`/${lang}/blog`}
+            href={localePath(lang, '/blog')}
             className="flex min-h-11 items-center px-3 text-sm font-medium transition-colors hover:text-[var(--foreground)]"
           >
             {dict.nav.blog}
           </Link>
           <Link
-            href={`/${lang}/haqimizda`}
+            href={localePath(lang, '/haqimizda')}
             className="flex min-h-11 items-center px-3 text-sm font-medium transition-colors hover:text-[var(--foreground)]"
           >
             {dict.nav.about}

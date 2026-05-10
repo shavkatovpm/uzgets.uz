@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
 import { getDictionary } from '@/i18n/dictionaries'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 import { getPostsSorted } from '@/content/blog'
 import { BLOG_TYPE_LABELS } from '@/content/blog/types'
 
@@ -22,11 +22,11 @@ export async function generateMetadata({
   return {
     title: dict.blog.indexMetaTitle,
     description: dict.blog.indexMetaDescription,
-    alternates: { canonical: `/${lang}/blog` },
+    alternates: { canonical: localePath(lang, '/blog') },
     openGraph: {
       title: dict.blog.indexMetaTitle,
       description: dict.blog.indexMetaDescription,
-      url: `${siteConfig.url}/${lang}/blog`,
+      url: localeUrl(siteConfig.url, lang, '/blog'),
     },
   }
 }
@@ -46,8 +46,8 @@ export default async function BlogIndexPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: dict.common.home, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: dict.nav.blog, item: `${siteConfig.url}/${lang}/blog` },
+      { '@type': 'ListItem', position: 1, name: dict.common.home, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: dict.nav.blog, item: localeUrl(siteConfig.url, lang, '/blog') },
     ],
   }
 
@@ -55,13 +55,13 @@ export default async function BlogIndexPage({
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: dict.blog.indexMetaTitle,
-    url: `${siteConfig.url}/${lang}/blog`,
+    url: localeUrl(siteConfig.url, lang, '/blog'),
     description: dict.blog.indexMetaDescription,
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',
       headline: p.locales[lang].title,
       description: p.locales[lang].description,
-      url: `${siteConfig.url}/${lang}/blog/${p.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/blog/${p.slug}`),
       datePublished: p.publishedAt,
       dateModified: p.updatedAt,
       author: { '@type': 'Organization', name: siteConfig.name },
@@ -75,7 +75,7 @@ export default async function BlogIndexPage({
 
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-6 sm:pt-16">
         <nav aria-label={dict.common.breadcrumb} className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">
             {dict.common.home}
           </Link>
           <span className="mx-2">/</span>
@@ -97,7 +97,7 @@ export default async function BlogIndexPage({
               return (
                 <li key={post.slug}>
                   <Link
-                    href={`/${lang}/blog/${post.slug}`}
+                    href={localePath(lang, `/blog/${post.slug}`)}
                     className="uz-card block rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]/50"
                   >
                     <div className="mb-2 flex items-center gap-2 text-xs">

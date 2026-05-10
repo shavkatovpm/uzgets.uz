@@ -11,7 +11,7 @@ import { siteConfig } from '@/config/site'
 import { STARS_PACKS, STARS_BASE } from '@/config/products'
 import { getStarsUseCases, getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -366,11 +366,11 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/stars` },
+    alternates: { canonical: localePath(lang, '/stars') },
     openGraph: {
       title: t.ogTitle,
       description: t.ogDescription,
-      url: `${siteConfig.url}/${lang}/stars`,
+      url: localeUrl(siteConfig.url, lang, '/stars'),
     },
   }
 }
@@ -395,7 +395,7 @@ export default async function StarsPage({
     itemListElement: STARS_PACKS.map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${siteConfig.url}/${lang}/stars/${s.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/stars/${s.slug}`),
       name: t.starsName(formatNumber(s.amount)),
     })),
   }
@@ -404,8 +404,8 @@ export default async function StarsPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: t.breadcrumbStars, item: `${siteConfig.url}/${lang}/stars` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: t.breadcrumbStars, item: localeUrl(siteConfig.url, lang, '/stars') },
     ],
   }
 
@@ -472,7 +472,7 @@ export default async function StarsPage({
               title={`${formatNumber(s.amount)} ⭐`}
               subtitle="Telegram Stars"
               priceUzs={s.priceUzs}
-              href={`/${lang}/stars/${s.slug}`}
+              href={localePath(lang, `/stars/${s.slug}`)}
               badge={s.badge}
               highlight={s.amount === 500}
             />
@@ -578,7 +578,7 @@ export default async function StarsPage({
         <h2 className="text-2xl font-bold sm:text-3xl">{t.finalCtaHeading}</h2>
         <p className="mt-3 text-[var(--text-muted)]">
           {t.finalCtaText1}
-          <Link href={`/${lang}/premium`} className="text-[var(--primary)] hover:underline">
+          <Link href={localePath(lang, '/premium')} className="text-[var(--primary)] hover:underline">
             {t.finalCtaPremiumLink}
           </Link>
           {t.finalCtaText2}

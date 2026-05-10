@@ -231,7 +231,7 @@ function UzBody() {
       </ol>
       <p>
         Faollashganini tekshirish:{' '}
-        <Link href="/uz/blog/telegram-premium-qanday-faollashtiriladi" className="text-[var(--primary)] hover:underline">
+        <Link href="/blog/telegram-premium-qanday-faollashtiriladi" className="text-[var(--primary)] hover:underline">
           Telegram Premium qanday faollashtiriladi
         </Link>
         .
@@ -247,8 +247,8 @@ function UzBody() {
       </p>
       <p>
         Batafsil paket sahifasi:{' '}
-        <Link href="/uz/premium" className="font-semibold text-[var(--primary)] hover:underline">
-          /uz/premium
+        <Link href="/premium" className="font-semibold text-[var(--primary)] hover:underline">
+          /premium
         </Link>
         .
       </p>
@@ -348,7 +348,7 @@ function UzBody() {
       </p>
       <p>
         Ishonch va xavfsizlik haqida batafsil:{' '}
-        <Link href="/uz/blog/eng-arzon-telegram-stars-ozbekistonda" className="text-[var(--primary)] hover:underline">
+        <Link href="/blog/eng-arzon-telegram-stars-ozbekistonda" className="text-[var(--primary)] hover:underline">
           Eng arzon Stars — aldanmaslik uchun 3 ta belgi
         </Link>
         .

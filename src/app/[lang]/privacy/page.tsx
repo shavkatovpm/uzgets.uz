@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -133,11 +133,11 @@ export async function generateMetadata({
   return {
     title: t.title,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/privacy` },
+    alternates: { canonical: localePath(lang, '/privacy') },
     openGraph: {
       title: `${t.ogTitleSuffix} | ${siteConfig.name}`,
       description: t.ogDescription,
-      url: `${siteConfig.url}/${lang}/privacy`,
+      url: localeUrl(siteConfig.url, lang, '/privacy'),
     },
   }
 }
@@ -156,8 +156,8 @@ export default async function PrivacyPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: t.title, item: `${siteConfig.url}/${lang}/privacy` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: t.title, item: localeUrl(siteConfig.url, lang, '/privacy') },
     ],
   }
 
@@ -172,7 +172,7 @@ export default async function PrivacyPage({
       <JsonLd data={breadcrumbSchema} />
       <article className="mx-auto max-w-3xl px-4 pt-12 pb-12 sm:pt-16">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">
             {t.breadcrumbHome}
           </Link>
           <span className="mx-2">/</span>
@@ -258,7 +258,7 @@ export default async function PrivacyPage({
               {botLink}
               {t.s6Mid}
               {t.s6BotLink}
-              <Link href={`/${lang}/aloqa`} className="text-[var(--primary)] hover:underline">
+              <Link href={localePath(lang, '/aloqa')} className="text-[var(--primary)] hover:underline">
                 {t.s6PageLink}
               </Link>
               {t.s6End}

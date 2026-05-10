@@ -229,7 +229,7 @@ function UzBody() {
         </li>
       </ul>
       <p>
-        <Link href="/uz/premium" className="font-semibold text-[var(--primary)] hover:underline">
+        <Link href="/premium" className="font-semibold text-[var(--primary)] hover:underline">
           Premium narxlari va muddatlari haqida batafsil
         </Link>
         .
@@ -259,7 +259,7 @@ function UzBody() {
       <TroubleshootBlock lang="uz" />
       <p>
         Yuqoridagilardan birortasi yordam bermasa,{' '}
-        <Link href="/uz/aloqa" className="font-semibold text-[var(--primary)] hover:underline">
+        <Link href="/aloqa" className="font-semibold text-[var(--primary)] hover:underline">
           qo&apos;llab-quvvatlashga
         </Link>{' '}
         murojaat qiling — to&apos;lov chekini va @username&apos;ni yuboring, qo&apos;lda tekshiriladi.

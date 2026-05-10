@@ -6,7 +6,7 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { FAQ, type FAQItem } from '@/components/FAQ'
 import { AnswerBox } from '@/components/AnswerBox'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -157,11 +157,11 @@ export async function generateMetadata({
   return {
     title: t.title,
     description: t.metaDescription,
-    alternates: { canonical: `/${lang}/aloqa` },
+    alternates: { canonical: localePath(lang, '/aloqa') },
     openGraph: {
       title: t.ogTitle,
       description: t.ogDescription,
-      url: `${siteConfig.url}/${lang}/aloqa`,
+      url: localeUrl(siteConfig.url, lang, '/aloqa'),
     },
   }
 }
@@ -180,8 +180,8 @@ export default async function ContactPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: t.breadcrumbContact, item: `${siteConfig.url}/${lang}/aloqa` },
+      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: t.breadcrumbContact, item: localeUrl(siteConfig.url, lang, '/aloqa') },
     ],
   }
 
@@ -189,7 +189,7 @@ export default async function ContactPage({
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
     name: t.ogTitle,
-    url: `${siteConfig.url}/${lang}/aloqa`,
+    url: localeUrl(siteConfig.url, lang, '/aloqa'),
     description: t.contactPageDesc,
     contactPoint: {
       '@type': 'ContactPoint',

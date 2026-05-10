@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS, STARS_PACKS } from '@/config/products'
-import { LOCALES, type Locale } from '@/i18n/config'
+import { LOCALES, localeUrl, type Locale } from '@/i18n/config'
 import { getPostsSorted } from '@/content/blog'
 
 type Entry = MetadataRoute.Sitemap[number]
@@ -23,15 +23,14 @@ const LAST_MODIFIED = {
 
 function withLanguages(path: string, lastModified: Date, opts: { changeFrequency: Entry['changeFrequency']; priority: number }): Entry[] {
   return LOCALES.map((lang: Locale) => {
-    const url = `${siteConfig.url}/${lang}${path}`
     return {
-      url,
+      url: localeUrl(siteConfig.url, lang, path),
       lastModified,
       changeFrequency: opts.changeFrequency,
       priority: opts.priority,
       alternates: {
         languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${siteConfig.url}/${l}${path}`]),
+          LOCALES.map((l) => [l, localeUrl(siteConfig.url, l, path)]),
         ),
       },
     }

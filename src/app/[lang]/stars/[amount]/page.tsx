@@ -10,7 +10,7 @@ import { STARS_PACKS, getStarsBySlug, STARS_BASE } from '@/config/products'
 import { getStarsPageContent } from '@/config/stars-pages'
 import { getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
-import { type Locale, isLocale } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
 type Params = { lang: string; amount: string }
 type StaticParams = { amount: string }
@@ -33,11 +33,11 @@ export async function generateMetadata({
   return {
     title: content.metaTitle,
     description: content.metaDescription,
-    alternates: { canonical: `/${lang}/stars/${item.slug}` },
+    alternates: { canonical: localePath(lang, `/stars/${item.slug}`) },
     openGraph: {
       title: content.metaTitle,
       description: content.metaDescription,
-      url: `${siteConfig.url}/${lang}/stars/${item.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/stars/${item.slug}`),
       type: 'website',
     },
   }
@@ -71,7 +71,7 @@ export default async function StarsAmountPage({
     category: 'Digital Currency',
     offers: {
       '@type': 'Offer',
-      url: `${siteConfig.url}/${lang}/stars/${item.slug}`,
+      url: localeUrl(siteConfig.url, lang, `/stars/${item.slug}`),
       priceCurrency: 'UZS',
       price: item.priceUzs,
       availability: 'https://schema.org/InStock',
@@ -84,13 +84,13 @@ export default async function StarsAmountPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Bosh sahifa', item: `${siteConfig.url}/${lang}` },
-      { '@type': 'ListItem', position: 2, name: 'Telegram Stars', item: `${siteConfig.url}/${lang}/stars` },
+      { '@type': 'ListItem', position: 1, name: 'Bosh sahifa', item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 2, name: 'Telegram Stars', item: localeUrl(siteConfig.url, lang, '/stars') },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${amountStr} Stars`,
-        item: `${siteConfig.url}/${lang}/stars/${item.slug}`,
+        item: localeUrl(siteConfig.url, lang, `/stars/${item.slug}`),
       },
     ],
   }
@@ -179,9 +179,9 @@ export default async function StarsAmountPage({
       {/* Header */}
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-6 sm:pt-16">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={`/${lang}`} className="hover:text-[var(--foreground)]">Bosh sahifa</Link>
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">Bosh sahifa</Link>
           <span className="mx-2">/</span>
-          <Link href={`/${lang}/stars`} className="hover:text-[var(--foreground)]">Stars</Link>
+          <Link href={localePath(lang, '/stars')} className="hover:text-[var(--foreground)]">Stars</Link>
           <span className="mx-2">/</span>
           <span className="text-[var(--foreground)]">{amountStr}</span>
         </nav>
@@ -366,7 +366,7 @@ export default async function StarsAmountPage({
                           {formatNumber(pack.amount)} ⭐ <span className="text-xs text-[var(--primary)]">(joriy)</span>
                         </span>
                       ) : (
-                        <Link href={`/${lang}/stars/${pack.slug}`} className="text-[var(--primary)] hover:underline">
+                        <Link href={localePath(lang, `/stars/${pack.slug}`)} className="text-[var(--primary)] hover:underline">
                           {formatNumber(pack.amount)} ⭐
                         </Link>
                       )}
@@ -395,7 +395,7 @@ export default async function StarsAmountPage({
         </h2>
         <p className="mt-3 text-[var(--text-muted)]">
           Botda bir necha qadamda buyurtma bering. Telegram Premium'ga ham qiziqsangiz —{' '}
-          <Link href={`/${lang}/premium`} className="text-[var(--primary)] hover:underline">Premium sahifasiga</Link> o'ting.
+          <Link href={localePath(lang, '/premium')} className="text-[var(--primary)] hover:underline">Premium sahifasiga</Link> o'ting.
         </p>
         <div className="mt-6 flex justify-center">
           <BotCTA size="lg" prefill={`stars_${item.amount}`} />

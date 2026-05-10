@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import type { Locale } from '@/i18n/config'
+import { localePath, type Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
 
 export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
@@ -20,27 +20,27 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <div className="mb-2 font-semibold">{dict.footer.products}</div>
           <ul className="space-y-1.5 text-[var(--text-muted)]">
             <li>
-              <Link href={`/${lang}/premium`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/premium')} className="hover:text-[var(--foreground)]">
                 {dict.footer.premiumLabel}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/premium/3-oylik`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/premium/3-oylik')} className="hover:text-[var(--foreground)]">
                 Premium 3 {monthLabel}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/premium/6-oylik`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/premium/6-oylik')} className="hover:text-[var(--foreground)]">
                 Premium 6 {monthLabel}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/premium/12-oylik`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/premium/12-oylik')} className="hover:text-[var(--foreground)]">
                 Premium 12 {monthLabel}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/stars`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/stars')} className="hover:text-[var(--foreground)]">
                 {dict.footer.starsLabel}
               </Link>
             </li>
@@ -55,17 +55,17 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </a>
             </li>
             <li>
-              <Link href={`/${lang}/aloqa`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/aloqa')} className="hover:text-[var(--foreground)]">
                 {dict.footer.contactLink}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/haqimizda`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/haqimizda')} className="hover:text-[var(--foreground)]">
                 {dict.nav.about}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/blog`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/blog')} className="hover:text-[var(--foreground)]">
                 {dict.nav.blog}
               </Link>
             </li>
@@ -75,12 +75,12 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <div className="mb-2 font-semibold">{dict.footer.legal}</div>
           <ul className="space-y-1.5 text-[var(--text-muted)]">
             <li>
-              <Link href={`/${lang}/privacy`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/privacy')} className="hover:text-[var(--foreground)]">
                 {dict.nav.privacy}
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/terms`} className="hover:text-[var(--foreground)]">
+              <Link href={localePath(lang, '/terms')} className="hover:text-[var(--foreground)]">
                 {dict.nav.terms}
               </Link>
             </li>
