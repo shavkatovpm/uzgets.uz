@@ -7,7 +7,7 @@ import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
 
 const SLUG = 'telegram-premium-uzcard-humo-bilan-sotib-olish'
-const TODAY = '2026-05-10'
+const TODAY = '2026-05-11'
 
 function UzAnswerBox() {
   return (
