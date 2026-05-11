@@ -3,6 +3,7 @@ import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
+import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
 
 const SLUG = 'eng-arzon-telegram-premium-ozbekistonda'
@@ -136,7 +137,7 @@ function UzgetsPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
               <td className="px-4 py-2">{formatUzs(p.priceUzs)}</td>
               <td className="px-4 py-2">~{formatUzs(p.perMonthHint)}</td>
               <td className="px-4 py-2">
-                <Link href={`/${lang}/premium/${p.slug}`} className="text-[var(--primary)] hover:underline">
+                <Link href={localePath(lang, `/premium/${p.slug}`)} className="text-[var(--primary)] hover:underline">
                   {lang === 'uz' ? 'Batafsil →' : 'Подробнее →'}
                 </Link>
               </td>
