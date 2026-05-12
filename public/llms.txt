@@ -32,6 +32,8 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 - [3 signs of trustworthy seller UZ](https://uzgets.uz/blog/arzon-stars-qayerdan-olinadi-3-belgi): How to identify a reliable Stars/Premium reseller
 - [Premium not appearing troubleshoot UZ](https://uzgets.uz/blog/akkauntda-premium-korinmayapti): 6 causes and fixes when Premium doesn't show on account
 - [Premium with UzCard/Humo UZ](https://uzgets.uz/blog/telegram-premium-uzcard-humo-bilan-sotib-olish): How to buy Telegram Premium specifically with UzCard or Humo, why direct doesn't work, card-decline reasons
+- [Is Uzgets trustworthy UZ](https://uzgets.uz/blog/uzgets-ishonchli-mi-tekshirish-belgilari): Verification signals (HTTPS, domain, BotFather suffix, clones), refund policy, scam red flags
+- [Stars with Click UZ](https://uzgets.uz/blog/telegram-stars-click-orqali-sotib-olish): How to buy Telegram Stars specifically through the Click app — biometric flow, Click vs direct card comparison, Click decline troubleshoot
 - [Blog index UZ](https://uzgets.uz/blog): Full blog list
 - [Blog index RU](https://uzgets.uz/ru/blog): полный список блога
 

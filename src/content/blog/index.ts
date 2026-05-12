@@ -7,6 +7,8 @@ import { post as premiumOzbekistondanSotibOlish } from './posts/06-telegram-prem
 import { post as arzonStars3Belgi } from './posts/07-arzon-stars-qayerdan-olinadi-3-belgi'
 import { post as akkauntdaPremiumKorinmayapti } from './posts/08-akkauntda-premium-korinmayapti'
 import { post as premiumUzcardHumo } from './posts/09-telegram-premium-uzcard-humo-bilan-sotib-olish'
+import { post as uzgetsIshonchliMi } from './posts/10-uzgets-ishonchli-mi-tekshirish-belgilari'
+import { post as starsClick } from './posts/11-telegram-stars-click-orqali-sotib-olish'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -19,6 +21,8 @@ export const BLOG_POSTS: BlogPost[] = [
   arzonStars3Belgi,
   akkauntdaPremiumKorinmayapti,
   premiumUzcardHumo,
+  uzgetsIshonchliMi,
+  starsClick,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
