@@ -7,7 +7,7 @@ import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
 
 const SLUG = 'telegram-stars-click-orqali-sotib-olish'
-const TODAY = '2026-05-11'
+const TODAY = '2026-05-12'
 
 const FEATURED_AMOUNTS = [50, 100, 500, 1000, 2500, 5000]
 

@@ -4,7 +4,7 @@ import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
 const SLUG = 'uzgets-ishonchli-mi-tekshirish-belgilari'
-const TODAY = '2026-05-11'
+const TODAY = '2026-05-12'
 
 function UzAnswerBox() {
   return (
