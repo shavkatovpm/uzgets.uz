@@ -1,5 +1,3 @@
-import { JsonLd } from './JsonLd'
-
 export type FAQItem = { question: string; answer: string }
 
 export function FAQ({
@@ -9,18 +7,8 @@ export function FAQ({
   items: FAQItem[]
   title?: string
 }) {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
-    })),
-  }
   return (
     <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="faq-heading">
-      <JsonLd data={schema} />
       <h2 id="faq-heading" className="mb-6 text-2xl font-bold sm:text-3xl">
         {title}
       </h2>
