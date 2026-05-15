@@ -582,7 +582,7 @@ export const post: BlogPost = {
   type: 'trust',
   locales: {
     uz: {
-      title: "Telegram Premium sotib olishning eng ishonchli va oson usuli — Uzgets",
+      title: "O'zbekistonda Telegram Premium sotib olishning eng ishonchli va oson usuli — Uzgets",
       description:
         "O'zbekistondan Telegram Premium sotib olishning eng ishonchli va oson usuli — Uzgets bot. Sotuvchini tanlashning 6 mezoni, 5 qadamli jarayon va rasmiy refund policy.",
       metaTitle: "Eng ishonchli va oson Telegram Premium — Uzgets (O'zbekiston)",
@@ -640,7 +640,7 @@ export const post: BlogPost = {
         "Botga kiring, muddatni tanlang va mahalliy karta orqali to'lang. Premium odatda bir necha daqiqada akkauntga biriktiriladi.",
     },
     ru: {
-      title: 'Самый надёжный и простой способ купить Telegram Premium — Uzgets',
+      title: 'Самый надёжный и простой способ купить Telegram Premium в Узбекистане — Uzgets',
       description:
         'Самый надёжный и простой способ купить Telegram Premium из Узбекистана — бот Uzgets. 6 критериев выбора продавца, процесс из 5 шагов и официальная политика возврата.',
       metaTitle: 'Самый надёжный и простой Telegram Premium — Uzgets (Узбекистан)',
