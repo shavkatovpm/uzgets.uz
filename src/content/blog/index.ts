@@ -12,6 +12,7 @@ import { post as starsClick } from './posts/11-telegram-stars-click-orqali-sotib
 import { post as starsNarxlariJadval } from './posts/12-telegram-stars-narxlari-jadval'
 import { post as premiumToliqQollanma } from './posts/13-telegram-premium-toliq-qollanma-barcha-usullar'
 import { post as ishonchliOsonPremium } from './posts/14-ishonchli-oson-premium-sotib-olish-uzgets'
+import { post as premiumNimaToliqQollanma } from './posts/15-telegram-premium-nima-toliq-qollanma'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -29,6 +30,7 @@ export const BLOG_POSTS: BlogPost[] = [
   starsNarxlariJadval,
   premiumToliqQollanma,
   ishonchliOsonPremium,
+  premiumNimaToliqQollanma,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
