@@ -19,6 +19,7 @@ import { post as premiumImkoniyatlari12Farq } from './posts/18-telegram-premium-
 import { post as premiumNarxlariPaketlar } from './posts/19-telegram-premium-narxlari-paketlar'
 import { post as botOrqaliTolashXavfsizmi } from './posts/20-telegram-bot-orqali-tolash-xavfsizmi'
 import { post as premiumVaStarsFarqi } from './posts/21-telegram-premium-va-stars-farqi'
+import { post as starsBilanNimaQilishMumkin } from './posts/22-telegram-stars-bilan-nima-qilish-mumkin'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -43,6 +44,7 @@ export const BLOG_POSTS: BlogPost[] = [
   premiumNarxlariPaketlar,
   botOrqaliTolashXavfsizmi,
   premiumVaStarsFarqi,
+  starsBilanNimaQilishMumkin,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
