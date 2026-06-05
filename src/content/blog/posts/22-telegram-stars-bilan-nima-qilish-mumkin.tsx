@@ -165,8 +165,8 @@ function UzBody() {
         <ActionCard
           emoji="🎁"
           title="Oddiy sovg'a"
-          body="Suhbat oynasidagi sovg'a tugmasi orqali yuborasiz. Narxi sovg'a turiga qarab bir necha o'nlab Stars'dan
-          boshlanadi."
+          body="Suhbat oynasidagi sovg'a tugmasi orqali yuborasiz. Narxi sovg'a turiga qarab farq qiladi — arzonidan
+          tortib noyob/qimmatigacha."
         />
         <ActionCard
           emoji="💎"
@@ -313,8 +313,8 @@ function RuBody() {
         <ActionCard
           emoji="🎁"
           title="Обычный подарок"
-          body="Отправляется через кнопку подарка в чате. Цена зависит от типа подарка и начинается от нескольких
-          десятков Stars."
+          body="Отправляется через кнопку подарка в чате. Цена зависит от типа подарка — от недорогих до редких и
+          дорогих."
         />
         <ActionCard
           emoji="💎"
