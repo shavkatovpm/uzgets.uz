@@ -6,7 +6,7 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { FAQ, type FAQItem } from '@/components/FAQ'
 import { AnswerBox } from '@/components/AnswerBox'
-import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, localeUrl, alternatesFor } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -157,7 +157,7 @@ export async function generateMetadata({
   return {
     title: t.title,
     description: t.metaDescription,
-    alternates: { canonical: localePath(lang, '/aloqa') },
+    alternates: alternatesFor(lang, '/aloqa'),
     openGraph: {
       title: t.ogTitle,
       description: t.ogDescription,

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
-import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -133,7 +133,7 @@ export async function generateMetadata({
   return {
     title: t.title,
     description: t.metaDescription,
-    alternates: { canonical: localePath(lang, '/privacy') },
+    alternates: alternatesFor(lang, '/privacy'),
     openGraph: {
       title: `${t.ogTitleSuffix} | ${siteConfig.name}`,
       description: t.ogDescription,

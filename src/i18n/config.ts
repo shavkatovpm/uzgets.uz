@@ -36,3 +36,18 @@ export function localeUrl(siteUrl: string, lang: Locale, path: string = '/'): st
   const base = siteUrl.replace(/\/$/, '')
   return p === '/' ? `${base}/` : `${base}${p}`
 }
+
+// hreflang alternates for a given path, for use in every page's `alternates`.
+// Next.js shallow-merges metadata: a child route that sets `alternates` REPLACES
+// the layout's `alternates` wholesale, so each page must spread both canonical
+// and languages itself or hreflang is lost. Pass the SAME path you use for canonical.
+export function alternatesFor(lang: Locale, path: string = '/') {
+  return {
+    canonical: localePath(lang, path),
+    languages: {
+      uz: localePath('uz', path),
+      ru: localePath('ru', path),
+      'x-default': localePath('uz', path),
+    },
+  }
+}

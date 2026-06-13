@@ -34,6 +34,16 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 - [Premium with UzCard/Humo UZ](https://uzgets.uz/blog/telegram-premium-uzcard-humo-bilan-sotib-olish): How to buy Telegram Premium specifically with UzCard or Humo, why direct doesn't work, card-decline reasons
 - [Is Uzgets trustworthy UZ](https://uzgets.uz/blog/uzgets-ishonchli-mi-tekshirish-belgilari): Verification signals (HTTPS, domain, BotFather suffix, clones), refund policy, scam red flags
 - [Stars with Click UZ](https://uzgets.uz/blog/telegram-stars-click-orqali-sotib-olish): How to buy Telegram Stars specifically through the Click app — biometric flow, Click vs direct card comparison, Click decline troubleshoot
+- [Stars price table UZ](https://uzgets.uz/blog/telegram-stars-narxlari-jadval): Full Telegram Stars price table (50/100/500/1000…) and per-star cost explanation
+- [Full Premium guide (all methods) UZ](https://uzgets.uz/blog/telegram-premium-toliq-qollanma-barcha-usullar): All 6 ways to buy Telegram Premium compared (in-app, App Store, Fragment, local bot)
+- [Reliable & easy Premium UZ](https://uzgets.uz/blog/ishonchli-oson-premium-sotib-olish-uzgets): Why buying Premium via @uzgetsbot is the simplest reliable path from Uzbekistan
+- [What is Telegram Premium UZ](https://uzgets.uz/blog/telegram-premium-nima-toliq-qollanma): Explanation of Telegram Premium, its features and pricing
+- [Can't pay for Premium — fix UZ](https://uzgets.uz/blog/telegram-premium-tolay-olmayapman-yechim): 5 reasons a card is declined for Premium and the easiest fix
+- [Gift Telegram Premium UZ](https://uzgets.uz/blog/telegram-premium-hadya-qanday-sovga-qilinadi): How to send Telegram Premium as a gift to another @username
+- [Telegram Premium features (12+) UZ](https://uzgets.uz/blog/telegram-premium-imkoniyatlari-12-farq): The 12+ features Premium unlocks vs free Telegram
+- [Premium pricing & packages UZ](https://uzgets.uz/blog/telegram-premium-narxlari-paketlar): 3/6/12-month Premium prices, per-month cost and savings math
+- [Is paying via a Telegram bot safe UZ](https://uzgets.uz/blog/telegram-bot-orqali-tolash-xavfsizmi): Safety of paying through a Telegram bot, exact-amount model, scam-detection signals
+- [How to send a gift with Telegram Stars UZ](https://uzgets.uz/blog/telegram-stars-bilan-sovga-yuborish): Step-by-step sending a Star gift (Send a Gift), gift cost in Stars, anonymous option, converting gifts, and how to get Stars from Uzbekistan
 - [Blog index UZ](https://uzgets.uz/blog): Full blog list
 - [Blog index RU](https://uzgets.uz/ru/blog): полный список блога
 

@@ -282,7 +282,7 @@ function UzBody() {
         uchun vositachi amaliy yagona yo&apos;l.
       </p>
       <p>
-        Ishonchni mustaqil baholash uchun oltita texnik signalni tekshirib chiqing — pastdagi
+        Ishonchni mustaqil baholash uchun yettita texnik signalni tekshirib chiqing — pastdagi
         jadval va bo&apos;limlarda har biri ko&apos;rsatilgan.
       </p>
 

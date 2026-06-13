@@ -205,8 +205,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           </a>{' '}
           —{' '}
           {lang === 'uz'
-            ? 'Telegram rasmiy hamkori, hadya narxlari (TON)'
-            : 'Официальный партнёр Telegram, цены подарка (TON)'}
+            ? 'Premium hadya narxlari (TON, KYC talab qiladi)'
+            : 'Цены Premium-подарка (TON, требует KYC)'}
         </li>
         <li>
           <a
@@ -305,7 +305,7 @@ function UzBody() {
         </li>
       </ul>
 
-      <h2 id="fragment">Fragment.com — rasmiy hamkor, lekin TON va KYC bilan</h2>
+      <h2 id="fragment">Fragment.com — TON va KYC talab qiladi</h2>
       <p>
         Telegram&apos;ning rasmiy marketplace&apos;i Fragment.com hadya sotishni
         qo&apos;llab-quvvatlaydi:{' '}
@@ -419,9 +419,8 @@ function UzBody() {
       <ul>
         <li>Bot sizning UzCard/Humo to&apos;lovingizni Click/Payme orqali qabul qiladi</li>
         <li>
-          Bot Telegram&apos;ning <strong>rasmiy Premium gift API&apos;si</strong> orqali
-          (Fragment yoki ekvivalent kanal) qabul qiluvchining @username&apos;iga Premium
-          jo&apos;natadi
+          Bot Telegram&apos;ning <strong>rasmiy Premium gift mexanizmi</strong> orqali
+          qabul qiluvchining @username&apos;iga Premium jo&apos;natadi
         </li>
         <li>
           Qabul qiluvchi Telegram&apos;ning <strong>rasmiy tizim akkauntidan</strong>{' '}
@@ -632,7 +631,7 @@ function RuBody() {
         </li>
       </ul>
 
-      <h2 id="fragment">Fragment.com — официальный партнёр, но TON и KYC</h2>
+      <h2 id="fragment">Fragment.com — требует TON и KYC</h2>
       <p>
         Официальный маркетплейс Telegram — Fragment.com — поддерживает подарок:{' '}
         <a
@@ -744,8 +743,8 @@ function RuBody() {
       <ul>
         <li>Бот принимает ваш платёж UzCard/Humo через Click/Payme</li>
         <li>
-          Бот через <strong>официальный Premium gift API Telegram</strong> (Fragment или
-          эквивалентный канал) отправляет Premium на @username получателя
+          Бот через <strong>официальный механизм Premium gift Telegram</strong> отправляет
+          Premium на @username получателя
         </li>
         <li>
           Получатель получает уведомление от <strong>официального системного аккаунта

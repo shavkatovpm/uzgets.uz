@@ -233,8 +233,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           </a>{' '}
           —{' '}
           {lang === 'uz'
-            ? 'Telegram rasmiy hamkori, TON va Visa orqali Premium'
-            : 'официальный партнёр Telegram, Premium через TON и Visa'}
+            ? "TON yoki xalqaro Visa orqali Premium (majburiy KYC talab qiladi)"
+            : 'Premium через TON или международную Visa (требует обязательный KYC)'}
         </li>
         <li>
           <a
@@ -387,15 +387,15 @@ function UzBody() {
       </p>
       <p>
         Narxlar:{' '}
-        <Link href="/premium/3-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/premium/3-oylik" className="text-[var(--primary)] hover:underline">
           3 oy — 168 000 so&apos;m
         </Link>
         ,{' '}
-        <Link href="/premium/6-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/premium/6-oylik" className="text-[var(--primary)] hover:underline">
           6 oy — 228 000 so&apos;m
         </Link>
         ,{' '}
-        <Link href="/premium/12-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/premium/12-oylik" className="text-[var(--primary)] hover:underline">
           12 oy — 408 000 so&apos;m
         </Link>
         .
@@ -627,15 +627,15 @@ function RuBody() {
       </p>
       <p>
         Цены:{' '}
-        <Link href="/ru/premium/3-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/ru/premium/3-oylik" className="text-[var(--primary)] hover:underline">
           3 месяца — 168 000 сум
         </Link>
         ,{' '}
-        <Link href="/ru/premium/6-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/ru/premium/6-oylik" className="text-[var(--primary)] hover:underline">
           6 месяцев — 228 000 сум
         </Link>
         ,{' '}
-        <Link href="/ru/premium/12-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/ru/premium/12-oylik" className="text-[var(--primary)] hover:underline">
           12 месяцев — 408 000 сум
         </Link>
         .

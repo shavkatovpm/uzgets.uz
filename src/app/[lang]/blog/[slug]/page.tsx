@@ -7,7 +7,7 @@ import { AnswerBox } from '@/components/AnswerBox'
 import { BotCTA } from '@/components/BotCTA'
 import { FAQ } from '@/components/FAQ'
 import { getDictionary } from '@/i18n/dictionaries'
-import { type Locale, isLocale, LOCALES, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, LOCALES, LOCALE_OG, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 import { getPostBySlug, getPostsSorted, BLOG_POSTS } from '@/content/blog'
 import { BLOG_TYPE_LABELS } from '@/content/blog/types'
 
@@ -37,11 +37,13 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: localePath(lang, `/blog/${slug}`) },
+    alternates: alternatesFor(lang, `/blog/${slug}`),
     openGraph: {
       title: t.metaTitle,
       description: t.ogDescription ?? t.metaDescription,
       url: localeUrl(siteConfig.url, lang, `/blog/${slug}`),
+      siteName: siteConfig.name,
+      locale: LOCALE_OG[lang],
       type: 'article',
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,

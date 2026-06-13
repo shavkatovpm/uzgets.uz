@@ -475,15 +475,15 @@ function UzBody() {
       </p>
       <p>
         Narxlar:{' '}
-        <Link href="/premium/3-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/premium/3-oylik" className="text-[var(--primary)] hover:underline">
           3 oy — 168 000 so&apos;m
         </Link>
         ,{' '}
-        <Link href="/premium/6-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/premium/6-oylik" className="text-[var(--primary)] hover:underline">
           6 oy — 228 000 so&apos;m
         </Link>
         ,{' '}
-        <Link href="/premium/12-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/premium/12-oylik" className="text-[var(--primary)] hover:underline">
           12 oy — 408 000 so&apos;m
         </Link>
         . Boshqalarga hadya qilmoqchimisiz —{' '}
@@ -761,15 +761,15 @@ function RuBody() {
       </p>
       <p>
         Цены:{' '}
-        <Link href="/ru/premium/3-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/ru/premium/3-oylik" className="text-[var(--primary)] hover:underline">
           3 месяца — 168 000 сум
         </Link>
         ,{' '}
-        <Link href="/ru/premium/6-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/ru/premium/6-oylik" className="text-[var(--primary)] hover:underline">
           6 месяцев — 228 000 сум
         </Link>
         ,{' '}
-        <Link href="/ru/premium/12-oy" className="text-[var(--primary)] hover:underline">
+        <Link href="/ru/premium/12-oylik" className="text-[var(--primary)] hover:underline">
           12 месяцев — 408 000 сум
         </Link>
         . Хотите подарить —{' '}
@@ -868,7 +868,7 @@ export const post: BlogPost = {
         {
           question: "Telegram Premium o'rniga arzonroq alternativlar bormi?",
           answer:
-            "Yo'q — Telegram Premium funksiyalari faqat rasmiy obuna orqali ochiladi. Bepul Premium emas (modded APK, hack ilovalar) Telegram ToS'ga zid va akkauntni bloklash xavfini olib keladi. Faqat narx farqi — qayerdan sotib olish: Telegram in-app (xalqaro karta kerak), Fragment (TON + KYC), App Store/Google Play (region cheklovi), yoki mahalliy vositachi (@uzgetsbot — UzCard/Humo'ni qabul qiladi). Eng arzon va qulay — uzgets: 3 oy 168 000 so'm.",
+            "Yo'q — Telegram Premium funksiyalari faqat rasmiy obuna orqali ochiladi. Bepul Premium emas (modded APK, hack ilovalar) Telegram ToS'ga zid va akkauntni bloklash xavfini olib keladi. Faqat narx farqi — qayerdan sotib olish: Telegram in-app (xalqaro karta kerak), Fragment (TON + KYC), App Store/Google Play (region cheklovi), yoki mahalliy vositachi (@uzgetsbot — UzCard/Humo'ni qabul qiladi). Mahalliy karta bilan to'lash mumkin bo'lganlar orasida eng arzon va qulay — uzgets: 3 oy 168 000 so'm.",
         },
       ],
       finalCtaHeading: "Premium imkoniyatlarini hozir oching",
@@ -927,7 +927,7 @@ export const post: BlogPost = {
         {
           question: 'Есть ли более дешёвые альтернативы Telegram Premium?',
           answer:
-            'Нет — функции Premium доступны только через официальную подписку. Бесплатный Premium (modded APK, хакерские приложения) противоречит ToS Telegram и грозит блокировкой аккаунта. Отличается только цена — где покупать: in-app Telegram (нужна международная карта), Fragment (TON + KYC), App Store/Google Play (региональные ограничения), местный посредник (@uzgetsbot — принимает UzCard/Humo). Самый дешёвый и удобный — uzgets: 3 месяца 168 000 сум.',
+            'Нет — функции Premium доступны только через официальную подписку. Бесплатный Premium (modded APK, хакерские приложения) противоречит ToS Telegram и грозит блокировкой аккаунта. Отличается только цена — где покупать: in-app Telegram (нужна международная карта), Fragment (TON + KYC), App Store/Google Play (региональные ограничения), местный посредник (@uzgetsbot — принимает UzCard/Humo). Среди тех, где можно платить локальной картой, самый дешёвый и удобный — uzgets: 3 месяца 168 000 сум.',
         },
       ],
       finalCtaHeading: 'Откройте возможности Premium сейчас',

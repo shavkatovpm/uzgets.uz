@@ -11,7 +11,7 @@ function UzAnswerBox() {
     <p>
       Telegram Premium — Telegram&apos;ning rasmiy pullik obunasi. Obuna sotib olgan foydalanuvchi 4 GB gacha fayl
       yuborish, 1000 ta kanalga obuna bo&apos;lish, ovozli xabarlarni matnga aylantirish, chat tarjimoni, kuniga 100
-      tagacha Story, kengaytirilgan Stories, reklamalarni o&apos;chirish va boshqa 20+ imkoniyatlarni oladi.
+      tagacha Story, kengaytirilgan Stories, reklamalarni o&apos;chirish va boshqa o&apos;nlab imkoniyatlarni oladi.
       O&apos;zbekistondan 3 oylik obuna 168 000 so&apos;m, 6 oylik 228 000, 12 oylik 408 000 so&apos;m — UzCard,
       Humo, Click yoki Payme bilan @uzgetsbot orqali rasmiy faollashtirish bilan sotib olinadi.
     </p>
@@ -23,7 +23,7 @@ function RuAnswerBox() {
     <p>
       Telegram Premium — официальная платная подписка Telegram. Подписчик получает отправку файлов до 4 GB, до 1000
       каналов, расшифровку голосовых в текст, перевод чатов, до 100 Stories в день, расширенные Stories, отключение
-      рекламы и ещё 20+ возможностей. В Узбекистане подписка стоит 168 000 сум за 3 месяца, 228 000 за 6 и 408 000
+      рекламы и ещё десятки возможностей. В Узбекистане подписка стоит 168 000 сум за 3 месяца, 228 000 за 6 и 408 000
       за 12 — оплата UzCard, Humo, Click или Payme через @uzgetsbot с официальной активацией.
     </p>
   )
