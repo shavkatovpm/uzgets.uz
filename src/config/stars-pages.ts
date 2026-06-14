@@ -85,10 +85,10 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
     ],
   },
   '100': {
-    metaTitle: "100 Telegram Stars sotib olish — 25 400 so'm — O'zbekistonda",
+    metaTitle: "100 Telegram Stars sotib olish — 22 000 so'm — O'zbekistonda",
     metaDescription:
-      "100 ta Telegram Stars yulduzchasi O'zbekistonda 25 400 so'm. UzCard, Humo, Click orqali to'lov. Stars'ni regulyar ishlatuvchilar uchun mos kichik paket.",
-    oneLineSummary: "100 ta Telegram Stars — eng mashhur kichik paket, 25 400 so'm.",
+      "100 ta Telegram Stars yulduzchasi O'zbekistonda 22 000 so'm. UzCard, Humo, Click orqali to'lov. Stars'ni regulyar ishlatuvchilar uchun mos kichik paket.",
+    oneLineSummary: "100 ta Telegram Stars — eng mashhur kichik paket, 22 000 so'm.",
     whyThisAmount:
       "100 — eng mashhur kichik paketlardan biri. 50 dan ikki marta ko'p, ammo hali ham kirish darajasidagi narx. Stars'ni regulyar ishlatuvchilar yoki bir necha sovg'a yubormoqchilar uchun ideal kichik zaxira.",
     audience: [
@@ -155,10 +155,10 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
     ],
   },
   '500': {
-    metaTitle: "500 Telegram Stars sotib olish — 127 000 so'm — O'zbekistonda",
+    metaTitle: "500 Telegram Stars sotib olish — 110 000 so'm — O'zbekistonda",
     metaDescription:
-      "500 ta Telegram Stars yulduzchasi O'zbekistonda 127 000 so'm. Faol foydalanuvchilar va content kreatorlari uchun ideal o'rta paket. UzCard, Humo, Click orqali to'lov.",
-    oneLineSummary: "500 ta Telegram Stars — faol foydalanuvchilar uchun o'rta paket, 127 000 so'm.",
+      "500 ta Telegram Stars yulduzchasi O'zbekistonda 110 000 so'm. Faol foydalanuvchilar va content kreatorlari uchun ideal o'rta paket. UzCard, Humo, Click orqali to'lov.",
+    oneLineSummary: "500 ta Telegram Stars — faol foydalanuvchilar uchun o'rta paket, 110 000 so'm.",
     whyThisAmount:
       "500 — o'rta-yuqori paket. Bir xaridda ko'p Stars olish — har safar kichik buyurtma berishdan ko'ra qulayroq va vaqt jihatidan tejamli. Faol foydalanuvchilar va content kreatorlari uchun mos kattaroq zaxira.",
     audience: [
@@ -315,10 +315,10 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
     ],
   },
   '100': {
-    metaTitle: 'Купить 100 Telegram Stars — 25 400 сум — в Узбекистане',
+    metaTitle: 'Купить 100 Telegram Stars — 22 000 сум — в Узбекистане',
     metaDescription:
-      '100 звёзд Telegram Stars в Узбекистане — 25 400 сум. Оплата UzCard, Humo, Click. Подходящий маленький пакет для регулярных пользователей Stars.',
-    oneLineSummary: '100 Telegram Stars — самый популярный маленький пакет, 25 400 сум.',
+      '100 звёзд Telegram Stars в Узбекистане — 22 000 сум. Оплата UzCard, Humo, Click. Подходящий маленький пакет для регулярных пользователей Stars.',
+    oneLineSummary: '100 Telegram Stars — самый популярный маленький пакет, 22 000 сум.',
     whyThisAmount:
       '100 — один из самых популярных маленьких пакетов. В два раза больше 50, но всё ещё в стартовом ценовом диапазоне. Идеальный небольшой запас для регулярных пользователей или тех, кто хочет отправить несколько подарков.',
     audience: [
@@ -387,10 +387,10 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
     ],
   },
   '500': {
-    metaTitle: 'Купить 500 Telegram Stars — 127 000 сум — в Узбекистане',
+    metaTitle: 'Купить 500 Telegram Stars — 110 000 сум — в Узбекистане',
     metaDescription:
-      '500 звёзд Telegram Stars в Узбекистане — 127 000 сум. Идеальный средний пакет для активных пользователей и контент-креаторов. Оплата UzCard, Humo, Click.',
-    oneLineSummary: '500 Telegram Stars — средний пакет для активных пользователей, 127 000 сум.',
+      '500 звёзд Telegram Stars в Узбекистане — 110 000 сум. Идеальный средний пакет для активных пользователей и контент-креаторов. Оплата UzCard, Humo, Click.',
+    oneLineSummary: '500 Telegram Stars — средний пакет для активных пользователей, 110 000 сум.',
     whyThisAmount:
       '500 — средне-крупный пакет. Купить много Stars за один раз удобнее и быстрее, чем заказывать маленькими порциями. Подходящий запас для активных пользователей и контент-креаторов.',
     audience: [

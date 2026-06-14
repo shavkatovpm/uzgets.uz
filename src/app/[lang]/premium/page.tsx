@@ -11,7 +11,7 @@ import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS } from '@/config/products'
 import { getPremiumFeatures, getPaymentMethods } from '@/config/static-content'
 import { formatUzs } from '@/lib/format'
-import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -373,7 +373,7 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: localePath(lang, '/premium') },
+    alternates: alternatesFor(lang, '/premium'),
     openGraph: {
       title: t.ogTitle,
       description: t.ogDescription,
@@ -497,6 +497,7 @@ export default async function PremiumPage({
               badge={p.badge}
               highlight={p.months === 12}
               footerHint={`${lang === 'ru' ? 'В месяц' : 'Oyiga'} ~${formatUzs(p.perMonthHint)}`}
+              ctaLabel={lang === 'ru' ? 'Купить' : 'Sotib olish'}
             />
           ))}
         </div>

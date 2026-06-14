@@ -606,7 +606,7 @@ export const post: BlogPost = {
         {
           question: 'Qaysi muddat eng tejamli — 3, 6 yoki 12 oy?',
           answer:
-            "12 oylik paket bir oyga eng arzon. Uzgets'da: 3 oy = 56 000 so'm/oy, 6 oy = 38 000 so'm/oy, 12 oy = 34 000 so'm/oy. Premium'ni doimiy ishlatadiganlar uchun 12 oylik 168 000 so'mga emas, balki 408 000 so'mga — lekin oyiga ~22 000 so'm tejam.",
+            "12 oylik paket bir oyga eng arzon. Uzgets'da: 3 oy = 56 000 so'm/oy, 6 oy = 38 000 so'm/oy, 12 oy = 34 000 so'm/oy. Premium'ni doimiy ishlatadiganlar uchun 12 oylik (408 000 so'm) — 3 oylikka nisbatan oyiga ~22 000 so'm tejam.",
         },
       ],
       finalCtaHeading: 'Premium sotib olishga tayyormisiz?',

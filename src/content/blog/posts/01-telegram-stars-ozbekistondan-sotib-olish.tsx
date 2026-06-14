@@ -16,7 +16,7 @@ function UzAnswerBox() {
       Telegram Stars — Telegram ekotizimi ichidagi raqamli to&apos;lov birligi. O&apos;zbekistondan
       sotib olish uchun ikkita yo&apos;l mavjud: ilova ichidagi xarid (Apple/Google orqali, xorijiy
       karta talab etadi) yoki <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
-      orqali UzCard, Humo, Click yoki Payme bilan to&apos;lash. Bot orqali xarid uch qadamda
+      orqali UzCard, Humo, Click yoki Payme bilan to&apos;lash. Bot orqali xarid bir necha qadamda
       yakunlanadi: STARTni bosish, @username va miqdor kiritish, mahalliy karta orqali to&apos;lash.
       Stars eng kichik paket — {STARS_BASE.amount} ta ({formatUzs(STARS_BASE.priceUzs)}).
     </p>
@@ -30,7 +30,7 @@ function RuAnswerBox() {
       можно двумя способами: через встроенную покупку в приложении (Apple/Google, нужна
       зарубежная карта) или через бот{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
-      с оплатой UzCard, Humo, Click или Payme. Покупка в боте занимает три шага: START,
+      с оплатой UzCard, Humo, Click или Payme. Покупка в боте занимает несколько шагов: START,
       ввод @username и количества, оплата локальной картой. Минимальный пакет — {STARS_BASE.amount}{' '}
       звёзд ({formatUzs(STARS_BASE.priceUzs)}).
     </p>

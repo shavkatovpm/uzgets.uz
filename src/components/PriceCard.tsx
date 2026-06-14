@@ -9,9 +9,10 @@ type Props = {
   badge?: string
   highlight?: boolean
   footerHint?: string
+  ctaLabel?: string
 }
 
-export function PriceCard({ title, subtitle, priceUzs, href, badge, highlight, footerHint }: Props) {
+export function PriceCard({ title, subtitle, priceUzs, href, badge, highlight, footerHint, ctaLabel = 'Sotib olish' }: Props) {
   return (
     <Link
       href={href}
@@ -30,7 +31,7 @@ export function PriceCard({ title, subtitle, priceUzs, href, badge, highlight, f
         <div className="text-2xl font-bold">{formatUzs(priceUzs)}</div>
         {footerHint && <div className="mt-1 text-xs text-[var(--text-muted)]">{footerHint}</div>}
         <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[var(--primary)]">
-          Sotib olish
+          {ctaLabel}
           <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
         </div>
       </div>

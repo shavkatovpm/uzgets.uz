@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
 import { getDictionary } from '@/i18n/dictionaries'
-import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 import { getPostsSorted } from '@/content/blog'
 import { BLOG_TYPE_LABELS } from '@/content/blog/types'
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
   return {
     title: dict.blog.indexMetaTitle,
     description: dict.blog.indexMetaDescription,
-    alternates: { canonical: localePath(lang, '/blog') },
+    alternates: alternatesFor(lang, '/blog'),
     openGraph: {
       title: dict.blog.indexMetaTitle,
       description: dict.blog.indexMetaDescription,

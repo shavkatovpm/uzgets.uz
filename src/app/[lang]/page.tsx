@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
 import { PREMIUM_PERIODS, STARS_PACKS, STARS_BASE } from '@/config/products'
+import { getPostsSorted } from '@/content/blog'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
 
@@ -60,6 +61,9 @@ const PAGE_STRINGS = {
     starsSubtitle: "Yulduzchalar — Telegramdagi raqamli to'lov birligi.",
     starsReadAll: 'Hammasi →',
     starsCardSubtitle: 'Telegram Stars',
+    blogHeading: 'Foydali qo‘llanmalar',
+    blogSubtitle: "Telegram Premium va Stars bo'yicha ko'rsatmalar, narxlar va savollarga javoblar.",
+    blogReadAll: 'Barcha maqolalar →',
     howHeading: 'Qanday sotib olinadi?',
     howToName: "Uzgets orqali Telegram Premium yoki Stars sotib olish",
     howToDescription:
@@ -159,6 +163,9 @@ const PAGE_STRINGS = {
     starsSubtitle: 'Звёзды — цифровая платёжная единица в Telegram.',
     starsReadAll: 'Все →',
     starsCardSubtitle: 'Telegram Stars',
+    blogHeading: 'Полезные руководства',
+    blogSubtitle: 'Инструкции, цены и ответы на вопросы о Telegram Premium и Stars.',
+    blogReadAll: 'Все статьи →',
     howHeading: 'Как купить?',
     howToName: 'Покупка Telegram Premium или Stars через Uzgets',
     howToDescription:
@@ -249,18 +256,22 @@ export default async function HomePage({
     })),
   }
 
-  const breadcrumbSchema = {
+  const faqSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
-    ],
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: { '@type': 'Answer', text: q.answer },
+    })),
   }
+
+  const latestPosts = getPostsSorted().slice(0, 4)
 
   return (
     <>
       <JsonLd data={howToSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
 
       <Hero
         eyebrow={t.heroEyebrow}
@@ -322,6 +333,7 @@ export default async function HomePage({
               badge={p.badge}
               highlight={p.months === 12}
               footerHint={t.premiumPeriodFooter(formatUzs(p.perMonthHint))}
+              ctaLabel={t.heroCtaLabel}
             />
           ))}
         </div>
@@ -346,9 +358,40 @@ export default async function HomePage({
               priceUzs={s.priceUzs}
               href={localePath(lang, `/stars/${s.slug}`)}
               badge={s.badge}
+              ctaLabel={t.heroCtaLabel}
             />
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-10" aria-labelledby="blog-heading">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 id="blog-heading" className="text-2xl font-bold sm:text-3xl">{t.blogHeading}</h2>
+            <p className="mt-1 text-[var(--text-muted)]">{t.blogSubtitle}</p>
+          </div>
+          <Link href={localePath(lang, '/blog')} className="hidden text-sm font-medium text-[var(--primary)] hover:underline sm:block">
+            {t.blogReadAll}
+          </Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {latestPosts.map((post) => {
+            const pt = post.locales[lang]
+            return (
+              <Link
+                key={post.slug}
+                href={localePath(lang, `/blog/${post.slug}`)}
+                className="uz-card block rounded-xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]/50"
+              >
+                <div className="font-semibold leading-snug">{pt.title}</div>
+                <p className="mt-1 text-sm leading-relaxed text-[var(--text-muted)]">{pt.description}</p>
+              </Link>
+            )
+          })}
+        </div>
+        <Link href={localePath(lang, '/blog')} className="mt-6 inline-block text-sm font-medium text-[var(--primary)] hover:underline sm:hidden">
+          {t.blogReadAll}
+        </Link>
       </section>
 
       <section id="qadamlar" className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="how-heading">

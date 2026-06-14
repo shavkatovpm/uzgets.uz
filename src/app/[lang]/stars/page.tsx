@@ -11,7 +11,7 @@ import { siteConfig } from '@/config/site'
 import { STARS_PACKS, STARS_BASE } from '@/config/products'
 import { getStarsUseCases, getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
-import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 
 type Params = { lang: string }
 
@@ -366,7 +366,7 @@ export async function generateMetadata({
   return {
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: { canonical: localePath(lang, '/stars') },
+    alternates: alternatesFor(lang, '/stars'),
     openGraph: {
       title: t.ogTitle,
       description: t.ogDescription,
@@ -475,6 +475,7 @@ export default async function StarsPage({
               href={localePath(lang, `/stars/${s.slug}`)}
               badge={s.badge}
               highlight={s.amount === 500}
+              ctaLabel={lang === 'ru' ? 'Купить' : 'Sotib olish'}
             />
           ))}
         </div>

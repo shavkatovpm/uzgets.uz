@@ -10,7 +10,7 @@ import { STARS_PACKS, getStarsBySlug, STARS_BASE } from '@/config/products'
 import { getStarsPageContent } from '@/config/stars-pages'
 import { getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
-import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
+import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 
 type Params = { lang: string; amount: string }
 type StaticParams = { amount: string }
@@ -33,7 +33,7 @@ export async function generateMetadata({
   return {
     title: content.metaTitle,
     description: content.metaDescription,
-    alternates: { canonical: localePath(lang, `/stars/${item.slug}`) },
+    alternates: alternatesFor(lang, `/stars/${item.slug}`),
     openGraph: {
       title: content.metaTitle,
       description: content.metaDescription,
@@ -44,6 +44,184 @@ export async function generateMetadata({
 }
 
 const COMPARISON_AMOUNTS = [50, 100, 500, 1000, 2500] as const
+
+// Localized static UI strings for the page chrome (headings, breadcrumb, steps,
+// universal FAQ). Product-specific copy comes from getStarsPageContent(lang).
+function getStarsUI(
+  lang: Locale,
+  v: { amountStr: string; price: string; perStar: string; basePrice: string; baseAmount: string },
+) {
+  if (lang === 'ru') {
+    return {
+      som: 'сум',
+      breadcrumbHome: 'Главная',
+      answerTitle: 'Краткий ответ: цена и покупка',
+      whyHeading: `Почему ${v.amountStr} Stars?`,
+      useCasesHeading: `Что можно сделать с ${v.amountStr} Stars?`,
+      useCasesIntro: `Звёзды Telegram Stars используются для множества сервисов и премиум-функций. Ниже — основные сценарии, которые можно реализовать с ${v.amountStr} звёздами.`,
+      audienceHeading: `Кому подходят ${v.amountStr} Stars?`,
+      howToHeading: `Как купить ${v.amountStr} Stars?`,
+      paymentHeading: 'Какие способы оплаты принимаются?',
+      paymentIntro:
+        'Для покупки Stars используются локальные платёжные системы Узбекистана — по номеру карты, через интернет-банк или приложение Click.',
+      aboutHeading: 'Что такое Telegram Stars и зачем они нужны?',
+      aboutP1:
+        'Telegram Stars (звёзды Telegram) — официальная внутренняя цифровая валюта приложения Telegram. Она введена Telegram в 2024 году и позволяет оплачивать внутренние товары, услуги в мини-приложениях, монетизацию каналов и подарки.',
+      aboutP2:
+        'Stars хранятся на аккаунте и тратятся по мере необходимости. С помощью Stars можно отправлять подарки друзьям, поддерживать авторов каналов, покупать наборы премиум-эмодзи, создавать кастомные эмодзи и пользоваться платными услугами в Telegram Mini Apps.',
+      aboutP3: `Звёзды хранятся бессрочно — если купить и потратить через год, они никуда не денутся. Минимальный заказ — ${v.baseAmount} Stars (${v.basePrice}). Остальные количества рассчитываются пропорционально этому тарифу (~${v.perStar} сум / 1 звезда).`,
+      compareHeading: 'Сравнение с другими пакетами',
+      thAmount: 'Количество',
+      thPrice: 'Цена',
+      thPerStar: '1 Star',
+      current: '(текущий)',
+      compareNote:
+        'Цена пропорциональна количеству — стоимость одной звезды одинакова. С большим пакетом вы делаете меньше заказов.',
+      faqTitle: `Частые вопросы о ${v.amountStr} Stars`,
+      finalHeading: `Готовы купить ${v.amountStr} Stars?`,
+      finalBodyPre: 'Оформите заказ в боте за несколько шагов. Интересует Telegram Premium — перейдите на ',
+      finalBodyLink: 'страницу Premium',
+      perStarLabel: `~${v.perStar} сум / 1 звезда`,
+      answerBody: (
+        <p>
+          Цена <strong>{v.amountStr} Telegram Stars</strong> — <strong>{v.price}</strong> (около {v.perStar} сум за
+          звезду). Покупка оформляется в боте{' '}
+          <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">
+            {siteConfig.bot}
+          </a>
+          : START → Stars → {v.amountStr} → ввод @username → оплата UzCard/Humo/Click. Звёзды зачисляются на аккаунт
+          автоматически.
+        </p>
+      ),
+      howToSteps: [
+        { name: 'Перейти в бот', text: `Откройте бот ${siteConfig.bot} в Telegram и нажмите START.` },
+        { name: 'Выбрать раздел Stars', text: 'В меню бота выберите вариант Telegram Stars.' },
+        {
+          name: `Указать количество ${v.amountStr}`,
+          text: `Из доступных пакетов выберите ${v.amountStr} звёзд. Цена — ${v.price}.`,
+        },
+        {
+          name: 'Ввести @username Telegram',
+          text: 'Укажите @username аккаунта, на который зачислить звёзды — свой или для подарка.',
+        },
+        {
+          name: 'Выбрать способ оплаты',
+          text: 'Выберите UzCard, Humo, Click или другой доступный локальный способ оплаты и завершите платёж.',
+        },
+        {
+          name: 'Дождаться зачисления',
+          text: `После подтверждения оплаты ${v.amountStr} Stars автоматически зачисляются на указанный аккаунт.`,
+        },
+      ],
+      howToSchemaName: `Как купить ${v.amountStr} Telegram Stars`,
+      howToSchemaDesc: `Шаги покупки ${v.amountStr} звёзд Telegram Stars из Узбекистана через ${siteConfig.bot}.`,
+      universalFAQ: [
+        {
+          question: 'Что такое Telegram Stars и зачем они нужны?',
+          answer:
+            'Telegram Stars (звёзды) — внутренняя цифровая валюта Telegram. С их помощью оплачивают мини-приложения, цифровые товары, подарки и другие внутренние сервисы Telegram.',
+        },
+        {
+          question: 'За какое время доставляется заказ?',
+          answer: `После подтверждения оплаты ${v.amountStr} звёзд автоматически зачисляются через ${siteConfig.bot} на указанный @username.`,
+        },
+        {
+          question: 'Какие способы оплаты принимаются?',
+          answer: 'В боте доступны UzCard, Humo, Click и другие локальные платёжные системы Узбекистана.',
+        },
+        {
+          question: 'Можно ли получить Stars в подарок другому человеку?',
+          answer:
+            'Да. При заказе можно указать любой Telegram @username — звёзды отправляются напрямую на этот аккаунт.',
+        },
+      ] as FAQItem[],
+    }
+  }
+  return {
+    som: "so'm",
+    breadcrumbHome: 'Bosh sahifa',
+    answerTitle: 'Qisqa javob: narx va sotib olish',
+    whyHeading: `Nega ${v.amountStr} ta Stars?`,
+    useCasesHeading: `${v.amountStr} ta Stars bilan nima qilish mumkin?`,
+    useCasesIntro: `Telegram Stars yulduzchalari ko'p turli xizmatlar va premium funksiyalar uchun ishlatiladi. Quyida ${v.amountStr} ta yulduzcha bilan amalga oshirish mumkin bo'lgan asosiy holatlar.`,
+    audienceHeading: `${v.amountStr} ta Stars kim uchun mos?`,
+    howToHeading: `${v.amountStr} ta Stars qanday sotib olinadi?`,
+    paymentHeading: "Qaysi to'lov usullari qabul qilinadi?",
+    paymentIntro:
+      "Stars sotib olish uchun mahalliy O'zbekiston to'lov usullaridan foydalaniladi — kart raqami, internet bank yoki Click ilovasi orqali.",
+    aboutHeading: 'Telegram Stars nima va u nimaga kerak?',
+    aboutP1:
+      "Telegram Stars (Telegram yulduzchalari) — Telegram ilovasi ichidagi rasmiy raqamli to'lov birligi. U Telegram tomonidan 2024 yilda joriy etilgan bo'lib, foydalanuvchilar uchun ilova ichidagi mahsulotlarga, mini-ilovalardagi xizmatlarga, kanal monetizatsiyasiga va sovg'alarga to'lash imkoniyatini ochadi.",
+    aboutP2:
+      "Stars akkauntda saqlanadi va kerak bo'lganda sarflanadi. Foydalanuvchilar Stars orqali do'stlariga sovg'a yuborishi, kanal mualliflarini qo'llab-quvvatlashi, premium emoji to'plamlarini sotib olishi, custom emoji yaratishi va Telegram Mini App'lardagi pullik xizmatlardan foydalanishi mumkin.",
+    aboutP3: `Yulduzchalar muddatsiz saqlanadi — sotib olib, bir yildan keyin sarflasangiz ham mavjud bo'ladi. Eng kichik buyurtma — ${v.baseAmount} ta Stars (${v.basePrice}). Keyingi miqdorlar shu ratiyaga proportsional hisoblanadi (~${v.perStar} so'm / 1 yulduzcha).`,
+    compareHeading: 'Boshqa miqdorlar bilan taqqoslash',
+    thAmount: 'Miqdor',
+    thPrice: 'Narx',
+    thPerStar: '1 Stars',
+    current: '(joriy)',
+    compareNote:
+      "Narx miqdorga proportsional — har Stars uchun baho bir xil. Katta paket bilan kam buyurtma berasiz.",
+    faqTitle: `${v.amountStr} Stars haqida tez-tez beriladigan savollar`,
+    finalHeading: `${v.amountStr} ta Stars uchun tayyormisiz?`,
+    finalBodyPre: "Botda bir necha qadamda buyurtma bering. Telegram Premium'ga ham qiziqsangiz — ",
+    finalBodyLink: 'Premium sahifasiga',
+    perStarLabel: `~${v.perStar} so'm / 1 yulduzcha`,
+    answerBody: (
+      <p>
+        <strong>{v.amountStr} ta Telegram Stars</strong> narxi — <strong>{v.price}</strong> (1 yulduzcha taxminan{' '}
+        {v.perStar} so&apos;m). Sotib olish{' '}
+        <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">
+          {siteConfig.bot}
+        </a>{' '}
+        botida amalga oshiriladi: START → Stars → {v.amountStr} → @username kiritish → UzCard/Humo/Click bilan
+        to&apos;lov. Yulduzchalar avtomatik akkauntga biriktiriladi.
+      </p>
+    ),
+    howToSteps: [
+      { name: "Botga o'tish", text: `Telegram'da ${siteConfig.bot} botiga kiring va START tugmasini bosing.` },
+      { name: "Stars bo'limini tanlash", text: 'Bot menyusidan Telegram Stars variantini tanlang.' },
+      {
+        name: `${v.amountStr} miqdorni belgilash`,
+        text: `Mavjud paketlardan ${v.amountStr} ta yulduzcha variantini tanlang. Narxi ${v.price}.`,
+      },
+      {
+        name: 'Telegram @username kiritish',
+        text: "Yulduzchalar yuboriladigan akkauntning @username manzilini kiriting — o'zingizniki yoki sovg'a uchun.",
+      },
+      {
+        name: "To'lov usulini tanlash",
+        text: "UzCard, Humo, Click yoki boshqa mavjud mahalliy to'lov usulidan birini tanlab to'lovni yakunlang.",
+      },
+      {
+        name: 'Faollashtirishni kutish',
+        text: `To'lov tasdiqlangach, ${v.amountStr} ta Stars ko'rsatilgan akkauntga avtomatik biriktiriladi.`,
+      },
+    ],
+    howToSchemaName: `${v.amountStr} Telegram Stars qanday sotib olinadi`,
+    howToSchemaDesc: `${siteConfig.bot} orqali ${v.amountStr} ta Telegram Stars yulduzchalarini O'zbekistondan sotib olish bo'yicha qadamlar.`,
+    universalFAQ: [
+      {
+        question: 'Telegram Stars nima va nimaga kerak?',
+        answer:
+          "Telegram Stars (yulduzchalar) — Telegram ilovasi ichidagi raqamli to'lov birligi. Ular yordamida mini-ilovalar, raqamli mahsulotlar, sovg'alar va boshqa Telegram-ichi xizmatlar uchun to'lov amalga oshiriladi.",
+      },
+      {
+        question: 'Buyurtma necha vaqtda yetkaziladi?',
+        answer: `To'lov tasdiqlanganidan so'ng, ${v.amountStr} ta yulduzcha ${siteConfig.bot} orqali ko'rsatilgan @username akkauntga avtomatik biriktiriladi.`,
+      },
+      {
+        question: "Qaysi to'lov usullari qabul qilinadi?",
+        answer: "UzCard, Humo, Click va boshqa mahalliy O'zbekiston to'lov tizimlari botda mavjud.",
+      },
+      {
+        question: "Stars'ni boshqa odamga sovg'a sifatida olish mumkinmi?",
+        answer:
+          "Albatta. Buyurtma vaqtida istalgan Telegram @username kiritishingiz mumkin — yulduzchalar o'sha akkauntga to'g'ridan-to'g'ri yuboriladi.",
+      },
+    ] as FAQItem[],
+  }
+}
 
 export default async function StarsAmountPage({
   params,
@@ -61,6 +239,14 @@ export default async function StarsAmountPage({
   const amountStr = formatNumber(item.amount)
   const perStar = item.priceUzs / item.amount
   const perStarRounded = Math.round(perStar * 100) / 100
+
+  const ui = getStarsUI(lang, {
+    amountStr,
+    price: formatUzs(item.priceUzs),
+    perStar: perStarRounded.toFixed(2),
+    basePrice: formatUzs(STARS_BASE.priceUzs),
+    baseAmount: String(STARS_BASE.amount),
+  })
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -84,7 +270,7 @@ export default async function StarsAmountPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Bosh sahifa', item: localeUrl(siteConfig.url, lang) },
+      { '@type': 'ListItem', position: 1, name: ui.breadcrumbHome, item: localeUrl(siteConfig.url, lang) },
       { '@type': 'ListItem', position: 2, name: 'Telegram Stars', item: localeUrl(siteConfig.url, lang, '/stars') },
       {
         '@type': 'ListItem',
@@ -95,38 +281,13 @@ export default async function StarsAmountPage({
     ],
   }
 
-  const howToSteps = [
-    {
-      name: "Botga o'tish",
-      text: `Telegram'da ${siteConfig.bot} botiga kiring va START tugmasini bosing.`,
-    },
-    {
-      name: "Stars bo'limini tanlash",
-      text: 'Bot menyusidan Telegram Stars variantini tanlang.',
-    },
-    {
-      name: `${amountStr} miqdorni belgilash`,
-      text: `Mavjud paketlardan ${amountStr} ta yulduzcha variantini tanlang. Narxi ${formatUzs(item.priceUzs)}.`,
-    },
-    {
-      name: 'Telegram @username kiritish',
-      text: "Yulduzchalar yuboriladigan akkauntning @username manzilini kiriting — o'zingizniki yoki sovg'a uchun.",
-    },
-    {
-      name: "To'lov usulini tanlash",
-      text: "UzCard, Humo, Click yoki boshqa mavjud mahalliy to'lov usulidan birini tanlab to'lovni yakunlang.",
-    },
-    {
-      name: 'Faollashtirishni kutish',
-      text: `To'lov tasdiqlangach, ${amountStr} ta Stars ko'rsatilgan akkauntga avtomatik biriktiriladi.`,
-    },
-  ]
+  const howToSteps = ui.howToSteps
 
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `${amountStr} Telegram Stars qanday sotib olinadi`,
-    description: `${siteConfig.bot} orqali ${amountStr} ta Telegram Stars yulduzchalarini O'zbekistondan sotib olish bo'yicha qadamlar.`,
+    name: ui.howToSchemaName,
+    description: ui.howToSchemaDesc,
     totalTime: 'PT2M',
     step: howToSteps.map((s, i) => ({
       '@type': 'HowToStep',
@@ -136,26 +297,7 @@ export default async function StarsAmountPage({
     })),
   }
 
-  const universalFAQ: FAQItem[] = [
-    {
-      question: 'Telegram Stars nima va nimaga kerak?',
-      answer:
-        "Telegram Stars (yulduzchalar) — Telegram ilovasi ichidagi raqamli to'lov birligi. Ular yordamida mini-ilovalar, raqamli mahsulotlar, sovg'alar va boshqa Telegram-ichi xizmatlar uchun to'lov amalga oshiriladi.",
-    },
-    {
-      question: 'Buyurtma necha vaqtda yetkaziladi?',
-      answer: `To'lov tasdiqlanganidan so'ng, ${amountStr} ta yulduzcha ${siteConfig.bot} orqali ko'rsatilgan @username akkauntga avtomatik biriktiriladi.`,
-    },
-    {
-      question: "Qaysi to'lov usullari qabul qilinadi?",
-      answer: "UzCard, Humo, Click va boshqa mahalliy O'zbekiston to'lov tizimlari botda mavjud.",
-    },
-    {
-      question: "Stars'ni boshqa odamga sovg'a sifatida olish mumkinmi?",
-      answer:
-        "Albatta. Buyurtma vaqtida istalgan Telegram @username kiritishingiz mumkin — yulduzchalar o'sha akkauntga to'g'ridan-to'g'ri yuboriladi.",
-    },
-  ]
+  const universalFAQ: FAQItem[] = ui.universalFAQ
 
   const allFAQ: FAQItem[] = [...content.uniqueFAQ, ...universalFAQ]
 
@@ -179,7 +321,7 @@ export default async function StarsAmountPage({
       {/* Header */}
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-6 sm:pt-16">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[var(--text-muted)]">
-          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">Bosh sahifa</Link>
+          <Link href={localePath(lang)} className="hover:text-[var(--foreground)]">{ui.breadcrumbHome}</Link>
           <span className="mx-2">/</span>
           <Link href={localePath(lang, '/stars')} className="hover:text-[var(--foreground)]">Stars</Link>
           <span className="mx-2">/</span>
@@ -191,18 +333,7 @@ export default async function StarsAmountPage({
         <p className="mt-3 text-lg text-[var(--text-muted)]">{content.oneLineSummary}</p>
       </section>
 
-      <AnswerBox title="Qisqa javob: narx va sotib olish">
-        <p>
-          <strong>{amountStr} ta Telegram Stars</strong> narxi —{' '}
-          <strong>{formatUzs(item.priceUzs)}</strong> (1 yulduzcha taxminan {perStarRounded.toFixed(2)} so&apos;m).
-          Sotib olish{' '}
-          <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">
-            {siteConfig.bot}
-          </a>{' '}
-          botida amalga oshiriladi: START → Stars → {amountStr} → @username kiritish → UzCard/Humo/Click bilan
-          to&apos;lov. Yulduzchalar avtomatik akkauntga biriktiriladi.
-        </p>
-      </AnswerBox>
+      <AnswerBox title={ui.answerTitle}>{ui.answerBody}</AnswerBox>
 
       {/* Hero offer card */}
       <section className="mx-auto max-w-3xl px-4 py-8">
@@ -211,9 +342,7 @@ export default async function StarsAmountPage({
             <div>
               <div className="text-sm font-medium text-[var(--text-muted)]">{amountStr} Telegram Stars</div>
               <div className="mt-1 text-3xl font-bold sm:text-5xl">{formatUzs(item.priceUzs)}</div>
-              <div className="mt-2 text-sm text-[var(--text-muted)]">
-                ~{perStarRounded.toFixed(2)} so&apos;m / 1 yulduzcha
-              </div>
+              <div className="mt-2 text-sm text-[var(--text-muted)]">{ui.perStarLabel}</div>
             </div>
             <BotCTA size="lg" prefill={`stars_${item.amount}`} />
           </div>
@@ -223,7 +352,7 @@ export default async function StarsAmountPage({
       {/* Why this amount */}
       <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="why-heading">
         <h2 id="why-heading" className="mb-3 text-2xl font-bold sm:text-3xl">
-          Nega {amountStr} ta Stars?
+          {ui.whyHeading}
         </h2>
         <p className="leading-relaxed text-[var(--text-muted)]">{content.whyThisAmount}</p>
       </section>
@@ -231,12 +360,9 @@ export default async function StarsAmountPage({
       {/* Use cases */}
       <section className="mx-auto max-w-5xl px-4 py-12" aria-labelledby="usecases-heading">
         <h2 id="usecases-heading" className="mb-3 text-2xl font-bold sm:text-3xl">
-          {amountStr} ta Stars bilan nima qilish mumkin?
+          {ui.useCasesHeading}
         </h2>
-        <p className="mb-8 leading-relaxed text-[var(--text-muted)]">
-          Telegram Stars yulduzchalari ko&apos;p turli xizmatlar va premium funksiyalar uchun ishlatiladi. Quyida{' '}
-          {amountStr} ta yulduzcha bilan amalga oshirish mumkin bo&apos;lgan asosiy holatlar.
-        </p>
+        <p className="mb-8 leading-relaxed text-[var(--text-muted)]">{ui.useCasesIntro}</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {content.useCases.map((u) => (
             <div key={u.title} className="uz-card rounded-xl border border-[var(--border)] p-5">
@@ -255,7 +381,7 @@ export default async function StarsAmountPage({
       {/* Audience */}
       <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="audience-heading">
         <h2 id="audience-heading" className="mb-6 text-2xl font-bold sm:text-3xl">
-          {amountStr} ta Stars kim uchun mos?
+          {ui.audienceHeading}
         </h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {content.audience.map((a) => (
@@ -270,7 +396,7 @@ export default async function StarsAmountPage({
       {/* HowTo */}
       <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="howto-heading">
         <h2 id="howto-heading" className="mb-6 text-2xl font-bold sm:text-3xl">
-          {amountStr} ta Stars qanday sotib olinadi?
+          {ui.howToHeading}
         </h2>
         <ol className="space-y-3">
           {howToSteps.map((s, i) => (
@@ -293,12 +419,9 @@ export default async function StarsAmountPage({
       {/* Payment methods */}
       <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="payment-heading">
         <h2 id="payment-heading" className="mb-3 text-2xl font-bold sm:text-3xl">
-          Qaysi to&apos;lov usullari qabul qilinadi?
+          {ui.paymentHeading}
         </h2>
-        <p className="mb-6 leading-relaxed text-[var(--text-muted)]">
-          Stars sotib olish uchun mahalliy O&apos;zbekiston to&apos;lov usullaridan foydalaniladi — kart raqami,
-          internet bank yoki Click ilovasi orqali.
-        </p>
+        <p className="mb-6 leading-relaxed text-[var(--text-muted)]">{ui.paymentIntro}</p>
         <div className="grid gap-4 sm:grid-cols-3">
           {PAYMENT_METHODS.map((p) => (
             <div key={p.title} className="uz-card rounded-xl border border-[var(--border)] p-5">
@@ -312,41 +435,27 @@ export default async function StarsAmountPage({
       {/* What is Stars - educational */}
       <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="about-heading">
         <h2 id="about-heading" className="mb-3 text-2xl font-bold sm:text-3xl">
-          Telegram Stars nima va u nimaga kerak?
+          {ui.aboutHeading}
         </h2>
         <div className="space-y-3 leading-relaxed text-[var(--text-muted)]">
-          <p>
-            Telegram Stars (Telegram yulduzchalari) — Telegram ilovasi ichidagi rasmiy raqamli to&apos;lov birligi. U
-            Telegram tomonidan 2024 yilda joriy etilgan bo&apos;lib, foydalanuvchilar uchun ilova ichidagi
-            mahsulotlarga, mini-ilovalardagi xizmatlarga, kanal monetizatsiyasiga va sovg&apos;alarga to&apos;lash
-            imkoniyatini ochadi.
-          </p>
-          <p>
-            Stars akkauntda saqlanadi va kerak bo&apos;lganda sarflanadi. Foydalanuvchilar Stars orqali
-            do&apos;stlariga sovg&apos;a yuborishi, kanal mualliflarini qo&apos;llab-quvvatlashi, premium emoji
-            to&apos;plamlarini sotib olishi, custom emoji yaratishi va Telegram Mini App&apos;lardagi pullik
-            xizmatlardan foydalanishi mumkin.
-          </p>
-          <p>
-            Yulduzchalar muddatsiz saqlanadi — sotib olib, bir yildan keyin sarflasangiz ham mavjud bo&apos;ladi.
-            Eng kichik buyurtma — {STARS_BASE.amount} ta Stars ({formatUzs(STARS_BASE.priceUzs)}). Keyingi miqdorlar
-            shu ratiyaga proportsional hisoblanadi (~{perStarRounded.toFixed(2)} so&apos;m / 1 yulduzcha).
-          </p>
+          <p>{ui.aboutP1}</p>
+          <p>{ui.aboutP2}</p>
+          <p>{ui.aboutP3}</p>
         </div>
       </section>
 
       {/* Comparison */}
       <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="compare-heading">
         <h2 id="compare-heading" className="mb-6 text-2xl font-bold sm:text-3xl">
-          Boshqa miqdorlar bilan taqqoslash
+          {ui.compareHeading}
         </h2>
         <div className="uz-card overflow-hidden rounded-xl border border-[var(--border)]">
           <table className="w-full text-sm">
             <thead className="bg-[var(--muted)] text-left">
               <tr>
-                <th className="px-3 py-3 font-semibold sm:px-4">Miqdor</th>
-                <th className="px-3 py-3 font-semibold sm:px-4">Narx</th>
-                <th className="hidden px-4 py-3 font-semibold sm:table-cell">1 Stars</th>
+                <th className="px-3 py-3 font-semibold sm:px-4">{ui.thAmount}</th>
+                <th className="px-3 py-3 font-semibold sm:px-4">{ui.thPrice}</th>
+                <th className="hidden px-4 py-3 font-semibold sm:table-cell">{ui.thPerStar}</th>
               </tr>
             </thead>
             <tbody>
@@ -363,7 +472,7 @@ export default async function StarsAmountPage({
                     <td className="px-3 py-3 sm:px-4">
                       {isCurrent ? (
                         <span className="font-bold">
-                          {formatNumber(pack.amount)} ⭐ <span className="text-xs text-[var(--primary)]">(joriy)</span>
+                          {formatNumber(pack.amount)} ⭐ <span className="text-xs text-[var(--primary)]">{ui.current}</span>
                         </span>
                       ) : (
                         <Link href={localePath(lang, `/stars/${pack.slug}`)} className="text-[var(--primary)] hover:underline">
@@ -373,7 +482,7 @@ export default async function StarsAmountPage({
                     </td>
                     <td className="whitespace-nowrap px-3 py-3 font-medium sm:px-4">{formatUzs(pack.priceUzs)}</td>
                     <td className="hidden whitespace-nowrap px-4 py-3 text-[var(--text-muted)] sm:table-cell">
-                      ~{ratePer.toFixed(2)} so&apos;m
+                      ~{ratePer.toFixed(2)} {ui.som}
                     </td>
                   </tr>
                 )
@@ -381,21 +490,17 @@ export default async function StarsAmountPage({
             </tbody>
           </table>
         </div>
-        <p className="mt-3 text-sm text-[var(--text-muted)]">
-          Narx miqdorga proportsional — har Stars uchun baho bir xil. Katta paket bilan kam buyurtma berasiz.
-        </p>
+        <p className="mt-3 text-sm text-[var(--text-muted)]">{ui.compareNote}</p>
       </section>
 
-      <FAQ items={allFAQ} title={`${amountStr} Stars haqida tez-tez beriladigan savollar`} />
+      <FAQ items={allFAQ} title={ui.faqTitle} />
 
       {/* Final CTA */}
       <section className="mx-auto my-12 max-w-3xl px-4 text-center">
-        <h2 className="text-2xl font-bold sm:text-3xl">
-          {amountStr} ta Stars uchun tayyormisiz?
-        </h2>
+        <h2 className="text-2xl font-bold sm:text-3xl">{ui.finalHeading}</h2>
         <p className="mt-3 text-[var(--text-muted)]">
-          Botda bir necha qadamda buyurtma bering. Telegram Premium'ga ham qiziqsangiz —{' '}
-          <Link href={localePath(lang, '/premium')} className="text-[var(--primary)] hover:underline">Premium sahifasiga</Link> o'ting.
+          {ui.finalBodyPre}
+          <Link href={localePath(lang, '/premium')} className="text-[var(--primary)] hover:underline">{ui.finalBodyLink}</Link>.
         </p>
         <div className="mt-6 flex justify-center">
           <BotCTA size="lg" prefill={`stars_${item.amount}`} />
