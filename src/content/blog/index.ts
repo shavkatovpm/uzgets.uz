@@ -21,6 +21,7 @@ import { post as botOrqaliTolashXavfsizmi } from './posts/20-telegram-bot-orqali
 import { post as premiumVaStarsFarqi } from './posts/21-telegram-premium-va-stars-farqi'
 import { post as starsBilanNimaQilishMumkin } from './posts/22-telegram-stars-bilan-nima-qilish-mumkin'
 import { post as starsBilanSovgaYuborish } from './posts/23-telegram-stars-bilan-sovga-yuborish'
+import { post as premium3Oylik } from './posts/24-telegram-premium-3-oylik-ozbekistonda'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -47,6 +48,7 @@ export const BLOG_POSTS: BlogPost[] = [
   premiumVaStarsFarqi,
   starsBilanNimaQilishMumkin,
   starsBilanSovgaYuborish,
+  premium3Oylik,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
