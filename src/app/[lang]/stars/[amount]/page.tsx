@@ -77,6 +77,7 @@ function getStarsUI(
       current: '(текущий)',
       compareNote:
         'Цена пропорциональна количеству — стоимость одной звезды одинакова. С большим пакетом вы делаете меньше заказов.',
+      allPacksHeading: 'Все пакеты Telegram Stars',
       faqTitle: `Частые вопросы о ${v.amountStr} Stars`,
       finalHeading: `Готовы купить ${v.amountStr} Stars?`,
       finalBodyPre: 'Оформите заказ в боте за несколько шагов. Интересует Telegram Premium — перейдите на ',
@@ -162,6 +163,7 @@ function getStarsUI(
     current: '(joriy)',
     compareNote:
       "Narx miqdorga proportsional — har Stars uchun baho bir xil. Katta paket bilan kam buyurtma berasiz.",
+    allPacksHeading: 'Barcha Telegram Stars paketlari',
     faqTitle: `${v.amountStr} Stars haqida tez-tez beriladigan savollar`,
     finalHeading: `${v.amountStr} ta Stars uchun tayyormisiz?`,
     finalBodyPre: "Botda bir necha qadamda buyurtma bering. Telegram Premium'ga ham qiziqsangiz — ",
@@ -491,6 +493,33 @@ export default async function StarsAmountPage({
           </table>
         </div>
         <p className="mt-3 text-sm text-[var(--text-muted)]">{ui.compareNote}</p>
+      </section>
+
+      {/* All packs — full sibling mesh so every amount is linked from every other (crawl/index) */}
+      <section className="mx-auto max-w-3xl px-4 pb-4" aria-labelledby="allpacks-heading">
+        <h2 id="allpacks-heading" className="mb-4 text-2xl font-bold sm:text-3xl">
+          {ui.allPacksHeading}
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {STARS_PACKS.map((p) =>
+            p.slug === item.slug ? (
+              <span
+                key={p.slug}
+                className="rounded-full border border-[var(--primary)] bg-[var(--primary)]/10 px-3 py-1.5 text-sm font-semibold text-[var(--primary)]"
+              >
+                {formatNumber(p.amount)} ⭐
+              </span>
+            ) : (
+              <Link
+                key={p.slug}
+                href={localePath(lang, `/stars/${p.slug}`)}
+                className="rounded-full border border-[var(--border)] px-3 py-1.5 text-sm hover:border-[var(--primary)] hover:text-[var(--primary)]"
+              >
+                {formatNumber(p.amount)} ⭐
+              </Link>
+            ),
+          )}
+        </div>
       </section>
 
       <FAQ items={allFAQ} title={ui.faqTitle} />
