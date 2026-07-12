@@ -23,6 +23,7 @@ import { post as starsBilanNimaQilishMumkin } from './posts/22-telegram-stars-bi
 import { post as starsBilanSovgaYuborish } from './posts/23-telegram-stars-bilan-sovga-yuborish'
 import { post as premium3Oylik } from './posts/24-telegram-premium-3-oylik-ozbekistonda'
 import { post as starsKartagaChiqarish } from './posts/25-telegram-stars-kartaga-chiqarish-pulga-aylantirish'
+import { post as businessFunksiyalari } from './posts/26-telegram-business-funksiyalari-toliq-qollanma'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -51,6 +52,7 @@ export const BLOG_POSTS: BlogPost[] = [
   starsBilanSovgaYuborish,
   premium3Oylik,
   starsKartagaChiqarish,
+  businessFunksiyalari,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
