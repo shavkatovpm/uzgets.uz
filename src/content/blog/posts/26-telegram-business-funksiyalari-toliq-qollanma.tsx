@@ -178,8 +178,8 @@ function RuBody() {
 
 export const post: BlogPost = {
   slug: 'telegram-business-funksiyalari-toliq-qollanma',
-  publishedAt: '2026-07-03',
-  updatedAt: '2026-07-03',
+  publishedAt: '2026-07-12',
+  updatedAt: '2026-07-12',
   type: 'info',
   locales: {
     uz: {
