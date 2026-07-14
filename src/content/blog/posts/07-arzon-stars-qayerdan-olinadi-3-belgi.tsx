@@ -127,8 +127,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           — {lang === 'uz' ? "Stars rasmiy e'lon" : 'официальный анонс Stars'}
         </li>
         <li>
-          <a href="https://t.me/notoscam" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
-            t.me/notoscam
+          <a href="https://telegram.me/notoscam" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
+            telegram.me/notoscam
           </a>{' '}
           — {lang === 'uz' ? "Telegram'da firibgarlikni rasmiy bildirish boti" : 'официальный бот Telegram для жалоб на мошенничество'}
         </li>
@@ -188,7 +188,7 @@ function UzBody() {
             </p>
           </>
         }
-        uzgets="Buyurtma t.me/uzgetsbot ichida 5 ta menyu bilan: Stars > miqdor > @username > to'lov tizimi > tasdiq. Hech qaysi qadamda inson aralashmaydi."
+        uzgets="Buyurtma telegram.me/uzgetsbot ichida 5 ta menyu bilan: Stars > miqdor > @username > to'lov tizimi > tasdiq. Hech qaysi qadamda inson aralashmaydi."
         scam="Tasodifiy kanal yoki shaxsiy chat'da: 'menga 50 000 so'm tashlang, 200 ⭐ qo'yaman'. To'lasangiz — biron ovoz yo'q, akkaunt bloklab qo'yiladi."
       />
 
@@ -266,7 +266,7 @@ function UzBody() {
         <strong>Tekshirish usuli:</strong> bot @username dan boshqa nima so&apos;raydi? Hech
         nima bo&apos;lmasin. Agar &quot;akkaunt egaligini tasdiqlash uchun kod kerak&quot;
         kabi gap chiqsa — darhol to&apos;xtang va botni{' '}
-        <a href="https://t.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>{' '}
+        <a href="https://telegram.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>{' '}
         ga shikoyat qiling.
       </p>
 
@@ -311,7 +311,7 @@ function UzBody() {
         </li>
         <li>
           <strong>Telegram&apos;ning rasmiy{' '}
-          <a href="https://t.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>{' '}
+          <a href="https://telegram.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>{' '}
           botiga shikoyat:</strong> firibgar bot/akkauntni yuboring. Telegram odatda 24
           soat ichida bunday akkauntlarni bloklaydi.
         </li>
@@ -337,7 +337,7 @@ function UzBody() {
       </p>
       <ul>
         <li>
-          <strong>Avtomatik tizim</strong> — buyurtma t.me/uzgetsbot ichida tugmalar
+          <strong>Avtomatik tizim</strong> — buyurtma telegram.me/uzgetsbot ichida tugmalar
           bilan, har qadam logikalashtirilgan. Operator emas, kod ishlaydi.
         </li>
         <li>
@@ -433,7 +433,7 @@ function RuBody() {
             </p>
           </>
         }
-        uzgets="Заказ внутри t.me/uzgetsbot — 5 пунктов меню: Stars > количество > @username > способ оплаты > подтверждение. Ни на одном шаге нет ручного оператора."
+        uzgets="Заказ внутри telegram.me/uzgetsbot — 5 пунктов меню: Stars > количество > @username > способ оплаты > подтверждение. Ни на одном шаге нет ручного оператора."
         scam="В случайном канале или личке: «отправь 50 000 сум — закину 200 ⭐». Оплатил — и тишина, аккаунт блокирует."
       />
 
@@ -507,7 +507,7 @@ function RuBody() {
         <strong>Как проверить:</strong> что бот спрашивает кроме @username? Должен — ничего.
         Если что-то вроде «нужен код для подтверждения владения аккаунтом» — стоп, и пожалуйтесь
         на бота{' '}
-        <a href="https://t.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>.
+        <a href="https://telegram.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>.
       </p>
 
       <h2 id="qoshimcha">4 дополнительных тревожных сигнала</h2>
@@ -548,7 +548,7 @@ function RuBody() {
         </li>
         <li>
           <strong>Жалоба в официальный{' '}
-          <a href="https://t.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>{' '}
+          <a href="https://telegram.me/notoscam" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@notoscam</a>{' '}
           Telegram:</strong> отправьте мошеннического бота/аккаунт. Telegram обычно
           блокирует такие в течение 24 часов.
         </li>
@@ -573,7 +573,7 @@ function RuBody() {
       </p>
       <ul>
         <li>
-          <strong>Автоматизированная система</strong> — заказ внутри t.me/uzgetsbot
+          <strong>Автоматизированная система</strong> — заказ внутри telegram.me/uzgetsbot
           оформляется кнопками, каждый шаг логически выстроен. Не оператор, а код.
         </li>
         <li>
@@ -670,7 +670,7 @@ export const post: BlogPost = {
         {
           question: 'Uzgets uchchala mezonni qanday bajaradi?',
           answer:
-            "Avtomatik bot — buyurtma t.me/uzgetsbot ichida tugmalar bilan bajariladi. To'lov kuzatiladi — bot @username va miqdorni olgach to'lov ma'lumotini ko'rsatadi, aynan o'sha summani o'tkazsangiz avtomatik tekshiradi va biriktiradi. Faqat @username — parol, kod, 2FA hech qachon so'ralmaydi.",
+            "Avtomatik bot — buyurtma telegram.me/uzgetsbot ichida tugmalar bilan bajariladi. To'lov kuzatiladi — bot @username va miqdorni olgach to'lov ma'lumotini ko'rsatadi, aynan o'sha summani o'tkazsangiz avtomatik tekshiradi va biriktiradi. Faqat @username — parol, kod, 2FA hech qachon so'ralmaydi.",
         },
         {
           question: 'Aldansam nima qilaman?',
@@ -680,7 +680,7 @@ export const post: BlogPost = {
         {
           question: 'Bot username\'ida farq bor — bu xavflimi?',
           answer:
-            "Ha. @uzg3tsbot, @uzgets_official, @uzgetsbot1 — bu rasmiy @uzgetsbot dan farqli klon botlar. Klonlar firibgarlikning eng odatdiy usuli. Faqat aniq @uzgetsbot va t.me/uzgetsbot havolasini ishlating.",
+            "Ha. @uzg3tsbot, @uzgets_official, @uzgetsbot1 — bu rasmiy @uzgetsbot dan farqli klon botlar. Klonlar firibgarlikning eng odatdiy usuli. Faqat aniq @uzgetsbot va telegram.me/uzgetsbot havolasini ishlating.",
         },
       ],
       finalCtaHeading: "Ishonchli va arzon Stars sotib olishga tayyormisiz?",
@@ -723,7 +723,7 @@ export const post: BlogPost = {
         {
           question: 'Как Uzgets соответствует всем трём признакам?',
           answer:
-            'Автобот — заказ оформляется кнопками внутри t.me/uzgetsbot. Оплата отслеживается — после ввода @username и количества бот показывает реквизит, при переводе той же суммы автоматически проверяется и зачисляется. Только @username — пароль, код, 2FA никогда не запрашиваются.',
+            'Автобот — заказ оформляется кнопками внутри telegram.me/uzgetsbot. Оплата отслеживается — после ввода @username и количества бот показывает реквизит, при переводе той же суммы автоматически проверяется и зачисляется. Только @username — пароль, код, 2FA никогда не запрашиваются.',
         },
         {
           question: 'Что делать, если уже обманули?',
@@ -733,7 +733,7 @@ export const post: BlogPost = {
         {
           question: 'Username бота немного отличается — это опасно?',
           answer:
-            'Да. @uzg3tsbot, @uzgets_official, @uzgetsbot1 — это боты-клоны, отличающиеся от официального @uzgetsbot. Клоны — стандартный приём мошенников. Используйте только точный @uzgetsbot и ссылку t.me/uzgetsbot.',
+            'Да. @uzg3tsbot, @uzgets_official, @uzgetsbot1 — это боты-клоны, отличающиеся от официального @uzgetsbot. Клоны — стандартный приём мошенников. Используйте только точный @uzgetsbot и ссылку telegram.me/uzgetsbot.',
         },
       ],
       finalCtaHeading: 'Готовы купить дешёвые и надёжные Stars?',

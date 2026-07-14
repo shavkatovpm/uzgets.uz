@@ -17,7 +17,7 @@ function UzAnswerBox() {
   return (
     <p>
       Telegram Premium&apos;ni sotib olishning <strong>6 ta asosiy usuli</strong> bor: App Store
-      ($4.99/oy), Google Play ($4.99/oy), Telegram&apos;ning rasmiy <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> ($3.99/oy, asosan xorijiy kartochka),
+      ($4.99/oy), Google Play ($4.99/oy), Telegram&apos;ning rasmiy <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> ($3.99/oy, asosan xorijiy kartochka),
       Fragment (TON crypto, eng arzon — ~$11.99 / 3 oy), boshqa foydalanuvchidan sovg&apos;a (Gift Premium)
       va O&apos;zbek mahalliy bot{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
@@ -32,7 +32,7 @@ function RuAnswerBox() {
   return (
     <p>
       Существует <strong>6 основных способов</strong> купить Telegram Premium: App Store ($4.99/мес.),
-      Google Play ($4.99/мес.), официальный <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> Telegram ($3.99/мес., в основном зарубежная карта),
+      Google Play ($4.99/мес.), официальный <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> Telegram ($3.99/мес., в основном зарубежная карта),
       Fragment (TON-крипта, дешевле всего — ~$11.99 / 3 мес.), подарок от другого пользователя (Gift Premium)
       и узбекский локальный бот{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
@@ -164,8 +164,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           — {lang === 'uz' ? 'Telegram Premium rasmiy FAQ' : 'официальный FAQ Telegram Premium'}
         </li>
         <li>
-          <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
-            t.me/PremiumBot
+          <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
+            telegram.me/PremiumBot
           </a>{' '}
           — {lang === 'uz' ? "Telegram'ning rasmiy Premium boti" : 'официальный Premium-бот Telegram'}
         </li>
@@ -347,7 +347,7 @@ function UzBody() {
           Username bo&apos;limidan tasdiqlang.
         </li>
         <li>
-          <strong>Rasmiy bot.</strong> t.me/uzgetsbot — o&apos;xshash nomli botlar (uzgetbot,
+          <strong>Rasmiy bot.</strong> telegram.me/uzgetsbot — o&apos;xshash nomli botlar (uzgetbot,
           uzg3tsbot) firibgar klonlar. Saytdagi tugma orqali o&apos;ting.
         </li>
         <li>
@@ -526,7 +526,7 @@ function RuBody() {
           Username.
         </li>
         <li>
-          <strong>Только официальный бот.</strong> t.me/uzgetsbot — похожие имена (uzgetbot,
+          <strong>Только официальный бот.</strong> telegram.me/uzgetsbot — похожие имена (uzgetbot,
           uzg3tsbot) — мошеннические клоны. Переходите по кнопке с сайта.
         </li>
         <li>

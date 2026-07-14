@@ -504,7 +504,7 @@ function UzBody() {
           bo&apos;limidan tasdiqlang.
         </li>
         <li>
-          <strong>Faqat rasmiy bot.</strong> t.me/uzgetsbot — o&apos;xshash nomli klonlar
+          <strong>Faqat rasmiy bot.</strong> telegram.me/uzgetsbot — o&apos;xshash nomli klonlar
           (uzgetbot, uzg3tsbot) firibgar bo&apos;lishi mumkin. Saytdagi tugma orqali
           o&apos;ting.
         </li>
@@ -814,7 +814,7 @@ function RuBody() {
           Premium — через username (не номер телефона). Подтвердите в Настройки &gt; Username.
         </li>
         <li>
-          <strong>Только официальный бот.</strong> t.me/uzgetsbot — похожие имена
+          <strong>Только официальный бот.</strong> telegram.me/uzgetsbot — похожие имена
           (uzgetbot, uzg3tsbot) могут быть мошенническими клонами. Переходите по кнопке с сайта.
         </li>
         <li>

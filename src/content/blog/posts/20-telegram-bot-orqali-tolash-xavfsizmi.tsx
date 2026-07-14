@@ -365,7 +365,7 @@ function UzBody() {
         </li>
       </ol>
 
-      <InlineBotCTA lang="uz" text="Rasmiy bot: t.me/uzgetsbot — modelni o'zingiz tekshiring." />
+      <InlineBotCTA lang="uz" text="Rasmiy bot: telegram.me/uzgetsbot — modelni o'zingiz tekshiring." />
 
       <h2 id="xavf-signallari">Xavf signallari — 7 ta belgi</h2>
       <p>
@@ -550,7 +550,7 @@ function RuBody() {
         </li>
       </ol>
 
-      <InlineBotCTA lang="ru" text="Официальный бот: t.me/uzgetsbot — проверьте модель сами." />
+      <InlineBotCTA lang="ru" text="Официальный бот: telegram.me/uzgetsbot — проверьте модель сами." />
 
       <h2 id="xavf-signallari">Признаки опасности — 7 сигналов</h2>
       <p>
@@ -751,7 +751,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: "Tekshirib bo'ldingizmi?",
       finalCtaBody:
-        "Bot orqali to'lov modelini va xavfsizlik belgilarini bilib oldingiz. Tayyor bo'lsangiz — rasmiy bot orqali buyurtma rasmiylashtiring: t.me/uzgetsbot.",
+        "Bot orqali to'lov modelini va xavfsizlik belgilarini bilib oldingiz. Tayyor bo'lsangiz — rasmiy bot orqali buyurtma rasmiylashtiring: telegram.me/uzgetsbot.",
     },
     ru: {
       title: 'Безопасно ли платить через Telegram-бот? — 7 признаков опасности и 5 безопасности',
@@ -804,7 +804,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: 'Проверили?',
       finalCtaBody:
-        'Теперь вы знаете, как работает модель оплаты через бот и какие признаки безопасности проверить. Готовы — оформите заказ через официальный бот: t.me/uzgetsbot.',
+        'Теперь вы знаете, как работает модель оплаты через бот и какие признаки безопасности проверить. Готовы — оформите заказ через официальный бот: telegram.me/uzgetsbot.',
     },
   },
 }

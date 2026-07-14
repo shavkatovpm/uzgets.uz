@@ -170,7 +170,7 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           — {lang === 'uz' ? 'foydalanish shartlari' : 'условия использования'}
         </li>
         <li>
-          <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
+          <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
             @PremiumBot
           </a>{' '}
           — {lang === 'uz' ? 'rasmiy Telegram boti' : 'официальный бот Telegram'}

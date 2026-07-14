@@ -236,8 +236,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           — {lang === 'uz' ? "Premium uchun rasmiy TON marketplace (xorijiy karta/crypto talab qiladi)" : 'официальный TON-маркетплейс Premium (требует зарубежную карту/крипто)'}
         </li>
         <li>
-          <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
-            t.me/PremiumBot
+          <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
+            telegram.me/PremiumBot
           </a>{' '}
           —{' '}
           {lang === 'uz'
@@ -382,7 +382,7 @@ function UzBody() {
         </li>
         <li>
           <strong>Admin botga yozing.</strong>{' '}
-          <a href="https://t.me/uzgets_jbot" target="_blank" rel="noopener" className="text-[var(--primary)]">@uzgets_jbot</a>{' '}
+          <a href="https://telegram.me/uzgets_jbot" target="_blank" rel="noopener" className="text-[var(--primary)]">@uzgets_jbot</a>{' '}
           orqali tranzaksiya tafsilotlarini yuboring — Uzgets&apos;da rasmiy refund policy mavjud,
           shuning uchun masala hal qilinadi.
         </li>
@@ -540,7 +540,7 @@ function RuBody() {
         </li>
         <li>
           <strong>Напишите в админ-бот.</strong>{' '}
-          <a href="https://t.me/uzgets_jbot" target="_blank" rel="noopener" className="text-[var(--primary)]">@uzgets_jbot</a>{' '}
+          <a href="https://telegram.me/uzgets_jbot" target="_blank" rel="noopener" className="text-[var(--primary)]">@uzgets_jbot</a>{' '}
           — отправьте детали транзакции. У Uzgets есть официальная политика возврата, поэтому
           вопрос будет решён.
         </li>

@@ -12,7 +12,7 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 - [Homepage (RU)](https://uzgets.uz/ru): Покупка Telegram Premium и Stars из Узбекистана через локальные карты
 - [About / Haqimizda (UZ)](https://uzgets.uz/haqimizda): Mission, advantages, refund policy, support
 - [About / Haqimizda (RU)](https://uzgets.uz/ru/haqimizda): миссия, преимущества, возврат, поддержка
-- [Telegram bot @uzgetsbot](https://t.me/uzgetsbot): primary interface for all orders
+- [Telegram bot @uzgetsbot](https://telegram.me/uzgetsbot): primary interface for all orders
 
 ## Pricing
 

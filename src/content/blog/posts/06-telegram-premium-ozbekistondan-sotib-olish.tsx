@@ -173,8 +173,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
           — {lang === 'uz' ? "Fragment Premium sahifasi (faqat TON / xorijiy karta)" : 'страница Fragment Premium (только TON / зарубежная карта)'}
         </li>
         <li>
-          <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
-            t.me/PremiumBot
+          <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">
+            telegram.me/PremiumBot
           </a>{' '}
           — {lang === 'uz' ? "Telegram'ning rasmiy Premium boti" : 'официальный Premium-бот Telegram'}
         </li>
@@ -316,7 +316,7 @@ function UzBody() {
         </li>
         <li>
           <strong>Telegram&apos;ning rasmiy{' '}
-          <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">
+          <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">
             @PremiumBot
           </a>:
           </strong>{' '}
@@ -374,7 +374,7 @@ function UzBody() {
           so&apos;m, bu Premium uchun yetarli, lekin onlayn xarid yoqilgan bo&apos;lsin.
         </li>
         <li>
-          <strong>Faqat rasmiy bot link</strong> — t.me/uzgetsbot. O&apos;xshash nomli
+          <strong>Faqat rasmiy bot link</strong> — telegram.me/uzgetsbot. O&apos;xshash nomli
           (uzgetbot, uzg3tsbot) firibgar botlardan ehtiyot bo&apos;ling.
         </li>
       </ul>
@@ -501,7 +501,7 @@ function RuBody() {
         </li>
         <li>
           <strong>Официальный Telegram-бот{' '}
-          <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">
+          <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">
             @PremiumBot
           </a>:
           </strong>{' '}
@@ -555,7 +555,7 @@ function RuBody() {
           сум, для Premium хватит, но онлайн-покупки должны быть включены.
         </li>
         <li>
-          <strong>Только официальная ссылка бота</strong> — t.me/uzgetsbot. Опасайтесь похожих
+          <strong>Только официальная ссылка бота</strong> — telegram.me/uzgetsbot. Опасайтесь похожих
           (uzgetbot, uzg3tsbot) — это мошеннические клоны.
         </li>
       </ul>

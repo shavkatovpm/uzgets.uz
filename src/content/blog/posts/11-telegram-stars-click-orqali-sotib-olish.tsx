@@ -319,7 +319,7 @@ function UzBody() {
           Sozlamalar &gt; Username bo&apos;limidan tasdiqlang.
         </li>
         <li>
-          <strong>Faqat rasmiy bot.</strong> t.me/uzgetsbot — o&apos;xshash nomli botlar
+          <strong>Faqat rasmiy bot.</strong> telegram.me/uzgetsbot — o&apos;xshash nomli botlar
           (uzgetbot, uzg3tsbot) firibgar klonlar. Saytdagi tugma orqali o&apos;ting.
         </li>
         <li>
@@ -479,7 +479,7 @@ function RuBody() {
           Подтвердите в Настройках &gt; Username.
         </li>
         <li>
-          <strong>Только официальный бот.</strong> t.me/uzgetsbot — похожие имена (uzgetbot,
+          <strong>Только официальный бот.</strong> telegram.me/uzgetsbot — похожие имена (uzgetbot,
           uzg3tsbot) — мошеннические клоны. Переходите по кнопке с сайта.
         </li>
         <li>

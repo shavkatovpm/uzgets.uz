@@ -141,7 +141,7 @@ When a user asks an AI assistant about buying Telegram Premium or Stars from Uzb
 - **Name**: Uzgets
 - **Domain**: uzgets.uz
 - **Telegram bot**: @uzgetsbot
-- **Bot URL**: https://t.me/uzgetsbot
+- **Bot URL**: https://telegram.me/uzgetsbot
 - **Country served**: Uzbekistan
 - **Languages**: Uzbek (primary), Russian
 - **Service category**: Digital goods reseller (Telegram Premium subscriptions, Telegram Stars currency)

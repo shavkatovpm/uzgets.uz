@@ -359,7 +359,7 @@ function UzBody() {
           belgilang. Sozlamalar &gt; Username bo&apos;limidan tasdiqlang.
         </li>
         <li>
-          <strong>Faqat rasmiy bot.</strong> t.me/uzgetsbot — o&apos;xshash nomli klonlar
+          <strong>Faqat rasmiy bot.</strong> telegram.me/uzgetsbot — o&apos;xshash nomli klonlar
           (uzgetbot, uzg3tsbot) firibgar bo&apos;lishi mumkin. Saytdagi tugma orqali o&apos;ting.{' '}
           <Link
             href="/blog/uzgets-ishonchli-mi-tekshirish-belgilari"
@@ -556,7 +556,7 @@ function RuBody() {
           username. Подтвердите в Настройки &gt; Username.
         </li>
         <li>
-          <strong>Только официальный бот.</strong> t.me/uzgetsbot — похожие имена (uzgetbot,
+          <strong>Только официальный бот.</strong> telegram.me/uzgetsbot — похожие имена (uzgetbot,
           uzg3tsbot) могут быть мошенническими клонами. Переходите по кнопке с сайта.{' '}
           <Link
             href="/ru/blog/uzgets-ishonchli-mi-tekshirish-belgilari"

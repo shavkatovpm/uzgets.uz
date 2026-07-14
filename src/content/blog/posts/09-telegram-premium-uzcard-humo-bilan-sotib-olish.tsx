@@ -186,7 +186,7 @@ function UzBody() {
       <p>
         <strong>Yo&apos;q.</strong> Telegram Premium&apos;ni rasmiy yo&apos;llar (App Store
         ichidagi xarid, Google Play, <a href="https://fragment.com/premium" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">Fragment</a>{' '}
-        yoki rasmiy <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a>) UzCard
+        yoki rasmiy <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a>) UzCard
         yoki Humo qabul qilmaydi. Sabab — bu platformalar Visa/Mastercard, Apple ID balansi, Google
         Play balansi yoki TON crypto talab qiladi. UzCard va Humo — milliy O&apos;zbek to&apos;lov
         tizimlari, ular xalqaro xaridlarda ishlamaydi.
@@ -335,7 +335,7 @@ function UzBody() {
           Sozlamalar &gt; Username bo&apos;limidan tekshiring.
         </li>
         <li>
-          <strong>Faqat rasmiy bot.</strong> t.me/uzgetsbot — boshqa o&apos;xshash nomli botlar
+          <strong>Faqat rasmiy bot.</strong> telegram.me/uzgetsbot — boshqa o&apos;xshash nomli botlar
           (uzgetbot, uzg3tsbot) firibgar klonlar.
         </li>
       </ul>
@@ -350,7 +350,7 @@ function RuBody() {
       <p>
         <strong>Нет.</strong> Официальные пути покупки Telegram Premium (внутренняя покупка App
         Store, Google Play, <a href="https://fragment.com/premium" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">Fragment</a>{' '}
-        и официальный <a href="https://t.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a>) не
+        и официальный <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a>) не
         принимают UzCard или Humo. Причина — эти платформы требуют Visa/Mastercard, баланс Apple
         ID, баланс Google Play или TON-крипто. UzCard и Humo — национальные узбекские платёжные
         системы и не работают за рубежом.
@@ -492,7 +492,7 @@ function RuBody() {
           Подтвердите в Настройках &gt; Username.
         </li>
         <li>
-          <strong>Только официальный бот.</strong> t.me/uzgetsbot — другие похожие имена
+          <strong>Только официальный бот.</strong> telegram.me/uzgetsbot — другие похожие имена
           (uzgetbot, uzg3tsbot) — мошеннические клоны.
         </li>
       </ul>

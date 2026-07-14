@@ -152,8 +152,8 @@ function CloneBotsTable({ lang }: { lang: 'uz' | 'ru' }) {
       name: '@uzgetsbot',
       type: { uz: 'Rasmiy', ru: 'Официальный' },
       note: {
-        uz: 't.me/uzgetsbot — sayt va barcha rasmiy havolalardan shu manzil ko\'rsatiladi',
-        ru: 't.me/uzgetsbot — этот адрес указан на сайте и во всех официальных ссылках',
+        uz: 'telegram.me/uzgetsbot — sayt va barcha rasmiy havolalardan shu manzil ko\'rsatiladi',
+        ru: 'telegram.me/uzgetsbot — этот адрес указан на сайте и во всех официальных ссылках',
       },
     },
     {
@@ -351,12 +351,12 @@ function UzBody() {
       <CloneBotsTable lang="uz" />
       <p>
         Botga o&apos;tishdan oldin <strong>doimo to&apos;liq URL&apos;ni tekshiring</strong>:{' '}
-        <code className="rounded bg-[var(--muted)] px-1.5 py-0.5">t.me/uzgetsbot</code>. Saytdagi
+        <code className="rounded bg-[var(--muted)] px-1.5 py-0.5">telegram.me/uzgetsbot</code>. Saytdagi
         tugmalar yoki bu maqolalardagi havolalar shu manzilga olib boradi — qo&apos;lda yozish
         emas, bosish orqali o&apos;ting.
       </p>
 
-      <InlineBotCTA lang="uz" text="Rasmiy bot: t.me/uzgetsbot — havola orqali to'g'ri o'ting." />
+      <InlineBotCTA lang="uz" text="Rasmiy bot: telegram.me/uzgetsbot — havola orqali to'g'ri o'ting." />
 
       <h2 id="pul-qaytarish">Pul qaytarish kafolati — qanday ishlaydi?</h2>
       <p>
@@ -542,12 +542,12 @@ function RuBody() {
       <CloneBotsTable lang="ru" />
       <p>
         Перед переходом в бот <strong>всегда проверяйте полный URL</strong>:{' '}
-        <code className="rounded bg-[var(--muted)] px-1.5 py-0.5">t.me/uzgetsbot</code>. Кнопки на
+        <code className="rounded bg-[var(--muted)] px-1.5 py-0.5">telegram.me/uzgetsbot</code>. Кнопки на
         сайте и ссылки в этих статьях ведут именно сюда — переходите по клику, а не вводите имя
         вручную.
       </p>
 
-      <InlineBotCTA lang="ru" text="Официальный бот: t.me/uzgetsbot — переходите по ссылке." />
+      <InlineBotCTA lang="ru" text="Официальный бот: telegram.me/uzgetsbot — переходите по ссылке." />
 
       <h2 id="pul-qaytarish">Как работает гарантия возврата?</h2>
       <p>
@@ -703,7 +703,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: "Tekshirib bo'ldingizmi?",
       finalCtaBody:
-        "Saytdagi belgilarni va botni baholab chiqdingiz. Tayyor bo'lsangiz, rasmiy bot orqali buyurtma rasmiylashtiring — t.me/uzgetsbot.",
+        "Saytdagi belgilarni va botni baholab chiqdingiz. Tayyor bo'lsangiz, rasmiy bot orqali buyurtma rasmiylashtiring — telegram.me/uzgetsbot.",
     },
     ru: {
       title: 'Можно ли доверять Uzgets? — Сигналы проверки сайта и бота',
@@ -756,7 +756,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: 'Проверили?',
       finalCtaBody:
-        'Вы оценили сайт и бот. Если готовы — оформите заказ через официальный бот: t.me/uzgetsbot.',
+        'Вы оценили сайт и бот. Если готовы — оформите заказ через официальный бот: telegram.me/uzgetsbot.',
     },
   },
 }
