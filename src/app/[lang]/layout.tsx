@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer'
 import { LOCALES, LOCALE_HTML_LANG, LOCALE_OG, isLocale, localePath, localeUrl, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import '../globals.css'
+import { ogImages } from '@/lib/og'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -105,6 +106,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
+      ...ogImages,
       type: 'website',
       locale: LOCALE_OG[lang],
       alternateLocale: LOCALES.filter((l) => l !== lang).map((l) => LOCALE_OG[l]),
@@ -114,6 +116,7 @@ export async function generateMetadata({
       description: meta.description,
     },
     twitter: {
+      ...ogImages,
       card: 'summary_large_image',
       title: siteConfig.name,
       description: meta.description,

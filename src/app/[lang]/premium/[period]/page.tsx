@@ -11,6 +11,7 @@ import { getPremiumPageContent } from '@/config/premium-pages'
 import { getPremiumFeatures, getPaymentMethods } from '@/config/static-content'
 import { formatUzs } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string; period: string }
 type StaticParams = { period: string }
@@ -35,6 +36,7 @@ export async function generateMetadata({
     description: content.metaDescription,
     alternates: alternatesFor(lang, `/premium/${item.slug}`),
     openGraph: {
+      ...ogImages,
       title: content.metaTitle,
       description: content.metaDescription,
       url: localeUrl(siteConfig.url, lang, `/premium/${item.slug}`),

@@ -10,6 +10,7 @@ import { getDictionary } from '@/i18n/dictionaries'
 import { type Locale, isLocale, LOCALES, LOCALE_OG, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 import { getPostBySlug, getPostsSorted, BLOG_POSTS } from '@/content/blog'
 import { BLOG_TYPE_LABELS } from '@/content/blog/types'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string; slug: string }
 
@@ -39,6 +40,7 @@ export async function generateMetadata({
     description: t.metaDescription,
     alternates: alternatesFor(lang, `/blog/${slug}`),
     openGraph: {
+      ...ogImages,
       title: t.metaTitle,
       description: t.ogDescription ?? t.metaDescription,
       url: localeUrl(siteConfig.url, lang, `/blog/${slug}`),

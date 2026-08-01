@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { siteConfig } from '@/config/site'
 import { JsonLd } from '@/components/JsonLd'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string }
 
@@ -136,6 +137,7 @@ export async function generateMetadata({
     description: t.metaDescription,
     alternates: alternatesFor(lang, '/terms'),
     openGraph: {
+      ...ogImages,
       title: `${t.title} | ${siteConfig.name}`,
       description: t.ogDescription,
       url: localeUrl(siteConfig.url, lang, '/terms'),

@@ -7,6 +7,7 @@ import { AnswerBox } from '@/components/AnswerBox'
 import { BotCTA } from '@/components/BotCTA'
 import { FAQ, type FAQItem } from '@/components/FAQ'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string }
 
@@ -326,6 +327,7 @@ export async function generateMetadata({
     description: t.metaDescription,
     alternates: alternatesFor(lang, '/haqimizda'),
     openGraph: {
+      ...ogImages,
       title: t.metaTitle,
       description: t.ogDescription,
       url: localeUrl(siteConfig.url, lang, '/haqimizda'),

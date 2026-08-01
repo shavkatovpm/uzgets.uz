@@ -7,6 +7,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { FAQ, type FAQItem } from '@/components/FAQ'
 import { AnswerBox } from '@/components/AnswerBox'
 import { type Locale, isLocale, localeUrl, alternatesFor } from '@/i18n/config'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string }
 
@@ -159,6 +160,7 @@ export async function generateMetadata({
     description: t.metaDescription,
     alternates: alternatesFor(lang, '/aloqa'),
     openGraph: {
+      ...ogImages,
       title: t.ogTitle,
       description: t.ogDescription,
       url: localeUrl(siteConfig.url, lang, '/aloqa'),

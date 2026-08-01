@@ -12,6 +12,7 @@ import { STARS_PACKS, STARS_BASE } from '@/config/products'
 import { getStarsUseCases, getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string }
 
@@ -368,6 +369,7 @@ export async function generateMetadata({
     description: t.metaDescription,
     alternates: alternatesFor(lang, '/stars'),
     openGraph: {
+      ...ogImages,
       title: t.ogTitle,
       description: t.ogDescription,
       url: localeUrl(siteConfig.url, lang, '/stars'),

@@ -11,6 +11,7 @@ import { getStarsPageContent } from '@/config/stars-pages'
 import { getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
+import { ogImages } from '@/lib/og'
 
 type Params = { lang: string; amount: string }
 type StaticParams = { amount: string }
@@ -35,6 +36,7 @@ export async function generateMetadata({
     description: content.metaDescription,
     alternates: alternatesFor(lang, `/stars/${item.slug}`),
     openGraph: {
+      ...ogImages,
       title: content.metaTitle,
       description: content.metaDescription,
       url: localeUrl(siteConfig.url, lang, `/stars/${item.slug}`),
