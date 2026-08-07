@@ -43,3 +43,4 @@ next-env.d.ts
 # GSC service account key & pulled data
 /scripts/gsc-key.json
 /scripts/gsc-data/
+.env*.local
