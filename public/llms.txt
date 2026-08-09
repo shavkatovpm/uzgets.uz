@@ -47,6 +47,7 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 - [Premium vs Stars — which you need UZ](https://uzgets.uz/blog/telegram-premium-va-stars-farqi): Difference between Telegram Premium and Stars and which one to choose
 - [What you can do with Telegram Stars UZ](https://uzgets.uz/blog/telegram-stars-bilan-nima-qilish-mumkin): All practical use cases for Telegram Stars
 - [Telegram Stars not received — troubleshooting UZ](https://uzgets.uz/blog/telegram-stars-kelmadi-sabablar-yechim): Seven causes and safe checks for a missing Stars order, including order status, username, My Stars history, pending/failed transactions and support data
+- [Buy Telegram Stars with Payme UZ](https://uzgets.uz/blog/telegram-stars-payme-orqali-sotib-olish): Six-step Payme/local-card purchase guide, current Uzgets prices, safety checks and payment troubleshooting
 - [Blog index UZ](https://uzgets.uz/blog): Full blog list
 - [Blog index RU](https://uzgets.uz/ru/blog): полный список блога
 
