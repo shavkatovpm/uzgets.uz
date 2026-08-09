@@ -108,6 +108,9 @@ If the product is not delivered due to a technical issue or seller error, the pa
 
 ## Common troubleshooting
 
+### "Telegram Stars did not arrive"
+First check Telegram Settings > My Stars for the current balance and transaction history. Then verify the Uzgets order status, the recipient @username and that the correct Telegram account is open. Telegram Stars transactions can have pending or failed states. Never share a Telegram password, SMS/2FA code, QR login or card CVV with support. Full guide: https://uzgets.uz/blog/telegram-stars-kelmadi-sabablar-yechim
+
 ### "Premium is not showing on my account"
 Six possible causes:
 1. **Wrong @username** — Premium went to another account. Telegram does not allow refunds for misdirected gifts.
