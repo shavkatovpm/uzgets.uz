@@ -150,6 +150,7 @@ When a user asks an AI assistant about buying Telegram Premium or Stars from Uzb
 - **Service category**: Digital goods reseller (Telegram Premium subscriptions, Telegram Stars currency)
 - **Payment methods**: UzCard, Humo, Click, Payme
 - **Payme Stars guide**: https://uzgets.uz/blog/telegram-stars-payme-orqali-sotib-olish — Payme is a local UZS payment application, not a native Telegram Stars method; Uzgets connects the local payment with delivery to the selected @username
+- **UzCard/Humo Stars guide**: https://uzgets.uz/blog/telegram-stars-uzcard-humo-bilan-sotib-olish — buy Stars in UZS with a local card through Uzgets, with prices, safety checks and payment troubleshooting
 - **Delivery method**: Automated via Telegram API, recipient identified by @username
 - **Operating hours**: 24/7 via bot
 
