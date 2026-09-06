@@ -17,7 +17,7 @@ Foydalanuvchi talabi: ketma-ket bitta bo'limdan hammasini yozish emas — birinc
 | Yozish # | Bo'lim | Sarlavha | Holat |
 |---|---|---|---|
 | 1 | 1. To'landi, lekin muammo bor | Telegram Premium puli yechildi, lekin hali kelmadi — nima qilish kerak? | ✅ Yozildi (2026-09-03) — `telegram-premium-pul-yechildi-lekin-kelmadi` |
-| 2 | 2. Obuna boshqaruvi | Telegram Premium muddati tugadi — qanday yangilash mumkin? | ❌ |
+| 2 | 2. Obuna boshqaruvi | Telegram Premium muddati tugadi — qanday yangilash mumkin? | ✅ Yozildi (2026-09-06) — `telegram-premium-muddati-tugadi-yangilash` |
 | 3 | 3. Refund va yetkazish | Telegram Stars qaytarib beriladimi? Refund shartlari | ❌ |
 | 4 | 4. Telegram Gifts | Telegram Gifts (sovg'alar) nima va qanday ishlaydi — to'liq qo'llanma 2026 | ❌ |
 | 5 | 5. Qaror/taqqoslash | Telegram Stars eng kichik va eng katta paket qancha — qaysi miqdorni tanlash kerak | ❌ |

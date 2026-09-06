@@ -36,6 +36,7 @@ import { post as premiumTwelveMonths } from './posts/35-telegram-premium-12-oyli
 import { post as premiumBekorQilish } from './posts/36-telegram-premium-obunasini-bekor-qilish'
 import { post as starsTolovOtmadi } from './posts/37-telegram-stars-tolov-otmadi-yechim'
 import { post as premiumPulYechildiLekinKelmadi } from './posts/38-telegram-premium-pul-yechildi-lekin-kelmadi'
+import { post as premiumMuddatiTugadiYangilash } from './posts/39-telegram-premium-muddati-tugadi-yangilash'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -77,6 +78,7 @@ export const BLOG_POSTS: BlogPost[] = [
   premiumBekorQilish,
   starsTolovOtmadi,
   premiumPulYechildiLekinKelmadi,
+  premiumMuddatiTugadiYangilash,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
