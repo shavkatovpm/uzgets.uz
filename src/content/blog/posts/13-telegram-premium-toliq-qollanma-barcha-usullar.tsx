@@ -17,8 +17,8 @@ function UzAnswerBox() {
   return (
     <p>
       Telegram Premium&apos;ni sotib olishning <strong>6 ta asosiy usuli</strong> bor: App Store
-      ($4.99/oy), Google Play ($4.99/oy), Telegram&apos;ning rasmiy <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> ($3.99/oy, asosan xorijiy kartochka),
-      Fragment (TON crypto, eng arzon — ~$11.99 / 3 oy), boshqa foydalanuvchidan sovg&apos;a (Gift Premium)
+      (O&apos;zbekiston vitrinasida $3.99/oy), Google Play (narx to&apos;lov oynasida ko&apos;rinadi), Telegram&apos;ning rasmiy <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> (do&apos;kon komissiyasisiz, chegirmali; asosan xorijiy kartochka),
+      Fragment (TON crypto, eng arzon — $11.99 / 3 oy), boshqa foydalanuvchidan sovg&apos;a (Gift Premium)
       va O&apos;zbek mahalliy bot{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       orqali (UzCard/Humo/Click/Payme — <strong>{formatUzs(P3.priceUzs)} / 3 oy</strong>). O&apos;zbek banklari Visa/Mastercard
@@ -31,9 +31,9 @@ function UzAnswerBox() {
 function RuAnswerBox() {
   return (
     <p>
-      Существует <strong>6 основных способов</strong> купить Telegram Premium: App Store ($4.99/мес.),
-      Google Play ($4.99/мес.), официальный <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> Telegram ($3.99/мес., в основном зарубежная карта),
-      Fragment (TON-крипта, дешевле всего — ~$11.99 / 3 мес.), подарок от другого пользователя (Gift Premium)
+      Существует <strong>6 основных способов</strong> купить Telegram Premium: App Store ($3.99/мес. в витрине Узбекистана),
+      Google Play (цена видна в окне оплаты), официальный <a href="https://telegram.me/PremiumBot" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">@PremiumBot</a> Telegram (без комиссии магазинов, со скидкой; в основном зарубежная карта),
+      Fragment (TON-крипта, дешевле всего — $11.99 / 3 мес.), подарок от другого пользователя (Gift Premium)
       и узбекский локальный бот{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       (UzCard/Humo/Click/Payme — <strong>{formatUzs(P3.priceUzs)} / 3 мес.</strong>). Узбекские Visa/Mastercard
@@ -54,31 +54,31 @@ function MethodsTable({ lang }: { lang: 'uz' | 'ru' }) {
     {
       method: 'App Store (iOS)',
       payment: { uz: 'Apple ID balansi yoki xorijiy karta', ru: 'Баланс Apple ID или зарубежная карта' },
-      price: { uz: '$4.99 / oy', ru: '$4.99 / мес.' },
+      price: { uz: "$3.99 / oy yoki $29.99 / yil (O'zbekiston vitrinasi)", ru: '$3.99 / мес. или $29.99 / год (витрина Узбекистана)' },
       uzWorks: 'no',
     },
     {
       method: 'Google Play (Android)',
       payment: { uz: 'Google Play balansi yoki xorijiy karta', ru: 'Баланс Google Play или зарубежная карта' },
-      price: { uz: '$4.99 / oy', ru: '$4.99 / мес.' },
+      price: { uz: "To'lov oynasida ko'rinadi (mintaqaga bog'liq)", ru: 'Видна в окне оплаты (зависит от региона)' },
       uzWorks: 'no',
     },
     {
       method: '@PremiumBot (rasmiy)',
       payment: { uz: 'Visa / Mastercard (xorijiy)', ru: 'Visa / Mastercard (зарубежные)' },
-      price: { uz: '$3.99 / oy', ru: '$3.99 / мес.' },
+      price: { uz: "Do'kon narxidan past (aniq summa botda)", ru: 'Ниже цены магазинов (точная сумма в боте)' },
       uzWorks: 'no',
     },
     {
       method: 'Fragment (TON)',
       payment: { uz: 'TON crypto wallet', ru: 'TON-кошелёк (крипта)' },
-      price: { uz: '~$11.99 / 3 oy (TON kursiga bog\'liq)', ru: '~$11.99 / 3 мес. (зависит от TON)' },
+      price: { uz: '$11.99 / 3 oy, $28.99 / 12 oy', ru: '$11.99 / 3 мес., $28.99 / 12 мес.' },
       uzWorks: 'partial',
     },
     {
       method: lang === 'uz' ? 'Gift Premium (sovg\'a)' : 'Gift Premium (подарок)',
       payment: { uz: 'Boshqa foydalanuvchi to\'laydi', ru: 'Платит другой пользователь' },
-      price: { uz: lang === 'uz' ? '$11.99 / 3 oy (sovg\'a beruvchi to\'laydi)' : '$11.99 / 3 мес.', ru: '$11.99 / 3 мес.' },
+      price: { uz: "$11.99–$14.99 / 3 oy (kanalga qarab, sovg'a beruvchi to'laydi)", ru: '$11.99–$14.99 / 3 мес. (зависит от канала)' },
       uzWorks: 'partial',
     },
     {
@@ -178,8 +178,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "Narxlar 2026-yil may holatiga ko'ra. App Store/Google Play narxlari mintaqaviy soliqlar bilan o'zgaradi; Fragment narxi TON/USD kursiga bog'liq va kunlik tebranadi."
-          : 'Цены на май 2026 года. Цены в App Store / Google Play меняются с региональными налогами; цена Fragment зависит от курса TON/USD и колеблется ежедневно.'}
+          ? "Narxlar 2026-yil 7-oktabrda qayta tekshirilgan (App Store — O'zbekiston vitrinasi). App Store/Google Play narxlari mintaqaviy soliqlar bilan o'zgaradi; Fragment narxi TON/USD kursiga bog'liq va kunlik tebranadi."
+          : 'Цены перепроверены 7 октября 2026 года (App Store — витрина Узбекистана). Цены в App Store / Google Play меняются с региональными налогами; цена Fragment зависит от курса TON/USD и колеблется ежедневно.'}
       </p>
     </div>
   )
@@ -206,7 +206,8 @@ function UzBody() {
       <p>
         iPhone&apos;da Telegram ilovasini ochib — <strong>Sozlamalar &gt; Telegram Premium &gt;
         Subscribe</strong> tugmasini bossangiz, App Store to&apos;lov oynasi ochiladi. Apple
-        komissiyasi qo&apos;shilgan narx — <strong>$4.99/oy</strong>.
+        komissiyasi qo&apos;shilgan narx O&apos;zbekiston vitrinasida — <strong>$3.99/oy</strong> yoki{' '}
+        <strong>$29.99/yil</strong> (AQSh vitrinasida $4.99/oy).
       </p>
       <ul>
         <li><strong>To&apos;lov:</strong> Apple ID balansi yoki Apple ID&apos;ga biriktirilgan karta.</li>
@@ -222,7 +223,8 @@ function UzBody() {
       <p>
         Android&apos;da Telegram ilovasida <strong>Sozlamalar &gt; Telegram Premium &gt;
         Subscribe</strong> tugmasi orqali Google Play to&apos;lov ekrani ochiladi. Bu yerda
-        ham Google komissiyasi qo&apos;shilgan — <strong>$4.99/oy</strong>.
+        ham Google komissiyasi qo&apos;shilgan; aniq narx akkaunt mintaqasiga qarab to&apos;lov
+        oynasida ko&apos;rinadi.
       </p>
       <ul>
         <li><strong>To&apos;lov:</strong> Google Play balansi yoki Google hisobiga biriktirilgan karta.</li>
@@ -235,8 +237,8 @@ function UzBody() {
       <h2 id="premium-bot">3. @PremiumBot — Telegram&apos;ning rasmiy boti</h2>
       <p>
         Telegram&apos;da <strong>@PremiumBot</strong> rasmiy bot — App Store/Google Play
-        komissiyasiz to&apos;g&apos;ridan-to&apos;g&apos;ri obuna: <strong>$3.99/oy</strong>{' '}
-        (App Store va Google Play narxidan past). Bot Telegram&apos;ning xalqaro to&apos;lov
+        komissiyasiz to&apos;g&apos;ridan-to&apos;g&apos;ri obuna. Telegram FAQ&apos;iga ko&apos;ra bu
+        obunalar sukut bo&apos;yicha chegirmali; aniq summa botning o&apos;zida ko&apos;rsatiladi. Bot Telegram&apos;ning xalqaro to&apos;lov
         tizimi orqali ishlaydi va asosan xorijiy Visa/Mastercard (mintaqaga ko&apos;ra Apple Pay/Google Pay)
         kartalarini qabul qiladi.
       </p>
@@ -249,8 +251,8 @@ function UzBody() {
       <p>
         <a href="https://fragment.com/premium" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">Fragment.com/premium</a>{' '}
         — TON crypto orqali ishlovchi rasmiy Telegram marketplace. Bu yerda Premium narxi
-        TON valyutasida ko&apos;rsatiladi va odatda eng arzon (chegirma kampaniyalari paytida
-        $11.99/3 oy gacha tushadi).
+        TON valyutasida ko&apos;rsatiladi va odatda eng arzon: 2026-yil 7-oktabr holatiga
+        3 oy $11.99, 6 oy $15.99, 12 oy $28.99.
       </p>
       <ul>
         <li><strong>Talab:</strong> Fragment akkaunti + TON wallet + TON crypto.</li>
@@ -296,9 +298,9 @@ function UzBody() {
 
       <h2 id="qaysi-usul">Qaysi usulni tanlash kerak?</h2>
       <ul>
-        <li><strong>Sizda xorijiy Visa/Mastercard bor</strong> → @PremiumBot eng arzon oylik rasmiy yo&apos;l ($3.99/oy).</li>
-        <li><strong>Sizda faqat Apple/Google balansi bor</strong> → App Store yoki Google Play orqali ($4.99/oy).</li>
-        <li><strong>Sizda TON crypto va Fragment akkaunti bor</strong> → Fragment uzoq muddatda eng arzon (chegirmali $11.99/3 oy yoki $28.99/12 oy).</li>
+        <li><strong>Sizda xorijiy Visa/Mastercard bor</strong> → @PremiumBot — do&apos;kon komissiyasisiz oylik rasmiy yo&apos;l.</li>
+        <li><strong>Sizda faqat Apple/Google balansi bor</strong> → App Store yoki Google Play orqali (App Store O&apos;zbekiston vitrinasida $3.99/oy).</li>
+        <li><strong>Sizda TON crypto va Fragment akkaunti bor</strong> → Fragment eng arzon ($11.99/3 oy yoki $28.99/12 oy).</li>
         <li><strong>Sizda faqat O&apos;zbek karta (UzCard/Humo/Click/Payme) bor</strong> → <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a> — amaldagi yagona to&apos;g&apos;ridan-to&apos;g&apos;ri yo&apos;l.</li>
         <li><strong>Sizga uzoq muddatli obuna kerak</strong> → 12 oylik paket ({formatUzs(P12.priceUzs)}) — oyiga ~{formatUzs(P12.perMonthHint)}.</li>
         <li><strong>Sovg&apos;a qilmoqchisiz</strong> → tanishingizning profilidagi &quot;Gift Premium&quot; tugmasi yoki uzgets botida @username kiriting.</li>
@@ -306,16 +308,20 @@ function UzBody() {
 
       <InlineBotCTA lang="uz" text="O'zbek kartangizdan to'g'ri yo'l — botda 2-5 daqiqada Premium." />
 
-      <h2 id="narx-farqi">Nega App Store narxi ($4.99) PremiumBot narxidan ($3.99) qimmat?</h2>
+      <h2 id="narx-farqi">Nega App Store narxi @PremiumBot narxidan qimmat?</h2>
       <p>
         Apple va Google ilova ichidagi sotuvlardan komissiya oladi (Apple — odatda 30%, Google —
         odatda 15%). Telegram bu komissiyani narxga qo&apos;shadi, shuning uchun App Store/Google Play&apos;da
-        Premium $1 chamasi qimmat. Bu Telegram&apos;ning ayblari emas, balki ilova do&apos;konlarining
-        ish modeli.
+        Premium @PremiumBot&apos;dagidan qimmatroq. Bu Telegram&apos;ning ayblari emas, balki ilova
+        do&apos;konlarining ish modeli.
       </p>
       <p>
-        Demak: <strong>iste&apos;molchi uchun App Store yo&apos;li doim ortiqcha haqdir</strong>. Agar
-        sizda imkon bo&apos;lsa — har qanday boshqa yo&apos;ldan o&apos;ting.
+        Narx mintaqaga ham bog&apos;liq: App Store&apos;da oylik obuna AQSh vitrinasida $4.99,
+        O&apos;zbekiston vitrinasida $3.99. Rasmiy narxlarning so&apos;mdagi hisobi va Uzgets bilan
+        foizli farqi:{' '}
+        <Link href="/blog/telegram-premium-rasmiy-narxi-somda-solishtirma" className="text-[var(--primary)] hover:underline">
+          Telegram Premium rasmiy narxi so&apos;mda
+        </Link>.
       </p>
 
       <h2 id="muddat-farqi">3 oy vs 6 oy vs 12 oy — qaysi tejamli?</h2>
@@ -391,7 +397,8 @@ function RuBody() {
       <h2 id="app-store">1. Через App Store (для iPhone)</h2>
       <p>
         В Telegram-приложении iPhone — <strong>Настройки &gt; Telegram Premium &gt; Subscribe</strong> —
-        открывается окно оплаты App Store. С комиссией Apple цена — <strong>$4.99/мес.</strong>
+        открывается окно оплаты App Store. С комиссией Apple цена в витрине
+        Узбекистана — <strong>$3.99/мес.</strong> или <strong>$29.99/год</strong> (в витрине США $4.99/мес.).
       </p>
       <ul>
         <li><strong>Оплата:</strong> баланс Apple ID или карта, привязанная к Apple ID.</li>
@@ -406,7 +413,8 @@ function RuBody() {
       <h2 id="google-play">2. Через Google Play (для Android)</h2>
       <p>
         На Android в Telegram — <strong>Настройки &gt; Telegram Premium &gt; Subscribe</strong> —
-        открывается экран оплаты Google Play. Тут тоже добавлена комиссия Google — <strong>$4.99/мес.</strong>
+        открывается экран оплаты Google Play. Тут тоже добавлена комиссия Google;
+        точная цена зависит от региона аккаунта и видна в окне оплаты.
       </p>
       <ul>
         <li><strong>Оплата:</strong> баланс Google Play или карта, привязанная к Google.</li>
@@ -419,7 +427,8 @@ function RuBody() {
       <h2 id="premium-bot">3. @PremiumBot — официальный бот Telegram</h2>
       <p>
         <strong>@PremiumBot</strong> в Telegram — официальный бот без комиссий App Store/Google Play,
-        прямая подписка: <strong>$3.99/мес.</strong> (дешевле цены App Store и Google Play). Бот
+        прямая подписка. По FAQ Telegram такие подписки по умолчанию идут со скидкой; точная
+        сумма показывается в самом боте. Бот
         работает через международную платёжную систему Telegram и принимает в основном зарубежные
         Visa/Mastercard (в зависимости от региона — Apple Pay/Google Pay).
       </p>
@@ -432,7 +441,7 @@ function RuBody() {
       <p>
         <a href="https://fragment.com/premium" target="_blank" rel="noopener" className="text-[var(--primary)] hover:underline">Fragment.com/premium</a>{' '}
         — официальный Telegram-маркетплейс на TON-крипте. Premium тут — в TON, и обычно
-        самая низкая цена (во время промо — до $11.99 / 3 мес.).
+        самая низкая цена: на 7 октября 2026 года 3 мес. — $11.99, 6 мес. — $15.99, 12 мес. — $28.99.
       </p>
       <ul>
         <li><strong>Требуется:</strong> аккаунт Fragment + TON-кошелёк + TON-крипта.</li>
@@ -478,9 +487,9 @@ function RuBody() {
 
       <h2 id="qaysi-usul">Какой способ выбрать?</h2>
       <ul>
-        <li><strong>У вас есть зарубежная Visa/Mastercard</strong> → @PremiumBot — самая дешёвая ежемесячная официальная цена ($3.99/мес.).</li>
-        <li><strong>У вас только баланс Apple/Google</strong> → App Store или Google Play ($4.99/мес.).</li>
-        <li><strong>У вас есть TON-крипта и аккаунт Fragment</strong> → Fragment — самый дешёвый на длительный срок (со скидкой $11.99 / 3 мес. или $28.99 / 12 мес.).</li>
+        <li><strong>У вас есть зарубежная Visa/Mastercard</strong> → @PremiumBot — официальная ежемесячная подписка без комиссии магазинов.</li>
+        <li><strong>У вас только баланс Apple/Google</strong> → App Store или Google Play (в витрине App Store Узбекистана $3.99/мес.).</li>
+        <li><strong>У вас есть TON-крипта и аккаунт Fragment</strong> → Fragment — самый дешёвый ($11.99 / 3 мес. или $28.99 / 12 мес.).</li>
         <li><strong>У вас только узб. карта (UzCard/Humo/Click/Payme)</strong> → <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a> — практически единственный прямой путь.</li>
         <li><strong>Вам нужна длительная подписка</strong> → 12 месяцев ({formatUzs(P12.priceUzs)}) — ~{formatUzs(P12.perMonthHint)}/мес.</li>
         <li><strong>Хотите подарить</strong> → кнопка &quot;Gift Premium&quot; в профиле знакомого или ввод @username в боте uzgets.</li>
@@ -488,15 +497,18 @@ function RuBody() {
 
       <InlineBotCTA lang="ru" text="Узб. картой — прямой путь, Premium за 2-5 минут." />
 
-      <h2 id="narx-farqi">Почему App Store ($4.99) дороже PremiumBot ($3.99)?</h2>
+      <h2 id="narx-farqi">Почему App Store дороже @PremiumBot?</h2>
       <p>
         Apple и Google берут комиссию с продаж внутри приложений (Apple — обычно 30%, Google —
         обычно 15%). Telegram эту комиссию включает в цену — поэтому в App Store/Google Play
-        Premium примерно на $1 дороже. Это не вина Telegram, а бизнес-модель магазинов приложений.
+        Premium дороже, чем в @PremiumBot. Это не вина Telegram, а бизнес-модель магазинов приложений.
       </p>
       <p>
-        Итог: <strong>App Store — всегда переплата для конечного покупателя</strong>. Если есть
-        возможность — пользуйтесь любым другим путём.
+        Цена зависит и от региона: месячная подписка в App Store стоит $4.99 в витрине США и $3.99
+        в витрине Узбекистана. Пересчёт официальных цен в сумы и разница с Uzgets в процентах:{' '}
+        <Link href="/ru/blog/telegram-premium-rasmiy-narxi-somda-solishtirma" className="text-[var(--primary)] hover:underline">
+          официальная цена Telegram Premium в сумах
+        </Link>.
       </p>
 
       <h2 id="muddat-farqi">3 мес. vs 6 мес. vs 12 мес. — что выгоднее?</h2>
@@ -552,7 +564,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: '2026-10-07',
   type: 'cta',
   locales: {
     uz: {
@@ -561,7 +573,7 @@ export const post: BlogPost = {
         "Telegram Premium sotib olishning 6 ta usuli: App Store, Google Play, @PremiumBot, Fragment, Gift va O'zbek mahalliy bot. Narxlar, to'lovlar va O'zbekistondan ishlay oladimi.",
       metaTitle: "Telegram Premium sotib olish — barcha usullar 2026 (to'liq)",
       metaDescription:
-        "Telegram Premium sotib olishning 6 usuli: App Store $4.99, Google Play $4.99, @PremiumBot $3.99, Fragment $11.99/3oy, Gift va O'zbek bot — 168 000 so'm/3 oy.",
+        "Telegram Premium sotib olishning 6 usuli: App Store $3.99/oy, Google Play, @PremiumBot, Fragment $11.99/3 oy, Gift va O'zbek bot — 168 000 so'm/3 oy.",
       ogDescription:
         "6 ta usul, narxlar va qaysi yo'l O'zbekistondan amalda ishlaydi — to'liq qo'llanma.",
       answerBoxTitle: 'Qisqa javob',
@@ -571,7 +583,7 @@ export const post: BlogPost = {
         {
           question: 'Telegram Premium sotib olishning eng arzon usuli qaysi?',
           answer:
-            "Fragment (TON crypto) — taxminan $11.99 / 3 oy (chegirma kampaniyalari paytida). Lekin Fragment uchun TON wallet va KYC kerak. O'zbek karta egalari uchun Fragment amalda ishlamaydi. Mahalliy karta bilan — uzgets botida 3 oylik 168 000 so'm.",
+            "Fragment (TON crypto) — 2026-yil 7-oktabr holatiga $11.99 / 3 oy. Lekin Fragment uchun TON wallet va KYC kerak. O'zbek karta egalari uchun Fragment amalda ishlamaydi. Mahalliy karta bilan — uzgets botida 3 oylik 168 000 so'm.",
         },
         {
           question: "O'zbek kartam (UzCard/Humo) bilan App Store'da Premium sotib ololamanmi?",
@@ -581,7 +593,7 @@ export const post: BlogPost = {
         {
           question: 'Nega App Store narxi @PremiumBot narxidan qimmat?',
           answer:
-            "App Store/Google Play ilova ichidagi sotuvlardan komissiya oladi (Apple odatda 30%, Google odatda 15%) va Telegram bu komissiyani narxga qo'shadi. Shuning uchun App Store/Google Play'da Premium $4.99/oy, @PremiumBot'da $3.99/oy.",
+            "App Store/Google Play ilova ichidagi sotuvlardan komissiya oladi (Apple odatda 30%, Google odatda 15%) va Telegram bu komissiyani narxga qo'shadi. Telegram FAQ'iga ko'ra @PremiumBot orqali obunalar shu komissiya yo'qligi uchun chegirmali. App Store'da oylik narx O'zbekiston vitrinasida $3.99, AQSh vitrinasida $4.99.",
         },
         {
           question: "@PremiumBot O'zbek karta bilan ishlaydimi?",
@@ -619,7 +631,7 @@ export const post: BlogPost = {
         '6 способов купить Telegram Premium: App Store, Google Play, @PremiumBot, Fragment, Gift и узбекский локальный бот. Цены, оплата и работает ли из Узбекистана.',
       metaTitle: 'Купить Telegram Premium — все способы 2026 (полное)',
       metaDescription:
-        '6 способов: App Store $4.99, Google Play $4.99, @PremiumBot $3.99, Fragment ~$11.99/3 мес., Gift и узб. бот — 168 000 сум за 3 мес.',
+        '6 способов: App Store $3.99/мес., Google Play, @PremiumBot, Fragment $11.99/3 мес., Gift и узб. бот — 168 000 сум за 3 мес.',
       ogDescription:
         '6 способов, цены и какой путь реально работает из Узбекистана — полное руководство.',
       answerBoxTitle: 'Краткий ответ',
@@ -629,7 +641,7 @@ export const post: BlogPost = {
         {
           question: 'Какой самый дешёвый способ купить Telegram Premium?',
           answer:
-            'Fragment (TON-крипта) — около $11.99 / 3 мес. (в период скидок). Но для Fragment нужны TON-кошелёк и KYC. Для держателей узб. карт Fragment на практике не работает. С локальной картой — в боте uzgets 3-мес. за 168 000 сум.',
+            'Fragment (TON-крипта) — $11.99 / 3 мес. на 7 октября 2026 года. Но для Fragment нужны TON-кошелёк и KYC. Для держателей узб. карт Fragment на практике не работает. С локальной картой — в боте uzgets 3-мес. за 168 000 сум.',
         },
         {
           question: 'Могу ли я купить Premium в App Store моей узб. картой (UzCard/Humo)?',
@@ -639,7 +651,7 @@ export const post: BlogPost = {
         {
           question: 'Почему в App Store дороже, чем в @PremiumBot?',
           answer:
-            'App Store/Google Play берут комиссию с продаж внутри приложений (Apple обычно 30%, Google обычно 15%), и Telegram включает эту комиссию в цену. Поэтому в App Store/Google Play Premium $4.99/мес., в @PremiumBot — $3.99/мес.',
+            'App Store/Google Play берут комиссию с продаж внутри приложений (Apple обычно 30%, Google обычно 15%), и Telegram включает эту комиссию в цену. По FAQ Telegram подписки через @PremiumBot идут со скидкой, так как этой комиссии нет. В App Store месячная цена — $3.99 в витрине Узбекистана и $4.99 в витрине США.',
         },
         {
           question: 'Работает ли @PremiumBot с узб. картой?',

@@ -68,14 +68,14 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
   const rows =
     lang === 'uz'
       ? [
-          ['3 oylik Premium', '168 000 so\'m', '~$13.99 ≈ 175 000 so\'m', 'Eng arzon kirish'],
-          ['6 oylik Premium', '228 000 so\'m', '~$19.99 ≈ 250 000 so\'m', 'Eng mashhur'],
-          ['12 oylik Premium', '408 000 so\'m', '~$28.99 ≈ 363 000 so\'m', 'Yiliga eng katta tejam'],
+          ['3 oylik Premium', '168 000 so\'m', '$11.99 ≈ 141 000 so\'m', 'Eng arzon kirish'],
+          ['6 oylik Premium', '228 000 so\'m', '$15.99 ≈ 189 000 so\'m', 'Eng mashhur'],
+          ['12 oylik Premium', '408 000 so\'m', '$28.99 ≈ 342 000 so\'m', 'Yiliga eng katta tejam'],
         ]
       : [
-          ['3 месяца Premium', '168 000 сум', '~$13.99 ≈ 175 000 сум', 'Самый дешёвый старт'],
-          ['6 месяцев Premium', '228 000 сум', '~$19.99 ≈ 250 000 сум', 'Самый популярный'],
-          ['12 месяцев Premium', '408 000 сум', '~$28.99 ≈ 363 000 сум', 'Максимальная годовая экономия'],
+          ['3 месяца Premium', '168 000 сум', '$11.99 ≈ 141 000 сум', 'Самый дешёвый старт'],
+          ['6 месяцев Premium', '228 000 сум', '$15.99 ≈ 189 000 сум', 'Самый популярный'],
+          ['12 месяцев Premium', '408 000 сум', '$28.99 ≈ 342 000 сум', 'Максимальная годовая экономия'],
         ]
   return (
     <div className="not-prose my-6 overflow-x-auto">
@@ -109,8 +109,8 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
       </table>
       <p className="mt-2 text-xs text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "Fragment narxi TON kursiga qarab o'zgaradi; uzgets narxi so'mda qat'iy."
-          : 'Цена Fragment колеблется по курсу TON; цена uzgets фиксирована в сумах.'}
+          ? "Fragment narxi 2026-yil 7-oktabrda tekshirilgan, so'mga Markaziy bank kursi (11 790,79) bo'yicha o'tkazilgan; to'lov TON yoki USDT bilan. Uzgets narxi so'mda qat'iy."
+          : 'Цена Fragment проверена 7 октября 2026 года, пересчёт по курсу Центробанка (11 790,79); оплата в TON или USDT. Цена uzgets фиксирована в сумах.'}
       </p>
     </div>
   )
@@ -317,7 +317,7 @@ function UzBody() {
         >
           fragment.com/premium/gift
         </a>
-        . Bu yerda Premium $13.99 / $19.99 / $28.99 atrofida (3/6/12 oy uchun). Lekin:
+        . Bu yerda Premium 2026-yil 7-oktabr holatiga $11.99 / $15.99 / $28.99 (3/6/12 oy uchun) — dollarda Uzgets narxidan arzon. Lekin:
       </p>
       <ul>
         <li>
@@ -642,7 +642,7 @@ function RuBody() {
         >
           fragment.com/premium/gift
         </a>
-        . Здесь Premium стоит примерно $13.99 / $19.99 / $28.99 (за 3/6/12 месяцев). Но:
+        . Здесь Premium на 7 октября 2026 года стоит $11.99 / $15.99 / $28.99 (за 3/6/12 месяцев) — в долларах дешевле, чем в Uzgets. Но:
       </p>
       <ul>
         <li>
@@ -889,7 +889,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: '2026-10-07',
   type: 'cta',
   locales: {
     uz: {
