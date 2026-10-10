@@ -43,6 +43,8 @@ import { post as telegramGiftsNima } from './posts/42-telegram-gifts-sovgalar-ni
 import { post as premiumKartaXavfsizmi } from './posts/43-telegram-premium-karta-malumotlari-xavfsizmi'
 import { post as premiumRasmiyNarxiSomda } from './posts/44-telegram-premium-rasmiy-narxi-somda-solishtirma'
 import { post as premiumSovgasiKelmadi } from './posts/45-telegram-premium-sovgasi-kelmadi'
+import { post as premiumAvtomatikUzayadimi } from './posts/46-telegram-premium-avtomatik-uzayadimi'
+import { post as premiumPulQaytariladimi } from './posts/47-telegram-premium-pul-qaytariladimi'
 import type { BlogPost } from './types'
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -91,6 +93,8 @@ export const BLOG_POSTS: BlogPost[] = [
   premiumKartaXavfsizmi,
   premiumRasmiyNarxiSomda,
   premiumSovgasiKelmadi,
+  premiumAvtomatikUzayadimi,
+  premiumPulQaytariladimi,
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

@@ -24,8 +24,8 @@ Foydalanuvchi talabi: ketma-ket bitta bo'limdan hammasini yozish emas — birinc
 | 6 | 6. Xavfsizlik/ishonch | Telegram Premium sotib olganda karta ma'lumotlari xavfsizmi? | ✅ Yozildi (2026-09-30) — `telegram-premium-karta-malumotlari-xavfsizmi` |
 | 7 | 7. Sotuvchi/tijoriy | Telegram Premium'ni rasmiy narxdan qancha arzon sotib olish mumkin — App Store/Google bilan 2026 raqamli solishtirma | ✅ Yozildi (2026-10-07) — `telegram-premium-rasmiy-narxi-somda-solishtirma` (burchak o'zgartirildi: rasmiy narx so'mda + foizli farq; Uzgets Fragment/yillik obunadan qimmat ekani ochiq yozilgan) |
 | 8 | 1 | Telegram Premium sovg'asi qabul qiluvchiga yetib bormadi — sabablari va yechim | ✅ Yozildi (2026-10-07) — `telegram-premium-sovgasi-kelmadi` |
-| 9 | 2 | Telegram Premium avtomatik uzayadimi va kutilmagan pul yechilishini qanday to'xtatish mumkin? | ❌ |
-| 10 | 3 | Telegram Premium uchun to'langan pul qaytariladimi — shartlari qanday? | ❌ |
+| 9 | 2 | Telegram Premium avtomatik uzayadimi va kutilmagan pul yechilishini qanday to'xtatish mumkin? | ✅ Yozildi (2026-10-10) — `telegram-premium-avtomatik-uzayadimi` (mavjud `telegram-premium-obunasini-bekor-qilish`dan farqi: kanal bo'yicha uzayish jadvali + kutilmagan yechilish sabablari) |
+| 10 | 3 | Telegram Premium uchun to'langan pul qaytariladimi — shartlari qanday? | ✅ Yozildi (2026-10-10) — `telegram-premium-pul-qaytariladimi` |
 | 11 | 4 | Telegram'da sovg'a qanday sotib olinadi va kimga yuboriladi | ❌ |
 | 12 | 5 | Telegram Premium sotib olishning eng tez yo'li qaysi — 2026 solishtirma | ❌ |
 | 13 | 6 | Soxta Telegram Premium sotuvchi botlarini qanday aniqlash mumkin | ❌ |
