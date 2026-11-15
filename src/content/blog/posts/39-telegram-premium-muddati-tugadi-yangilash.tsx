@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -130,6 +130,7 @@ function UzBody() {
             <tr className="border-t border-[var(--border)]"><td className="px-4 py-3">12 oy</td><td className="px-4 py-3">{formatUzs(P12.priceUzs)}</td></tr>
           </tbody>
         </table>
+        <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
       </div>
       <ol>
         <li>{siteConfig.bot}ni oching va <strong>&quot;Premium sotib olish&quot;</strong> bo&apos;limini tanlang.</li>
@@ -244,6 +245,7 @@ function RuBody() {
             <tr className="border-t border-[var(--border)]"><td className="px-4 py-3">12 месяцев</td><td className="px-4 py-3">{formatUzs(P12.priceUzs)}</td></tr>
           </tbody>
         </table>
+        <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
       </div>
       <ol>
         <li>Откройте {siteConfig.bot} и выберите раздел <strong>«Купить Premium»</strong>.</li>
@@ -303,7 +305,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'howto',
   locales: {
     uz: {

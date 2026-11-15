@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
@@ -15,7 +15,7 @@ function UzAnswerBox() {
       Telegram Premium&apos;ni O&apos;zbekistondan sotib olishning eng amaliy yo&apos;li —{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       orqali UzCard, Humo, Click yoki Payme bilan to&apos;lash. Eng arzon paket{' '}
-      <strong>3 oylik 168 000 so&apos;m</strong>, 6 oylik 228 000, 12 oylik 408 000 so&apos;m.
+      <strong>3 oylik {formatNumber(PREMIUM_PRICE[3])} so&apos;m</strong>, 6 oylik {formatNumber(PREMIUM_PRICE[6])}, 12 oylik {formatNumber(PREMIUM_PRICE[12])} so&apos;m.
       Botda START &gt; @username &gt; muddat &gt; mahalliy karta — odatda 2-5 daqiqada akkauntga
       biriktiriladi. Fragment, App Store yoki rasmiy @PremiumBot O&apos;zbek kartani qabul
       qilmaydi, shuning uchun mahalliy bot — amaliy yagona yo&apos;l.
@@ -29,7 +29,7 @@ function RuAnswerBox() {
       Самый практичный способ купить Telegram Premium из Узбекистана — через бот{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       с оплатой UzCard, Humo, Click или Payme. Самый дешёвый пакет —{' '}
-      <strong>3 месяца за 168 000 сум</strong>, 6 месяцев — 228 000, 12 месяцев — 408 000.
+      <strong>3 месяца за {formatNumber(PREMIUM_PRICE[3])} сум</strong>, 6 месяцев — {formatNumber(PREMIUM_PRICE[6])}, 12 месяцев — {formatNumber(PREMIUM_PRICE[12])}.
       В боте: START &gt; @username &gt; срок &gt; локальная карта — обычно за 2-5 минут
       зачисляется на аккаунт. Fragment, App Store и официальный @PremiumBot узбекские карты
       не принимают, поэтому локальный бот — практически единственный путь.
@@ -64,6 +64,7 @@ function PremiumPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -181,8 +182,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "Narxlar 2026-yil may holatiga ko'ra. Yangilanishlarda sahifa qayta tekshiriladi."
-          : 'Цены на май 2026 года. При обновлениях страница будет пересмотрена.'}
+          ? "Narxlar 2026-yil 15-noyabr holatiga ko'ra. Yangilanishlarda sahifa qayta tekshiriladi."
+          : 'Цены на 15 ноября 2026 года. При обновлениях страница будет пересмотрена.'}
       </p>
     </div>
   )
@@ -204,7 +205,7 @@ function UzBody() {
         Quyidagi qadamlar — botda buyurtmani 5 daqiqada yakunlash uchun:
       </p>
 
-      <InlineBotCTA lang="uz" text="Premium 3 oylik 168 000 so'mga — botda buyurtmangizni hozir rasmiylashtiring." />
+      <InlineBotCTA lang="uz" text={`Premium 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'mga — botda buyurtmangizni hozir rasmiylashtiring.`} />
 
       <h2 id="qadam-baqadam">5 qadamda Premium sotib olish</h2>
       <ol>
@@ -222,8 +223,8 @@ function UzBody() {
           username kerak.
         </li>
         <li>
-          Muddatni tanlang: <strong>3 oy</strong> (168 000 so&apos;m), <strong>6 oy</strong>{' '}
-          (228 000) yoki <strong>12 oy</strong> (408 000).
+          Muddatni tanlang: <strong>3 oy</strong> ({formatNumber(PREMIUM_PRICE[3])} so&apos;m), <strong>6 oy</strong>{' '}
+          ({formatNumber(PREMIUM_PRICE[6])}) yoki <strong>12 oy</strong> ({formatNumber(PREMIUM_PRICE[12])}).
         </li>
         <li>
           UzCard, Humo, Click yoki Payme orqali to&apos;lang. Tasdiq kelgach, Premium 2-5
@@ -241,7 +242,7 @@ function UzBody() {
       <h2 id="narxlar">Premium narxlari va qaysi paket foydaliroq?</h2>
       <PremiumPriceTable lang="uz" />
       <p>
-        12 oylik paket bir oyiga taxminan <strong>34 000 so&apos;m</strong>ni tashkil qiladi —
+        12 oylik paket bir oyiga taxminan <strong>{formatNumber(PREMIUM_PRICE[12] / 12)} so&apos;m</strong>ni tashkil qiladi —
         bu 3 oyligidan ~40% arzon. Agar Premium&apos;ni doimiy ishlatish niyatingiz bo&apos;lsa,
         12 oylik eng tejamli. Birinchi marta sinab ko&apos;rish uchun 3 oylik mos. 6 oylik —
         oraliq variant, eng mashhur tarif.
@@ -254,7 +255,7 @@ function UzBody() {
         .
       </p>
 
-      <InlineBotCTA lang="uz" text="12 oylik 408 000 so'm — bir oyiga ~34 000 so'm. Botda buyurtma bering." />
+      <InlineBotCTA lang="uz" text={`12 oylik ${formatNumber(PREMIUM_PRICE[12])} so'm — bir oyiga ~${formatNumber(PREMIUM_PRICE[12] / 12)} so'm. Botda buyurtma bering.`} />
 
       <h2 id="qaysi-tolov">Qaysi to&apos;lov usuli mos? UzCard, Humo, Click, Payme</h2>
       <p>
@@ -396,7 +397,7 @@ function RuBody() {
       <PathsTable lang="ru" />
       <p>Ниже шаги — оформить заказ в боте за 5 минут:</p>
 
-      <InlineBotCTA lang="ru" text="Premium 3 месяца — 168 000 сум. Оформите заказ в боте прямо сейчас." />
+      <InlineBotCTA lang="ru" text={`Premium 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум. Оформите заказ в боте прямо сейчас.`} />
 
       <h2 id="qadam-baqadam">5 шагов к покупке Premium</h2>
       <ol>
@@ -413,8 +414,8 @@ function RuBody() {
           получателя для подарка. Нужен именно username, не номер телефона.
         </li>
         <li>
-          Выберите срок: <strong>3 месяца</strong> (168 000 сум), <strong>6 месяцев</strong>{' '}
-          (228 000) или <strong>12 месяцев</strong> (408 000).
+          Выберите срок: <strong>3 месяца</strong> ({formatNumber(PREMIUM_PRICE[3])} сум), <strong>6 месяцев</strong>{' '}
+          ({formatNumber(PREMIUM_PRICE[6])}) или <strong>12 месяцев</strong> ({formatNumber(PREMIUM_PRICE[12])}).
         </li>
         <li>
           Оплатите через UzCard, Humo, Click или Payme. После подтверждения Premium зачисляется
@@ -432,7 +433,7 @@ function RuBody() {
       <h2 id="narxlar">Цены Premium и какой пакет выгоднее?</h2>
       <PremiumPriceTable lang="ru" />
       <p>
-        12-месячный пакет в пересчёте на месяц — около <strong>34 000 сум</strong>, это на ~40%
+        12-месячный пакет в пересчёте на месяц — около <strong>{formatNumber(PREMIUM_PRICE[12] / 12)} сум</strong>, это на ~40%
         дешевле 3-месячного. Если планируете пользоваться постоянно, 12 месяцев — самый выгодный
         вариант. Для первой пробы подходит 3 месяца. 6 месяцев — компромисс, самый популярный
         тариф.
@@ -445,7 +446,7 @@ function RuBody() {
         .
       </p>
 
-      <InlineBotCTA lang="ru" text="12 месяцев — 408 000 сум, около 34 000 сум в месяц. Оформите в боте." />
+      <InlineBotCTA lang="ru" text={`12 месяцев — ${formatNumber(PREMIUM_PRICE[12])} сум, около ${formatNumber(PREMIUM_PRICE[12] / 12)} сум в месяц. Оформите в боте.`} />
 
       <h2 id="qaysi-tolov">Какой способ оплаты выбрать? UzCard, Humo, Click, Payme</h2>
       <p>
@@ -566,7 +567,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
@@ -575,7 +576,7 @@ export const post: BlogPost = {
         "O'zbekistondan UzCard, Humo, Click yoki Payme bilan Telegram Premium sotib olish — botda 5 qadam, 2-5 daqiqa. Narxlar, alternativalar va xavfsizlik qoidalari.",
       metaTitle: "Telegram Premium O'zbekistondan qanday sotib olinadi 2026",
       metaDescription:
-        "Telegram Premium O'zbekistonda UzCard/Humo/Click/Payme orqali — 3 oy 168 000, 12 oy 408 000 so'm. To'liq qo'llanma, alternativalar, xavfsizlik.",
+        `Telegram Premium O'zbekistonda UzCard/Humo/Click/Payme orqali — 3 oy ${formatNumber(PREMIUM_PRICE[3])}, 12 oy ${formatNumber(PREMIUM_PRICE[12])} so'm. To'liq qo'llanma, alternativalar, xavfsizlik.`,
       ogDescription:
         "Telegram Premium O'zbekistondan — mahalliy karta orqali. Narxlar, qadamlar, alternativalar va xavfsizlik.",
       answerBoxTitle: 'Qisqa javob',
@@ -590,7 +591,7 @@ export const post: BlogPost = {
         {
           question: "Telegram Premium narxi qancha?",
           answer:
-            "Uzgets'da: 3 oylik 168 000 so'm, 6 oylik 228 000 so'm, 12 oylik 408 000 so'm. 12 oylik bir oyiga taxminan 34 000 so'mga to'g'ri keladi — uzoq muddatda eng tejamli.",
+            `Uzgets'da: 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm, 6 oylik ${formatNumber(PREMIUM_PRICE[6])} so'm, 12 oylik ${formatNumber(PREMIUM_PRICE[12])} so'm. 12 oylik bir oyiga taxminan ${formatNumber(PREMIUM_PRICE[12] / 12)} so'mga to'g'ri keladi — uzoq muddatda eng tejamli.`,
         },
         {
           question: 'UzCard yoki Humo bilan to\'g\'ridan-to\'g\'ri Telegram\'ga to\'lasa bo\'ladimi?',
@@ -615,7 +616,7 @@ export const post: BlogPost = {
         {
           question: '12 oylik vs 3 oylik — qaysisi mos?',
           answer:
-            "Birinchi marta sinab ko'rmoqchi bo'lsangiz — 3 oylik (168 000 so'm). Doimiy ishlatmoqchi bo'lsangiz — 12 oylik (408 000), bir oyiga ~34 000 so'mga tushadi va 3 oylikdan 40% arzon. 6 oylik — oraliq variant, eng mashhur tarif.",
+            `Birinchi marta sinab ko'rmoqchi bo'lsangiz — 3 oylik (${formatNumber(PREMIUM_PRICE[3])} so'm). Doimiy ishlatmoqchi bo'lsangiz — 12 oylik (${formatNumber(PREMIUM_PRICE[12])}), bir oyiga ~${formatNumber(PREMIUM_PRICE[12] / 12)} so'mga tushadi va 3 oylikdan 40% arzon. 6 oylik — oraliq variant, eng mashhur tarif.`,
         },
         {
           question: 'Karta ma\'lumotlarim Uzgets\'da saqlanadimi?',
@@ -633,7 +634,7 @@ export const post: BlogPost = {
         'Купить Telegram Premium из Узбекистана через UzCard, Humo, Click или Payme — 5 шагов в боте, 2-5 минут. Цены, альтернативы и правила безопасности.',
       metaTitle: 'Как купить Telegram Premium из Узбекистана 2026',
       metaDescription:
-        'Telegram Premium в Узбекистане через UzCard/Humo/Click/Payme — 3 мес. 168 000, 12 мес. 408 000 сум. Полное руководство, альтернативы, безопасность.',
+        `Telegram Premium в Узбекистане через UzCard/Humo/Click/Payme — 3 мес. ${formatNumber(PREMIUM_PRICE[3])}, 12 мес. ${formatNumber(PREMIUM_PRICE[12])} сум. Полное руководство, альтернативы, безопасность.`,
       ogDescription:
         'Telegram Premium из Узбекистана — локальной картой. Цены, шаги, альтернативы и безопасность.',
       answerBoxTitle: 'Краткий ответ',
@@ -648,7 +649,7 @@ export const post: BlogPost = {
         {
           question: 'Сколько стоит Telegram Premium?',
           answer:
-            'В Uzgets: 3 месяца — 168 000 сум, 6 месяцев — 228 000, 12 месяцев — 408 000. 12-месячный пакет в пересчёте на месяц — около 34 000 сум, самый выгодный на длительный срок.',
+            `В Uzgets: 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум, 6 месяцев — ${formatNumber(PREMIUM_PRICE[6])}, 12 месяцев — ${formatNumber(PREMIUM_PRICE[12])}. 12-месячный пакет в пересчёте на месяц — около ${formatNumber(PREMIUM_PRICE[12] / 12)} сум, самый выгодный на длительный срок.`,
         },
         {
           question: 'Можно ли оплатить UzCard или Humo напрямую в Telegram?',
@@ -673,7 +674,7 @@ export const post: BlogPost = {
         {
           question: '12 месяцев или 3 месяца — что выбрать?',
           answer:
-            'Если хотите попробовать впервые — 3 месяца (168 000 сум). Если планируете пользоваться постоянно — 12 месяцев (408 000), это около 34 000 сум в месяц, на 40% дешевле 3-месячного. 6 месяцев — промежуточный, самый популярный.',
+            `Если хотите попробовать впервые — 3 месяца (${formatNumber(PREMIUM_PRICE[3])} сум). Если планируете пользоваться постоянно — 12 месяцев (${formatNumber(PREMIUM_PRICE[12])}), это около ${formatNumber(PREMIUM_PRICE[12] / 12)} сум в месяц, на 40% дешевле 3-месячного. 6 месяцев — промежуточный, самый популярный.`,
         },
         {
           question: 'Сохраняются ли данные моей карты в Uzgets?',

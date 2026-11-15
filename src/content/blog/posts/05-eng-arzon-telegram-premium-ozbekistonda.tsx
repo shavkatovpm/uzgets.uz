@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -30,17 +30,8 @@ const COMPETITORS_3M: Competitor3M[] = [
   },
   {
     name: 'StarsJoy',
-    price: 172_000,
+    price: 179_000,
     paymentNote: { uz: 'Mahalliy karta', ru: 'Локальная карта' },
-  },
-  {
-    name: 'Boshqa botlar',
-    price: 170_000,
-    isRange: true,
-    paymentNote: {
-      uz: '170 000 – 180 000 so‘m oralig‘ida',
-      ru: 'диапазон 170 000 – 180 000 сум',
-    },
   },
 ]
 
@@ -51,8 +42,8 @@ function UzAnswerBox() {
       bo&apos;lgan xizmatlar orasida{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       eng arzon. 3 oylik narx — <strong>{formatUzs(PREMIUM_3M.priceUzs)}</strong> (oyiga ~
-      {formatUzs(PREMIUM_3M.perMonthHint)}). Yaqin raqobatchi StarsJoy 3 oylik 172 000 so&apos;m,
-      boshqa botlarda 170 000–180 000 so&apos;m. 6 oylik {formatUzs(PREMIUM_6M.priceUzs)} (oyiga ~
+      {formatUzs(PREMIUM_3M.perMonthHint)}). Yaqin raqobatchi StarsJoy 3 oylik 179 000 so&apos;m.
+      6 oylik {formatUzs(PREMIUM_6M.priceUzs)} (oyiga ~
       {formatUzs(PREMIUM_6M.perMonthHint)}), 12 oylik {formatUzs(PREMIUM_12M.priceUzs)} (oyiga ~
       {formatUzs(PREMIUM_12M.perMonthHint)}). To&apos;lov UzCard, Humo, Click yoki Payme orqali —
       Apple Pay yoki Visa kerak emas.
@@ -67,7 +58,7 @@ function RuAnswerBox() {
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       — самый дешёвый. 3-месячная цена — <strong>{formatUzs(PREMIUM_3M.priceUzs)}</strong> (около{' '}
       {formatUzs(PREMIUM_3M.perMonthHint)} в месяц). У ближайшего конкурента StarsJoy 3 месяца —
-      172 000 сум, у других ботов — 170 000–180 000 сум. 6 месяцев — {formatUzs(PREMIUM_6M.priceUzs)}{' '}
+      179 000 сум. 6 месяцев — {formatUzs(PREMIUM_6M.priceUzs)}{' '}
       (~{formatUzs(PREMIUM_6M.perMonthHint)}/мес), 12 месяцев — {formatUzs(PREMIUM_12M.priceUzs)}{' '}
       (~{formatUzs(PREMIUM_12M.perMonthHint)}/мес). Оплата UzCard, Humo, Click или Payme — Apple
       Pay или Visa не требуются.
@@ -109,10 +100,11 @@ function ComparisonTable({ lang }: { lang: 'uz' | 'ru' }) {
           })}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       <div className="border-t border-[var(--border)] bg-[var(--muted)]/30 px-4 py-2 text-xs text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "2026-yil may holatiga ko'ra qo'lda taqqoslangan. Raqobatchi narxlari o'zgarsa sahifa yangilanadi."
-          : 'Сравнение вручную на май 2026 года. При изменении цен конкурентов страница обновляется.'}
+          ? "2026-yil noyabr holatiga ko'ra qo'lda taqqoslangan. Raqobatchi narxlari o'zgarsa sahifa yangilanadi."
+          : 'Сравнение вручную на ноябрь 2026 года. При изменении цен конкурентов страница обновляется.'}
       </div>
     </div>
   )
@@ -193,12 +185,12 @@ function UzBody() {
       </p>
       <ComparisonTable lang="uz" />
       <p>
-        StarsJoy bilan farq 4 000 so&apos;m, boshqa botlar bilan 2 000–12 000 so&apos;m. Bir
+        StarsJoy bilan farq 4 000 so&apos;m. Bir
         ko&apos;rinishda kichik, lekin 12 oylik bo&apos;yicha qaralganda bu farq{' '}
-        <strong>16 000–48 000 so&apos;m</strong> tejovga aylanadi.
+        <strong>16 000 so&apos;m</strong> tejovga aylanadi.
       </p>
 
-      <InlineBotCTA lang="uz" text="3 oylik Premium 168 000 so'mga — botda buyurtmangizni rasmiylashtiring." />
+      <InlineBotCTA lang="uz" text={`3 oylik Premium ${formatNumber(PREMIUM_PRICE[3])} so'mga — botda buyurtmangizni rasmiylashtiring.`} />
 
       <h2 id="fragment-app-store">Nega Apple Pay va @PremiumBot taqqoslamada yo&apos;q?</h2>
       <p>
@@ -259,9 +251,9 @@ function UzBody() {
         tashkil etadi (3 oylik bilan solishtirganda).
       </p>
 
-      <InlineBotCTA lang="uz" text="Uzoq muddat tanlasangiz, oyiga 34 000 so'mdan boshlab. Botda buyurtma bering." />
+      <InlineBotCTA lang="uz" text={`Uzoq muddat tanlasangiz, oyiga ${formatNumber(PREMIUM_PRICE[12] / 12)} so'mdan boshlab. Botda buyurtma bering.`} />
 
-      <h2 id="qanday-sotib-olinadi">168 000 so&apos;mga 3 oylik Premium qanday sotib olinadi?</h2>
+      <h2 id="qanday-sotib-olinadi">{formatNumber(PREMIUM_PRICE[3])} so&apos;mga 3 oylik Premium qanday sotib olinadi?</h2>
       <ol>
         <li>
           Telegram&apos;da{' '}
@@ -343,7 +335,7 @@ function UzBody() {
       <h2 id="muhim-eslatma">Muhim eslatmalar</h2>
       <ul>
         <li>
-          Bu sahifadagi raqobatchi narxlari 2026-yil may holatiga taalluqli; Uzgets bozorni xolisona
+          Bu sahifadagi raqobatchi narxlari 2026-yil noyabr holatiga taalluqli; Uzgets bozorni xolisona
           kuzatib boradi va o&apos;zgarish bo&apos;lsa sahifa yangilanadi.
         </li>
         <li>
@@ -373,12 +365,12 @@ function RuBody() {
       </p>
       <ComparisonTable lang="ru" />
       <p>
-        Разница со StarsJoy — 4 000 сум, с другими ботами — 2 000–12 000 сум. На первый взгляд
+        Разница со StarsJoy — 4 000 сум. На первый взгляд
         немного, но за 12 месяцев это экономия{' '}
-        <strong>16 000–48 000 сум</strong>.
+        <strong>16 000 сум</strong>.
       </p>
 
-      <InlineBotCTA lang="ru" text="3 месяца Premium за 168 000 сум — оформите заказ в боте." />
+      <InlineBotCTA lang="ru" text={`3 месяца Premium за ${formatNumber(PREMIUM_PRICE[3])} сум — оформите заказ в боте.`} />
 
       <h2 id="fragment-app-store">Почему Apple Pay и @PremiumBot не входят в сравнение?</h2>
       <p>
@@ -432,9 +424,9 @@ function RuBody() {
         тарифом на 3 месяца.
       </p>
 
-      <InlineBotCTA lang="ru" text="Длинный тариф — от 34 000 сум в месяц. Оформите заказ в боте." />
+      <InlineBotCTA lang="ru" text={`Длинный тариф — от ${formatNumber(PREMIUM_PRICE[12] / 12)} сум в месяц. Оформите заказ в боте.`} />
 
-      <h2 id="qanday-sotib-olinadi">Как купить 3-месячный Premium за 168 000 сум?</h2>
+      <h2 id="qanday-sotib-olinadi">Как купить 3-месячный Premium за {formatNumber(PREMIUM_PRICE[3])} сум?</h2>
       <ol>
         <li>
           Откройте{' '}
@@ -513,7 +505,7 @@ function RuBody() {
       <h2 id="muhim-eslatma">Важные замечания</h2>
       <ul>
         <li>
-          Цены конкурентов — на май 2026 года. Uzgets отслеживает рынок и обновляет страницу при
+          Цены конкурентов — на ноябрь 2026 года. Uzgets отслеживает рынок и обновляет страницу при
           изменениях.
         </li>
         <li>
@@ -537,25 +529,25 @@ const TODAY = '2026-05-07'
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {
-      title: "Eng arzon Telegram Premium O'zbekistonda — 3 oylik 168 000 so'm",
+      title: `Eng arzon Telegram Premium O'zbekistonda — 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm`,
       description:
-        "O'zbekistonda mahalliy karta bilan Telegram Premium sotib olish uchun eng arzon variant — Uzgets, 3 oylik 168 000 so'm. StarsJoy va boshqa botlar bilan to'liq taqqoslama.",
-      metaTitle: "Eng arzon Telegram Premium O'zbekistonda — 3 oylik 168 000 so'm",
+        `O'zbekistonda mahalliy karta bilan Telegram Premium sotib olish uchun eng arzon variant — Uzgets, 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm. StarsJoy bilan to'liq taqqoslama.`,
+      metaTitle: `Eng arzon Telegram Premium O'zbekistonda — 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm`,
       metaDescription:
-        "Telegram Premium eng arzon — Uzgets'da 3 oylik 168 000 so'm. StarsJoy 172 000, boshqa botlar 170–180 000. UzCard/Humo/Click/Payme bilan to'lov, viza kerak emas.",
+        `Telegram Premium eng arzon — Uzgets'da 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm. StarsJoy 179 000. UzCard/Humo/Click/Payme bilan to'lov, viza kerak emas.`,
       ogDescription:
-        "O'zbekistonda eng arzon Telegram Premium — Uzgets, 3 oylik 168 000 so'm. Raqobatchilar bilan taqqoslama.",
+        `O'zbekistonda eng arzon Telegram Premium — Uzgets, 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm. Raqobatchilar bilan taqqoslama.`,
       answerBoxTitle: 'Qisqa javob',
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
       faq: [
         {
           question: "O'zbekistonda eng arzon Telegram Premium qaerda?",
-          answer: `Mahalliy karta (UzCard, Humo, Click, Payme) bilan to'lash mumkin bo'lgan xizmatlar orasida — Uzgets'da. 3 oylik ${formatUzs(PREMIUM_3M.priceUzs)}, oyiga taxminan ${formatUzs(PREMIUM_3M.perMonthHint)}. Raqobatchi StarsJoy'da 3 oylik 172 000 so'm, boshqa botlarda 170 000–180 000 so'm.`,
+          answer: `Mahalliy karta (UzCard, Humo, Click, Payme) bilan to'lash mumkin bo'lgan xizmatlar orasida — Uzgets'da. 3 oylik ${formatUzs(PREMIUM_3M.priceUzs)}, oyiga taxminan ${formatUzs(PREMIUM_3M.perMonthHint)}. Raqobatchi StarsJoy'da 3 oylik 179 000 so'm.`,
         },
         {
           question: 'Apple Pay yoki Visa orqali Premium arzonroq emasmi?',
@@ -591,21 +583,21 @@ export const post: BlogPost = {
         "Botga kiring, kerakli muddatni tanlang va mahalliy karta orqali to'lang. Premium akkauntga avtomatik biriktiriladi.",
     },
     ru: {
-      title: 'Самый дешёвый Telegram Premium в Узбекистане — 3 месяца за 168 000 сум',
+      title: `Самый дешёвый Telegram Premium в Узбекистане — 3 месяца за ${formatNumber(PREMIUM_PRICE[3])} сум`,
       description:
-        'Самый дешёвый способ купить Telegram Premium локальной картой в Узбекистане — Uzgets, 3 месяца за 168 000 сум. Полное сравнение со StarsJoy и другими ботами.',
-      metaTitle: 'Самый дешёвый Telegram Premium в Узбекистане — 3 месяца за 168 000 сум',
+        `Самый дешёвый способ купить Telegram Premium локальной картой в Узбекистане — Uzgets, 3 месяца за ${formatNumber(PREMIUM_PRICE[3])} сум. Полное сравнение со StarsJoy.`,
+      metaTitle: `Самый дешёвый Telegram Premium в Узбекистане — 3 месяца за ${formatNumber(PREMIUM_PRICE[3])} сум`,
       metaDescription:
-        'Telegram Premium дёшево — в Uzgets 3 месяца за 168 000 сум. StarsJoy 172 000, другие боты 170–180 000. Оплата UzCard/Humo/Click/Payme — без Visa.',
+        `Telegram Premium дёшево — в Uzgets 3 месяца за ${formatNumber(PREMIUM_PRICE[3])} сум. StarsJoy 179 000. Оплата UzCard/Humo/Click/Payme — без Visa.`,
       ogDescription:
-        'Самый дешёвый Telegram Premium в Узбекистане — Uzgets, 3 месяца за 168 000 сум. Сравнение с конкурентами.',
+        `Самый дешёвый Telegram Premium в Узбекистане — Uzgets, 3 месяца за ${formatNumber(PREMIUM_PRICE[3])} сум. Сравнение с конкурентами.`,
       answerBoxTitle: 'Краткий ответ',
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
       faq: [
         {
           question: 'Где в Узбекистане самый дешёвый Telegram Premium?',
-          answer: `Среди сервисов с оплатой локальной картой (UzCard, Humo, Click, Payme) — в Uzgets. 3 месяца — ${formatUzs(PREMIUM_3M.priceUzs)}, около ${formatUzs(PREMIUM_3M.perMonthHint)} в месяц. У StarsJoy 3 месяца — 172 000 сум, у других ботов — 170 000–180 000.`,
+          answer: `Среди сервисов с оплатой локальной картой (UzCard, Humo, Click, Payme) — в Uzgets. 3 месяца — ${formatUzs(PREMIUM_3M.priceUzs)}, около ${formatUzs(PREMIUM_3M.perMonthHint)} в месяц. У StarsJoy 3 месяца — 179 000 сум.`,
         },
         {
           question: 'Не дешевле ли Premium через Apple Pay или Visa?',

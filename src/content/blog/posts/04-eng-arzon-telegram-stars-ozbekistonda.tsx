@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_BASE, STARS_PACKS } from '@/config/products'
+import { STARS_BASE, STARS_PACKS, STAR_PRICE, starsPrice, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -29,8 +29,8 @@ const COMPETITORS: Competitor[] = [
   },
   {
     name: 'StarsJoy',
-    pricePer50: 12_000,
-    pricePerStar: 240,
+    pricePer50: 12_700,
+    pricePerStar: 254,
     paymentNote: {
       uz: 'Mahalliy karta',
       ru: 'Локальная карта',
@@ -54,8 +54,8 @@ function UzAnswerBox() {
       Stars sotib olish mumkin bo&apos;lgan xizmatlar orasida{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       eng arzon. Asos paket — 50 ⭐{' '}
-      <strong>{formatUzs(STARS_BASE.priceUzs)}</strong> (har Stars taxminan 220 so&apos;m). Yaqin
-      raqobatchi StarsJoy&apos;da 50 ⭐ 12 000 so&apos;m, boshqa ilova/botlarda esa 14 000–18 000
+      <strong>{formatUzs(STARS_BASE.priceUzs)}</strong> (har Stars taxminan {STAR_PRICE} so&apos;m). Yaqin
+      raqobatchi StarsJoy&apos;da 50 ⭐ 12 700 so&apos;m, boshqa ilova/botlarda esa 14 000–18 000
       so&apos;m. Fragment va Apple/Google ichidagi xarid texnik jihatdan arzonroq, lekin ular
       O&apos;zbek karta qabul qilmaydi — shuning uchun amaliy taqqoslamada ishtirok etmaydi. Narx
       barcha paketlarga proportsional qo&apos;llaniladi.
@@ -70,8 +70,8 @@ function RuAnswerBox() {
       Humo, Click, Payme),{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       — самый дешёвый. Базовый пакет — 50 ⭐{' '}
-      <strong>{formatUzs(STARS_BASE.priceUzs)}</strong> (около 220 сум за звезду). У ближайшего
-      конкурента StarsJoy 50 ⭐ — 12 000 сум, у других ботов и приложений — 14 000–18 000 сум.
+      <strong>{formatUzs(STARS_BASE.priceUzs)}</strong> (около {STAR_PRICE} сум за звезду). У ближайшего
+      конкурента StarsJoy 50 ⭐ — 12 700 сум, у других ботов и приложений — 14 000–18 000 сум.
       Fragment и встроенная покупка Apple/Google технически дешевле, но они не принимают узбекские
       карты — поэтому в практическое сравнение не входят. Цена пропорциональна ко всем пакетам.
     </p>
@@ -111,6 +111,7 @@ function ComparisonTable({ lang }: { lang: 'uz' | 'ru' }) {
           })}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -174,8 +175,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "Raqobatchi narxlari 2026-yil may holatiga ko'ra qo'lda taqqoslangan; yangilanishlar bo'lsa sahifa qayta ko'rib chiqiladi."
-          : 'Цены конкурентов сверены вручную на май 2026 года; при изменениях страница будет обновлена.'}
+          ? "Raqobatchi narxlari 2026-yil noyabr holatiga ko'ra qo'lda taqqoslangan; yangilanishlar bo'lsa sahifa qayta ko'rib chiqiladi."
+          : 'Цены конкурентов сверены вручную на ноябрь 2026 года; при изменениях страница будет обновлена.'}
       </p>
     </div>
   )
@@ -189,18 +190,18 @@ function UzBody() {
         Mahalliy karta bilan to&apos;lab Stars sotib olish mumkin bo&apos;lgan xizmatlar orasida{' '}
         <strong>Uzgets eng arzon</strong> — 50 ⭐ {formatUzs(STARS_BASE.priceUzs)}. Bu narx 50 dan
         boshlab barcha paketlarga proportsional qo&apos;llaniladi: har Stars taxminan{' '}
-        <strong>220 so&apos;m</strong>.
+        <strong>{STAR_PRICE} so&apos;m</strong>.
       </p>
       <ComparisonTable lang="uz" />
       <p>
-        Yaqin raqobatchi StarsJoy&apos;da o&apos;sha 50 ⭐ — 12 000 so&apos;m. Farq 1 000
+        Yaqin raqobatchi StarsJoy&apos;da o&apos;sha 50 ⭐ — 12 700 so&apos;m. Farq 1 000
         so&apos;m kichik tuyulishi mumkin, ammo 1 000 ta Stars sotib olganda farq{' '}
         <strong>20 000 so&apos;m</strong>ga yetadi. Boshqa ilova va botlarda 50 ⭐ 14 000–18 000
         so&apos;m oralig&apos;ida — bu narx Uzgets&apos;dan{' '}
-        <strong>30–60% qimmat</strong>.
+        <strong>20–55% qimmat</strong>.
       </p>
 
-      <InlineBotCTA lang="uz" text="Hozir 50 ⭐ atigi 11 000 so'mga — botda buyurtmangizni rasmiylashtiring." />
+      <InlineBotCTA lang="uz" text={`Hozir 50 ⭐ atigi ${formatNumber(starsPrice(50))} so'mga — botda buyurtmangizni rasmiylashtiring.`} />
 
       <h2 id="fragment-app-store">Nega Fragment va Apple/Google taqqoslamada yo&apos;q?</h2>
       <p>
@@ -267,7 +268,7 @@ function UzBody() {
 
       <InlineBotCTA lang="uz" text="Kerakli paketni botda tanlang — narx avtomatik hisoblanadi." />
 
-      <h2 id="qanday-sotib-olinadi">11 000 so&apos;mga 50 Stars qanday sotib olinadi?</h2>
+      <h2 id="qanday-sotib-olinadi">{formatNumber(starsPrice(50))} so&apos;mga 50 Stars qanday sotib olinadi?</h2>
       <ol>
         <li>
           Telegram&apos;da{' '}
@@ -321,15 +322,15 @@ function UzBody() {
       <h2 id="qaysi-paket">Qaysi paket qaysi vaziyatga arzon?</h2>
       <ul>
         <li>
-          <strong>50–100 ⭐ (11 000–22 000 so&apos;m):</strong> bir-ikki bot/mini-app to&apos;lovi
+          <strong>50–100 ⭐ ({formatNumber(starsPrice(50))}–{formatNumber(starsPrice(100))} so&apos;m):</strong> bir-ikki bot/mini-app to&apos;lovi
           yoki kichik sovg&apos;a. Birinchi xarid uchun ham eng past kirish narxi.
         </li>
         <li>
-          <strong>500 ⭐ (110 000 so&apos;m):</strong> Premium emoji obunasi yoki bir nechta paid
+          <strong>500 ⭐ ({formatNumber(starsPrice(500))} so&apos;m):</strong> Premium emoji obunasi yoki bir nechta paid
           media to&apos;lovi uchun. 5–10 ta kichik xarid.
         </li>
         <li>
-          <strong>1 000–2 500 ⭐ (220 000–550 000 so&apos;m):</strong> faol foydalanuvchi yoki
+          <strong>1 000–2 500 ⭐ ({formatNumber(starsPrice(1000))}–{formatNumber(starsPrice(2500))} so&apos;m):</strong> faol foydalanuvchi yoki
           biznes mini-app uchun. Katta paket bilan bir buyurtmada uzoq muddat ishlatasiz.
         </li>
         <li>
@@ -352,7 +353,7 @@ function UzBody() {
       <h2 id="muhim-eslatma">Muhim eslatmalar</h2>
       <ul>
         <li>
-          Bu sahifadagi raqobatchi narxlari 2026-yil may holatiga taalluqli; raqobatchilar narxni
+          Bu sahifadagi raqobatchi narxlari 2026-yil noyabr holatiga taalluqli; raqobatchilar narxni
           o&apos;zgartirishi mumkin — Uzgets ham narxni xolisona kuzatib boradi.
         </li>
         <li>
@@ -377,17 +378,17 @@ function RuBody() {
         Среди сервисов, где можно оплатить Stars локальной картой,{' '}
         <strong>Uzgets — самый дешёвый</strong>: 50 ⭐ — {formatUzs(STARS_BASE.priceUzs)}. Эта цена
         пропорционально применяется ко всем пакетам начиная от 50: одна звезда стоит около{' '}
-        <strong>220 сум</strong>.
+        <strong>{STAR_PRICE} сум</strong>.
       </p>
       <ComparisonTable lang="ru" />
       <p>
-        У ближайшего конкурента StarsJoy те же 50 ⭐ — 12 000 сум. Разница в 1 000 сум кажется
+        У ближайшего конкурента StarsJoy те же 50 ⭐ — 12 700 сум. Разница в 1 000 сум кажется
         небольшой, но при покупке 1 000 звёзд она достигает <strong>20 000 сум</strong>. У других
         ботов и приложений 50 ⭐ продаются за 14 000–18 000 сум — это{' '}
-        <strong>на 30–60% дороже</strong> Uzgets.
+        <strong>на 20–55% дороже</strong> Uzgets.
       </p>
 
-      <InlineBotCTA lang="ru" text="50 ⭐ всего за 11 000 сум — оформите заказ в боте." />
+      <InlineBotCTA lang="ru" text={`50 ⭐ всего за ${formatNumber(starsPrice(50))} сум — оформите заказ в боте.`} />
 
       <h2 id="fragment-app-store">Почему Fragment и Apple/Google не входят в сравнение?</h2>
       <p>
@@ -447,7 +448,7 @@ function RuBody() {
 
       <InlineBotCTA lang="ru" text="Выберите пакет в боте — цена считается автоматически." />
 
-      <h2 id="qanday-sotib-olinadi">Как купить 50 Stars за 11 000 сум?</h2>
+      <h2 id="qanday-sotib-olinadi">Как купить 50 Stars за {formatNumber(starsPrice(50))} сум?</h2>
       <ol>
         <li>
           Откройте{' '}
@@ -495,15 +496,15 @@ function RuBody() {
       <h2 id="qaysi-paket">Какой пакет выбрать с учётом цены?</h2>
       <ul>
         <li>
-          <strong>50–100 ⭐ (11 000–22 000 сум):</strong> одна-две оплаты в боте/mini-app или
+          <strong>50–100 ⭐ ({formatNumber(starsPrice(50))}–{formatNumber(starsPrice(100))} сум):</strong> одна-две оплаты в боте/mini-app или
           небольшой подарок. Самый низкий порог входа.
         </li>
         <li>
-          <strong>500 ⭐ (110 000 сум):</strong> подписка на премиум-эмодзи или несколько paid
+          <strong>500 ⭐ ({formatNumber(starsPrice(500))} сум):</strong> подписка на премиум-эмодзи или несколько paid
           media. 5–10 небольших оплат.
         </li>
         <li>
-          <strong>1 000–2 500 ⭐ (220 000–550 000 сум):</strong> активный пользователь или бизнес
+          <strong>1 000–2 500 ⭐ ({formatNumber(starsPrice(1000))}–{formatNumber(starsPrice(2500))} сум):</strong> активный пользователь или бизнес
           mini-app. Один заказ — на длительный период.
         </li>
         <li>
@@ -526,7 +527,7 @@ function RuBody() {
       <h2 id="muhim-eslatma">Важные замечания</h2>
       <ul>
         <li>
-          Цены конкурентов на этой странице — на май 2026 года. Конкуренты могут менять стоимость;
+          Цены конкурентов на этой странице — на ноябрь 2026 года. Конкуренты могут менять стоимость;
           Uzgets отслеживает рынок объективно.
         </li>
         <li>
@@ -547,18 +548,18 @@ const TODAY = '2026-05-07'
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {
       title: "Eng arzon Telegram Stars O'zbekistonda 2026 — narx taqqoslama",
       description:
-        "O'zbekistonda mahalliy karta bilan Telegram Stars sotib olish uchun eng arzon variant — Uzgets, 50 ⭐ 11 000 so'm. StarsJoy va boshqa botlar bilan to'liq narx taqqoslamasi.",
-      metaTitle: "Eng arzon Telegram Stars O'zbekistonda — 50 ⭐ 11 000 so'm",
+        `O'zbekistonda mahalliy karta bilan Telegram Stars sotib olish uchun eng arzon variant — Uzgets, 50 ⭐ ${formatNumber(starsPrice(50))} so'm. StarsJoy va boshqa botlar bilan to'liq narx taqqoslamasi.`,
+      metaTitle: `Eng arzon Telegram Stars O'zbekistonda — 50 ⭐ ${formatNumber(starsPrice(50))} so'm`,
       metaDescription:
-        "Telegram Stars eng arzon narxda — Uzgets'da 50 ⭐ 11 000 so'm. StarsJoy 12 000, boshqa botlar 14–18 000. UzCard/Humo/Click/Payme bilan, mahalliy karta orqali.",
+        `Telegram Stars eng arzon narxda — Uzgets'da 50 ⭐ ${formatNumber(starsPrice(50))} so'm. StarsJoy 12 700, boshqa botlar 14–18 000. UzCard/Humo/Click/Payme bilan, mahalliy karta orqali.`,
       ogDescription:
-        "O'zbekistonda eng arzon Telegram Stars — Uzgets, 50 ⭐ 11 000 so'm. Raqobatchilar bilan to'liq taqqoslama.",
+        `O'zbekistonda eng arzon Telegram Stars — Uzgets, 50 ⭐ ${formatNumber(starsPrice(50))} so'm. Raqobatchilar bilan to'liq taqqoslama.`,
       answerBoxTitle: 'Qisqa javob',
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
@@ -566,7 +567,7 @@ export const post: BlogPost = {
         {
           question: "O'zbekistonda eng arzon Telegram Stars qaerdan?",
           answer:
-            "Mahalliy karta (UzCard, Humo, Click, Payme) bilan to'lash mumkin bo'lgan xizmatlar orasida — Uzgets. 50 ⭐ 11 000 so'm, har Stars taxminan 220 so'm. StarsJoy'da 50 ⭐ 12 000, boshqa botlar/ilovalarda 14 000–18 000 so'm.",
+            `Mahalliy karta (UzCard, Humo, Click, Payme) bilan to'lash mumkin bo'lgan xizmatlar orasida — Uzgets. 50 ⭐ ${formatNumber(starsPrice(50))} so'm, har Stars taxminan ${STAR_PRICE} so'm. StarsJoy'da 50 ⭐ 12 700, boshqa botlar/ilovalarda 14 000–18 000 so'm.`,
         },
         {
           question: 'Fragment Uzgetsdan arzon emasmi?',
@@ -576,17 +577,17 @@ export const post: BlogPost = {
         {
           question: "Apple Pay yoki Google Pay orqali Stars'ni arzonroq olib bo'ladimi?",
           answer:
-            "Apple/Google ilova ichidagi xarid 1 000 Stars'ni ~13.5 dollarga sotadi (~170 000 so'm). Lekin UzCard/Humo bu tizimlarda qabul qilinmaydi — xorijiy karta kerak. Mahalliy karta egasi uchun bu yo'l mavjud emas.",
+            "Apple/Google ilova ichidagi xarid 1 000 Stars'ni ~13.5 dollarga sotadi (O'zbekistonda ilova ichida 233 999 so'm, 04.11.2026). Lekin UzCard/Humo bu tizimlarda qabul qilinmaydi — xorijiy karta kerak. Mahalliy karta egasi uchun bu yo'l mavjud emas.",
         },
         {
           question: 'Eng kichik miqdor qancha?',
           answer:
-            "50 ⭐ — 11 000 so'm. Bundan kam buyurtma berib bo'lmaydi: bu Telegram tomonidan o'rnatilgan minimal chegara, hech bir vositachi xizmat undan kichik paketni sotmaydi.",
+            `50 ⭐ — ${formatNumber(starsPrice(50))} so'm. Bundan kam buyurtma berib bo'lmaydi: bu Telegram tomonidan o'rnatilgan minimal chegara, hech bir vositachi xizmat undan kichik paketni sotmaydi.`,
         },
         {
           question: '1 000 yoki 5 000 ta Stars sotib olganda farq qancha?',
           answer:
-            "Uzgets'da 1 000 ⭐ — 220 000 so'm, 5 000 ⭐ — 1 100 000 so'm. StarsJoy'da bir Stars 240 so'm bo'lgani uchun 1 000 ⭐ 240 000 (farq 20 000), 5 000 ⭐ 1 200 000 (farq 100 000). Boshqa botlarda farq yana ko'p bo'ladi.",
+            `Uzgets'da 1 000 ⭐ — ${formatNumber(starsPrice(1000))} so'm, 5 000 ⭐ — ${formatNumber(starsPrice(5000))} so'm. StarsJoy'da bir Stars 254 so'm bo'lgani uchun 1 000 ⭐ 254 000 (farq 20 000), 5 000 ⭐ 1 270 000 (farq 100 000). Boshqa botlarda farq yana ko'p bo'ladi.`,
         },
         {
           question: 'Arzon Stars sotib olganda xavf bormi?',
@@ -596,7 +597,7 @@ export const post: BlogPost = {
         {
           question: 'StarsJoy va Uzgets bir-biriga raqibmi?',
           answer:
-            "Ha, har ikkala xizmat ham O'zbekistonda mahalliy karta bilan Stars/Premium sotadi. 2026-yil may holatiga ko'ra Uzgets narxi (50 ⭐ 11 000 so'm) StarsJoy'dan (12 000 so'm) past. Raqobatchining narxi o'zgarsa sahifa yangilanadi.",
+            `Ha, har ikkala xizmat ham O'zbekistonda mahalliy karta bilan Stars/Premium sotadi. 2026-yil noyabr holatiga ko'ra Uzgets narxi (50 ⭐ ${formatNumber(starsPrice(50))} so'm) StarsJoy'dan (12 700 so'm) past. Raqobatchining narxi o'zgarsa sahifa yangilanadi.`,
         },
       ],
       finalCtaHeading: "Eng arzon narxda Stars sotib olishga tayyormisiz?",
@@ -606,12 +607,12 @@ export const post: BlogPost = {
     ru: {
       title: 'Самые дешёвые Telegram Stars в Узбекистане 2026 — сравнение цен',
       description:
-        'Самый дешёвый способ купить Telegram Stars локальной картой в Узбекистане — Uzgets, 50 ⭐ за 11 000 сум. Полное сравнение с StarsJoy и другими ботами.',
-      metaTitle: 'Самые дешёвые Telegram Stars в Узбекистане — 50 ⭐ за 11 000 сум',
+        `Самый дешёвый способ купить Telegram Stars локальной картой в Узбекистане — Uzgets, 50 ⭐ за ${formatNumber(starsPrice(50))} сум. Полное сравнение с StarsJoy и другими ботами.`,
+      metaTitle: `Самые дешёвые Telegram Stars в Узбекистане — 50 ⭐ за ${formatNumber(starsPrice(50))} сум`,
       metaDescription:
-        'Telegram Stars дёшево — в Uzgets 50 ⭐ за 11 000 сум. StarsJoy 12 000, остальные боты 14–18 000. UzCard/Humo/Click/Payme — оплата локальной картой.',
+        `Telegram Stars дёшево — в Uzgets 50 ⭐ за ${formatNumber(starsPrice(50))} сум. StarsJoy 12 700, остальные боты 14–18 000. UzCard/Humo/Click/Payme — оплата локальной картой.`,
       ogDescription:
-        'Самые дешёвые Telegram Stars в Узбекистане — Uzgets, 50 ⭐ за 11 000 сум. Сравнение с конкурентами.',
+        `Самые дешёвые Telegram Stars в Узбекистане — Uzgets, 50 ⭐ за ${formatNumber(starsPrice(50))} сум. Сравнение с конкурентами.`,
       answerBoxTitle: 'Краткий ответ',
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
@@ -619,7 +620,7 @@ export const post: BlogPost = {
         {
           question: 'Где в Узбекистане самые дешёвые Telegram Stars?',
           answer:
-            'Среди сервисов с оплатой локальной картой (UzCard, Humo, Click, Payme) — в Uzgets. 50 ⭐ за 11 000 сум, около 220 сум за звезду. У StarsJoy 50 ⭐ — 12 000, у других ботов и приложений — 14 000–18 000.',
+            `Среди сервисов с оплатой локальной картой (UzCard, Humo, Click, Payme) — в Uzgets. 50 ⭐ за ${formatNumber(starsPrice(50))} сум, около ${STAR_PRICE} сум за звезду. У StarsJoy 50 ⭐ — 12 700, у других ботов и приложений — 14 000–18 000.`,
         },
         {
           question: 'Разве Fragment не дешевле Uzgets?',
@@ -629,17 +630,17 @@ export const post: BlogPost = {
         {
           question: 'Можно ли купить Stars дешевле через Apple Pay или Google Pay?',
           answer:
-            'Встроенная покупка Apple/Google продаёт 1 000 Stars примерно за 13.5 долларов (~170 000 сум). Но UzCard/Humo эти системы не принимают — нужна зарубежная карта. Для владельца локальной карты этот путь недоступен.',
+            'Встроенная покупка Apple/Google продаёт 1 000 Stars примерно за 13.5 долларов (в Узбекистане в приложении 233 999 сум, 04.11.2026). Но UzCard/Humo эти системы не принимают — нужна зарубежная карта. Для владельца локальной карты этот путь недоступен.',
         },
         {
           question: 'Какое минимальное количество?',
           answer:
-            '50 ⭐ — 11 000 сум. Меньше заказать нельзя: это минимум, установленный Telegram, никакой посредник пакет меньше 50 не продаёт.',
+            `50 ⭐ — ${formatNumber(starsPrice(50))} сум. Меньше заказать нельзя: это минимум, установленный Telegram, никакой посредник пакет меньше 50 не продаёт.`,
         },
         {
           question: 'Какая разница при покупке 1 000 или 5 000 Stars?',
           answer:
-            'В Uzgets 1 000 ⭐ — 220 000 сум, 5 000 ⭐ — 1 100 000 сум. У StarsJoy цена за звезду 240 сум, поэтому 1 000 ⭐ обходятся в 240 000 (разница 20 000), 5 000 ⭐ — 1 200 000 (разница 100 000). У других ботов разрыв ещё больше.',
+            `В Uzgets 1 000 ⭐ — ${formatNumber(starsPrice(1000))} сум, 5 000 ⭐ — ${formatNumber(starsPrice(5000))} сум. У StarsJoy цена за звезду 254 сум, поэтому 1 000 ⭐ обходятся в 254 000 (разница 20 000), 5 000 ⭐ — 1 270 000 (разница 100 000). У других ботов разрыв ещё больше.`,
         },
         {
           question: 'Есть ли риск при покупке дешёвых Stars?',
@@ -649,7 +650,7 @@ export const post: BlogPost = {
         {
           question: 'StarsJoy и Uzgets — конкуренты?',
           answer:
-            'Да, оба сервиса продают Stars и Premium в Узбекистане с оплатой локальной картой. На май 2026 года цена Uzgets (50 ⭐ за 11 000 сум) ниже, чем у StarsJoy (12 000 сум). При изменении цены конкурента страница будет обновлена.',
+            `Да, оба сервиса продают Stars и Premium в Узбекистане с оплатой локальной картой. На ноябрь 2026 года цена Uzgets (50 ⭐ за ${formatNumber(starsPrice(50))} сум) ниже, чем у StarsJoy (12 700 сум). При изменении цены конкурента страница будет обновлена.`,
         },
       ],
       finalCtaHeading: 'Готовы купить Stars по самой низкой цене?',

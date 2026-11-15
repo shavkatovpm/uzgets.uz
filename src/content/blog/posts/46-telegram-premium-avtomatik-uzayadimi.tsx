@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatNumber, formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -117,6 +117,7 @@ function UzBody() {
         boshqarish tugmasi ko&apos;rinsa — bu avtomatik uzayuvchi obuna.
       </p>
       <InlineBotCTA lang="uz" text={`Takroriy yechilishsiz Premium: 3 oy — ${formatUzs(P3.priceUzs)}, bir martalik to'lov.`} />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
 
       <h2 id="sabab">Kutilmagan pul yechilishi: sabab → yechim</h2>
       <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]">
@@ -187,7 +188,7 @@ function UzBody() {
         alohida yozilgan.
       </p>
       <p>
-        {siteConfig.bot}dagi Telegram Premium narxlari (2026-yil 10-oktabr holatiga):
+        {siteConfig.bot}dagi Telegram Premium narxlari (2026-yil 15-noyabr holatiga):
       </p>
       <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]">
         <table className="w-full min-w-[560px] text-sm">
@@ -258,6 +259,7 @@ function RuBody() {
         если там есть кнопка управления подпиской — это автопродлевающаяся подписка.
       </p>
       <InlineBotCTA lang="ru" text={`Premium без регулярных списаний: 3 месяца — ${ruSum(P3.priceUzs)}, разовая оплата.`} />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
 
       <h2 id="sabab">Неожиданное списание: причина → решение</h2>
       <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]">
@@ -327,7 +329,7 @@ function RuBody() {
         .
       </p>
       <p>
-        Цены на Telegram Premium в {siteConfig.bot} (по состоянию на 10 октября 2026 года):
+        Цены на Telegram Premium в {siteConfig.bot} (по состоянию на 15 ноября 2026 года):
       </p>
       <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]">
         <table className="w-full min-w-[560px] text-sm">
@@ -361,7 +363,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'problem',
   locales: {
     uz: {

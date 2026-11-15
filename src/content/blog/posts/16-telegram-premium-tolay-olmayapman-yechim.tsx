@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
+import { PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatNumber } from '@/lib/format'
 
 const SLUG = 'telegram-premium-tolay-olmayapman-yechim'
 const TODAY = '2026-05-17'
@@ -355,7 +357,7 @@ function UzBody() {
         num={5}
         title="Karta texnik sabablarga ko'ra o'tmaydi"
         symptom="Karta umuman ishlaydi (do'konlarda to'laydi), lekin Premium uchun rad etiladi. Banking ilovasida 'tranzaksiya bloklangan' bildirishnomasi ko'rinadi."
-        fix="Banking ilovasini oching: (1) Karta sozlamalarida 'Internet to'lovlari' / 'CNP transactions' yoqilganmi? (2) Kunlik xarid limiti Premium summasidan ko'pmi? Odatda 200 000–500 000 so'm limit qo'yilgan bo'ladi, Premium 168 000 so'mdan boshlanadi — yetadi, lekin avvalgi xaridlar bilan birga limit to'lib qolishi mumkin. (3) Antifraud filtri xorijiy savdogarni shubhali deb belgilamoqda — bankga qo'ng'iroq qilib, 'Telegram' xaridini whitelist'ga qo'shishni so'rang. (4) Karta muddati tugagan yoki yangi qayta chiqarilgan bo'lsa — eski yo'q deb hisoblanadi."
+        fix={`Banking ilovasini oching: (1) Karta sozlamalarida 'Internet to'lovlari' / 'CNP transactions' yoqilganmi? (2) Kunlik xarid limiti Premium summasidan ko'pmi? Odatda 200 000–500 000 so'm limit qo'yilgan bo'ladi, Premium ${formatNumber(PREMIUM_PRICE[3])} so'mdan boshlanadi — yetadi, lekin avvalgi xaridlar bilan birga limit to'lib qolishi mumkin. (3) Antifraud filtri xorijiy savdogarni shubhali deb belgilamoqda — bankga qo'ng'iroq qilib, 'Telegram' xaridini whitelist'ga qo'shishni so'rang. (4) Karta muddati tugagan yoki yangi qayta chiqarilgan bo'lsa — eski yo'q deb hisoblanadi.`}
       />
 
       <h2 id="taqqoslash">Qaysi yo&apos;l qulay? — taqqoslash jadvali</h2>
@@ -388,22 +390,23 @@ function UzBody() {
       <p>
         Narxlar:{' '}
         <Link href="/premium/3-oylik" className="text-[var(--primary)] hover:underline">
-          3 oy — 168 000 so&apos;m
+          3 oy — {formatNumber(PREMIUM_PRICE[3])} so&apos;m
         </Link>
         ,{' '}
         <Link href="/premium/6-oylik" className="text-[var(--primary)] hover:underline">
-          6 oy — 228 000 so&apos;m
+          6 oy — {formatNumber(PREMIUM_PRICE[6])} so&apos;m
         </Link>
         ,{' '}
         <Link href="/premium/12-oylik" className="text-[var(--primary)] hover:underline">
-          12 oy — 408 000 so&apos;m
+          12 oy — {formatNumber(PREMIUM_PRICE[12])} so&apos;m
         </Link>
         .
       </p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
 
       <InlineBotCTA
         lang="uz"
-        text="3 oylik 168 000 so'mdan boshlab — START bosib oson buyurtma bering."
+        text={`3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'mdan boshlab — START bosib oson buyurtma bering.`}
       />
 
       <h2 id="qaror">30 soniyalik qaror algoritmi</h2>
@@ -438,7 +441,7 @@ function UzBody() {
           recurring tekshirilganmi?
         </li>
         <li>
-          Karta yetarli limitga egami? Premium 168 000+ so&apos;m, hold paytida muvaqqat
+          Karta yetarli limitga egami? Premium {formatNumber(PREMIUM_PRICE[3])}+ so&apos;m, hold paytida muvaqqat
           200 000+ so&apos;m qo&apos;yiladi.
         </li>
         <li>
@@ -590,7 +593,7 @@ function RuBody() {
         num={5}
         title="Карта не проходит по техническим причинам"
         symptom="Карта в целом работает (платит в магазинах), но для Premium отказ. В банковском приложении — уведомление 'транзакция заблокирована'."
-        fix="Откройте банковское приложение: (1) В настройках карты включены ли 'Интернет-платежи' / 'CNP transactions'? (2) Дневной лимит покупок больше суммы Premium? Обычно лимит 200 000–500 000 сум, Premium от 168 000 сум — хватает, но вместе с предыдущими покупками лимит может быть исчерпан. (3) Антифрод-фильтр помечает иностранного продавца как подозрительного — позвоните в банк и попросите внести 'Telegram' в whitelist. (4) Срок карты истёк или карта перевыпущена — старая считается недействительной."
+        fix={`Откройте банковское приложение: (1) В настройках карты включены ли 'Интернет-платежи' / 'CNP transactions'? (2) Дневной лимит покупок больше суммы Premium? Обычно лимит 200 000–500 000 сум, Premium от ${formatNumber(PREMIUM_PRICE[3])} сум — хватает, но вместе с предыдущими покупками лимит может быть исчерпан. (3) Антифрод-фильтр помечает иностранного продавца как подозрительного — позвоните в банк и попросите внести 'Telegram' в whitelist. (4) Срок карты истёк или карта перевыпущена — старая считается недействительной.`}
       />
 
       <h2 id="taqqoslash">Какой путь удобнее? — сравнительная таблица</h2>
@@ -628,22 +631,23 @@ function RuBody() {
       <p>
         Цены:{' '}
         <Link href="/ru/premium/3-oylik" className="text-[var(--primary)] hover:underline">
-          3 месяца — 168 000 сум
+          3 месяца — {formatNumber(PREMIUM_PRICE[3])} сум
         </Link>
         ,{' '}
         <Link href="/ru/premium/6-oylik" className="text-[var(--primary)] hover:underline">
-          6 месяцев — 228 000 сум
+          6 месяцев — {formatNumber(PREMIUM_PRICE[6])} сум
         </Link>
         ,{' '}
         <Link href="/ru/premium/12-oylik" className="text-[var(--primary)] hover:underline">
-          12 месяцев — 408 000 сум
+          12 месяцев — {formatNumber(PREMIUM_PRICE[12])} сум
         </Link>
         .
       </p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
 
       <InlineBotCTA
         lang="ru"
-        text="От 168 000 сум за 3 месяца — нажмите START и оформите легко."
+        text={`От ${formatNumber(PREMIUM_PRICE[3])} сум за 3 месяца — нажмите START и оформите легко.`}
       />
 
       <h2 id="qaror">30-секундный алгоритм решения</h2>
@@ -677,7 +681,7 @@ function RuBody() {
           международные платежи, recurring?
         </li>
         <li>
-          У карты достаточный лимит? Premium от 168 000 сум, на время hold временно
+          У карты достаточный лимит? Premium от {formatNumber(PREMIUM_PRICE[3])} сум, на время hold временно
           блокируется 200 000+ сум.
         </li>
         <li>
@@ -747,7 +751,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'problem',
   locales: {
     uz: {

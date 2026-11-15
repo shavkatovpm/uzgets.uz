@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import type { BlogPost } from '../types'
 
@@ -65,6 +65,7 @@ function ComparisonTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -82,8 +83,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {uz
-          ? "Web research va Uzgets konfiguratsiyasi 2026-yil 12-avgustda tekshirildi. Telegram ichidagi mavjudlik va narx xarid ekranida qayta tekshirilishi kerak."
-          : 'Веб-источники и конфигурация Uzgets проверены 12 августа 2026 года. Доступность и цену внутри Telegram нужно перепроверить на экране покупки.'}
+          ? "Web research 2026-yil 12-avgustda, Uzgets narxlari 2026-yil 15-noyabrda tekshirildi. Telegram ichidagi mavjudlik va narx xarid ekranida qayta tekshirilishi kerak."
+          : 'Веб-источники проверены 12 августа 2026 года, цены Uzgets — 15 ноября 2026 года. Доступность и цену внутри Telegram нужно перепроверить на экране покупки.'}
       </p>
     </div>
   )
@@ -109,7 +110,7 @@ function UzBody() {
       <p>Bu tekshiruv to&apos;lov qilmaydi; tasdiqlashdan oldin ortga qaytishingiz mumkin.</p>
 
       <h2 id="uzgetsda">Uzgets&apos;da 1 oylik Premium bormi?</h2>
-      <p><strong>Yo&apos;q.</strong> 2026-yil 12-avgust holatiga Uzgets katalogida 1 oylik paket mavjud emas. Eng kichik paket — <strong>3 oyga {formatUzs(P3.priceUzs)}</strong>, bir oyga hisoblaganda taxminan <strong>{formatUzs(P3.perMonthHint)}</strong>. Xarid bir martalik: muddat tugagach kartadan avtomatik pul yechilmaydi.</p>
+      <p><strong>Yo&apos;q.</strong> 2026-yil 15-noyabr holatiga Uzgets katalogida 1 oylik paket mavjud emas. Eng kichik paket — <strong>3 oyga {formatUzs(P3.priceUzs)}</strong>, bir oyga hisoblaganda taxminan <strong>{formatUzs(P3.perMonthHint)}</strong>. Xarid bir martalik: muddat tugagach kartadan avtomatik pul yechilmaydi.</p>
       <InlineBotCTA lang="uz" text={`Eng kichik paket — 3 oyga ${formatUzs(P3.priceUzs)}. Joriy narxni botda tekshiring.`} />
       <p>3 oylik paketning kimga mosligi va xarid qadamlari <Link href="/blog/telegram-premium-3-oylik-ozbekistonda" className="text-[var(--primary)] hover:underline">3 oylik Telegram Premium qo&apos;llanmasida</Link> tushuntirilgan.</p>
 
@@ -160,7 +161,7 @@ function RuBody() {
       <ol><li>Откройте официальное приложение Telegram.</li><li>Перейдите в <strong>Настройки → Telegram Premium</strong>.</li><li>Посмотрите доступные периоды.</li><li>Если есть один месяц, проверьте валюту и итоговую сумму до подтверждения.</li></ol>
 
       <h2 id="uzgets">Есть ли месячный пакет в Uzgets?</h2>
-      <p><strong>Нет.</strong> На 12 августа 2026 года минимальный пакет Uzgets — <strong>3 месяца за {formatUzs(P3.priceUzs)}</strong>, примерно <strong>{formatUzs(P3.perMonthHint)}</strong> в месяц. Это разовая покупка без автоматического списания после окончания срока.</p>
+      <p><strong>Нет.</strong> На 15 ноября 2026 года минимальный пакет Uzgets — <strong>3 месяца за {formatUzs(P3.priceUzs)}</strong>, примерно <strong>{formatUzs(P3.perMonthHint)}</strong> в месяц. Это разовая покупка без автоматического списания после окончания срока.</p>
       <InlineBotCTA lang="ru" text={`Минимальный пакет — 3 месяца за ${formatUzs(P3.priceUzs)}. Проверьте текущую цену в боте.`} />
       <p>Подробности есть в <Link href="/ru/blog/telegram-premium-3-oylik-ozbekistonda" className="text-[var(--primary)] hover:underline">руководстве по пакету на 3 месяца</Link>.</p>
 
@@ -187,7 +188,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'info',
   locales: {
     uz: {
@@ -202,7 +203,7 @@ export const post: BlogPost = {
       faq: [
         { question: "Telegram Premium 1 oylik bormi?", answer: "Ha, ayrim akkaunt va rasmiy to'lov provayderlarida 1 oylik shaxsiy obuna ko'rinishi mumkin. Sozlamalar → Telegram Premium bo'limida tekshiring." },
         { question: "Telegram Premium 1 oylik narxi qancha?", answer: "Universal narx yo'q. Summa mamlakat, App Store yoki Google Play akkaunti, to'lov usuli, soliq va provayder xarajatlariga bog'liq; xarid ekranidagi summa yakuniy." },
-        { question: "Uzgets'da 1 oylik Premium bormi?", answer: `Yo'q. 2026-yil 12-avgust holatiga eng kichik Uzgets paketi 3 oyga ${formatUzs(P3.priceUzs)}.` },
+        { question: "Uzgets'da 1 oylik Premium bormi?", answer: `Yo'q. 2026-yil 15-noyabr holatiga eng kichik Uzgets paketi 3 oyga ${formatUzs(P3.priceUzs)}.` },
         { question: "1 oylik Premium'ni sovg'a qilsa bo'ladimi?", answer: "Yo'q. Telegram'ning rasmiy sovg'a muddatlari 3, 6 va 12 oy. Bir oylik shaxsiy obunani boshqa akkauntga gift sifatida yuborib bo'lmaydi." },
         { question: "1 oylik Premium avtomatik uzayadimi?", answer: "Odatda ha. Shaxsiy oylik obuna bekor qilinmasa qayta to'lovga urinadi. Holatni xarid qilingan provayderning subscriptions bo'limida tekshiring." },
         { question: "1 oylik yoki 3 oylik Premium yaxshimi?", answer: "Qisqa shaxsiy sinov uchun 1 oylik, mahalliy to'lov, sovg'a va avtomatik yechimsiz xarid uchun 3 oylik Uzgets paketi qulayroq bo'lishi mumkin." },
@@ -222,7 +223,7 @@ export const post: BlogPost = {
       faq: [
         { question: 'Есть ли Telegram Premium на один месяц?', answer: 'Да, месячная личная подписка может отображаться для некоторых аккаунтов и официальных провайдеров. Проверьте Настройки → Telegram Premium.' },
         { question: 'Сколько стоит Premium на месяц?', answer: 'Единой цены нет. Она зависит от страны, App Store или Google Play, способа оплаты, налогов и сборов. Итоговая сумма отображается перед покупкой.' },
-        { question: 'Есть ли месячный Premium в Uzgets?', answer: `Нет. На 12 августа 2026 года минимальный пакет Uzgets — 3 месяца за ${formatUzs(P3.priceUzs)}.` },
+        { question: 'Есть ли месячный Premium в Uzgets?', answer: `Нет. На 15 ноября 2026 года минимальный пакет Uzgets — 3 месяца за ${formatUzs(P3.priceUzs)}.` },
         { question: 'Можно подарить Premium на один месяц?', answer: 'Нет. Официальные подарочные сроки Telegram — 3, 6 и 12 месяцев. Месячная личная подписка не отправляется как подарок.' },
         { question: 'Месячный Premium продлевается автоматически?', answer: 'Обычно да. Проверьте условия и при необходимости отмените подписку у того же провайдера, где она была оформлена.' },
         { question: 'Что лучше: один или три месяца?', answer: 'Для короткого личного теста подходит месяц, если он доступен. Для локальной оплаты, подарка и покупки без автосписания удобен пакет Uzgets на 3 месяца.' },

@@ -1,5 +1,5 @@
 import { formatNumber, formatUzs } from '@/lib/format'
-import { starsPrice } from './products'
+import { STAR_PRICE, starsPrice } from './products'
 import type { Locale } from '@/i18n/config'
 
 export type AudienceCard = { title: string; description: string }
@@ -17,10 +17,10 @@ export type StarsPageContent = {
 
 const FEATURED_UZ: Record<string, StarsPageContent> = {
   '50': {
-    metaTitle: "50 Telegram Stars sotib olish — 11 000 so'm — O'zbekistonda",
+    metaTitle: `50 Telegram Stars sotib olish — ${formatNumber(starsPrice(50))} so'm — O'zbekistonda`,
     metaDescription:
-      "50 ta Telegram Stars yulduzchasi O'zbekistonda 11 000 so'm. Eng kichik buyurtma. UzCard, Humo va Click orqali to'lov, @uzgetsbot orqali tezkor faollashtirish.",
-    oneLineSummary: "50 ta Telegram Stars — Uzgetsda eng kichik kirish paketi, 11 000 so'mga.",
+      `50 ta Telegram Stars yulduzchasi O'zbekistonda ${formatNumber(starsPrice(50))} so'm. Eng kichik buyurtma. UzCard, Humo va Click orqali to'lov, @uzgetsbot orqali tezkor faollashtirish.`,
+    oneLineSummary: `50 ta Telegram Stars — Uzgetsda eng kichik kirish paketi, ${formatNumber(starsPrice(50))} so'mga.`,
     whyThisAmount:
       "50 — Telegram Stars'ning eng kichik buyurtma miqdori. Tizimni sinab ko'rmoqchilar, bir martalik kichik xarid yoki sovg'a qilmoqchilar uchun ideal kirish nuqtasi. Bundan kichik miqdor sotib olib bo'lmaydi.",
     audience: [
@@ -75,20 +75,20 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
       {
         question: 'Eng arzon Telegram Stars buyurtmasi qaysi?',
         answer:
-          "Uzgetsdagi eng arzon variant — 50 ta Stars 11 000 so'm. Bundan kam buyurtma berish texnik jihatdan mumkin emas — bu Telegram tarafida o'rnatilgan minimal chegara.",
+          `Uzgetsdagi eng arzon variant — 50 ta Stars ${formatNumber(starsPrice(50))} so'm. Bundan kam buyurtma berish texnik jihatdan mumkin emas — bu Telegram tarafida o'rnatilgan minimal chegara.`,
       },
       {
         question: '50 ta Stars 100 ta yoki 500 tadan farqi nima?',
         answer:
-          "Faqat miqdor jihatidan farq. Har Stars'ning narxi taxminan 220 so'm — barcha paketlarda bir xil. Katta paket bilan kam buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli bo'ladi.",
+          `Faqat miqdor jihatidan farq. Har Stars'ning narxi taxminan ${STAR_PRICE} so'm — barcha paketlarda bir xil. Katta paket bilan kam buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli bo'ladi.`,
       },
     ],
   },
   '100': {
-    metaTitle: "100 Telegram Stars sotib olish — 22 000 so'm — O'zbekistonda",
+    metaTitle: `100 Telegram Stars sotib olish — ${formatNumber(starsPrice(100))} so'm — O'zbekistonda`,
     metaDescription:
-      "100 ta Telegram Stars yulduzchasi O'zbekistonda 22 000 so'm. UzCard, Humo, Click orqali to'lov. Stars'ni regulyar ishlatuvchilar uchun mos kichik paket.",
-    oneLineSummary: "100 ta Telegram Stars — eng mashhur kichik paket, 22 000 so'm.",
+      `100 ta Telegram Stars yulduzchasi O'zbekistonda ${formatNumber(starsPrice(100))} so'm. UzCard, Humo, Click orqali to'lov. Stars'ni regulyar ishlatuvchilar uchun mos kichik paket.`,
+    oneLineSummary: `100 ta Telegram Stars — eng mashhur kichik paket, ${formatNumber(starsPrice(100))} so'm.`,
     whyThisAmount:
       "100 — eng mashhur kichik paketlardan biri. 50 dan ikki marta ko'p, ammo hali ham kirish darajasidagi narx. Stars'ni regulyar ishlatuvchilar yoki bir necha sovg'a yubormoqchilar uchun ideal kichik zaxira.",
     audience: [
@@ -135,7 +135,7 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
       {
         question: '100 Stars sotib olganda bir Stars necha so\'mga tushadi?',
         answer:
-          "Bir yulduzcha taxminan 220 so'mga tushadi. Bu narx 50, 100, 500 va boshqa miqdorlar uchun bir xil — sotib olgan miqdoringizga proportsional hisoblanadi.",
+          `Bir yulduzcha taxminan ${STAR_PRICE} so'mga tushadi. Bu narx 50, 100, 500 va boshqa miqdorlar uchun bir xil — sotib olgan miqdoringizga proportsional hisoblanadi.`,
       },
       {
         question: '100 va 500 — qaysini tanlash kerak?',
@@ -155,10 +155,10 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
     ],
   },
   '500': {
-    metaTitle: "500 Telegram Stars sotib olish — 110 000 so'm — O'zbekistonda",
+    metaTitle: `500 Telegram Stars sotib olish — ${formatNumber(starsPrice(500))} so'm — O'zbekistonda`,
     metaDescription:
-      "500 ta Telegram Stars yulduzchasi O'zbekistonda 110 000 so'm. Faol foydalanuvchilar va content kreatorlari uchun ideal o'rta paket. UzCard, Humo, Click orqali to'lov.",
-    oneLineSummary: "500 ta Telegram Stars — faol foydalanuvchilar uchun o'rta paket, 110 000 so'm.",
+      `500 ta Telegram Stars yulduzchasi O'zbekistonda ${formatNumber(starsPrice(500))} so'm. Faol foydalanuvchilar va content kreatorlari uchun ideal o'rta paket. UzCard, Humo, Click orqali to'lov.`,
+    oneLineSummary: `500 ta Telegram Stars — faol foydalanuvchilar uchun o'rta paket, ${formatNumber(starsPrice(500))} so'm.`,
     whyThisAmount:
       "500 — o'rta-yuqori paket. Bir xaridda ko'p Stars olish — har safar kichik buyurtma berishdan ko'ra qulayroq va vaqt jihatidan tejamli. Faol foydalanuvchilar va content kreatorlari uchun mos kattaroq zaxira.",
     audience: [
@@ -229,7 +229,7 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
       {
         question: '500 Stars sotib olganda chegirma yoki bonus bormi?',
         answer:
-          "Narx miqdorga proportsional hisoblanadi — har Stars taxminan 220 so'm, miqdor o'zgarganda ham. Lekin katta paket bilan kam marta buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli.",
+          `Narx miqdorga proportsional hisoblanadi — har Stars taxminan ${STAR_PRICE} so'm, miqdor o'zgarganda ham. Lekin katta paket bilan kam marta buyurtma berasiz, bu vaqt va boshqaruv jihatidan tejamli.`,
       },
       {
         question: '500 Stars akkauntda muddatli saqlanadimi?',
@@ -247,10 +247,10 @@ const FEATURED_UZ: Record<string, StarsPageContent> = {
 
 const FEATURED_RU: Record<string, StarsPageContent> = {
   '50': {
-    metaTitle: 'Купить 50 Telegram Stars — 11 000 сум — в Узбекистане',
+    metaTitle: `Купить 50 Telegram Stars — ${formatNumber(starsPrice(50))} сум — в Узбекистане`,
     metaDescription:
-      '50 звёзд Telegram Stars в Узбекистане — 11 000 сум. Минимальный заказ. Оплата UzCard, Humo и Click, быстрая активация через @uzgetsbot.',
-    oneLineSummary: '50 Telegram Stars — самый маленький стартовый пакет в Uzgets, за 11 000 сум.',
+      `50 звёзд Telegram Stars в Узбекистане — ${formatNumber(starsPrice(50))} сум. Минимальный заказ. Оплата UzCard, Humo и Click, быстрая активация через @uzgetsbot.`,
+    oneLineSummary: `50 Telegram Stars — самый маленький стартовый пакет в Uzgets, за ${formatNumber(starsPrice(50))} сум.`,
     whyThisAmount:
       '50 — минимальное количество для заказа Telegram Stars. Идеальная точка входа для тех, кто хочет попробовать систему, разово сделать небольшую покупку или подарок. Меньше купить технически нельзя.',
     audience: [
@@ -305,20 +305,20 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
       {
         question: 'Какой самый дешёвый заказ Telegram Stars?',
         answer:
-          'Самый дешёвый вариант в Uzgets — 50 Stars за 11 000 сум. Меньше заказать технически нельзя — это минимальная граница, установленная Telegram.',
+          `Самый дешёвый вариант в Uzgets — 50 Stars за ${formatNumber(starsPrice(50))} сум. Меньше заказать технически нельзя — это минимальная граница, установленная Telegram.`,
       },
       {
         question: 'Чем 50 отличается от 100 или 500?',
         answer:
-          'Только количеством. Цена за одну Stars одинакова — около 220 сум во всех пакетах. С большим пакетом вы делаете меньше заказов, что удобно по времени и удобству.',
+          `Только количеством. Цена за одну Stars одинакова — около ${STAR_PRICE} сум во всех пакетах. С большим пакетом вы делаете меньше заказов, что удобно по времени и удобству.`,
       },
     ],
   },
   '100': {
-    metaTitle: 'Купить 100 Telegram Stars — 22 000 сум — в Узбекистане',
+    metaTitle: `Купить 100 Telegram Stars — ${formatNumber(starsPrice(100))} сум — в Узбекистане`,
     metaDescription:
-      '100 звёзд Telegram Stars в Узбекистане — 22 000 сум. Оплата UzCard, Humo, Click. Подходящий маленький пакет для регулярных пользователей Stars.',
-    oneLineSummary: '100 Telegram Stars — самый популярный маленький пакет, 22 000 сум.',
+      `100 звёзд Telegram Stars в Узбекистане — ${formatNumber(starsPrice(100))} сум. Оплата UzCard, Humo, Click. Подходящий маленький пакет для регулярных пользователей Stars.`,
+    oneLineSummary: `100 Telegram Stars — самый популярный маленький пакет, ${formatNumber(starsPrice(100))} сум.`,
     whyThisAmount:
       '100 — один из самых популярных маленьких пакетов. В два раза больше 50, но всё ещё в стартовом ценовом диапазоне. Идеальный небольшой запас для регулярных пользователей или тех, кто хочет отправить несколько подарков.',
     audience: [
@@ -367,7 +367,7 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
       {
         question: 'Сколько стоит одна звезда при покупке 100?',
         answer:
-          'Одна звезда стоит примерно 220 сум. Эта цена одинакова для пакетов в 50, 100, 500 и других — рассчитывается пропорционально объёму.',
+          `Одна звезда стоит примерно ${STAR_PRICE} сум. Эта цена одинакова для пакетов в 50, 100, 500 и других — рассчитывается пропорционально объёму.`,
       },
       {
         question: '100 или 500 — что выбрать?',
@@ -387,10 +387,10 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
     ],
   },
   '500': {
-    metaTitle: 'Купить 500 Telegram Stars — 110 000 сум — в Узбекистане',
+    metaTitle: `Купить 500 Telegram Stars — ${formatNumber(starsPrice(500))} сум — в Узбекистане`,
     metaDescription:
-      '500 звёзд Telegram Stars в Узбекистане — 110 000 сум. Идеальный средний пакет для активных пользователей и контент-креаторов. Оплата UzCard, Humo, Click.',
-    oneLineSummary: '500 Telegram Stars — средний пакет для активных пользователей, 110 000 сум.',
+      `500 звёзд Telegram Stars в Узбекистане — ${formatNumber(starsPrice(500))} сум. Идеальный средний пакет для активных пользователей и контент-креаторов. Оплата UzCard, Humo, Click.`,
+    oneLineSummary: `500 Telegram Stars — средний пакет для активных пользователей, ${formatNumber(starsPrice(500))} сум.`,
     whyThisAmount:
       '500 — средне-крупный пакет. Купить много Stars за один раз удобнее и быстрее, чем заказывать маленькими порциями. Подходящий запас для активных пользователей и контент-креаторов.',
     audience: [
@@ -461,7 +461,7 @@ const FEATURED_RU: Record<string, StarsPageContent> = {
       {
         question: 'Есть ли скидки или бонусы при покупке 500?',
         answer:
-          'Цена пропорциональна количеству — около 220 сум за каждую Stars при любом объёме. Но с большим пакетом вы реже делаете заказы, что удобнее по времени и управлению.',
+          `Цена пропорциональна количеству — около ${STAR_PRICE} сум за каждую Stars при любом объёме. Но с большим пакетом вы реже делаете заказы, что удобнее по времени и управлению.`,
       },
       {
         question: 'Хранятся ли 500 звёзд на аккаунте по сроку?',
@@ -522,7 +522,7 @@ function deriveStarsContentUz(amount: number): StarsPageContent {
       {
         question: `${amountStr} Stars sotib olishda 1 ta Stars necha so'mga tushadi?`,
         answer:
-          "Bir Stars taxminan 220 so'mga tushadi. Bu narx barcha miqdorlar uchun bir xil — proportsional hisoblanadi.",
+          `Bir Stars taxminan ${STAR_PRICE} so'mga tushadi. Bu narx barcha miqdorlar uchun bir xil — proportsional hisoblanadi.`,
       },
       {
         question: `${amountStr} ta Stars qaysi muddatga yetadi?`,
@@ -577,7 +577,7 @@ function deriveStarsContentRu(amount: number): StarsPageContent {
       {
         question: `Сколько стоит одна звезда при покупке ${amountStr}?`,
         answer:
-          'Одна Stars стоит примерно 220 сум. Эта цена одинакова для всех количеств — рассчитывается пропорционально.',
+          `Одна Stars стоит примерно ${STAR_PRICE} сум. Эта цена одинакова для всех количеств — рассчитывается пропорционально.`,
       },
       {
         question: `На сколько хватит ${amountStr} звёзд?`,

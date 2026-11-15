@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS, STARS_BASE } from '@/config/products'
+import { PREMIUM_PERIODS, STARS_BASE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -97,6 +97,7 @@ function DiffTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -437,7 +438,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, STAR_PRICE, starsPrice, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -8,7 +8,7 @@ import type { BlogPost } from '../types'
 const SLUG = 'telegram-stars-bilan-sovga-yuborish'
 const TODAY = '2026-06-13'
 
-// Common gift budgets shown as Stars → so'm at the uzgets rate (~220/star).
+// Common gift budgets shown as Stars → so'm at the uzgets rate (STAR_PRICE per star).
 // Minimum uzgets purchase is 50 ⭐ — smaller gifts still need a 50 ⭐ pack.
 const GIFT_BUDGETS = [50, 100, 250, 500]
 
@@ -51,6 +51,7 @@ function GiftCostTable({ lang }: { lang: 'uz' | 'ru' }) {
           })}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -81,8 +82,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? 'Sovgʼa narxlari Telegram tomonidan vaqti-vaqti bilan oʻzgartiriladi; Stars ekvivalenti taxminiy (uzgets tarifi ~220 soʻm/⭐).'
-          : 'Цены подарков периодически меняет Telegram; эквивалент в Stars приблизительный (тариф uzgets ~220 сум/⭐).'}
+          ? `Sovgʼa narxlari Telegram tomonidan vaqti-vaqti bilan oʻzgartiriladi; Stars ekvivalenti taxminiy (uzgets tarifi ~${STAR_PRICE} soʻm/⭐).`
+          : `Цены подарков периодически меняет Telegram; эквивалент в Stars приблизительный (тариф uzgets ~${STAR_PRICE} сум/⭐).`}
       </p>
     </div>
   )
@@ -139,7 +140,7 @@ function UzBody() {
         <strong>&quot;Gifts&quot;</strong> bo&apos;limida ko&apos;rsatishi mumkin.
       </p>
 
-      <InlineBotCTA lang="uz" text="Sovg'a uchun Stars kerakmi? Botda 50 ⭐ atigi 11 000 so'mdan — UzCard/Humo bilan." />
+      <InlineBotCTA lang="uz" text={`Sovg'a uchun Stars kerakmi? Botda 50 ⭐ atigi ${formatNumber(starsPrice(50))} so'mdan — UzCard/Humo bilan.`} />
 
       <h2 id="qancha-stars">Sovg&apos;a yuborish uchun qancha Stars kerak?</h2>
       <p>
@@ -264,7 +265,7 @@ function RuBody() {
         <strong>&quot;Gifts&quot;</strong> своего профиля.
       </p>
 
-      <InlineBotCTA lang="ru" text="Нужны Stars для подарка? В боте 50 ⭐ всего от 11 000 сум — по UzCard/Humo." />
+      <InlineBotCTA lang="ru" text={`Нужны Stars для подарка? В боте 50 ⭐ всего от ${formatNumber(starsPrice(50))} сум — по UzCard/Humo.`} />
 
       <h2 id="qancha-stars">Сколько Stars нужно для подарка?</h2>
       <p>
@@ -367,7 +368,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'howto',
   locales: {
     uz: {
@@ -376,7 +377,7 @@ export const post: BlogPost = {
         "Telegram'da Stars bilan sovg'a yuborish: profil → Send a Gift → tanlash. Qancha Stars kerak, anonim yuborish, qabul qiluvchi nima qila oladi va Stars'ni O'zbekistondan qanday olish.",
       metaTitle: "Telegram Stars bilan sovg'a qanday yuboriladi 2026",
       metaDescription:
-        "Telegram Stars bilan sovg'a yuborish — qadam-baqadam: Send a Gift, narx, anonim opsiya. Stars'ni UzCard/Humo bilan @uzgetsbot orqali oling, 50 ⭐ 11 000 so'm.",
+        `Telegram Stars bilan sovg'a yuborish — qadam-baqadam: Send a Gift, narx, anonim opsiya. Stars'ni UzCard/Humo bilan @uzgetsbot orqali oling, 50 ⭐ ${formatNumber(starsPrice(50))} so'm.`,
       ogDescription:
         "Telegram Stars bilan sovg'a yuborishning to'liq qo'llanmasi — qadamlar, narx jadvali va O'zbekistondan Stars olish.",
       answerBoxTitle: 'Qisqa javob',
@@ -391,7 +392,7 @@ export const post: BlogPost = {
         {
           question: "Sovg'a yuborish uchun qancha Stars kerak?",
           answer:
-            "Oddiy sovg'alar taxminan 15–50 ⭐, o'rtachalari 100–200 ⭐, noyob va kolleksion sovg'alar 500–1000 ⭐ va undan yuqori. Uzgets'da 50 ⭐ — 11 000 so'm, 100 ⭐ — 22 000, 500 ⭐ — 110 000 so'm.",
+            `Oddiy sovg'alar taxminan 15–50 ⭐, o'rtachalari 100–200 ⭐, noyob va kolleksion sovg'alar 500–1000 ⭐ va undan yuqori. Uzgets'da 50 ⭐ — ${formatNumber(starsPrice(50))} so'm, 100 ⭐ — ${formatNumber(starsPrice(100))}, 500 ⭐ — ${formatNumber(starsPrice(500))} so'm.`,
         },
         {
           question: "Sovg'a yuborish uchun Telegram Premium kerakmi?",
@@ -429,7 +430,7 @@ export const post: BlogPost = {
         'Отправка подарка за Telegram Stars: профиль → Send a Gift → выбор. Сколько нужно Stars, анонимная отправка, что может получатель и как купить Stars из Узбекистана.',
       metaTitle: 'Как отправить подарок с Telegram Stars 2026',
       metaDescription:
-        'Отправка подарка за Telegram Stars — пошагово: Send a Gift, цена, анонимная опция. Купите Stars по UzCard/Humo через @uzgetsbot, 50 ⭐ за 11 000 сум.',
+        `Отправка подарка за Telegram Stars — пошагово: Send a Gift, цена, анонимная опция. Купите Stars по UzCard/Humo через @uzgetsbot, 50 ⭐ за ${formatNumber(starsPrice(50))} сум.`,
       ogDescription:
         'Полное руководство по отправке подарка за Telegram Stars — шаги, таблица цен и покупка Stars из Узбекистана.',
       answerBoxTitle: 'Краткий ответ',
@@ -444,7 +445,7 @@ export const post: BlogPost = {
         {
           question: 'Сколько Stars нужно для подарка?',
           answer:
-            'Обычные подарки примерно 15–50 ⭐, средние 100–200 ⭐, редкие и коллекционные 500–1000 ⭐ и выше. В Uzgets 50 ⭐ — 11 000 сум, 100 ⭐ — 22 000, 500 ⭐ — 110 000 сум.',
+            `Обычные подарки примерно 15–50 ⭐, средние 100–200 ⭐, редкие и коллекционные 500–1000 ⭐ и выше. В Uzgets 50 ⭐ — ${formatNumber(starsPrice(50))} сум, 100 ⭐ — ${formatNumber(starsPrice(100))}, 500 ⭐ — ${formatNumber(starsPrice(500))} сум.`,
         },
         {
           question: 'Нужен ли Telegram Premium для отправки подарка?',

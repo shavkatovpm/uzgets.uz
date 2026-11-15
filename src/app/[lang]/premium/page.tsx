@@ -8,9 +8,9 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICE_NOTE } from '@/config/products'
 import { getPremiumFeatures, getPaymentMethods } from '@/config/static-content'
-import { formatUzs } from '@/lib/format'
+import { formatNumber, formatUzs } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
 import { ogImages } from '@/lib/og'
 
@@ -109,8 +109,8 @@ function makeStrings(lang: Locale): PageStrings {
         {
           period: '12 месяцев',
           when: 'Для активных пользователей Telegram, контент-креаторов и владельцев бизнеса',
-          pros: ['Самая низкая цена в месяц', 'Максимальная экономия (264 000 сум против 3-мес × 4)', 'Годовая стабильность'],
-          cons: ['408 000 сум разовым платежом'],
+          pros: ['Самая низкая цена в месяц', `Максимальная экономия (${formatNumber(4 * PREMIUM_PRICE[3] - PREMIUM_PRICE[12])} сум против 3-мес × 4)`, 'Годовая стабильность'],
+          cons: [`${formatNumber(PREMIUM_PRICE[12])} сум разовым платежом`],
         },
       ],
       prosLabel: 'Плюсы',
@@ -163,11 +163,11 @@ function makeStrings(lang: Locale): PageStrings {
         },
         {
           question: 'Сколько стоит Telegram Premium на 6 месяцев?',
-          answer: `${formatUzs(PREMIUM_PERIODS[1].priceUzs)} (около ${formatUzs(PREMIUM_PERIODS[1].perMonthHint)} в месяц). На ~32% дешевле 3-месячного, самый популярный выбор.`,
+          answer: `${formatUzs(PREMIUM_PERIODS[1].priceUzs)} (около ${formatUzs(PREMIUM_PERIODS[1].perMonthHint)} в месяц). На ~${Math.round((1 - PREMIUM_PERIODS[1].perMonthHint / PREMIUM_PERIODS[0].perMonthHint) * 100)}% дешевле 3-месячного, самый популярный выбор.`,
         },
         {
           question: 'Сколько стоит Telegram Premium на 12 месяцев (год)?',
-          answer: `${formatUzs(PREMIUM_PERIODS[2].priceUzs)} (около ${formatUzs(PREMIUM_PERIODS[2].perMonthHint)} в месяц). Самый экономный вариант — экономия 264 000 сум по сравнению с 4-кратной покупкой 3-месячного.`,
+          answer: `${formatUzs(PREMIUM_PERIODS[2].priceUzs)} (около ${formatUzs(PREMIUM_PERIODS[2].perMonthHint)} в месяц). Самый экономный вариант — экономия ${formatNumber(4 * PREMIUM_PRICE[3] - PREMIUM_PRICE[12])} сум по сравнению с 4-кратной покупкой 3-месячного.`,
         },
         {
           question: 'Какой срок выбрать?',
@@ -255,8 +255,8 @@ function makeStrings(lang: Locale): PageStrings {
       {
         period: '12 oylik',
         when: 'Telegramni har kuni ishlatuvchi, content kreator yoki biznes egasi uchun',
-        pros: ['Eng past oylik narx', "Eng katta tejov (3 oylik 4× ga qaraganda 264 000 so'm)", 'Yillik xavfsizlik'],
-        cons: ["Bir martaga 408 000 so'm to'lash"],
+        pros: ['Eng past oylik narx', `Eng katta tejov (3 oylik 4× ga qaraganda ${formatNumber(4 * PREMIUM_PRICE[3] - PREMIUM_PRICE[12])} so'm)`, 'Yillik xavfsizlik'],
+        cons: [`Bir martaga ${formatNumber(PREMIUM_PRICE[12])} so'm to'lash`],
       },
     ],
     prosLabel: 'Plyuslari',
@@ -309,11 +309,11 @@ function makeStrings(lang: Locale): PageStrings {
       },
       {
         question: 'Telegram Premium 6 oylik qancha turadi?',
-        answer: `${formatUzs(PREMIUM_PERIODS[1].priceUzs)} (oyiga taxminan ${formatUzs(PREMIUM_PERIODS[1].perMonthHint)}). 3 oylikdan ~32% arzonroq, eng mashhur tanlov.`,
+        answer: `${formatUzs(PREMIUM_PERIODS[1].priceUzs)} (oyiga taxminan ${formatUzs(PREMIUM_PERIODS[1].perMonthHint)}). 3 oylikdan ~${Math.round((1 - PREMIUM_PERIODS[1].perMonthHint / PREMIUM_PERIODS[0].perMonthHint) * 100)}% arzonroq, eng mashhur tanlov.`,
       },
       {
         question: 'Telegram Premium 12 oylik (yillik) qancha turadi?',
-        answer: `${formatUzs(PREMIUM_PERIODS[2].priceUzs)} (oyiga taxminan ${formatUzs(PREMIUM_PERIODS[2].perMonthHint)}). Eng tejamli variant — 3 oylik 4 marta sotib olishdan 264 000 so'm tejaysiz.`,
+        answer: `${formatUzs(PREMIUM_PERIODS[2].priceUzs)} (oyiga taxminan ${formatUzs(PREMIUM_PERIODS[2].perMonthHint)}). Eng tejamli variant — 3 oylik 4 marta sotib olishdan ${formatNumber(4 * PREMIUM_PRICE[3] - PREMIUM_PRICE[12])} so'm tejaysiz.`,
       },
       {
         question: 'Qaysi muddatni tanlash kerak?',
@@ -503,6 +503,7 @@ export default async function PremiumPage({
             />
           ))}
         </div>
+        <p className="mt-4 text-sm text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       </section>
 
       {/* Decision guide */}

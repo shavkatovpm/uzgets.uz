@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -208,6 +208,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -397,7 +398,7 @@ function UzBody() {
       <h2 id="muhim-eslatma">Muhim eslatmalar</h2>
       <ul>
         <li>
-          Bu sahifadagi mezonlar va narxlar 2026-yil may holatiga taalluqli. O&apos;zgarishlar
+          Bu sahifadagi mezonlar 2026-yil may, narxlar 2026-yil 15-noyabr holatiga taalluqli. O&apos;zgarishlar
           bo&apos;lsa sahifa yangilanadi.
         </li>
         <li>
@@ -555,7 +556,7 @@ function RuBody() {
       <h2 id="muhim-eslatma">Важные замечания</h2>
       <ul>
         <li>
-          Критерии и цены на этой странице — на май 2026 года. При изменениях страница обновляется.
+          Критерии на этой странице — на май 2026 года, цены — на 15 ноября 2026 года. При изменениях страница обновляется.
         </li>
         <li>
           Fragment и @PremiumBot — официальные пути Telegram, но требуют зарубежную карту или
@@ -578,7 +579,7 @@ const TODAY = '2026-05-15'
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'trust',
   locales: {
     uz: {

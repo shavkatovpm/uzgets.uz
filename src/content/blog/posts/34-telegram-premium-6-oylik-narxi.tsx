@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import type { BlogPost } from '../types'
 
@@ -68,6 +68,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -93,8 +94,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {uz
-          ? "Web research, Uzgets konfiguratsiyasi, xizmat shartlari va maxfiylik siyosati 2026-yil 14-avgustda tekshirildi. Narxlar o'zgarishi mumkin; to'lovdan oldin botdagi summani tekshiring."
-          : 'Веб-источники, конфигурация Uzgets, условия и политика конфиденциальности проверены 14 августа 2026 года. Цены могут измениться — проверьте сумму в боте перед оплатой.'}
+          ? "Web research, Uzgets konfiguratsiyasi, xizmat shartlari va maxfiylik siyosati 2026-yil 14-avgustda, Uzgets narxlari 2026-yil 15-noyabrda tekshirildi. Narxlar o'zgarishi mumkin; to'lovdan oldin botdagi summani tekshiring."
+          : 'Веб-источники, конфигурация Uzgets, условия и политика конфиденциальности проверены 14 августа 2026 года, цены Uzgets — 15 ноября 2026 года. Цены могут измениться — проверьте сумму в боте перед оплатой.'}
       </p>
     </div>
   )
@@ -115,7 +116,7 @@ function UzBody() {
       </nav>
 
       <h2 id="narxi">Telegram Premium 6 oylik narxi qancha?</h2>
-      <p>2026-yil 14-avgust holatiga Uzgets&apos;da 6 oylik Telegram Premium <strong>{formatUzs(P6.priceUzs)}</strong>. Hisob oddiy: {formatUzs(P6.priceUzs)} ÷ 6 = <strong>{formatUzs(P6.perMonthHint)} oyiga</strong>. To&apos;lov bir marta qilinadi; Uzgets bu paket uchun har oy kartadan pul yechmaydi.</p>
+      <p>2026-yil 15-noyabr holatiga Uzgets&apos;da 6 oylik Telegram Premium <strong>{formatUzs(P6.priceUzs)}</strong>. Hisob oddiy: {formatUzs(P6.priceUzs)} ÷ 6 = <strong>{formatUzs(P6.perMonthHint)} oyiga</strong>. To&apos;lov bir marta qilinadi; Uzgets bu paket uchun har oy kartadan pul yechmaydi.</p>
       <p>Bu Uzgets narxi. Telegram, App Store, Google Play yoki boshqa sotuvchidagi narx boshqacha bo&apos;lishi mumkin. Telegram rasmiy API hujjatida ham muddat, valyuta va summa alohida xarid variantining parametrlari sifatida ko&apos;rsatiladi. Shuning uchun turli provayder narxlarini aralashtirmang.</p>
       <InlineBotCTA lang="uz" text={`6 oylik Premium — ${formatUzs(P6.priceUzs)}. Joriy summani @uzgetsbot'da tekshiring.`} />
 
@@ -168,7 +169,7 @@ function RuBody() {
       </nav>
 
       <h2 id="narxi">Сколько стоит Telegram Premium на 6 месяцев?</h2>
-      <p>На 14 августа 2026 года пакет Uzgets на 6 месяцев стоит <strong>{formatUzs(P6.priceUzs)}</strong>. Расчёт: {formatUzs(P6.priceUzs)} ÷ 6 = <strong>{formatUzs(P6.perMonthHint)} в месяц</strong>. Оплата разовая — Uzgets не списывает деньги с карты каждый месяц.</p>
+      <p>На 15 ноября 2026 года пакет Uzgets на 6 месяцев стоит <strong>{formatUzs(P6.priceUzs)}</strong>. Расчёт: {formatUzs(P6.priceUzs)} ÷ 6 = <strong>{formatUzs(P6.perMonthHint)} в месяц</strong>. Оплата разовая — Uzgets не списывает деньги с карты каждый месяц.</p>
       <p>Это цена Uzgets. Стоимость в Telegram, App Store, Google Play или у другого продавца может отличаться. В официальной документации Telegram срок, валюта и сумма являются параметрами конкретного варианта покупки, поэтому сравнивать нужно итоговые условия одного провайдера.</p>
       <InlineBotCTA lang="ru" text={`Premium на 6 месяцев — ${formatUzs(P6.priceUzs)}. Проверьте актуальную сумму в @uzgetsbot.`} />
 
@@ -209,7 +210,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {
@@ -222,7 +223,7 @@ export const post: BlogPost = {
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
       faq: [
-        { question: 'Telegram Premium 6 oylik narxi qancha?', answer: `2026-yil 14-avgust holatiga Uzgets'da ${formatUzs(P6.priceUzs)}, ya'ni oyiga ${formatUzs(P6.perMonthHint)}.` },
+        { question: 'Telegram Premium 6 oylik narxi qancha?', answer: `2026-yil 15-noyabr holatiga Uzgets'da ${formatUzs(P6.priceUzs)}, ya'ni oyiga ${formatUzs(P6.perMonthHint)}.` },
         { question: '6 oylik Premium 3 oylikdan qancha arzon?', answer: `3 oylik paketni ikki marta olish ${formatUzs(P3.priceUzs * 2)}. 6 oylik paket ${formatUzs(P6.priceUzs)}, shuning uchun ${formatUzs(SAVING_VS_TWO_P3)} tejaysiz.` },
         { question: '6 oylik yoki 12 oylik Premium yaxshimi?', answer: `Moslashuvchanlik va pastroq boshlang'ich to'lov uchun 6 oy; Telegram'dan bir yil foydalanish aniq bo'lsa, oyiga ${formatUzs(P12.perMonthHint)} tushadigan 12 oy tejamliroq.` },
         { question: '6 oylik Premium avtomatik uzayadimi?', answer: "Uzgets'dagi paket avtomatik uzaymaydi va har oy pul yechilmaydi. Boshqa provayderdan olingan obunani o'sha provayder qoidalari bo'yicha tekshiring." },
@@ -242,7 +243,7 @@ export const post: BlogPost = {
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
       faq: [
-        { question: 'Сколько стоит Telegram Premium на 6 месяцев?', answer: `На 14 августа 2026 года в Uzgets — ${formatUzs(P6.priceUzs)}, или ${formatUzs(P6.perMonthHint)} в месяц.` },
+        { question: 'Сколько стоит Telegram Premium на 6 месяцев?', answer: `На 15 ноября 2026 года в Uzgets — ${formatUzs(P6.priceUzs)}, или ${formatUzs(P6.perMonthHint)} в месяц.` },
         { question: 'Насколько 6 месяцев выгоднее двух пакетов по 3 месяца?', answer: `Два пакета по 3 месяца стоят ${formatUzs(P3.priceUzs * 2)}, а один на 6 месяцев — ${formatUzs(P6.priceUzs)}. Экономия — ${formatUzs(SAVING_VS_TWO_P3)}.` },
         { question: 'Что лучше: 6 или 12 месяцев?', answer: `Для гибкости и меньшего первоначального платежа — 6 месяцев. Если Premium точно нужен на год, пакет на 12 месяцев выгоднее: ${formatUzs(P12.perMonthHint)} в месяц.` },
         { question: 'Пакет на 6 месяцев продлевается автоматически?', answer: 'Пакет Uzgets не продлевается автоматически. У подписок других провайдеров могут быть иные правила — проверяйте их в месте покупки.' },

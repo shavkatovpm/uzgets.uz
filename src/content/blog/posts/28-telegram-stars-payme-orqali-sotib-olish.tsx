@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, starsPrice, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatNumber, formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -25,6 +25,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
         <thead className="bg-[var(--muted)]"><tr><th className="px-4 py-3 text-left">Stars</th><th className="px-4 py-3 text-left">{lang === 'uz' ? 'Narx' : 'Цена'}</th><th className="px-4 py-3 text-left">{lang === 'uz' ? '1 Stars' : '1 Star'}</th><th className="px-4 py-3 text-left">{lang === 'uz' ? 'Paket' : 'Пакет'}</th></tr></thead>
         <tbody>{STARS_PACKS.filter((p) => FEATURED.includes(p.amount)).map((p) => <tr key={p.amount} className="border-t border-[var(--border)]"><td className="px-4 py-3 font-medium">{formatNumber(p.amount)} ⭐</td><td className="px-4 py-3">{formatUzs(p.priceUzs)}</td><td className="px-4 py-3">{p.priceUzs / p.amount} {lang === 'uz' ? "so'm" : 'сум'}</td><td className="px-4 py-3"><Link href={localePath(lang, `/stars/${p.slug}`)} className="text-[var(--primary)] hover:underline">{lang === 'uz' ? 'Batafsil →' : 'Подробнее →'}</Link></td></tr>)}</tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -36,7 +37,7 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
     <li><a href="https://help.payme.uz/uz/chavo/payme-card---elektronnyy-koshelek/" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">help.payme.uz</a> — {uz ? 'Payme CARD rasmiy yordam sahifasi' : 'официальная справка Payme CARD'}</li>
     <li><a href="https://core.telegram.org/api/stars" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">core.telegram.org/api/stars</a> — {uz ? 'Telegram Stars rasmiy hujjati' : 'официальная документация Telegram Stars'}</li>
     <li><a href="https://telegram.org/tos/stars" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">telegram.org/tos/stars</a> — {uz ? 'Stars foydalanish va refund shartlari' : 'условия использования и возврата Stars'}</li>
-  </ul><p className="mt-3 text-[var(--text-muted)]">{uz ? 'Uzgets narxlari 2026-yil 9-avgust holatiga tekshirildi. Botdagi joriy summa yakuniy hisoblanadi.' : 'Цены Uzgets проверены 9 августа 2026 года. Итоговой считается текущая сумма в боте.'}</p></div>
+  </ul><p className="mt-3 text-[var(--text-muted)]">{uz ? 'Uzgets narxlari 2026-yil 15-noyabr holatiga tekshirildi. Botdagi joriy summa yakuniy hisoblanadi.' : 'Цены Uzgets проверены 15 ноября 2026 года. Итоговой считается текущая сумма в боте.'}</p></div>
 }
 
 function UzBody() {
@@ -114,14 +115,14 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'howto',
   locales: {
     uz: {
       title: "Telegram Stars'ni Payme orqali sotib olish: narx va 6 qadam 2026",
       description: "Payme orqali Telegram Stars olish: @uzgetsbot'da 6 qadam, 50–5000 Stars narxlari, Uzcard/Humo, xavfsizlik va to'lov o'tmasa yechimlar.",
       metaTitle: "Telegram Stars'ni Payme orqali sotib olish (2026)",
-      metaDescription: "Payme orqali Telegram Stars oling: @uzgetsbot'da 6 qadam, 50 Stars 11 000 so'm, Uzcard/Humo, xavfsizlik va to'lov muammolari yechimi.",
+      metaDescription: `Payme orqali Telegram Stars oling: @uzgetsbot'da 6 qadam, 50 Stars ${formatNumber(starsPrice(50))} so'm, Uzcard/Humo, xavfsizlik va to'lov muammolari yechimi.`,
       ogDescription: "Payme orqali Telegram Stars: 6 qadam, joriy narxlar, xavfsiz to'lov va diagnostika.",
       answerBoxTitle: 'Qisqa javob: Payme orqali Stars qanday olinadi?',
       answerBoxBody: UzAnswerBox,
@@ -142,7 +143,7 @@ export const post: BlogPost = {
       title: 'Как купить Telegram Stars через Payme: цены и 6 шагов 2026',
       description: 'Покупка Telegram Stars через Payme: 6 шагов в @uzgetsbot, цены 50–5000 Stars, Uzcard/Humo, безопасность и решения проблем оплаты.',
       metaTitle: 'Как купить Telegram Stars через Payme в 2026 году',
-      metaDescription: 'Купите Telegram Stars через Payme: 6 шагов в @uzgetsbot, 50 Stars за 11 000 сум, Uzcard/Humo, безопасность и решение проблем оплаты.',
+      metaDescription: `Купите Telegram Stars через Payme: 6 шагов в @uzgetsbot, 50 Stars за ${formatNumber(starsPrice(50))} сум, Uzcard/Humo, безопасность и решение проблем оплаты.`,
       ogDescription: 'Telegram Stars через Payme: 6 шагов, актуальные цены, безопасная оплата и диагностика.',
       answerBoxTitle: 'Краткий ответ: как купить Stars через Payme?',
       answerBoxBody: RuAnswerBox,

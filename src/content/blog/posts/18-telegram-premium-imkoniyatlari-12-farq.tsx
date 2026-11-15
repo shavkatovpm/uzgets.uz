@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
+import { PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatNumber } from '@/lib/format'
 
 const SLUG = 'telegram-premium-imkoniyatlari-12-farq'
 const TODAY = '2026-05-19'
@@ -17,7 +19,7 @@ function UzAnswerBox() {
       <strong>emoji status</strong>, profilda <strong>premium yulduzcha</strong>, kuniga{' '}
       <strong>100 ta Stories</strong>, <strong>cheklanmagan reaksiyalar</strong> (1
       xabarga 3 tagacha), <strong>premium emoji</strong> va boshqalar. Narxi:{' '}
-      <strong>3 oy 168 000 so&apos;m</strong> (uzgetsda UzCard/Humo bilan).
+      <strong>3 oy {formatNumber(PREMIUM_PRICE[3])} so&apos;m</strong> (uzgetsda UzCard/Humo bilan).
     </p>
   )
 }
@@ -34,7 +36,7 @@ function RuAnswerBox() {
       фото профиля</strong>, <strong>эмодзи-статус</strong>, <strong>звёздочка
       Premium</strong> в профиле, <strong>100 Stories в день</strong>,{' '}
       <strong>безлимитные реакции</strong> (до 3 на сообщение),{' '}
-      <strong>премиум-эмодзи</strong> и др. Цена: <strong>3 месяца 168 000 сум</strong>{' '}
+      <strong>премиум-эмодзи</strong> и др. Цена: <strong>3 месяца {formatNumber(PREMIUM_PRICE[3])} сум</strong>{' '}
       (в uzgets через UzCard/Humo).
     </p>
   )
@@ -377,8 +379,9 @@ function UzBody() {
 
       <InlineBotCTA
         lang="uz"
-        text="Premium funksiyalarni hoziroq sinab ko'ring — 3 oy 168 000 so'm."
+        text={`Premium funksiyalarni hoziroq sinab ko'ring — 3 oy ${formatNumber(PREMIUM_PRICE[3])} so'm.`}
       />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
 
       <h2 id="qoshimcha">Qo&apos;shimcha 6 ta farq (jami 18)</h2>
       <ul>
@@ -476,15 +479,15 @@ function UzBody() {
       <p>
         Narxlar:{' '}
         <Link href="/premium/3-oylik" className="text-[var(--primary)] hover:underline">
-          3 oy — 168 000 so&apos;m
+          3 oy — {formatNumber(PREMIUM_PRICE[3])} so&apos;m
         </Link>
         ,{' '}
         <Link href="/premium/6-oylik" className="text-[var(--primary)] hover:underline">
-          6 oy — 228 000 so&apos;m
+          6 oy — {formatNumber(PREMIUM_PRICE[6])} so&apos;m
         </Link>
         ,{' '}
         <Link href="/premium/12-oylik" className="text-[var(--primary)] hover:underline">
-          12 oy — 408 000 so&apos;m
+          12 oy — {formatNumber(PREMIUM_PRICE[12])} so&apos;m
         </Link>
         . Boshqalarga hadya qilmoqchimisiz —{' '}
         <Link
@@ -669,8 +672,9 @@ function RuBody() {
 
       <InlineBotCTA
         lang="ru"
-        text="Попробуйте Premium-функции сейчас — 3 месяца 168 000 сум."
+        text={`Попробуйте Premium-функции сейчас — 3 месяца ${formatNumber(PREMIUM_PRICE[3])} сум.`}
       />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
 
       <h2 id="qoshimcha">Ещё 6 отличий (всего 18)</h2>
       <ul>
@@ -762,15 +766,15 @@ function RuBody() {
       <p>
         Цены:{' '}
         <Link href="/ru/premium/3-oylik" className="text-[var(--primary)] hover:underline">
-          3 месяца — 168 000 сум
+          3 месяца — {formatNumber(PREMIUM_PRICE[3])} сум
         </Link>
         ,{' '}
         <Link href="/ru/premium/6-oylik" className="text-[var(--primary)] hover:underline">
-          6 месяцев — 228 000 сум
+          6 месяцев — {formatNumber(PREMIUM_PRICE[6])} сум
         </Link>
         ,{' '}
         <Link href="/ru/premium/12-oylik" className="text-[var(--primary)] hover:underline">
-          12 месяцев — 408 000 сум
+          12 месяцев — {formatNumber(PREMIUM_PRICE[12])} сум
         </Link>
         . Хотите подарить —{' '}
         <Link
@@ -814,7 +818,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'info',
   locales: {
     uz: {
@@ -868,7 +872,7 @@ export const post: BlogPost = {
         {
           question: "Telegram Premium o'rniga arzonroq alternativlar bormi?",
           answer:
-            "Yo'q — Telegram Premium funksiyalari faqat rasmiy obuna orqali ochiladi. Bepul Premium emas (modded APK, hack ilovalar) Telegram ToS'ga zid va akkauntni bloklash xavfini olib keladi. Faqat narx farqi — qayerdan sotib olish: Telegram in-app (xalqaro karta kerak), Fragment (TON + KYC), App Store/Google Play (region cheklovi), yoki mahalliy vositachi (@uzgetsbot — UzCard/Humo'ni qabul qiladi). Mahalliy karta bilan to'lash mumkin bo'lganlar orasida eng arzon va qulay — uzgets: 3 oy 168 000 so'm.",
+            `Yo'q — Telegram Premium funksiyalari faqat rasmiy obuna orqali ochiladi. Bepul Premium emas (modded APK, hack ilovalar) Telegram ToS'ga zid va akkauntni bloklash xavfini olib keladi. Faqat narx farqi — qayerdan sotib olish: Telegram in-app (xalqaro karta kerak), Fragment (TON + KYC), App Store/Google Play (region cheklovi), yoki mahalliy vositachi (@uzgetsbot — UzCard/Humo'ni qabul qiladi). Mahalliy karta bilan to'lash mumkin bo'lganlar orasida eng arzon va qulay — uzgets: 3 oy ${formatNumber(PREMIUM_PRICE[3])} so'm.`,
         },
       ],
       finalCtaHeading: "Premium imkoniyatlarini hozir oching",
@@ -927,7 +931,7 @@ export const post: BlogPost = {
         {
           question: 'Есть ли более дешёвые альтернативы Telegram Premium?',
           answer:
-            'Нет — функции Premium доступны только через официальную подписку. Бесплатный Premium (modded APK, хакерские приложения) противоречит ToS Telegram и грозит блокировкой аккаунта. Отличается только цена — где покупать: in-app Telegram (нужна международная карта), Fragment (TON + KYC), App Store/Google Play (региональные ограничения), местный посредник (@uzgetsbot — принимает UzCard/Humo). Среди тех, где можно платить локальной картой, самый дешёвый и удобный — uzgets: 3 месяца 168 000 сум.',
+            `Нет — функции Premium доступны только через официальную подписку. Бесплатный Premium (modded APK, хакерские приложения) противоречит ToS Telegram и грозит блокировкой аккаунта. Отличается только цена — где покупать: in-app Telegram (нужна международная карта), Fragment (TON + KYC), App Store/Google Play (региональные ограничения), местный посредник (@uzgetsbot — принимает UzCard/Humo). Среди тех, где можно платить локальной картой, самый дешёвый и удобный — uzgets: 3 месяца ${formatNumber(PREMIUM_PRICE[3])} сум.`,
         },
       ],
       finalCtaHeading: 'Откройте возможности Premium сейчас',

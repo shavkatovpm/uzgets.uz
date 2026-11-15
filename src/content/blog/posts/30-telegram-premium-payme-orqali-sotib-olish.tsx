@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
@@ -18,7 +18,7 @@ function RuAnswerBox() {
 
 function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
   const uz = lang === 'uz'
-  return <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]"><table className="w-full text-sm"><thead className="bg-[var(--muted)]"><tr><th className="px-4 py-3 text-left">{uz ? 'Muddat' : 'Срок'}</th><th className="px-4 py-3 text-left">{uz ? 'Jami narx' : 'Общая цена'}</th><th className="px-4 py-3 text-left">{uz ? 'Oyiga' : 'В месяц'}</th></tr></thead><tbody>{PREMIUM_PERIODS.map((p) => <tr key={p.months} className="border-t border-[var(--border)]"><td className="px-4 py-3 font-medium">{p.months} {uz ? 'oy' : 'мес.'}</td><td className="px-4 py-3">{formatUzs(p.priceUzs)}</td><td className="px-4 py-3">≈ {formatUzs(p.perMonthHint)}</td></tr>)}</tbody></table></div>
+  return <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]"><table className="w-full text-sm"><thead className="bg-[var(--muted)]"><tr><th className="px-4 py-3 text-left">{uz ? 'Muddat' : 'Срок'}</th><th className="px-4 py-3 text-left">{uz ? 'Jami narx' : 'Общая цена'}</th><th className="px-4 py-3 text-left">{uz ? 'Oyiga' : 'В месяц'}</th></tr></thead><tbody>{PREMIUM_PERIODS.map((p) => <tr key={p.months} className="border-t border-[var(--border)]"><td className="px-4 py-3 font-medium">{p.months} {uz ? 'oy' : 'мес.'}</td><td className="px-4 py-3">{formatUzs(p.priceUzs)}</td><td className="px-4 py-3">≈ {formatUzs(p.perMonthHint)}</td></tr>)}</tbody></table><p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p></div>
 }
 
 function Sources({ lang }: { lang: 'uz' | 'ru' }) {
@@ -27,7 +27,7 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
     <li><a href="https://telegram.org/faq_premium" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">Telegram Premium FAQ</a> — {uz ? "obuna, sovg'a va to'lov bo'yicha rasmiy ma'lumot" : 'официальные сведения о подписке, подарках и оплате'}.</li>
     <li><a href="https://p2p.payme.uz/" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">Payme</a> — {uz ? "Uzcard/Humo o'tkazmalari va to'lovlari" : 'платежи и переводы Uzcard/Humo'}.</li>
     <li><a href="https://help.payme.uz/uz/" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">Payme yordam markazi</a> — {uz ? "kartalar, chek va to'lov monitoringi" : 'карты, чеки и мониторинг платежей'}.</li>
-  </ul><p className="mt-3 text-[var(--text-muted)]">{uz ? "Web research va Uzgets narxlari 2026-yil 11-avgustda tekshirildi. Botdagi joriy summa yakuniy hisoblanadi." : 'Веб-источники и цены Uzgets проверены 11 августа 2026 года. Итоговой считается текущая сумма в боте.'}</p></div>
+  </ul><p className="mt-3 text-[var(--text-muted)]">{uz ? "Web research 2026-yil 11-avgustda, Uzgets narxlari 2026-yil 15-noyabrda tekshirildi. Botdagi joriy summa yakuniy hisoblanadi." : 'Веб-источники проверены 11 августа 2026 года, цены Uzgets — 15 ноября 2026 года. Итоговой считается текущая сумма в боте.'}</p></div>
 }
 
 function UzBody() {
@@ -103,19 +103,19 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'howto',
   locales: {
     uz: {
       title: "Telegram Premium'ni Payme orqali sotib olish: narx va 6 qadam",
       description: "Payme orqali Telegram Premium olish: @uzgetsbot'da 6 qadam, 3/6/12 oylik narxlar, xavfsizlik va to'lovdan keyingi yechimlar.",
       metaTitle: "Telegram Premium'ni Payme orqali olish — 6 qadam",
-      metaDescription: "Payme orqali Telegram Premium oling: 3 oy 168 000 so'mdan, 6 ta aniq qadam, Uzcard/Humo, xavfsiz to'lov va muammo yechimi.",
+      metaDescription: `Payme orqali Telegram Premium oling: 3 oy ${formatNumber(PREMIUM_PRICE[3])} so'mdan, 6 ta aniq qadam, Uzcard/Humo, xavfsiz to'lov va muammo yechimi.`,
       ogDescription: "Payme orqali Telegram Premium: joriy narxlar, 6 qadam va xavfsiz to'lov checklisti.",
       answerBoxTitle: 'Qisqa javob', answerBoxBody: UzAnswerBox, Body: UzBody,
       faq: [
         { question: "Payme orqali Telegram Premium olsa bo'ladimi?", answer: "Ha. @uzgetsbot'da muddat va @username'ni tanlab, bot ko'rsatgan Payme yoki mahalliy karta to'lov oqimida summani tasdiqlash mumkin." },
-        { question: "Payme orqali Premium qancha turadi?", answer: "2026-yil 11-avgustda Uzgets narxlari: 3 oy — 168 000 so'm, 6 oy — 228 000 so'm, 12 oy — 408 000 so'm. Xarid paytidagi bot summasi yakuniy." },
+        { question: "Payme orqali Premium qancha turadi?", answer: `2026-yil 15-noyabrda Uzgets narxlari: 3 oy — ${formatNumber(PREMIUM_PRICE[3])} so'm, 6 oy — ${formatNumber(PREMIUM_PRICE[6])} so'm, 12 oy — ${formatNumber(PREMIUM_PRICE[12])} so'm. Xarid paytidagi bot summasi yakuniy.` },
         { question: "Premium uchun Telegram paroli kerakmi?", answer: "Yo'q. Faqat Premium tushadigan aniq @username kerak. Telegram paroli, login kodi, QR-login va 2FA parolini bermang." },
         { question: "Boshqa odamga Premium olib bersam bo'ladimi?", answer: "Ha. Buyurtmada qabul qiluvchining aniq @username manzilini kiriting. Premium o'sha akkauntga biriktiriladi." },
         { question: "Payme'da pul yechildi, Premium kelmadi. Nima qilaman?", answer: "Takroriy to'lov qilmang. Chek, buyurtma ID va @username bilan bot ichidagi rasmiy supportga murojaat qiling." },
@@ -127,12 +127,12 @@ export const post: BlogPost = {
       title: 'Как купить Telegram Premium через Payme: цены и 6 шагов',
       description: 'Покупка Telegram Premium через Payme: 6 шагов в @uzgetsbot, цены на 3/6/12 месяцев, безопасность и решение проблем оплаты.',
       metaTitle: 'Telegram Premium через Payme — цены и 6 шагов',
-      metaDescription: 'Купите Telegram Premium через Payme: от 168 000 сум за 3 месяца, 6 шагов, Uzcard/Humo, безопасная оплата и решение проблем.',
+      metaDescription: `Купите Telegram Premium через Payme: от ${formatNumber(PREMIUM_PRICE[3])} сум за 3 месяца, 6 шагов, Uzcard/Humo, безопасная оплата и решение проблем.`,
       ogDescription: 'Telegram Premium через Payme: актуальные цены, 6 шагов и чек-лист безопасности.',
       answerBoxTitle: 'Краткий ответ', answerBoxBody: RuAnswerBox, Body: RuBody,
       faq: [
         { question: 'Можно ли купить Telegram Premium через Payme?', answer: 'Да. Выберите срок и @username в @uzgetsbot, затем подтвердите сумму в показанном ботом потоке Payme или локальной карты.' },
-        { question: 'Сколько стоит Premium через Payme?', answer: 'На 11 августа 2026 года цены Uzgets: 3 месяца — 168 000 сум, 6 — 228 000, 12 — 408 000. Итоговой считается сумма в боте.' },
+        { question: 'Сколько стоит Premium через Payme?', answer: `На 15 ноября 2026 года цены Uzgets: 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум, 6 — ${formatNumber(PREMIUM_PRICE[6])}, 12 — ${formatNumber(PREMIUM_PRICE[12])}. Итоговой считается сумма в боте.` },
         { question: 'Нужен ли пароль Telegram?', answer: 'Нет. Нужен только точный @username. Не сообщайте пароль, код входа, QR-вход или пароль 2FA.' },
         { question: 'Можно купить Premium другому человеку?', answer: 'Да. Укажите точный @username получателя — Premium привяжется к этому аккаунту.' },
         { question: 'Payme списал деньги, но Premium не появился. Что делать?', answer: 'Не платите повторно. Отправьте официальной поддержке в боте чек, ID заказа и @username.' },

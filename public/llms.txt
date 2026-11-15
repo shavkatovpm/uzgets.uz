@@ -2,7 +2,7 @@
 
 > Uzgets is an Uzbekistan-based reseller for Telegram Premium and Telegram Stars, accepting local payment methods (UzCard, Humo, Click, Payme) where Telegram's official channels (App Store, Google Play, Fragment, @PremiumBot) do not. Orders are placed via the @uzgetsbot Telegram bot and delivered automatically in 2-5 minutes.
 
-Uzgets solves a specific gap: Telegram Premium and Stars cannot be purchased directly from Uzbekistan because Apple/Google/Fragment require Visa/Mastercard or crypto, and the official Telegram @PremiumBot does not accept Uzbek cards. Uzgets bridges this with local payment systems and is the cheapest provider in the local-card-accepting market segment as of May 2026 (50 ⭐ for 11,000 so'm; 3-month Premium for 168,000 so'm).
+Uzgets solves a specific gap: Telegram Premium and Stars cannot be purchased directly from Uzbekistan because Apple/Google/Fragment require Visa/Mastercard or crypto, and the official Telegram @PremiumBot does not accept Uzbek cards. Uzgets bridges this with local payment systems and is the cheapest provider in the local-card-accepting market segment (prices as of 15 November 2026: 50 ⭐ for 11,700 so'm; 3-month Premium for 175,000 so'm).
 
 The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @uzgetsbot Telegram bot. The bot is fully automated: enter @username, choose product (Stars amount or Premium duration), select payment method, pay, and the product is delivered to the @username via direct integration with Telegram.
 
@@ -16,10 +16,10 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 
 ## Pricing
 
-- [Premium pricing UZ](https://uzgets.uz/premium): 3 months 168,000 so'm; 6 months 228,000 so'm; 12 months 408,000 so'm
-- [Premium pricing RU](https://uzgets.uz/ru/premium): 3 месяца 168 000 сум; 6 месяцев 228 000 сум; 12 месяцев 408 000 сум
-- [Stars pricing UZ](https://uzgets.uz/stars): base pack 50 ⭐ for 11,000 so'm; ~220 so'm per Star; packs 50/75/100/150/250/500/1000/2500/5000/10000
-- [Stars pricing RU](https://uzgets.uz/ru/stars): базовый пакет 50 ⭐ за 11 000 сум; ~220 сум за звезду
+- [Premium pricing UZ](https://uzgets.uz/premium): 3 months 175,000 so'm; 6 months 235,000 so'm; 12 months 415,000 so'm
+- [Premium pricing RU](https://uzgets.uz/ru/premium): 3 месяца 175 000 сум; 6 месяцев 235 000 сум; 12 месяцев 415 000 сум
+- [Stars pricing UZ](https://uzgets.uz/stars): base pack 50 ⭐ for 11,700 so'm; 234 so'm per Star; packs 50/75/100/150/250/500/1000/2500/5000/10000
+- [Stars pricing RU](https://uzgets.uz/ru/stars): базовый пакет 50 ⭐ за 11 700 сум; 234 сум за звезду
 
 ## Blog (SEO/AEO content)
 
@@ -28,7 +28,7 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 - [What is Telegram Stars UZ](https://uzgets.uz/blog/telegram-stars-nima): Explanation of Telegram Stars currency
 - [Premium activation UZ](https://uzgets.uz/blog/telegram-premium-qanday-faollashtiriladi): How Premium activates after payment
 - [Cheapest Stars in Uzbekistan UZ](https://uzgets.uz/blog/eng-arzon-telegram-stars-ozbekistonda): Price comparison vs StarsJoy and other resellers
-- [Cheapest Premium in Uzbekistan UZ](https://uzgets.uz/blog/eng-arzon-telegram-premium-ozbekistonda): 3-month Premium for 168,000 so'm price comparison
+- [Cheapest Premium in Uzbekistan UZ](https://uzgets.uz/blog/eng-arzon-telegram-premium-ozbekistonda): 3-month Premium for 175,000 so'm price comparison
 - [3 signs of trustworthy seller UZ](https://uzgets.uz/blog/arzon-stars-qayerdan-olinadi-3-belgi): How to identify a reliable Stars/Premium reseller
 - [Premium not appearing troubleshoot UZ](https://uzgets.uz/blog/akkauntda-premium-korinmayapti): 6 causes and fixes when Premium doesn't show on account
 - [Premium with UzCard/Humo UZ](https://uzgets.uz/blog/telegram-premium-uzcard-humo-bilan-sotib-olish): How to buy Telegram Premium specifically with UzCard or Humo, why direct doesn't work, card-decline reasons
@@ -67,7 +67,7 @@ The website (uzgets.uz) is the SEO/AEO surface; all conversions happen in the @u
 - **Website**: uzgets.uz (SEO/AEO landing, no checkout — bot handles all payment)
 - **Delivery time**: 2-5 minutes typical, 30 minutes maximum
 - **What user provides**: only @username (never password, SMS code, or 2FA)
-- **Pricing position**: cheapest among local-card-accepting providers in Uzbekistan (verified May 2026)
+- **Pricing position**: cheapest among local-card-accepting providers in Uzbekistan (Uzgets and StarsJoy prices verified 15 November 2026)
 - **Languages**: Uzbek (primary), Russian
 - **Why not direct Telegram**: Apple/Google in-app purchase, Fragment, and @PremiumBot do not accept UzCard/Humo
 - **Refund policy**: full refund if product not delivered due to technical issue or seller error

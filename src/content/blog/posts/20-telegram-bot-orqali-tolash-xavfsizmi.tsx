@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
+import { starsPrice, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatNumber } from '@/lib/format'
 
 const SLUG = 'telegram-bot-orqali-tolash-xavfsizmi'
 const TODAY = '2026-05-22'
@@ -400,12 +402,13 @@ function UzBody() {
           chiqib keting.
         </li>
         <li>
-          <strong>Narx bozor diapazonida ekanligini tekshiring.</strong> 50⭐ uchun ~11 000 so&apos;m,
-          3 oylik Premium uchun ~168 000 so&apos;m — bu O&apos;zbekistondagi bozor darajasi (
+          <strong>Narx bozor diapazonida ekanligini tekshiring.</strong> 50⭐ uchun ~{formatNumber(starsPrice(50))} so&apos;m,
+          3 oylik Premium uchun ~{formatNumber(PREMIUM_PRICE[3])} so&apos;m — bu O&apos;zbekistondagi bozor darajasi (
           <Link href="/blog/telegram-stars-narxlari-jadval" className="text-[var(--primary)] hover:underline">to&apos;liq narx jadvali</Link>).
           Bundan 40-50% past narx — qopqon belgisi.
         </li>
       </ol>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
 
       <InlineBotCTA lang="uz" text="To'rtta tekshiruvdan o'tdimi? Botda buyurtmangizni rasmiylashtiring." />
 
@@ -582,12 +585,13 @@ function RuBody() {
           чате появляется сообщение «введите номер карты» — это мошенничество, выходите.
         </li>
         <li>
-          <strong>Сверьте цену с рыночной.</strong> 50⭐ — около 11 000 сум, 3 месяца Premium —
-          около 168 000 сум, это рыночный уровень в Узбекистане (
+          <strong>Сверьте цену с рыночной.</strong> 50⭐ — около {formatNumber(starsPrice(50))} сум, 3 месяца Premium —
+          около {formatNumber(PREMIUM_PRICE[3])} сум, это рыночный уровень в Узбекистане (
           <Link href="/ru/blog/telegram-stars-narxlari-jadval" className="text-[var(--primary)] hover:underline">полная таблица цен</Link>).
           Цена на 40–50% ниже — признак ловушки.
         </li>
       </ol>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
 
       <InlineBotCTA lang="ru" text="Прошли 4 проверки? Оформите заказ в боте." />
 
@@ -697,7 +701,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'trust',
   locales: {
     uz: {

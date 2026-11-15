@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
@@ -18,7 +18,7 @@ function UzAnswerBox() {
       mahalliy bot{' '}
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       orqali. UzCard yoki Humo karta raqamini kiritib (yoki Click/Payme orqali) to&apos;laysiz va
-      Premium 2-5 daqiqada akkauntga biriktiriladi. Eng arzon paket — <strong>3 oylik 168 000 so&apos;m</strong>.
+      Premium 2-5 daqiqada akkauntga biriktiriladi. Eng arzon paket — <strong>3 oylik {formatNumber(PREMIUM_PRICE[3])} so&apos;m</strong>.
     </p>
   )
 }
@@ -32,7 +32,7 @@ function RuAnswerBox() {
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>:{' '}
       вы вводите номер карты UzCard или Humo (либо платите через Click/Payme), и Premium
       зачисляется на аккаунт за 2-5 минут. Самый дешёвый пакет —{' '}
-      <strong>3 месяца за 168 000 сум</strong>.
+      <strong>3 месяца за {formatNumber(PREMIUM_PRICE[3])} сум</strong>.
     </p>
   )
 }
@@ -64,6 +64,7 @@ function PremiumPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -172,8 +173,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "Narxlar 2026-yil may holatiga ko'ra. Yangilanishlarda sahifa qayta tekshiriladi."
-          : 'Цены на май 2026 года. При обновлениях страница будет пересмотрена.'}
+          ? "Narxlar 2026-yil 15-noyabr holatiga ko'ra. Yangilanishlarda sahifa qayta tekshiriladi."
+          : 'Цены на 15 ноября 2026 года. При обновлениях страница будет пересмотрена.'}
       </p>
     </div>
   )
@@ -250,8 +251,8 @@ function UzBody() {
           so&apos;ralmaydi.
         </li>
         <li>
-          Muddatni tanlang: <strong>3 oy</strong> (168 000 so&apos;m), <strong>6 oy</strong>{' '}
-          (228 000) yoki <strong>12 oy</strong> (408 000).
+          Muddatni tanlang: <strong>3 oy</strong> ({formatNumber(PREMIUM_PRICE[3])} so&apos;m), <strong>6 oy</strong>{' '}
+          ({formatNumber(PREMIUM_PRICE[6])}) yoki <strong>12 oy</strong> ({formatNumber(PREMIUM_PRICE[12])}).
         </li>
         <li>
           To&apos;lov usulini tanlang: <strong>UzCard</strong>, <strong>Humo</strong>,{' '}
@@ -276,7 +277,7 @@ function UzBody() {
       </p>
       <PremiumPriceTable lang="uz" />
       <p>
-        12 oylik paket bir oyiga taxminan <strong>34 000 so&apos;m</strong>ga to&apos;g&apos;ri
+        12 oylik paket bir oyiga taxminan <strong>{formatNumber(PREMIUM_PRICE[12] / 12)} so&apos;m</strong>ga to&apos;g&apos;ri
         keladi — bu 3 oyligidan ~40% arzon. Doimiy ishlatuvchilar uchun eng tejamli variant.
         Birinchi marta sinab ko&apos;rish uchun 3 oylik mos.
       </p>
@@ -412,8 +413,8 @@ function RuBody() {
           username — пароль, телефон или SMS-код никогда не запрашиваются.
         </li>
         <li>
-          Выберите срок: <strong>3 месяца</strong> (168 000 сум), <strong>6 месяцев</strong>{' '}
-          (228 000) или <strong>12 месяцев</strong> (408 000).
+          Выберите срок: <strong>3 месяца</strong> ({formatNumber(PREMIUM_PRICE[3])} сум), <strong>6 месяцев</strong>{' '}
+          ({formatNumber(PREMIUM_PRICE[6])}) или <strong>12 месяцев</strong> ({formatNumber(PREMIUM_PRICE[12])}).
         </li>
         <li>
           Выберите способ оплаты: <strong>UzCard</strong>, <strong>Humo</strong>,{' '}
@@ -438,7 +439,7 @@ function RuBody() {
       </p>
       <PremiumPriceTable lang="ru" />
       <p>
-        12-месячный пакет в пересчёте на месяц — около <strong>34 000 сум</strong>, на ~40%
+        12-месячный пакет в пересчёте на месяц — около <strong>{formatNumber(PREMIUM_PRICE[12] / 12)} сум</strong>, на ~40%
         дешевле 3-месячного. Для постоянного использования — самый выгодный. Чтобы попробовать
         впервые — подойдёт 3-месячный.
       </p>
@@ -503,7 +504,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
@@ -512,7 +513,7 @@ export const post: BlogPost = {
         "UzCard yoki Humo bilan Telegram Premium qanday sotib olinadi: nega bevosita ishlamaydi, qaysi yo'l (UzCard / Humo / Click / Payme) qulay, narxlar va karta rad etsa nima qilish kerak.",
       metaTitle: "Telegram Premium UzCard / Humo bilan sotib olish 2026",
       metaDescription:
-        "UzCard yoki Humo orqali Telegram Premium — botda 5 qadam, 2-5 daqiqa. 3 oy 168 000, 12 oy 408 000 so'm. Karta rad etilishi sabablari va yechimi.",
+        `UzCard yoki Humo orqali Telegram Premium — botda 5 qadam, 2-5 daqiqa. 3 oy ${formatNumber(PREMIUM_PRICE[3])}, 12 oy ${formatNumber(PREMIUM_PRICE[12])} so'm. Karta rad etilishi sabablari va yechimi.`,
       ogDescription:
         "UzCard / Humo bilan Telegram Premium sotib olishning amaliy yo'li. To'lov usullari, narxlar va karta xatoliklarining yechimi.",
       answerBoxTitle: 'Qisqa javob',
@@ -552,7 +553,7 @@ export const post: BlogPost = {
         {
           question: 'UzCard/Humo limitim yetmaydi — nima qilaman?',
           answer:
-            "Aksariyat O'zbek banklarining onlayn xaridlar uchun standart kunlik limiti 5-10 mln so'm. Premium narxi (eng katta paket 408 000 so'm) shu limitdan ancha kam. Agar siz o'zingiz pastroq limit o'rnatgan bo'lsangiz — bank ilovasi orqali ko'taring.",
+            `Aksariyat O'zbek banklarining onlayn xaridlar uchun standart kunlik limiti 5-10 mln so'm. Premium narxi (eng katta paket ${formatNumber(PREMIUM_PRICE[12])} so'm) shu limitdan ancha kam. Agar siz o'zingiz pastroq limit o'rnatgan bo'lsangiz — bank ilovasi orqali ko'taring.`,
         },
         {
           question: 'Karta ma\'lumotlarim botda saqlanadimi?',
@@ -570,7 +571,7 @@ export const post: BlogPost = {
         'Как купить Telegram Premium UzCard или Humo: почему напрямую не работает, какой путь (UzCard / Humo / Click / Payme) удобнее, цены и что делать при отклонении карты.',
       metaTitle: 'Купить Telegram Premium UzCard / Humo 2026',
       metaDescription:
-        'Telegram Premium через UzCard или Humo — 5 шагов в боте, 2-5 минут. 3 мес. 168 000, 12 мес. 408 000 сум. Причины отклонения карты и решения.',
+        `Telegram Premium через UzCard или Humo — 5 шагов в боте, 2-5 минут. 3 мес. ${formatNumber(PREMIUM_PRICE[3])}, 12 мес. ${formatNumber(PREMIUM_PRICE[12])} сум. Причины отклонения карты и решения.`,
       ogDescription:
         'Практический способ купить Telegram Premium UzCard или Humo. Способы оплаты, цены и решение ошибок карты.',
       answerBoxTitle: 'Краткий ответ',
@@ -610,7 +611,7 @@ export const post: BlogPost = {
         {
           question: 'Не хватает лимита UzCard/Humo — что делать?',
           answer:
-            'У большинства узбекских банков стандартный дневной лимит онлайн-покупок 5-10 млн сум. Цена Premium (максимум 408 000 сум) намного меньше этого лимита. Если вы установили более низкий собственный лимит — поднимите его в приложении банка.',
+            `У большинства узбекских банков стандартный дневной лимит онлайн-покупок 5-10 млн сум. Цена Premium (максимум ${formatNumber(PREMIUM_PRICE[12])} сум) намного меньше этого лимита. Если вы установили более низкий собственный лимит — поднимите его в приложении банка.`,
         },
         {
           question: 'Сохраняются ли данные моей карты в боте?',

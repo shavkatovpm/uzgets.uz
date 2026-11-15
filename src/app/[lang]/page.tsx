@@ -7,7 +7,7 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS, STARS_PACKS, STARS_BASE } from '@/config/products'
+import { PREMIUM_PERIODS, STARS_PACKS, STARS_BASE, PRICE_NOTE } from '@/config/products'
 import { getPostsSorted } from '@/content/blog'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl } from '@/i18n/config'
@@ -337,6 +337,7 @@ export default async function HomePage({
             />
           ))}
         </div>
+        <p className="mt-4 text-sm text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-10" aria-labelledby="stars-prices">

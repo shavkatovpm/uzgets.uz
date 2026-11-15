@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -65,8 +65,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {uz
-          ? "Narxlar joriy Uzgets konfiguratsiyasidan olingan va 2026-yil 16-sentabrda tekshirilgan. Aniq narxlar botda ko'rsatilgan qiymatga amal qiladi."
-          : 'Цены взяты из текущей конфигурации Uzgets и проверены 16 сентября 2026 года. Актуальные цены — те, что показаны в боте.'}
+          ? "Narxlar joriy Uzgets konfiguratsiyasidan olingan va 2026-yil 15-noyabrda tekshirilgan. Aniq narxlar botda ko'rsatilgan qiymatga amal qiladi."
+          : 'Цены взяты из текущей конфигурации Uzgets и проверены 15 ноября 2026 года. Актуальные цены — те, что показаны в боте.'}
       </p>
     </div>
   )
@@ -105,6 +105,7 @@ function UzBody() {
             ))}
           </tbody>
         </table>
+        <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
       </div>
       <p>
         To&apos;liq narx jadvali va boshqa miqdorlar bo&apos;yicha hisob-kitob{' '}
@@ -205,6 +206,7 @@ function RuBody() {
             ))}
           </tbody>
         </table>
+        <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
       </div>
       <p>
         Полная таблица цен и расчёты для других количеств — в{' '}
@@ -273,7 +275,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {

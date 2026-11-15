@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
@@ -137,6 +137,7 @@ function FullPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -228,8 +229,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? `Narxlar 2026-yil may holatiga ko'ra (uzgets so'mdagi narxi). Yangilanish bo'lsa shu sahifa va botda aks etadi.`
-          : 'Цены на май 2026 года (цена uzgets в сумах). При обновлении она отражается на этой странице и в боте.'}
+          ? `Narxlar 2026-yil 15-noyabr holatiga ko'ra (uzgets so'mdagi narxi). Yangilanish bo'lsa shu sahifa va botda aks etadi.`
+          : 'Цены на 15 ноября 2026 года (цена uzgets в сумах). При обновлении она отражается на этой странице и в боте.'}
       </p>
     </div>
   )
@@ -861,19 +862,19 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
       title:
         "Telegram Premium narxlari 2026 — 3/6/12 oylik paketlar (to'liq jadval)",
       description:
-        "Telegram Premium narxlari O'zbekistonda: 3 oy 168 000, 6 oy 228 000, 12 oy 408 000 so'm. Oyiga to'g'ri keladigan narx, tejov hisobi, hadya narxlari va sotib olish yo'llari.",
+        `Telegram Premium narxlari O'zbekistonda: 3 oy ${formatNumber(PREMIUM_PRICE[3])}, 6 oy ${formatNumber(PREMIUM_PRICE[6])}, 12 oy ${formatNumber(PREMIUM_PRICE[12])} so'm. Oyiga to'g'ri keladigan narx, tejov hisobi, hadya narxlari va sotib olish yo'llari.`,
       metaTitle: "Telegram Premium narxlari — 3/6/12 oylik 2026 | Uzgets",
       metaDescription:
-        "Telegram Premium 3/6/12 oylik narxlari O'zbekistonda — 168 000 / 228 000 / 408 000 so'm. Oyiga narx, tejov, hadya jadvali. UzCard/Humo/Click/Payme bilan to'lov.",
+        `Telegram Premium 3/6/12 oylik narxlari O'zbekistonda — ${formatNumber(PREMIUM_PRICE[3])} / ${formatNumber(PREMIUM_PRICE[6])} / ${formatNumber(PREMIUM_PRICE[12])} so'm. Oyiga narx, tejov, hadya jadvali. UzCard/Humo/Click/Payme bilan to'lov.`,
       ogDescription:
-        "Telegram Premium narxlari 2026: 3 oy 168 000, 6 oy 228 000, 12 oy 408 000 so'm — to'liq jadval va paket tanlash bo'yicha qo'llanma.",
+        `Telegram Premium narxlari 2026: 3 oy ${formatNumber(PREMIUM_PRICE[3])}, 6 oy ${formatNumber(PREMIUM_PRICE[6])}, 12 oy ${formatNumber(PREMIUM_PRICE[12])} so'm — to'liq jadval va paket tanlash bo'yicha qo'llanma.`,
       answerBoxTitle: 'Qisqa javob',
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
@@ -881,27 +882,27 @@ export const post: BlogPost = {
         {
           question: 'Telegram Premium 3 oylik qancha turadi?',
           answer:
-            "3 oylik Telegram Premium uzgets botida 168 000 so'm — oyiga taxminan 56 000 so'm. To'lov UzCard, Humo, Click yoki Payme orqali. Premium 2–5 daqiqada akkauntda faollashadi va aniq 90 kun amal qiladi.",
+            `3 oylik Telegram Premium uzgets botida ${formatNumber(PREMIUM_PRICE[3])} so'm — oyiga taxminan ${formatNumber(PREMIUM_PRICE[3] / 3)} so'm. To'lov UzCard, Humo, Click yoki Payme orqali. Premium 2–5 daqiqada akkauntda faollashadi va aniq 90 kun amal qiladi.`,
         },
         {
           question: 'Telegram Premium 6 oylik qancha turadi?',
           answer:
-            "6 oylik Telegram Premium 228 000 so'm — oyiga taxminan 38 000 so'm. 3 oylikni 2 marta sotib olishga nisbatan 108 000 so'm tejaysiz. Eng mashhur tanlov: tejash va moslashuvchanlik balansi.",
+            `6 oylik Telegram Premium ${formatNumber(PREMIUM_PRICE[6])} so'm — oyiga taxminan ${formatNumber(PREMIUM_PRICE[6] / 6)} so'm. 3 oylikni 2 marta sotib olishga nisbatan ${formatNumber(2 * PREMIUM_PRICE[3] - PREMIUM_PRICE[6])} so'm tejaysiz. Eng mashhur tanlov: tejash va moslashuvchanlik balansi.`,
         },
         {
           question: 'Telegram Premium 12 oylik (yillik) qancha turadi?',
           answer:
-            "12 oylik Telegram Premium 408 000 so'm — oyiga taxminan 34 000 so'm. Eng past oylik narx: 3 oylikga qaraganda oyiga 40% arzon, 6 oylikga qaraganda 12% arzon. Telegram'ni har kuni faol ishlatuvchilar uchun eng tejamli paket.",
+            `12 oylik Telegram Premium ${formatNumber(PREMIUM_PRICE[12])} so'm — oyiga taxminan ${formatNumber(PREMIUM_PRICE[12] / 12)} so'm. Eng past oylik narx: 3 oylikga qaraganda oyiga ${PCT_12_VS_3}% arzon, 6 oylikga qaraganda ${PCT_12_VS_6}% arzon. Telegram'ni har kuni faol ishlatuvchilar uchun eng tejamli paket.`,
         },
         {
           question: 'Qaysi paket eng tejamli?',
           answer:
-            "12 oylik (yillik) paket — oyiga 34 000 so'mga tushadi. 3 oylikni 4 marta sotib olganga nisbatan bir yilda 264 000 so'm tejaysiz. Lekin oldindan 408 000 so'm to'lash kerak — agar bir martaga qiyin bo'lsa, 6 oylik (228 000) keyingi mantiqiy tanlov.",
+            `12 oylik (yillik) paket — oyiga ${formatNumber(PREMIUM_PRICE[12] / 12)} so'mga tushadi. 3 oylikni 4 marta sotib olganga nisbatan bir yilda ${formatNumber(4 * PREMIUM_PRICE[3] - PREMIUM_PRICE[12])} so'm tejaysiz. Lekin oldindan ${formatNumber(PREMIUM_PRICE[12])} so'm to'lash kerak — agar bir martaga qiyin bo'lsa, 6 oylik (${formatNumber(PREMIUM_PRICE[6])}) keyingi mantiqiy tanlov.`,
         },
         {
           question: 'Premium hadya yuborilsa narxi bir xilmi?',
           answer:
-            "Ha, hadya narxi o'zingiz uchun sotib olish bilan to'liq bir xil: 3 oy 168 000, 6 oy 228 000, 12 oy 408 000 so'm. Bot ichida 'Hadya' rejimini tanlab, qabul qiluvchining @username'ini kiritasiz. Premium o'sha akkauntga to'g'ridan-to'g'ri biriktiriladi va Telegram rasmiy bildirishnoma yuboradi.",
+            `Ha, hadya narxi o'zingiz uchun sotib olish bilan to'liq bir xil: 3 oy ${formatNumber(PREMIUM_PRICE[3])}, 6 oy ${formatNumber(PREMIUM_PRICE[6])}, 12 oy ${formatNumber(PREMIUM_PRICE[12])} so'm. Bot ichida 'Hadya' rejimini tanlab, qabul qiluvchining @username'ini kiritasiz. Premium o'sha akkauntga to'g'ridan-to'g'ri biriktiriladi va Telegram rasmiy bildirishnoma yuboradi.`,
         },
         {
           question: 'Narx oyma-oy o\'zgaradimi?',
@@ -916,7 +917,7 @@ export const post: BlogPost = {
         {
           question: "Oyma-oy bo'lib to'lash mumkinmi?",
           answer:
-            "Yo'q. Har paket bir martalik to'lov — to'liq summa to'lanadi va Premium tanlangan muddatga faollashadi. Agar 12 oylik (408 000) bir martaga qiyin bo'lsa, 6 oylik (228 000) yoki 3 oylik (168 000) paketni ko'rib chiqing. Yarim yil yoki choragiga keyin yana sotib olish mumkin.",
+            `Yo'q. Har paket bir martalik to'lov — to'liq summa to'lanadi va Premium tanlangan muddatga faollashadi. Agar 12 oylik (${formatNumber(PREMIUM_PRICE[12])}) bir martaga qiyin bo'lsa, 6 oylik (${formatNumber(PREMIUM_PRICE[6])}) yoki 3 oylik (${formatNumber(PREMIUM_PRICE[3])}) paketni ko'rib chiqing. Yarim yil yoki choragiga keyin yana sotib olish mumkin.`,
         },
         {
           question: 'Premium narxi qayerga to\'lanadi?',
@@ -932,12 +933,12 @@ export const post: BlogPost = {
       title:
         'Цены Telegram Premium 2026 — пакеты 3/6/12 месяцев (полная таблица)',
       description:
-        'Цены Telegram Premium в Узбекистане: 3 месяца 168 000, 6 — 228 000, 12 — 408 000 сум. Цена за месяц, расчёт экономии, цены подарков и способы покупки.',
+        `Цены Telegram Premium в Узбекистане: 3 месяца ${formatNumber(PREMIUM_PRICE[3])}, 6 — ${formatNumber(PREMIUM_PRICE[6])}, 12 — ${formatNumber(PREMIUM_PRICE[12])} сум. Цена за месяц, расчёт экономии, цены подарков и способы покупки.`,
       metaTitle: 'Цены Telegram Premium — 3/6/12 месяцев 2026 | Uzgets',
       metaDescription:
-        'Цены Telegram Premium 3/6/12 месяцев в Узбекистане — 168 000 / 228 000 / 408 000 сум. Цена в месяц, экономия, таблица подарков. Оплата UzCard/Humo/Click/Payme.',
+        `Цены Telegram Premium 3/6/12 месяцев в Узбекистане — ${formatNumber(PREMIUM_PRICE[3])} / ${formatNumber(PREMIUM_PRICE[6])} / ${formatNumber(PREMIUM_PRICE[12])} сум. Цена в месяц, экономия, таблица подарков. Оплата UzCard/Humo/Click/Payme.`,
       ogDescription:
-        'Цены Telegram Premium 2026: 3 мес. 168 000, 6 мес. 228 000, 12 мес. 408 000 сум — полная таблица и гид по выбору пакета.',
+        `Цены Telegram Premium 2026: 3 мес. ${formatNumber(PREMIUM_PRICE[3])}, 6 мес. ${formatNumber(PREMIUM_PRICE[6])}, 12 мес. ${formatNumber(PREMIUM_PRICE[12])} сум — полная таблица и гид по выбору пакета.`,
       answerBoxTitle: 'Краткий ответ',
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
@@ -945,27 +946,27 @@ export const post: BlogPost = {
         {
           question: 'Сколько стоит Telegram Premium на 3 месяца?',
           answer:
-            'Premium на 3 месяца в боте uzgets — 168 000 сум, в месяц около 56 000 сум. Оплата UzCard, Humo, Click или Payme. Premium активируется на аккаунте за 2–5 минут и действует ровно 90 дней.',
+            `Premium на 3 месяца в боте uzgets — ${formatNumber(PREMIUM_PRICE[3])} сум, в месяц около ${formatNumber(PREMIUM_PRICE[3] / 3)} сум. Оплата UzCard, Humo, Click или Payme. Premium активируется на аккаунте за 2–5 минут и действует ровно 90 дней.`,
         },
         {
           question: 'Сколько стоит Telegram Premium на 6 месяцев?',
           answer:
-            'Premium на 6 месяцев — 228 000 сум, в месяц около 38 000 сум. По сравнению с покупкой 3-месячного дважды экономия 108 000 сум. Самый популярный выбор: баланс экономии и гибкости.',
+            `Premium на 6 месяцев — ${formatNumber(PREMIUM_PRICE[6])} сум, в месяц около ${formatNumber(PREMIUM_PRICE[6] / 6)} сум. По сравнению с покупкой 3-месячного дважды экономия ${formatNumber(2 * PREMIUM_PRICE[3] - PREMIUM_PRICE[6])} сум. Самый популярный выбор: баланс экономии и гибкости.`,
         },
         {
           question: 'Сколько стоит Telegram Premium на 12 месяцев (год)?',
           answer:
-            'Premium на 12 месяцев — 408 000 сум, в месяц около 34 000 сум. Самая низкая цена в месяц: на 40% дешевле 3-месячного и на 12% дешевле 6-месячного. Самый экономный пакет для ежедневных пользователей Telegram.',
+            `Premium на 12 месяцев — ${formatNumber(PREMIUM_PRICE[12])} сум, в месяц около ${formatNumber(PREMIUM_PRICE[12] / 12)} сум. Самая низкая цена в месяц: на ${PCT_12_VS_3}% дешевле 3-месячного и на ${PCT_12_VS_6}% дешевле 6-месячного. Самый экономный пакет для ежедневных пользователей Telegram.`,
         },
         {
           question: 'Какой пакет самый выгодный?',
           answer:
-            '12-месячный (годовой) — в месяц всего 34 000 сум. По сравнению с покупкой 3-месячного 4 раза за год экономите 264 000 сум. Но нужно сразу оплатить 408 000 сум — если это сложно, следующий логичный выбор 6-месячный (228 000).',
+            `12-месячный (годовой) — в месяц всего ${formatNumber(PREMIUM_PRICE[12] / 12)} сум. По сравнению с покупкой 3-месячного 4 раза за год экономите ${formatNumber(4 * PREMIUM_PRICE[3] - PREMIUM_PRICE[12])} сум. Но нужно сразу оплатить ${formatNumber(PREMIUM_PRICE[12])} сум — если это сложно, следующий логичный выбор 6-месячный (${formatNumber(PREMIUM_PRICE[6])}).`,
         },
         {
           question: 'Цена подарка Premium такая же?',
           answer:
-            'Да, цена подарка полностью такая же: 3 мес. 168 000, 6 мес. 228 000, 12 мес. 408 000 сум. В боте выбираете режим «Подарок», указываете @username получателя — Premium активируется напрямую на его аккаунте, Telegram отправляет официальное уведомление.',
+            `Да, цена подарка полностью такая же: 3 мес. ${formatNumber(PREMIUM_PRICE[3])}, 6 мес. ${formatNumber(PREMIUM_PRICE[6])}, 12 мес. ${formatNumber(PREMIUM_PRICE[12])} сум. В боте выбираете режим «Подарок», указываете @username получателя — Premium активируется напрямую на его аккаунте, Telegram отправляет официальное уведомление.`,
         },
         {
           question: 'Цена меняется каждый месяц?',
@@ -980,7 +981,7 @@ export const post: BlogPost = {
         {
           question: 'Можно ли оплатить в рассрочку?',
           answer:
-            'Нет. Каждый пакет — это разовая оплата: вся сумма вносится сразу, Premium активируется на выбранный срок. Если 12-месячный (408 000) сразу сложно, рассмотрите 6-месячный (228 000) или 3-месячный (168 000). Через полгода или квартал можно купить снова.',
+            `Нет. Каждый пакет — это разовая оплата: вся сумма вносится сразу, Premium активируется на выбранный срок. Если 12-месячный (${formatNumber(PREMIUM_PRICE[12])}) сразу сложно, рассмотрите 6-месячный (${formatNumber(PREMIUM_PRICE[6])}) или 3-месячный (${formatNumber(PREMIUM_PRICE[3])}). Через полгода или квартал можно купить снова.`,
         },
         {
           question: 'Куда именно оплачивается Premium?',

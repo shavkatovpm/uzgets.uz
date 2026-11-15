@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { Geist } from 'next/font/google'
 import { siteConfig } from '@/config/site'
+import { PREMIUM_PRICE, starsPrice } from '@/config/products'
 import { JsonLd } from '@/components/JsonLd'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -202,7 +203,7 @@ export default async function RootLayout({
             {
               '@type': 'Offer',
               name: 'Telegram Premium 3 oylik',
-              price: '168000',
+              price: String(PREMIUM_PRICE[3]),
               priceCurrency: 'UZS',
               url: localeUrl(siteConfig.url, lang, '/premium/3-oylik'),
               availability: 'https://schema.org/InStock',
@@ -210,7 +211,7 @@ export default async function RootLayout({
             {
               '@type': 'Offer',
               name: 'Telegram Premium 6 oylik',
-              price: '228000',
+              price: String(PREMIUM_PRICE[6]),
               priceCurrency: 'UZS',
               url: localeUrl(siteConfig.url, lang, '/premium/6-oylik'),
               availability: 'https://schema.org/InStock',
@@ -218,7 +219,7 @@ export default async function RootLayout({
             {
               '@type': 'Offer',
               name: 'Telegram Premium 12 oylik',
-              price: '408000',
+              price: String(PREMIUM_PRICE[12]),
               priceCurrency: 'UZS',
               url: localeUrl(siteConfig.url, lang, '/premium/12-oylik'),
               availability: 'https://schema.org/InStock',
@@ -232,7 +233,7 @@ export default async function RootLayout({
             {
               '@type': 'Offer',
               name: 'Telegram Stars 50',
-              price: '11000',
+              price: String(starsPrice(50)),
               priceCurrency: 'UZS',
               url: localeUrl(siteConfig.url, lang, '/stars/50'),
               availability: 'https://schema.org/InStock',
@@ -240,7 +241,7 @@ export default async function RootLayout({
             {
               '@type': 'Offer',
               name: 'Telegram Stars 500',
-              price: '110000',
+              price: String(starsPrice(500)),
               priceCurrency: 'UZS',
               url: localeUrl(siteConfig.url, lang, '/stars/500'),
               availability: 'https://schema.org/InStock',
@@ -248,7 +249,7 @@ export default async function RootLayout({
             {
               '@type': 'Offer',
               name: 'Telegram Stars 1000',
-              price: '220000',
+              price: String(starsPrice(1000)),
               priceCurrency: 'UZS',
               url: localeUrl(siteConfig.url, lang, '/stars/1000'),
               availability: 'https://schema.org/InStock',

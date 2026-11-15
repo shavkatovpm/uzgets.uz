@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
@@ -12,8 +12,8 @@ const P3 = PREMIUM_PERIODS.find((p) => p.months === 3)!
 const P6 = PREMIUM_PERIODS.find((p) => p.months === 6)!
 const P12 = PREMIUM_PERIODS.find((p) => p.months === 12)!
 
-// Raqobatchi narxi — 2026-06-22 holatiga ko'ra WebSearch orqali tekshirilgan (StarsJoy: 3 oy 172 000 so'm).
-const COMPETITOR_3M = 172_000
+// Raqobatchi narxi — 2026-11-15 holatiga ko'ra tekshirilgan (StarsJoy: 3 oy 179 000 so'm).
+const COMPETITOR_3M = 179_000
 const SAVE_VS_COMPETITOR = COMPETITOR_3M - P3.priceUzs
 
 function UzAnswerBox() {
@@ -117,6 +117,7 @@ function PriceCompareTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -171,8 +172,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? `Narxlar 2026-yil 22-iyun holatiga ko'ra (uzgets so'mdagi narxi; raqobatchi narxi shu kundagi ochiq ma'lumotdan). Yangilanish bo'lsa shu sahifa va botda aks etadi.`
-          : 'Цены на 22 июня 2026 года (цена uzgets в сумах; цена конкурента — из открытых данных на эту дату). При обновлении она отражается на этой странице и в боте.'}
+          ? `Narxlar 2026-yil 15-noyabr holatiga ko'ra (uzgets so'mdagi narxi; raqobatchi narxi shu kundagi ochiq ma'lumotdan). Yangilanish bo'lsa shu sahifa va botda aks etadi.`
+          : 'Цены на 15 ноября 2026 года (цена uzgets в сумах; цена конкурента — из открытых данных на эту дату). При обновлении она отражается на этой странице и в боте.'}
       </p>
     </div>
   )
@@ -578,19 +579,19 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
       title:
         "3 oylik Telegram Premium O'zbekistonda — narxi va sotib olish (2026)",
       description:
-        "3 oylik Telegram Premium narxi O'zbekistonda — 168 000 so'm (oyiga ~56 000). Kimga mos, qanday sotib olinadi, 90 kun amal qilishi va StarsJoy bilan narx taqqoslama.",
-      metaTitle: "3 oylik Telegram Premium narxi — 168 000 so'm 2026 | Uzgets",
+        `3 oylik Telegram Premium narxi O'zbekistonda — ${formatNumber(PREMIUM_PRICE[3])} so'm (oyiga ~${formatNumber(PREMIUM_PRICE[3] / 3)}). Kimga mos, qanday sotib olinadi, 90 kun amal qilishi va StarsJoy bilan narx taqqoslama.`,
+      metaTitle: `3 oylik Telegram Premium narxi — ${formatNumber(PREMIUM_PRICE[3])} so'm 2026 | Uzgets`,
       metaDescription:
-        "3 oylik Telegram Premium O'zbekistonda 168 000 so'm — oyiga ~56 000. UzCard/Humo/Click/Payme, 2–5 daqiqada faol. Sotib olish bosqichlari va paket taqqoslama.",
+        `3 oylik Telegram Premium O'zbekistonda ${formatNumber(PREMIUM_PRICE[3])} so'm — oyiga ~${formatNumber(PREMIUM_PRICE[3] / 3)}. UzCard/Humo/Click/Payme, 2–5 daqiqada faol. Sotib olish bosqichlari va paket taqqoslama.`,
       ogDescription:
-        "3 oylik Telegram Premium 168 000 so'm — eng past kirish nuqtasi. Kimga mos, qanday olinadi va 6/12 oylikdan farqi.",
+        `3 oylik Telegram Premium ${formatNumber(PREMIUM_PRICE[3])} so'm — eng past kirish nuqtasi. Kimga mos, qanday olinadi va 6/12 oylikdan farqi.`,
       answerBoxTitle: 'Qisqa javob',
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
@@ -598,7 +599,7 @@ export const post: BlogPost = {
         {
           question: 'Telegram Premium 3 oylik qancha turadi?',
           answer:
-            "3 oylik Telegram Premium uzgets botida 168 000 so'm — oyiga taxminan 56 000 so'm. To'lov UzCard, Humo, Click yoki Payme orqali so'mda. Premium 2–5 daqiqada akkauntda faollashadi va aniq 90 kun amal qiladi.",
+            `3 oylik Telegram Premium uzgets botida ${formatNumber(PREMIUM_PRICE[3])} so'm — oyiga taxminan ${formatNumber(PREMIUM_PRICE[3] / 3)} so'm. To'lov UzCard, Humo, Click yoki Payme orqali so'mda. Premium 2–5 daqiqada akkauntda faollashadi va aniq 90 kun amal qiladi.`,
         },
         {
           question: '3 oylik Premium necha kun amal qiladi?',
@@ -608,17 +609,17 @@ export const post: BlogPost = {
         {
           question: '3 oylik Premium kimga mos?',
           answer:
-            "Premium'ni birinchi marta sinab ko'ruvchilar, qisqa muddatga (bir loyiha yoki mavsum) olmoqchilar va sovg'a yubormoqchilar uchun. Bu eng past umumiy summa (168 000 so'm), shuning uchun katta xarajatsiz sinash imkonini beradi.",
+            `Premium'ni birinchi marta sinab ko'ruvchilar, qisqa muddatga (bir loyiha yoki mavsum) olmoqchilar va sovg'a yubormoqchilar uchun. Bu eng past umumiy summa (${formatNumber(PREMIUM_PRICE[3])} so'm), shuning uchun katta xarajatsiz sinash imkonini beradi.`,
         },
         {
           question: 'uzgets 3 oylik Premium boshqa botlardan arzonmi?',
           answer:
-            "Mahalliy karta bilan to'lash mumkin bo'lgan variantlar orasida uzgets eng arzonlaridan. Masalan StarsJoy'da 3 oylik 172 000 so'm — uzgets esa 168 000 so'm, ya'ni 4 000 so'm arzonroq, va Premium tezroq (2–5 daqiqa) faollashadi.",
+            `Mahalliy karta bilan to'lash mumkin bo'lgan variantlar orasida uzgets eng arzonlaridan. Masalan StarsJoy'da 3 oylik ${formatNumber(COMPETITOR_3M)} so'm — uzgets esa ${formatNumber(PREMIUM_PRICE[3])} so'm, ya'ni ${formatNumber(SAVE_VS_COMPETITOR)} so'm arzonroq, va Premium tezroq (2–5 daqiqa) faollashadi.`,
         },
         {
           question: '3 oylik olsam yaxshimi yoki 6/12 oylik?',
           answer:
-            "3 oylik eng past umumiy summa, lekin oyiga hisobida eng qimmati. Premium kerakligi noaniq bo'lsa — 3 oylik. Uzoq ishlatishingiz aniq bo'lsa, 6 oylik (228 000, oyiga 38 000) yoki 12 oylik (408 000, oyiga 34 000) oyiga arzonroq tushadi.",
+            `3 oylik eng past umumiy summa, lekin oyiga hisobida eng qimmati. Premium kerakligi noaniq bo'lsa — 3 oylik. Uzoq ishlatishingiz aniq bo'lsa, 6 oylik (${formatNumber(PREMIUM_PRICE[6])}, oyiga ${formatNumber(PREMIUM_PRICE[6] / 6)}) yoki 12 oylik (${formatNumber(PREMIUM_PRICE[12])}, oyiga ${formatNumber(PREMIUM_PRICE[12] / 12)}) oyiga arzonroq tushadi.`,
         },
         {
           question: 'Premium 3 oylik avtomatik yangilanadimi?',
@@ -633,23 +634,23 @@ export const post: BlogPost = {
         {
           question: '3 oylik Premiumni sovg\'a qilish mumkinmi?',
           answer:
-            "Ha. Botda 'Hadya' rejimini tanlab, qabul qiluvchining @username'ini kiritasiz. Narx o'zingizga olish bilan bir xil — 168 000 so'm. To'lov tasdiqlangach Premium o'sha akkauntga biriktiriladi va Telegram rasmiy bildirishnoma yuboradi.",
+            `Ha. Botda 'Hadya' rejimini tanlab, qabul qiluvchining @username'ini kiritasiz. Narx o'zingizga olish bilan bir xil — ${formatNumber(PREMIUM_PRICE[3])} so'm. To'lov tasdiqlangach Premium o'sha akkauntga biriktiriladi va Telegram rasmiy bildirishnoma yuboradi.`,
         },
       ],
       finalCtaHeading: "3 oylik Premium'ni olishga tayyormisiz?",
       finalCtaBody:
-        "Botga kiring, 3 oylik (168 000 so'm) paketni tanlang, @username'ni kiriting va UzCard, Humo, Click yoki Payme bilan to'lang. Premium 2–5 daqiqada akkauntda faollashadi — narx aniq, qo'shimcha komissiya yo'q.",
+        `Botga kiring, 3 oylik (${formatNumber(PREMIUM_PRICE[3])} so'm) paketni tanlang, @username'ni kiriting va UzCard, Humo, Click yoki Payme bilan to'lang. Premium 2–5 daqiqada akkauntda faollashadi — narx aniq, qo'shimcha komissiya yo'q.`,
     },
     ru: {
       title:
         'Telegram Premium на 3 месяца в Узбекистане — цена и покупка (2026)',
       description:
-        'Цена Telegram Premium на 3 месяца в Узбекистане — 168 000 сум (в месяц ~56 000). Кому подходит, как купить, срок 90 дней и сравнение цен со StarsJoy.',
-      metaTitle: 'Telegram Premium на 3 месяца — 168 000 сум 2026 | Uzgets',
+        `Цена Telegram Premium на 3 месяца в Узбекистане — ${formatNumber(PREMIUM_PRICE[3])} сум (в месяц ~${formatNumber(PREMIUM_PRICE[3] / 3)}). Кому подходит, как купить, срок 90 дней и сравнение цен со StarsJoy.`,
+      metaTitle: `Telegram Premium на 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум 2026 | Uzgets`,
       metaDescription:
-        'Telegram Premium на 3 месяца в Узбекистане 168 000 сум — в месяц ~56 000. UzCard/Humo/Click/Payme, активация за 2–5 минут. Шаги покупки и сравнение пакетов.',
+        `Telegram Premium на 3 месяца в Узбекистане ${formatNumber(PREMIUM_PRICE[3])} сум — в месяц ~${formatNumber(PREMIUM_PRICE[3] / 3)}. UzCard/Humo/Click/Payme, активация за 2–5 минут. Шаги покупки и сравнение пакетов.`,
       ogDescription:
-        'Telegram Premium на 3 месяца 168 000 сум — самая низкая точка входа. Кому подходит, как купить и отличие от 6/12 месяцев.',
+        `Telegram Premium на 3 месяца ${formatNumber(PREMIUM_PRICE[3])} сум — самая низкая точка входа. Кому подходит, как купить и отличие от 6/12 месяцев.`,
       answerBoxTitle: 'Краткий ответ',
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
@@ -657,7 +658,7 @@ export const post: BlogPost = {
         {
           question: 'Сколько стоит Telegram Premium на 3 месяца?',
           answer:
-            'Premium на 3 месяца в боте uzgets — 168 000 сум, в месяц около 56 000 сум. Оплата UzCard, Humo, Click или Payme в сумах. Premium активируется за 2–5 минут и действует ровно 90 дней.',
+            `Premium на 3 месяца в боте uzgets — ${formatNumber(PREMIUM_PRICE[3])} сум, в месяц около ${formatNumber(PREMIUM_PRICE[3] / 3)} сум. Оплата UzCard, Humo, Click или Payme в сумах. Premium активируется за 2–5 минут и действует ровно 90 дней.`,
         },
         {
           question: 'Сколько действует 3-месячный Premium?',
@@ -667,17 +668,17 @@ export const post: BlogPost = {
         {
           question: 'Кому подходит 3-месячный Premium?',
           answer:
-            'Тем, кто пробует Premium впервые, берёт на короткий срок (проект или сезон) или дарит. Это самая низкая общая сумма (168 000 сум), поэтому позволяет протестировать без крупных расходов.',
+            `Тем, кто пробует Premium впервые, берёт на короткий срок (проект или сезон) или дарит. Это самая низкая общая сумма (${formatNumber(PREMIUM_PRICE[3])} сум), поэтому позволяет протестировать без крупных расходов.`,
         },
         {
           question: 'У uzgets 3-месячный Premium дешевле других ботов?',
           answer:
-            'Среди вариантов с оплатой локальной картой uzgets — один из самых дешёвых. Например, в StarsJoy 3 месяца стоят 172 000 сум, а в uzgets — 168 000 сум, то есть на 4 000 сум дешевле, и Premium активируется быстрее (2–5 минут).',
+            `Среди вариантов с оплатой локальной картой uzgets — один из самых дешёвых. Например, в StarsJoy 3 месяца стоят ${formatNumber(COMPETITOR_3M)} сум, а в uzgets — ${formatNumber(PREMIUM_PRICE[3])} сум, то есть на ${formatNumber(SAVE_VS_COMPETITOR)} сум дешевле, и Premium активируется быстрее (2–5 минут).`,
         },
         {
           question: 'Лучше взять 3 месяца или 6/12?',
           answer:
-            '3 месяца — самая низкая общая сумма, но самая дорогая в пересчёте на месяц. Если не уверены, что Premium нужен — берите 3 месяца. Если точно надолго, 6 месяцев (228 000, в месяц 38 000) или 12 месяцев (408 000, в месяц 34 000) выгоднее.',
+            `3 месяца — самая низкая общая сумма, но самая дорогая в пересчёте на месяц. Если не уверены, что Premium нужен — берите 3 месяца. Если точно надолго, 6 месяцев (${formatNumber(PREMIUM_PRICE[6])}, в месяц ${formatNumber(PREMIUM_PRICE[6] / 6)}) или 12 месяцев (${formatNumber(PREMIUM_PRICE[12])}, в месяц ${formatNumber(PREMIUM_PRICE[12] / 12)}) выгоднее.`,
         },
         {
           question: 'Premium на 3 месяца продлевается автоматически?',
@@ -692,12 +693,12 @@ export const post: BlogPost = {
         {
           question: 'Можно ли подарить 3-месячный Premium?',
           answer:
-            'Да. В боте выбираете режим «Подарок» и указываете @username получателя. Цена такая же, как для себя — 168 000 сум. После подтверждения оплаты Premium активируется на его аккаунте, Telegram отправляет официальное уведомление.',
+            `Да. В боте выбираете режим «Подарок» и указываете @username получателя. Цена такая же, как для себя — ${formatNumber(PREMIUM_PRICE[3])} сум. После подтверждения оплаты Premium активируется на его аккаунте, Telegram отправляет официальное уведомление.`,
         },
       ],
       finalCtaHeading: 'Готовы оформить Premium на 3 месяца?',
       finalCtaBody:
-        'Зайдите в бот, выберите пакет на 3 месяца (168 000 сум), укажите @username и оплатите через UzCard, Humo, Click или Payme. Premium активируется за 2–5 минут — цена чёткая, без дополнительных комиссий.',
+        `Зайдите в бот, выберите пакет на 3 месяца (${formatNumber(PREMIUM_PRICE[3])} сум), укажите @username и оплатите через UzCard, Humo, Click или Payme. Premium активируется за 2–5 минут — цена чёткая, без дополнительных комиссий.`,
     },
   },
 }

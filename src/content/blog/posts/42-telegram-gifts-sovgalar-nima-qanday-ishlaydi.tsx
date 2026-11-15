@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_BASE } from '@/config/products'
+import { STARS_BASE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -262,6 +262,7 @@ function UzBody() {
         </Link>{' '}
         yordam beradi.
       </p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
       <p>
         Premium obunasini sovg&apos;a qilmoqchi bo&apos;lsangiz — bu boshqa mexanizm:{' '}
         <Link href="/blog/telegram-premium-hadya-qanday-sovga-qilinadi" className="text-[var(--primary)] hover:underline">
@@ -384,6 +385,7 @@ function RuBody() {
           гид по выбору пакета
         </Link>.
       </p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
       <p>
         Хотите подарить подписку Premium — это другой механизм:{' '}
         <Link href="/ru/blog/telegram-premium-hadya-qanday-sovga-qilinadi" className="text-[var(--primary)] hover:underline">
@@ -401,7 +403,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'info',
   locales: {
     uz: {

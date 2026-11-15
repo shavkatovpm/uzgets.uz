@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -88,6 +88,7 @@ function UzBody() {
 
       <h2 id="uzgets">Uzgets orqali olingan Premium&apos;ni bekor qilish kerakmi?</h2>
       <p><strong>Yo&apos;q.</strong> {siteConfig.bot} orqali sotib olingan 3, 6 yoki 12 oylik paketlar ({formatUzs(P3.priceUzs)}dan boshlab) — bir martalik to&apos;lov. Uzgets kartangiz yoki to&apos;lov ma&apos;lumotingizni saqlamaydi va muddat tugaganda hech qanday qo&apos;shimcha pul yechilmaydi. Premium shunchaki belgilangan kunda o&apos;chadi; davom ettirish uchun botdan yangi buyurtma berish kerak bo&apos;ladi.</p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
       <p>Paketlar va narxlar bilan batafsil tanishish uchun <Link href="/premium" className="text-[var(--primary)] hover:underline">/premium</Link> bo&apos;limini yoki <Link href="/blog/telegram-premium-narxlari-paketlar" className="text-[var(--primary)] hover:underline">Premium narxlari va muddatlari</Link> qo&apos;llanmasini ko&apos;ring.</p>
       <InlineBotCTA lang="uz" text="Yangi muddat kerakmi? Botda paketni tanlang — eski obunani bekor qilish shart emas." />
 
@@ -153,6 +154,7 @@ function RuBody() {
 
       <h2 id="uzgets">Нужно ли отменять Premium, купленный через Uzgets?</h2>
       <p><strong>Нет.</strong> Пакеты на 3, 6 или 12 месяцев через {siteConfig.bot} (от {formatUzs(P3.priceUzs)}) — это разовая оплата. Uzgets не хранит данные вашей карты, и по окончании срока никакие деньги повторно не списываются. Premium просто отключается в назначенный день; для продолжения нужно оформить новый заказ в боте.</p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
       <p>Подробности о пакетах и ценах — в разделе <Link href="/ru/premium" className="text-[var(--primary)] hover:underline">/ru/premium</Link> или в <Link href="/ru/blog/telegram-premium-narxlari-paketlar" className="text-[var(--primary)] hover:underline">гиде по ценам Premium</Link>.</p>
       <InlineBotCTA lang="ru" text="Нужен новый срок? Выберите пакет в боте — отменять старую подписку не нужно." />
 
@@ -195,7 +197,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'howto',
   locales: {
     uz: {

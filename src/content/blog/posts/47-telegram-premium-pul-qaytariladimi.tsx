@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatNumber, formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -184,6 +184,7 @@ function UzBody() {
         ma&apos;lumot ham yubormang.
       </p>
       <InlineBotCTA lang="uz" text={`Bir martalik to'lov, support shu botda: Premium 3 oy — ${formatUzs(P3.priceUzs)}.`} />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
 
       <h2 id="sorash">Qaytarish so&apos;rovi uchun nimalar kerak?</h2>
       <ul>
@@ -327,6 +328,7 @@ function RuBody() {
         — не отправляйте ни деньги, ни данные другим ботам и личным аккаунтам.
       </p>
       <InlineBotCTA lang="ru" text={`Разовая оплата, поддержка в том же боте: Premium на 3 месяца — ${ruSum(P3.priceUzs)}.`} />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
 
       <h2 id="sorash">Что нужно для запроса возврата?</h2>
       <ul>
@@ -371,7 +373,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'problem',
   locales: {
     uz: {

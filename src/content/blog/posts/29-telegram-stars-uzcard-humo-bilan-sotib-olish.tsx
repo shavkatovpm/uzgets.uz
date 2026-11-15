@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, starsPrice, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatNumber, formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -20,7 +20,7 @@ function RuAnswerBox() {
 
 function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
   const uz = lang === 'uz'
-  return <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]"><table className="w-full text-sm"><thead className="bg-[var(--muted)]"><tr><th className="px-4 py-3 text-left">Stars</th><th className="px-4 py-3 text-left">{uz ? 'Narx' : 'Цена'}</th><th className="px-4 py-3 text-left">{uz ? '1 Stars' : '1 Star'}</th><th className="px-4 py-3 text-left">{uz ? 'Paket' : 'Пакет'}</th></tr></thead><tbody>{STARS_PACKS.filter((p) => FEATURED.includes(p.amount)).map((p) => <tr key={p.amount} className="border-t border-[var(--border)]"><td className="px-4 py-3 font-medium">{formatNumber(p.amount)} ⭐</td><td className="px-4 py-3">{formatUzs(p.priceUzs)}</td><td className="px-4 py-3">{p.priceUzs / p.amount} {uz ? "so'm" : 'сум'}</td><td className="px-4 py-3"><Link href={localePath(lang, `/stars/${p.slug}`)} className="text-[var(--primary)] hover:underline">{uz ? 'Batafsil →' : 'Подробнее →'}</Link></td></tr>)}</tbody></table></div>
+  return <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]"><table className="w-full text-sm"><thead className="bg-[var(--muted)]"><tr><th className="px-4 py-3 text-left">Stars</th><th className="px-4 py-3 text-left">{uz ? 'Narx' : 'Цена'}</th><th className="px-4 py-3 text-left">{uz ? '1 Stars' : '1 Star'}</th><th className="px-4 py-3 text-left">{uz ? 'Paket' : 'Пакет'}</th></tr></thead><tbody>{STARS_PACKS.filter((p) => FEATURED.includes(p.amount)).map((p) => <tr key={p.amount} className="border-t border-[var(--border)]"><td className="px-4 py-3 font-medium">{formatNumber(p.amount)} ⭐</td><td className="px-4 py-3">{formatUzs(p.priceUzs)}</td><td className="px-4 py-3">{p.priceUzs / p.amount} {uz ? "so'm" : 'сум'}</td><td className="px-4 py-3"><Link href={localePath(lang, `/stars/${p.slug}`)} className="text-[var(--primary)] hover:underline">{uz ? 'Batafsil →' : 'Подробнее →'}</Link></td></tr>)}</tbody></table><p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p></div>
 }
 
 function Sources({ lang }: { lang: 'uz' | 'ru' }) {
@@ -30,7 +30,7 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
     <li><a href="https://humocard.uz/en/payment-system/question_answer/3303/" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">humocard.uz</a> — {uz ? 'Humo kartasi va internet to‘lovlari haqida rasmiy ma’lumot' : 'официальная информация о карте Humo и интернет-платежах'}</li>
     <li><a href="https://telegram.org/tos/stars" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">telegram.org/tos/stars</a> — {uz ? 'Telegram Stars rasmiy shartlari' : 'официальные условия Telegram Stars'}</li>
     <li><a href="https://core.telegram.org/api/stars" target="_blank" rel="noopener" className="hover:text-[var(--primary)] hover:underline">core.telegram.org/api/stars</a> — {uz ? 'Stars balansi va tranzaksiyalari bo‘yicha hujjat' : 'документация о балансе и транзакциях Stars'}</li>
-  </ul><p className="mt-3 text-[var(--text-muted)]">{uz ? 'Uzgets narxlari 2026-yil 10-avgust holatiga tekshirildi. Bot ko‘rsatgan joriy summa yakuniy hisoblanadi.' : 'Цены Uzgets проверены 10 августа 2026 года. Итоговой считается текущая сумма в боте.'}</p></div>
+  </ul><p className="mt-3 text-[var(--text-muted)]">{uz ? 'Uzgets narxlari 2026-yil 15-noyabr holatiga tekshirildi. Bot ko‘rsatgan joriy summa yakuniy hisoblanadi.' : 'Цены Uzgets проверены 15 ноября 2026 года. Итоговой считается текущая сумма в боте.'}</p></div>
 }
 
 function UzBody() {
@@ -98,14 +98,14 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
       title: "Telegram Stars'ni UzCard va Humo orqali sotib olish (2026)",
       description: "UzCard yoki Humo orqali Telegram Stars olish: @uzgetsbot'da 6 qadam, joriy narxlar, xavfsizlik va karta to'lovi o'tmasa yechimlar.",
       metaTitle: "Telegram Stars'ni UzCard va Humo bilan olish (2026)",
-      metaDescription: "UzCard yoki Humo bilan Telegram Stars oling: @uzgetsbot'da 6 qadam, 50 Stars 11 000 so'm, xavfsiz to'lov va muammolar yechimi.",
+      metaDescription: `UzCard yoki Humo bilan Telegram Stars oling: @uzgetsbot'da 6 qadam, 50 Stars ${formatNumber(starsPrice(50))} so'm, xavfsiz to'lov va muammolar yechimi.`,
       ogDescription: "UzCard va Humo orqali Telegram Stars: 6 qadam, joriy narxlar va xavfsiz to'lov.",
       answerBoxTitle: "Qisqa javob: UzCard/Humo bilan Stars qanday olinadi?",
       answerBoxBody: UzAnswerBox,
@@ -125,7 +125,7 @@ export const post: BlogPost = {
       title: 'Как купить Telegram Stars с UzCard и Humo в 2026 году',
       description: 'Покупка Telegram Stars с UzCard или Humo: 6 шагов в @uzgetsbot, актуальные цены, безопасность и решения при отказе карты.',
       metaTitle: 'Как купить Telegram Stars с UzCard и Humo (2026)',
-      metaDescription: 'Купите Telegram Stars с UzCard или Humo: 6 шагов в @uzgetsbot, 50 Stars за 11 000 сум, безопасная оплата и решение проблем.',
+      metaDescription: `Купите Telegram Stars с UzCard или Humo: 6 шагов в @uzgetsbot, 50 Stars за ${formatNumber(starsPrice(50))} сум, безопасная оплата и решение проблем.`,
       ogDescription: 'Telegram Stars с UzCard и Humo: 6 шагов, актуальные цены и безопасная оплата.',
       answerBoxTitle: 'Краткий ответ: как купить Stars с UzCard/Humo?',
       answerBoxBody: RuAnswerBox,

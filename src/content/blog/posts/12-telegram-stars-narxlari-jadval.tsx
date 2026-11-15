@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, starsPrice, STAR_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -18,8 +18,8 @@ function UzAnswerBox() {
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       orqali — <strong>{formatNumber(STARS_BASE.amount)} ⭐ uchun {formatUzs(STARS_BASE.priceUzs)}</strong> dan
       boshlanadi (taxminan <strong>{PER_STAR.toFixed(0)} so&apos;m/Star</strong>). Narx miqdorga mutanosib:
-      <strong> 100 ⭐ = {formatUzs(220 * 100)}</strong>, <strong>500 ⭐ = {formatUzs(220 * 500)}</strong>,{' '}
-      <strong>1000 ⭐ = {formatUzs(220 * 1000)}</strong>. To&apos;lov UzCard, Humo, Click yoki Payme orqali —
+      <strong> 100 ⭐ = {formatUzs(STAR_PRICE * 100)}</strong>, <strong>500 ⭐ = {formatUzs(STAR_PRICE * 500)}</strong>,{' '}
+      <strong>1000 ⭐ = {formatUzs(STAR_PRICE * 1000)}</strong>. To&apos;lov UzCard, Humo, Click yoki Payme orqali —
       Stars 2–5 daqiqada akkauntga biriktiriladi.
     </p>
   )
@@ -32,8 +32,8 @@ function RuAnswerBox() {
       <a href={siteConfig.botUrl} target="_blank" rel="noopener" className="font-semibold text-[var(--primary)]">{siteConfig.bot}</a>{' '}
       начинаются от <strong>{formatNumber(STARS_BASE.amount)} ⭐ за {formatUzs(STARS_BASE.priceUzs)}</strong>{' '}
       (примерно <strong>{PER_STAR.toFixed(0)} сум за Star</strong>). Цена пропорциональна количеству:
-      <strong> 100 ⭐ = {formatUzs(220 * 100)}</strong>, <strong>500 ⭐ = {formatUzs(220 * 500)}</strong>,{' '}
-      <strong>1000 ⭐ = {formatUzs(220 * 1000)}</strong>. Оплата UzCard, Humo, Click или Payme —
+      <strong> 100 ⭐ = {formatUzs(STAR_PRICE * 100)}</strong>, <strong>500 ⭐ = {formatUzs(STAR_PRICE * 500)}</strong>,{' '}
+      <strong>1000 ⭐ = {formatUzs(STAR_PRICE * 1000)}</strong>. Оплата UzCard, Humo, Click или Payme —
       Stars зачисляются на аккаунт за 2–5 минут.
     </p>
   )
@@ -69,6 +69,7 @@ function FullPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           })}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -162,8 +163,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? `Narxlar 2026-yil may holatiga ko'ra. Fragment va PremiumBot narxlari TON/USD kursiga bog'liq va kunlik o'zgaradi; uzgets so'mdagi narxi statik (jadvalda ko'rsatilgan).`
-          : 'Цены на май 2026 года. Цены Fragment и PremiumBot зависят от курса TON/USD и меняются ежедневно; цена uzgets в сумах фиксирована (указана в таблице).'}
+          ? `Uzgets narxlari 2026-yil 15-noyabr, Fragment va PremiumBot narxlari 2026-yil may holatiga ko'ra. Fragment va PremiumBot narxlari TON/USD kursiga bog'liq va kunlik o'zgaradi; uzgets so'mdagi narxi statik (jadvalda ko'rsatilgan).`
+          : 'Цены uzgets — на 15 ноября 2026 года, Fragment и PremiumBot — на май 2026 года. Цены Fragment и PremiumBot зависят от курса TON/USD и меняются ежедневно; цена uzgets в сумах фиксирована (указана в таблице).'}
       </p>
     </div>
   )
@@ -176,7 +177,7 @@ function UzBody() {
       <p>
         Quyida {siteConfig.bot} botida sotiladigan barcha Telegram Stars paketlari va ularning
         so&apos;mdagi narxi. Eng kichik paket — <strong>{formatNumber(STARS_BASE.amount)} ⭐ uchun {formatUzs(STARS_BASE.priceUzs)}</strong>,
-        eng katta — <strong>10 000 ⭐ uchun {formatUzs(220 * 10000)}</strong>. Narx miqdorga
+        eng katta — <strong>10 000 ⭐ uchun {formatUzs(STAR_PRICE * 10000)}</strong>. Narx miqdorga
         mutanosib, ya&apos;ni har Star uchun <strong>{PER_STAR.toFixed(0)} so&apos;m</strong>.
       </p>
       <FullPriceTable lang="uz" />
@@ -193,12 +194,12 @@ function UzBody() {
 
       <h2 id="50-stars">50 Stars narxi qancha?</h2>
       <p>
-        <strong>{formatUzs(220 * 50)}</strong>. Bu eng kichik mavjud paket — Telegram&apos;ning
+        <strong>{formatUzs(STAR_PRICE * 50)}</strong>. Bu eng kichik mavjud paket — Telegram&apos;ning
         minimum sotib olish miqdori ({STARS_BASE.amount} ⭐). Mini App&apos;da kichik to&apos;lovlar,
         post reklamasini boost qilish yoki kanalga 1–2 ta reaksiya yuborish uchun mos.
       </p>
       <ul>
-        <li>{formatUzs(220 * 50)} = {formatNumber(50)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 50)} = {formatNumber(50)} ⭐</li>
         <li>1 ⭐ uchun: {PER_STAR.toFixed(0)} so&apos;m</li>
         <li>To&apos;lov: UzCard / Humo / Click / Payme</li>
         <li>
@@ -211,11 +212,11 @@ function UzBody() {
 
       <h2 id="100-stars">100 Stars narxi qancha?</h2>
       <p>
-        <strong>{formatUzs(220 * 100)}</strong>. Eng ko&apos;p so&apos;raladigan paketlardan biri —
+        <strong>{formatUzs(STAR_PRICE * 100)}</strong>. Eng ko&apos;p so&apos;raladigan paketlardan biri —
         bir nechta Mini App to&apos;lovi yoki kanalga premium emoji/reaksiya uchun yetadi.
       </p>
       <ul>
-        <li>{formatUzs(220 * 100)} = {formatNumber(100)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 100)} = {formatNumber(100)} ⭐</li>
         <li>1 ⭐ uchun: {PER_STAR.toFixed(0)} so&apos;m</li>
         <li>
           Batafsil:{' '}
@@ -227,12 +228,12 @@ function UzBody() {
 
       <h2 id="500-stars">500 Stars narxi qancha?</h2>
       <p>
-        <strong>{formatUzs(220 * 500)}</strong>. O&apos;rta paket — Mini App o&apos;yinlarida
+        <strong>{formatUzs(STAR_PRICE * 500)}</strong>. O&apos;rta paket — Mini App o&apos;yinlarida
         muntazam to&apos;lovlar, kontent yaratuvchilarga &quot;tip&quot; yoki kanalga oylik
         reaksiyalar uchun maqbul.
       </p>
       <ul>
-        <li>{formatUzs(220 * 500)} = {formatNumber(500)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 500)} = {formatNumber(500)} ⭐</li>
         <li>1 ⭐ uchun: {PER_STAR.toFixed(0)} so&apos;m</li>
         <li>
           Batafsil:{' '}
@@ -246,12 +247,12 @@ function UzBody() {
 
       <h2 id="1000-stars">1000 Stars narxi qancha?</h2>
       <p>
-        <strong>{formatUzs(220 * 1000)}</strong>. Yirik paket — sovg&apos;a sifatida yuborish yoki
+        <strong>{formatUzs(STAR_PRICE * 1000)}</strong>. Yirik paket — sovg&apos;a sifatida yuborish yoki
         Mini App&apos;da uzoq muddatli foydalanish uchun. 1000 ⭐ deyarli barcha Mini App
         funksiyalari uchun yetarli zaxira.
       </p>
       <ul>
-        <li>{formatUzs(220 * 1000)} = {formatNumber(1000)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 1000)} = {formatNumber(1000)} ⭐</li>
         <li>1 ⭐ uchun: {PER_STAR.toFixed(0)} so&apos;m</li>
         <li>
           Batafsil:{' '}
@@ -268,10 +269,10 @@ function UzBody() {
         to&apos;laysiz — chegirma yoki narxning oshishi yo&apos;q. Misol uchun:
       </p>
       <ul>
-        <li>75 ⭐ → {formatUzs(220 * 75)}</li>
-        <li>250 ⭐ → {formatUzs(220 * 250)}</li>
-        <li>2 500 ⭐ → {formatUzs(220 * 2500)}</li>
-        <li>10 000 ⭐ → {formatUzs(220 * 10000)}</li>
+        <li>75 ⭐ → {formatUzs(STAR_PRICE * 75)}</li>
+        <li>250 ⭐ → {formatUzs(STAR_PRICE * 250)}</li>
+        <li>2 500 ⭐ → {formatUzs(STAR_PRICE * 2500)}</li>
+        <li>10 000 ⭐ → {formatUzs(STAR_PRICE * 10000)}</li>
       </ul>
       <p>
         Aniq narx uchun — yuqoridagi to&apos;liq jadvalga qarang yoki{' '}
@@ -372,7 +373,7 @@ function RuBody() {
       <p>
         Ниже все пакеты Telegram Stars, которые продаются в боте {siteConfig.bot}, и их цены в сумах.
         Минимальный пакет — <strong>{formatNumber(STARS_BASE.amount)} ⭐ за {formatUzs(STARS_BASE.priceUzs)}</strong>,
-        максимальный — <strong>10 000 ⭐ за {formatUzs(220 * 10000)}</strong>. Цена пропорциональна
+        максимальный — <strong>10 000 ⭐ за {formatUzs(STAR_PRICE * 10000)}</strong>. Цена пропорциональна
         количеству, то есть за каждую Star — <strong>{PER_STAR.toFixed(0)} сум</strong>.
       </p>
       <FullPriceTable lang="ru" />
@@ -388,12 +389,12 @@ function RuBody() {
 
       <h2 id="50-stars">Сколько стоят 50 Stars?</h2>
       <p>
-        <strong>{formatUzs(220 * 50)}</strong>. Минимально доступный пакет — минимум, который
+        <strong>{formatUzs(STAR_PRICE * 50)}</strong>. Минимально доступный пакет — минимум, который
         Telegram позволяет купить ({STARS_BASE.amount} ⭐). Подходит для небольших оплат в
         Mini App, буста поста или 1–2 реакций в канале.
       </p>
       <ul>
-        <li>{formatUzs(220 * 50)} = {formatNumber(50)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 50)} = {formatNumber(50)} ⭐</li>
         <li>За 1 ⭐: {PER_STAR.toFixed(0)} сум</li>
         <li>Оплата: UzCard / Humo / Click / Payme</li>
         <li>
@@ -406,11 +407,11 @@ function RuBody() {
 
       <h2 id="100-stars">Сколько стоят 100 Stars?</h2>
       <p>
-        <strong>{formatUzs(220 * 100)}</strong>. Один из самых востребованных пакетов — хватает на
+        <strong>{formatUzs(STAR_PRICE * 100)}</strong>. Один из самых востребованных пакетов — хватает на
         несколько оплат в Mini App или премиум-эмодзи/реакции в канале.
       </p>
       <ul>
-        <li>{formatUzs(220 * 100)} = {formatNumber(100)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 100)} = {formatNumber(100)} ⭐</li>
         <li>За 1 ⭐: {PER_STAR.toFixed(0)} сум</li>
         <li>
           Подробнее:{' '}
@@ -422,11 +423,11 @@ function RuBody() {
 
       <h2 id="500-stars">Сколько стоят 500 Stars?</h2>
       <p>
-        <strong>{formatUzs(220 * 500)}</strong>. Средний пакет — подходит для регулярных оплат в
+        <strong>{formatUzs(STAR_PRICE * 500)}</strong>. Средний пакет — подходит для регулярных оплат в
         Mini App-играх, чаевых создателям контента или ежемесячных реакций в канале.
       </p>
       <ul>
-        <li>{formatUzs(220 * 500)} = {formatNumber(500)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 500)} = {formatNumber(500)} ⭐</li>
         <li>За 1 ⭐: {PER_STAR.toFixed(0)} сум</li>
         <li>
           Подробнее:{' '}
@@ -440,11 +441,11 @@ function RuBody() {
 
       <h2 id="1000-stars">Сколько стоят 1000 Stars?</h2>
       <p>
-        <strong>{formatUzs(220 * 1000)}</strong>. Крупный пакет — подходит для подарка или
+        <strong>{formatUzs(STAR_PRICE * 1000)}</strong>. Крупный пакет — подходит для подарка или
         долгосрочного использования в Mini App. 1000 ⭐ — это запас почти под все функции Mini App.
       </p>
       <ul>
-        <li>{formatUzs(220 * 1000)} = {formatNumber(1000)} ⭐</li>
+        <li>{formatUzs(STAR_PRICE * 1000)} = {formatNumber(1000)} ⭐</li>
         <li>За 1 ⭐: {PER_STAR.toFixed(0)} сум</li>
         <li>
           Подробнее:{' '}
@@ -461,10 +462,10 @@ function RuBody() {
         скидок или наценок. Примеры:
       </p>
       <ul>
-        <li>75 ⭐ → {formatUzs(220 * 75)}</li>
-        <li>250 ⭐ → {formatUzs(220 * 250)}</li>
-        <li>2 500 ⭐ → {formatUzs(220 * 2500)}</li>
-        <li>10 000 ⭐ → {formatUzs(220 * 10000)}</li>
+        <li>75 ⭐ → {formatUzs(STAR_PRICE * 75)}</li>
+        <li>250 ⭐ → {formatUzs(STAR_PRICE * 250)}</li>
+        <li>2 500 ⭐ → {formatUzs(STAR_PRICE * 2500)}</li>
+        <li>10 000 ⭐ → {formatUzs(STAR_PRICE * 10000)}</li>
       </ul>
       <p>
         Точную цену — смотрите в полной таблице выше или выбирайте пакет в разделе{' '}
@@ -555,7 +556,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
@@ -564,9 +565,9 @@ export const post: BlogPost = {
         "Telegram Stars narxlari O'zbekistonda: 50, 100, 500, 1000 va boshqa paketlar — to'liq jadval, 1 Star uchun narx, qanday hisoblanadi va boshqa kanallar bilan taqqoslash.",
       metaTitle: 'Telegram Stars narxlari 2026 — 50/100/500/1000 jadval',
       metaDescription:
-        "Telegram Stars narxlari O'zbekistonda: 50 ⭐ = 11 000 so'm, 100 ⭐ = 22 000, 500 ⭐ = 110 000, 1000 ⭐ = 220 000. To'liq jadval va Fragment/PremiumBot bilan taqqoslash.",
+        `Telegram Stars narxlari O'zbekistonda: 50 ⭐ = ${formatNumber(starsPrice(50))} so'm, 100 ⭐ = ${formatNumber(starsPrice(100))}, 500 ⭐ = ${formatNumber(starsPrice(500))}, 1000 ⭐ = ${formatNumber(starsPrice(1000))}. To'liq jadval va Fragment/PremiumBot bilan taqqoslash.`,
       ogDescription:
-        "Telegram Stars to'liq narx jadvali — 50 ⭐ dan 10 000 ⭐ gacha, har Star uchun 220 so'm.",
+        `Telegram Stars to'liq narx jadvali — 50 ⭐ dan 10 000 ⭐ gacha, har Star uchun ${STAR_PRICE} so'm.`,
       answerBoxTitle: 'Qisqa javob',
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
@@ -574,37 +575,37 @@ export const post: BlogPost = {
         {
           question: "50 Telegram Stars qancha turadi?",
           answer:
-            "50 ⭐ = 11 000 so'm. Bu uzgets botida sotiladigan eng kichik paket — Telegram'ning minimum sotib olish miqdori. Har Star uchun 220 so'm.",
+            `50 ⭐ = ${formatNumber(starsPrice(50))} so'm. Bu uzgets botida sotiladigan eng kichik paket — Telegram'ning minimum sotib olish miqdori. Har Star uchun ${STAR_PRICE} so'm.`,
         },
         {
           question: '100 Telegram Stars qancha turadi?',
           answer:
-            "100 ⭐ = 22 000 so'm. Eng ko'p so'raladigan paketlardan biri — bir nechta Mini App to'lovi yoki kanalga premium emoji/reaksiya uchun yetadi.",
+            `100 ⭐ = ${formatNumber(starsPrice(100))} so'm. Eng ko'p so'raladigan paketlardan biri — bir nechta Mini App to'lovi yoki kanalga premium emoji/reaksiya uchun yetadi.`,
         },
         {
           question: '500 Telegram Stars qancha turadi?',
           answer:
-            "500 ⭐ = 110 000 so'm. O'rta paket — Mini App o'yinlarida muntazam to'lovlar, kontent yaratuvchilarga tip yoki kanalga oylik reaksiyalar uchun maqbul.",
+            `500 ⭐ = ${formatNumber(starsPrice(500))} so'm. O'rta paket — Mini App o'yinlarida muntazam to'lovlar, kontent yaratuvchilarga tip yoki kanalga oylik reaksiyalar uchun maqbul.`,
         },
         {
           question: '1000 Telegram Stars qancha turadi?',
           answer:
-            "1000 ⭐ = 220 000 so'm. Yirik paket — sovg'a sifatida yuborish yoki Mini App'da uzoq muddatli foydalanish uchun.",
+            `1000 ⭐ = ${formatNumber(starsPrice(1000))} so'm. Yirik paket — sovg'a sifatida yuborish yoki Mini App'da uzoq muddatli foydalanish uchun.`,
         },
         {
           question: 'Telegram Stars narxi qanday hisoblanadi?',
           answer:
-            "Formulasi: narx = miqdor × 220 so'm. Ya'ni har Star uchun bir xil narx, chegirma yoki narxning oshishi yo'q. 75 ⭐ = 16 500 so'm, 250 ⭐ = 55 000 so'm, 2 500 ⭐ = 550 000 so'm.",
+            `Formulasi: narx = miqdor × ${STAR_PRICE} so'm. Ya'ni har Star uchun bir xil narx, chegirma yoki narxning oshishi yo'q. 75 ⭐ = ${formatNumber(starsPrice(75))} so'm, 250 ⭐ = ${formatNumber(starsPrice(250))} so'm, 2 500 ⭐ = ${formatNumber(starsPrice(2500))} so'm.`,
         },
         {
           question: "Eng kichik Stars miqdori qancha?",
           answer:
-            "50 ⭐ (11 000 so'm). Bu Telegram'ning rasmiy minimum miqdori — barcha kanallarda (Fragment, PremiumBot, uzgets) bir xil. Undan kam Stars sotilmaydi.",
+            `50 ⭐ (${formatNumber(starsPrice(50))} so'm). Bu Telegram'ning rasmiy minimum miqdori — barcha kanallarda (Fragment, PremiumBot, uzgets) bir xil. Undan kam Stars sotilmaydi.`,
         },
         {
           question: 'Stars narxi PremiumBot va Fragment bilan solishtirilganda qanday?',
           answer:
-            "Fragment (TON crypto bilan) eng arzon — taxminan $0.013/Star. @PremiumBot App Store/Google Play orqali — taxminan $0.020/Star (app store komissiyalari sababli). Uzgets — 220 so'm/Star (~$0.017). Lekin Fragment va PremiumBot O'zbek karta bilan amalda ishlamaydi — mahalliy karta bilan sotib olganlar uchun uzgets eng qulay variant.",
+            `Fragment (TON crypto bilan) eng arzon — taxminan $0.013/Star. @PremiumBot App Store/Google Play orqali — taxminan $0.020/Star (app store komissiyalari sababli). Uzgets — ${STAR_PRICE} so'm/Star (~$0.018). Lekin Fragment va PremiumBot O'zbek karta bilan amalda ishlamaydi — mahalliy karta bilan sotib olganlar uchun uzgets eng qulay variant.`,
         },
         {
           question: 'Narx qachon o\'zgaradi?',
@@ -622,9 +623,9 @@ export const post: BlogPost = {
         'Цены на Telegram Stars в Узбекистане: 50, 100, 500, 1000 и другие пакеты — полная таблица, цена за 1 Star, как рассчитывается и сравнение с другими каналами.',
       metaTitle: 'Цены Telegram Stars 2026 — таблица 50/100/500/1000',
       metaDescription:
-        'Цены Telegram Stars в Узбекистане: 50 ⭐ = 11 000 сум, 100 ⭐ = 22 000, 500 ⭐ = 110 000, 1000 ⭐ = 220 000. Полная таблица и сравнение с Fragment/PremiumBot.',
+        `Цены Telegram Stars в Узбекистане: 50 ⭐ = ${formatNumber(starsPrice(50))} сум, 100 ⭐ = ${formatNumber(starsPrice(100))}, 500 ⭐ = ${formatNumber(starsPrice(500))}, 1000 ⭐ = ${formatNumber(starsPrice(1000))}. Полная таблица и сравнение с Fragment/PremiumBot.`,
       ogDescription:
-        'Telegram Stars — полная таблица цен от 50 ⭐ до 10 000 ⭐, по 220 сум за Star.',
+        `Telegram Stars — полная таблица цен от 50 ⭐ до 10 000 ⭐, по ${STAR_PRICE} сум за Star.`,
       answerBoxTitle: 'Краткий ответ',
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
@@ -632,7 +633,7 @@ export const post: BlogPost = {
         {
           question: 'Сколько стоят 50 Telegram Stars?',
           answer:
-            'Это минимальный пакет в боте uzgets — минимум, который Telegram позволяет купить. За 1 Star — 220 сум.',
+            `Это минимальный пакет в боте uzgets — минимум, который Telegram позволяет купить. За 1 Star — ${STAR_PRICE} сум.`,
         },
         {
           question: 'Сколько стоят 100 Telegram Stars?',
@@ -642,27 +643,27 @@ export const post: BlogPost = {
         {
           question: 'Сколько стоят 500 Telegram Stars?',
           answer:
-            '500 ⭐ = 110 000 сум. Средний пакет — для регулярных оплат в Mini App, чаевых создателям контента или ежемесячных реакций в канале.',
+            `500 ⭐ = ${formatNumber(starsPrice(500))} сум. Средний пакет — для регулярных оплат в Mini App, чаевых создателям контента или ежемесячных реакций в канале.`,
         },
         {
           question: 'Сколько стоят 1000 Telegram Stars?',
           answer:
-            '1000 ⭐ = 220 000 сум. Крупный пакет — для подарка или долгосрочного использования в Mini App.',
+            `1000 ⭐ = ${formatNumber(starsPrice(1000))} сум. Крупный пакет — для подарка или долгосрочного использования в Mini App.`,
         },
         {
           question: 'Как рассчитывается цена Telegram Stars?',
           answer:
-            'Формула: цена = количество × 220 сум. То есть за каждую Star одна и та же цена, без скидок или наценок. 75 ⭐ = 16 500 сум, 250 ⭐ = 55 000 сум, 2 500 ⭐ = 550 000 сум.',
+            `Формула: цена = количество × ${STAR_PRICE} сум. То есть за каждую Star одна и та же цена, без скидок или наценок. 75 ⭐ = ${formatNumber(starsPrice(75))} сум, 250 ⭐ = ${formatNumber(starsPrice(250))} сум, 2 500 ⭐ = ${formatNumber(starsPrice(2500))} сум.`,
         },
         {
           question: 'Какое минимальное количество Stars?',
           answer:
-            '50 ⭐ (11 000 сум). Это официальный минимум Telegram — одинаков на всех каналах (Fragment, PremiumBot, uzgets). Меньше Stars не продаются.',
+            `50 ⭐ (${formatNumber(starsPrice(50))} сум). Это официальный минимум Telegram — одинаков на всех каналах (Fragment, PremiumBot, uzgets). Меньше Stars не продаются.`,
         },
         {
           question: 'Как цена Stars сравнивается с PremiumBot и Fragment?',
           answer:
-            'Fragment (через TON-крипту) — самый дешёвый, примерно $0.013 за Star. @PremiumBot через App Store / Google Play — примерно $0.020 за Star (из-за комиссий маркетов). Uzgets — 220 сум за Star (~$0.017). Но Fragment и PremiumBot фактически не работают с узб. картами — для оплаты локальной картой uzgets — самый удобный вариант.',
+            `Fragment (через TON-крипту) — самый дешёвый, примерно $0.013 за Star. @PremiumBot через App Store / Google Play — примерно $0.020 за Star (из-за комиссий маркетов). Uzgets — ${STAR_PRICE} сум за Star (~$0.018). Но Fragment и PremiumBot фактически не работают с узб. картами — для оплаты локальной картой uzgets — самый удобный вариант.`,
         },
         {
           question: 'Когда меняется цена?',

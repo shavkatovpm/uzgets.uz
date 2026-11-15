@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, starsPrice, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
@@ -70,6 +70,7 @@ function StarsPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           })}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -158,8 +159,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {lang === 'uz'
-          ? "Narxlar 2026-yil may holatiga ko'ra. Click ilovasidagi sozlamalar bank/ilova versiyasiga qarab biroz farq qilishi mumkin."
-          : 'Цены на май 2026 года. Настройки в Click могут немного отличаться в зависимости от банка и версии приложения.'}
+          ? "Narxlar 2026-yil 15-noyabr holatiga ko'ra. Click ilovasidagi sozlamalar bank/ilova versiyasiga qarab biroz farq qilishi mumkin."
+          : 'Цены на 15 ноября 2026 года. Настройки в Click могут немного отличаться в зависимости от банка и версии приложения.'}
       </p>
     </div>
   )
@@ -494,7 +495,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
@@ -503,7 +504,7 @@ export const post: BlogPost = {
         "Telegram Stars'ni Click ilovasi orqali sotib olish: biometrik tasdiq bilan 10 soniyada to'lov, Click vs UzCard/Humo taqqoslama, narxlar va Click rad etilganda yechimi.",
       metaTitle: "Telegram Stars Click orqali sotib olish 2026",
       metaDescription:
-        "Click ilovasi orqali Telegram Stars sotib olish — botda 5 qadam, biometrik tasdiq, 10 soniyalik to'lov. 50 ⭐ uchun 11 000 so'm. Click vs karta taqqoslama, xatoliklar yechimi.",
+        `Click ilovasi orqali Telegram Stars sotib olish — botda 5 qadam, biometrik tasdiq, 10 soniyalik to'lov. 50 ⭐ uchun ${formatNumber(starsPrice(50))} so'm. Click vs karta taqqoslama, xatoliklar yechimi.`,
       ogDescription:
         "Telegram Stars Click ilovasi orqali — eng tez to'lov yo'li. Qadamlar, taqqoslama va xatoliklar.",
       answerBoxTitle: 'Qisqa javob',
@@ -523,7 +524,7 @@ export const post: BlogPost = {
         {
           question: "Click bilan to'laganda Stars narxi qimmatroqmi?",
           answer:
-            "Yo'q. To'lov usuli narxni o'zgartirmaydi — Click, UzCard, Humo va Payme bir xil narxda ishlaydi. 50 ⭐ uchun 11 000 so'm, 100 ⭐ uchun 22 000 so'm va h.k.",
+            `Yo'q. To'lov usuli narxni o'zgartirmaydi — Click, UzCard, Humo va Payme bir xil narxda ishlaydi. 50 ⭐ uchun ${formatNumber(starsPrice(50))} so'm, 100 ⭐ uchun ${formatNumber(starsPrice(100))} so'm va h.k.`,
         },
         {
           question: 'Click ilovasini o\'rnatmasdan to\'lay olamanmi?',
@@ -561,7 +562,7 @@ export const post: BlogPost = {
         'Покупка Telegram Stars через приложение Click: оплата биометрией за 10 секунд, Click против UzCard/Humo, цены и решение ошибок Click.',
       metaTitle: 'Купить Telegram Stars через Click 2026',
       metaDescription:
-        'Telegram Stars через Click — 5 шагов в боте, биометрия, оплата за 10 секунд. 50 ⭐ за 11 000 сум. Сравнение Click с картой и решение ошибок.',
+        `Telegram Stars через Click — 5 шагов в боте, биометрия, оплата за 10 секунд. 50 ⭐ за ${formatNumber(starsPrice(50))} сум. Сравнение Click с картой и решение ошибок.`,
       ogDescription:
         'Telegram Stars через Click — самый быстрый способ оплаты. Шаги, сравнение и устранение ошибок.',
       answerBoxTitle: 'Краткий ответ',
@@ -581,7 +582,7 @@ export const post: BlogPost = {
         {
           question: 'Через Click Stars стоят дороже?',
           answer:
-            'Нет. Способ оплаты не меняет цену — Click, UzCard, Humo и Payme работают по одной и той же стоимости. 50 ⭐ за 11 000 сум, 100 ⭐ за 22 000 сум и т. д.',
+            `Нет. Способ оплаты не меняет цену — Click, UzCard, Humo и Payme работают по одной и той же стоимости. 50 ⭐ за ${formatNumber(starsPrice(50))} сум, 100 ⭐ за ${formatNumber(starsPrice(100))} сум и т. д.`,
         },
         {
           question: 'Могу ли я оплатить без установки Click?',

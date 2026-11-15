@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -48,17 +48,21 @@ const CHANNELS: { name: Row; pay: Row; usd: Triple }[] = [
 
 const toUzs = (usd: number) => Math.round((usd * USD_RATE) / 100) * 100
 const money = (n: number, lang: Lang) => `${formatNumber(n)} ${lang === 'uz' ? "so'm" : 'сум'}`
-const pct = (usd: number, i: number) => Math.round((Math.abs(UZGETS[i] - toUzs(usd)) / toUzs(usd)) * 100)
+const pctExact = (usd: number, i: number) => (Math.abs(UZGETS[i] - toUzs(usd)) / toUzs(usd)) * 100
+const pct = (usd: number, i: number) => Math.round(pctExact(usd, i))
+// 1% dan kichik farq "0%" bo'lib qolmasligi uchun bir xona aniqlikda ko'rsatiladi
+const pctLabel = (v: number) => (v < 1 ? String(Math.round(v * 10) / 10) : String(Math.round(v)))
 const pctRange = (usd: Triple) => {
-  const all = usd.map((u, i) => pct(u, i))
-  return `${Math.min(...all)}–${Math.max(...all)}%`
+  const all = usd.map((u, i) => pctExact(u, i))
+  return `${pctLabel(Math.min(...all))}–${pctLabel(Math.max(...all))}%`
 }
 
 function diffLabel(usd: number, i: number, lang: Lang) {
   const official = toUzs(usd)
   const gap = money(Math.abs(UZGETS[i] - official), lang)
   if (UZGETS[i] < official) {
-    return lang === 'uz' ? `Uzgets ${pct(usd, i)}% arzon (−${gap})` : `Uzgets дешевле на ${pct(usd, i)}% (−${gap})`
+    const p = pctLabel(pctExact(usd, i))
+    return lang === 'uz' ? `Uzgets ${p}% arzon (−${gap})` : `Uzgets дешевле на ${p}% (−${gap})`
   }
   return lang === 'uz' ? `Uzgets ${pct(usd, i)}% qimmat (+${gap})` : `Uzgets дороже на ${pct(usd, i)}% (+${gap})`
 }
@@ -136,6 +140,7 @@ function PriceTable({ lang }: { lang: Lang }) {
           </tr>
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       <div className="border-t border-[var(--border)] bg-[var(--muted)]/30 px-4 py-2 text-xs text-[var(--text-muted)]">
         {uz
           ? `Dollar narxlari 2026-yil 7-oktabrda tekshirilgan. So'mga Markaziy bank kursi bo'yicha o'tkazilgan: 1 USD = ${USD_RATE_LABEL} so'm, 100 so'mgacha yaxlitlangan. Obuna qatorida 3 va 6 oy — oylik $3.99 to'lovlar yig'indisi.`
@@ -273,7 +278,7 @@ function UzBody() {
         eng arzon rasmiy yo&apos;ldan {FRAGMENT_RANGE} qimmatroq, lekin App Store&apos;ning aynan
         shunday bir martalik paketlaridan arzonroq variant.
       </p>
-      <InlineBotCTA lang="uz" text="Xalqaro karta va kriptosiz — 3 oylik Premium 168 000 so'm, UzCard yoki Humo bilan." />
+      <InlineBotCTA lang="uz" text={`Xalqaro karta va kriptosiz — 3 oylik Premium ${formatNumber(PREMIUM_PRICE[3])} so'm, UzCard yoki Humo bilan.`} />
 
       <h2 id="real-summa">Nega kartadan yechiladigan summa jadvaldagidan boshqacha chiqadi?</h2>
       <p>
@@ -382,7 +387,7 @@ function RuBody() {
         Uzgets на {FRAGMENT_RANGE} дороже самого дешёвого официального способа — за возможность
         платить локальной картой, — но дешевле таких же разовых пакетов App Store.
       </p>
-      <InlineBotCTA lang="ru" text="Без международной карты и крипто — Premium на 3 месяца за 168 000 сум, оплата UzCard или Humo." />
+      <InlineBotCTA lang="ru" text={`Без международной карты и крипто — Premium на 3 месяца за ${formatNumber(PREMIUM_PRICE[3])} сум, оплата UzCard или Humo.`} />
 
       <h2 id="real-summa">Почему с карты списывается не та сумма, что в таблице?</h2>
       <p>
@@ -434,7 +439,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {

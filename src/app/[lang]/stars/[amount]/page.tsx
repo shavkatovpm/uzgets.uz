@@ -6,7 +6,7 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, getStarsBySlug, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, getStarsBySlug, STARS_BASE, PRICE_NOTE } from '@/config/products'
 import { getStarsPageContent } from '@/config/stars-pages'
 import { getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
@@ -351,6 +351,7 @@ export default async function StarsAmountPage({
             <BotCTA size="lg" prefill={`stars_${item.amount}`} />
           </div>
         </div>
+        <p className="mt-4 text-sm text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       </section>
 
       {/* Why this amount */}

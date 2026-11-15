@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { STARS_BASE } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { STARS_BASE, starsPrice, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
 
@@ -166,7 +166,8 @@ function UzBody() {
         yo Stars yetkazilmaydi, yo karta ma&apos;lumotingiz xavf ostida.
       </p>
 
-      <InlineBotCTA lang="uz" text="Ishonchli va arzon — 50 ⭐ 11 000 so'mga, botda buyurtma bering." />
+      <InlineBotCTA lang="uz" text={`Ishonchli va arzon — 50 ⭐ ${formatNumber(starsPrice(50))} so'mga, botda buyurtma bering.`} />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
 
       <h2 id="belgi-1">1-belgi: Buyurtma avtomatik bot tizimida bajariladi</h2>
       <SignalCard
@@ -215,7 +216,7 @@ function UzBody() {
             </p>
             <p className="mt-2">
               Firibgar sotuvchi esa to&apos;lovni <strong>tasodifiy chat yoki kanaldan</strong>{' '}
-              tashlangan kartaga so&apos;raydi: &quot;9860 1234... ga 11 000 so&apos;m
+              tashlangan kartaga so&apos;raydi: &quot;9860 1234... ga {formatNumber(starsPrice(50))} so&apos;m
               tashla&quot; — buyurtma raqami yo&apos;q, summa nimaga ekani aniq emas, kim
               ekani noma&apos;lum, hech qanday avtomatik tekshiruv yo&apos;q. Pul
               o&apos;tdimi — natija oddiy javob bermaslik yoki bloklash. Farq <em>karta
@@ -225,7 +226,7 @@ function UzBody() {
           </>
         }
         uzgets="Bot @username + miqdor olgach to'lov ma'lumotini ko'rsatadi (karta yoki Click/Payme link). Aynan o'sha summani o'tkazsangiz — bot avtomatik tekshiradi va Stars/Premium darhol biriktiriladi. Buyurtma ID bilan kuzatiladigan jarayon."
-        scam="Tasodifiy guruhda 'menga 11 000 ga 50 ⭐ bersam, 9860 1234... ga tashla' — buyurtma raqami yo'q, bot tekshirmaydi, Telegram tomonidan biriktirilmaydi. Pul o'tgach javob yo'q."
+        scam={`Tasodifiy guruhda 'menga ${formatNumber(starsPrice(50))} ga 50 ⭐ bersam, 9860 1234... ga tashla' — buyurtma raqami yo'q, bot tekshirmaydi, Telegram tomonidan biriktirilmaydi. Pul o'tgach javob yo'q.`}
       />
 
       <p>
@@ -278,7 +279,7 @@ function UzBody() {
       <ul>
         <li>
           <strong>Bozor narxidan keskin past:</strong> 50 ⭐ uchun 8 000 so&apos;m yoki
-          undan kam — bu fizik jihatdan iqtisodiy emas. Uzgets&apos;ning 11 000 so&apos;m
+          undan kam — bu fizik jihatdan iqtisodiy emas. Uzgets&apos;ning {formatNumber(starsPrice(50))} so&apos;m
           narxi to&apos;lov tizimi komissiyalari va Telegram&apos;ning ulgurji narxi
           asosidagi minimum. &quot;Aksiya&quot; deb tushuntirilsa ham — shubhalanish kerak.
         </li>
@@ -332,7 +333,7 @@ function UzBody() {
       <p>
         Uzgets — O&apos;zbekistonda mahalliy karta bilan to&apos;lash mumkin bo&apos;lgan eng
         arzon Stars/Premium yetkazib beruvchisi (50 ⭐ {formatUzs(STARS_BASE.priceUzs)};
-        StarsJoy 12 000, boshqa botlar 14-18 000 so&apos;m). Lekin narxning past
+        StarsJoy 12 700, boshqa botlar 14-18 000 so&apos;m). Lekin narxning past
         bo&apos;lishi ishonchsizlik belgisi <strong>emas</strong> — quyidagi sabablardan:
       </p>
       <ul>
@@ -413,7 +414,8 @@ function RuBody() {
         Stars не зачисляются, или данные карты под угрозой.
       </p>
 
-      <InlineBotCTA lang="ru" text="Надёжно и дёшево — 50 ⭐ за 11 000 сум, оформите в боте." />
+      <InlineBotCTA lang="ru" text={`Надёжно и дёшево — 50 ⭐ за ${formatNumber(starsPrice(50))} сум, оформите в боте.`} />
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
 
       <h2 id="belgi-1">Признак 1: Заказ выполняется в автоматизированном боте</h2>
       <SignalCardRu
@@ -459,7 +461,7 @@ function RuBody() {
             </p>
             <p className="mt-2">
               Мошенник же просит перевести деньги на карту, которую он скинул в{' '}
-              <strong>случайном чате или канале</strong>: «9860 1234… отправь 11 000 сум» —
+              <strong>случайном чате или канале</strong>: «9860 1234… отправь {formatNumber(starsPrice(50))} сум» —
               без номера заказа, без понимания за что именно сумма, без автоматической
               проверки. Перевели — в ответ либо тишина, либо блок. Дело <em>не в самом
               номере карты</em>, а в <strong>контексте и проверяемости</strong>: у надёжного
@@ -468,7 +470,7 @@ function RuBody() {
           </>
         }
         uzgets="После ввода @username и количества бот показывает реквизит оплаты (карту или ссылку Click/Payme). Переводите ту же сумму — бот проверит автоматически и сразу зачислит Stars/Premium. Заказ отслеживается по ID."
-        scam="В случайной группе: «закину 50 ⭐ за 11 000, переведи на 9860 1234…» — нет ID заказа, бот не проверяет, Telegram сам ничего не зачисляет. Деньги ушли — ответа нет."
+        scam={`В случайной группе: «закину 50 ⭐ за ${formatNumber(starsPrice(50))}, переведи на 9860 1234…» — нет ID заказа, бот не проверяет, Telegram сам ничего не зачисляет. Деньги ушли — ответа нет.`}
       />
 
       <p>
@@ -515,7 +517,7 @@ function RuBody() {
       <ul>
         <li>
           <strong>Резко ниже рыночной цены:</strong> 50 ⭐ за 8 000 сум или меньше — это
-          физически нерентабельно. Цена Uzgets 11 000 сум — минимум, основанный на комиссиях
+          физически нерентабельно. Цена Uzgets {formatNumber(starsPrice(50))} сум — минимум, основанный на комиссиях
           платёжных систем и оптовой цене Telegram. Даже если оформляют как «акцию» —
           поставьте под сомнение.
         </li>
@@ -567,7 +569,7 @@ function RuBody() {
       <h2 id="uzgets-nega">Почему Uzgets соответствует всем трём?</h2>
       <p>
         Uzgets — самый дешёвый поставщик Stars/Premium в Узбекистане среди тех, кто принимает
-        локальную карту (50 ⭐ за {formatUzs(STARS_BASE.priceUzs)}; StarsJoy — 12 000, другие
+        локальную карту (50 ⭐ за {formatUzs(STARS_BASE.priceUzs)}; StarsJoy — 12 700, другие
         боты — 14–18 000 сум). При этом низкая цена <strong>не</strong> признак ненадёжности
         — вот почему:
       </p>
@@ -631,7 +633,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'trust',
   locales: {
     uz: {
@@ -655,7 +657,7 @@ export const post: BlogPost = {
         {
           question: "Nega narx past bo'lishi avtomatik firibgarlik degani emas?",
           answer:
-            "Telegram Stars to'g'ridan-to'g'ri Telegram tomonidan akkauntga biriktiriladi — vositachi narxni emas, faqat to'lov yo'lini ta'minlaydi. Uzgets'ning 50 ⭐ 11 000 so'm narxi mahalliy to'lov tizimi xarajatlariga asoslangan rentabel narx. Lekin agar 50 ⭐ 8 000 so'm yoki undan past bo'lsa — bu shubhali, chunki to'lov tizimi komissiyasi bilan ham hech kim shu narxda sotmaydi.",
+            `Telegram Stars to'g'ridan-to'g'ri Telegram tomonidan akkauntga biriktiriladi — vositachi narxni emas, faqat to'lov yo'lini ta'minlaydi. Uzgets'ning 50 ⭐ ${formatNumber(starsPrice(50))} so'm narxi mahalliy to'lov tizimi xarajatlariga asoslangan rentabel narx. Lekin agar 50 ⭐ 8 000 so'm yoki undan past bo'lsa — bu shubhali, chunki to'lov tizimi komissiyasi bilan ham hech kim shu narxda sotmaydi.`,
         },
         {
           question: 'Sotuvchi parol so\'rasa nima qilish kerak?',
@@ -685,7 +687,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: "Ishonchli va arzon Stars sotib olishga tayyormisiz?",
       finalCtaBody:
-        "Uzgets uchchala mezonni bajaradi: avtomatik bot, kuzatiladigan to'lov, parolsiz. Botda START bosib, 50 ⭐ 11 000 so'mga buyurtma bering.",
+        `Uzgets uchchala mezonni bajaradi: avtomatik bot, kuzatiladigan to'lov, parolsiz. Botda START bosib, 50 ⭐ ${formatNumber(starsPrice(50))} so'mga buyurtma bering.`,
     },
     ru: {
       title: 'Где купить дешёвые Stars — 3 признака надёжного продавца 2026',
@@ -708,7 +710,7 @@ export const post: BlogPost = {
         {
           question: 'Почему низкая цена — не автоматически признак мошенничества?',
           answer:
-            'Telegram Stars зачисляются напрямую от Telegram — посредник влияет только на способ оплаты, а не на сам продукт. Цена Uzgets (50 ⭐ за 11 000 сум) основана на расходах локальных платёжных систем — это рентабельный минимум. Но если 50 ⭐ за 8 000 сум или ниже — это сомнительно, потому что даже с учётом комиссий никто за такую цену не продаёт.',
+            `Telegram Stars зачисляются напрямую от Telegram — посредник влияет только на способ оплаты, а не на сам продукт. Цена Uzgets (50 ⭐ за ${formatNumber(starsPrice(50))} сум) основана на расходах локальных платёжных систем — это рентабельный минимум. Но если 50 ⭐ за 8 000 сум или ниже — это сомнительно, потому что даже с учётом комиссий никто за такую цену не продаёт.`,
         },
         {
           question: 'Что делать, если продавец просит пароль?',
@@ -738,7 +740,7 @@ export const post: BlogPost = {
       ],
       finalCtaHeading: 'Готовы купить дешёвые и надёжные Stars?',
       finalCtaBody:
-        'Uzgets соответствует всем трём признакам: автобот, отслеживаемая оплата, без пароля. Нажмите START в боте — 50 ⭐ за 11 000 сум.',
+        `Uzgets соответствует всем трём признакам: автобот, отслеживаемая оплата, без пароля. Нажмите START в боте — 50 ⭐ за ${formatNumber(starsPrice(50))} сум.`,
     },
   },
 }

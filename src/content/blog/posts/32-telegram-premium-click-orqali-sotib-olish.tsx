@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { siteConfig } from '@/config/site'
-import { formatUzs } from '@/lib/format'
+import { formatUzs, formatNumber } from '@/lib/format'
 import type { BlogPost } from '../types'
 
 const SLUG = 'telegram-premium-click-orqali-sotib-olish'
@@ -53,6 +53,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -69,8 +70,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {uz
-          ? "Web research va Uzgets konfiguratsiyasi 2026-yil 12-avgustda tekshirildi. Xarid paytida bot va Click ko'rsatgan yakuniy summa amal qiladi."
-          : 'Веб-источники и конфигурация Uzgets проверены 12 августа 2026 года. Действует итоговая сумма, показанная ботом и Click при покупке.'}
+          ? "Web research 2026-yil 12-avgustda, Uzgets narxlari 2026-yil 15-noyabrda tekshirildi. Xarid paytida bot va Click ko'rsatgan yakuniy summa amal qiladi."
+          : 'Веб-источники проверены 12 августа 2026 года, цены Uzgets — 15 ноября 2026 года. Действует итоговая сумма, показанная ботом и Click при покупке.'}
       </p>
     </div>
   )
@@ -188,21 +189,21 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'howto',
   locales: {
     uz: {
       title: "Telegram Premium'ni Click orqali sotib olish: narx va yo'riqnoma",
       description: "Click orqali Telegram Premium olish: @uzgetsbot'da 6 qadam, 3/6/12 oylik narxlar, komissiya, xavfsizlik va to'lov muammolari yechimi.",
       metaTitle: "Telegram Premium'ni Click orqali olish — 6 qadam",
-      metaDescription: "Click orqali Telegram Premium oling: 3 oy 168 000 so'mdan, 6 ta aniq qadam, joriy narxlar, xavfsizlik va to'lov muammosi yechimi.",
+      metaDescription: `Click orqali Telegram Premium oling: 3 oy ${formatNumber(PREMIUM_PRICE[3])} so'mdan, 6 ta aniq qadam, joriy narxlar, xavfsizlik va to'lov muammosi yechimi.`,
       ogDescription: "Click orqali Telegram Premium: joriy narxlar, 6 qadam va xavfsiz to'lov checklisti.",
       answerBoxTitle: 'Qisqa javob',
       answerBoxBody: () => <AnswerBox lang="uz" />,
       Body: UzBody,
       faq: [
         { question: "Click orqali Telegram Premium olsa bo'ladimi?", answer: "Ha. @uzgetsbot'da Premium muddati va qabul qiluvchining @username manzilini tanlab, to'lovni Click ilovasida tasdiqlash mumkin." },
-        { question: "Click orqali Premium qancha turadi?", answer: "2026-yil 12-avgustdagi Uzgets narxlari: 3 oy — 168 000 so'm, 6 oy — 228 000 so'm, 12 oy — 408 000 so'm. Xarid ekranidagi summa yakuniy." },
+        { question: "Click orqali Premium qancha turadi?", answer: `2026-yil 15-noyabrdagi Uzgets narxlari: 3 oy — ${formatNumber(PREMIUM_PRICE[3])} so'm, 6 oy — ${formatNumber(PREMIUM_PRICE[6])} so'm, 12 oy — ${formatNumber(PREMIUM_PRICE[12])} so'm. Xarid ekranidagi summa yakuniy.` },
         { question: "Click to'lovi uchun komissiya bormi?", answer: "Click rasmiy tarifida mahsulot va xizmatlar to'lovi odatda 0%, ammo istisnolar mavjud. Tasdiqlashdan oldin Click ko'rsatgan yakuniy summani tekshiring." },
         { question: "Premium uchun Telegram paroli kerakmi?", answer: "Yo'q. Faqat Premium tushadigan aniq @username kerak. Telegram paroli, login kodi, QR-login va 2FA parolini bermang." },
         { question: "Click'da pul yechildi, Premium kelmadi. Nima qilaman?", answer: "Takroriy to'lov qilmang. Click cheki, buyurtma ID va @username bilan @uzgetsbot ichidagi supportga murojaat qiling." },
@@ -215,14 +216,14 @@ export const post: BlogPost = {
       title: 'Как купить Telegram Premium через Click: цены и инструкция',
       description: 'Покупка Telegram Premium через Click: 6 шагов в @uzgetsbot, цены на 3/6/12 месяцев, комиссия, безопасность и решение проблем.',
       metaTitle: 'Telegram Premium через Click — цены и 6 шагов',
-      metaDescription: 'Купите Telegram Premium через Click: от 168 000 сум за 3 месяца, 6 шагов, актуальные цены, безопасность и решение проблем оплаты.',
+      metaDescription: `Купите Telegram Premium через Click: от ${formatNumber(PREMIUM_PRICE[3])} сум за 3 месяца, 6 шагов, актуальные цены, безопасность и решение проблем оплаты.`,
       ogDescription: 'Telegram Premium через Click: актуальные цены, 6 шагов и чек-лист безопасности.',
       answerBoxTitle: 'Краткий ответ',
       answerBoxBody: () => <AnswerBox lang="ru" />,
       Body: RuBody,
       faq: [
         { question: 'Можно ли купить Telegram Premium через Click?', answer: 'Да. Выберите срок и @username в @uzgetsbot, затем подтвердите платёж в приложении Click.' },
-        { question: 'Сколько стоит Premium через Click?', answer: 'На 12 августа 2026 года цены Uzgets: 3 месяца — 168 000 сум, 6 — 228 000, 12 — 408 000. Итоговой считается сумма на экране оплаты.' },
+        { question: 'Сколько стоит Premium через Click?', answer: `На 15 ноября 2026 года цены Uzgets: 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум, 6 — ${formatNumber(PREMIUM_PRICE[6])}, 12 — ${formatNumber(PREMIUM_PRICE[12])}. Итоговой считается сумма на экране оплаты.` },
         { question: 'Есть ли комиссия Click?', answer: 'В официальных тарифах Click платежи за товары и услуги обычно указаны с комиссией 0%, но есть исключения. Проверяйте итоговую сумму до подтверждения.' },
         { question: 'Нужен ли пароль Telegram?', answer: 'Нет. Нужен только точный @username. Не сообщайте пароль, код входа, QR-вход или пароль 2FA.' },
         { question: 'Деньги списались, но Premium не появился. Что делать?', answer: 'Не платите повторно. Отправьте чек Click, ID заказа и @username поддержке внутри @uzgetsbot.' },

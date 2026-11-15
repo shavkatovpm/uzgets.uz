@@ -6,7 +6,7 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS, getPremiumBySlug } from '@/config/products'
+import { PREMIUM_PERIODS, getPremiumBySlug, PRICE_NOTE } from '@/config/products'
 import { getPremiumPageContent } from '@/config/premium-pages'
 import { getPremiumFeatures, getPaymentMethods } from '@/config/static-content'
 import { formatUzs } from '@/lib/format'
@@ -394,6 +394,7 @@ export default async function PremiumPeriodPage({
             ))}
           </ul>
         </div>
+        <p className="mt-4 text-sm text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       </section>
 
       {/* Audience */}

@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
+import { PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatNumber } from '@/lib/format'
 
 const SLUG = 'telegram-premium-hadya-qanday-sovga-qilinadi'
 const TODAY = '2026-05-18'
@@ -15,8 +17,8 @@ function UzAnswerBox() {
       akkauntiga <strong>to&apos;g&apos;ridan-to&apos;g&apos;ri Telegram tomonidan</strong>{' '}
       biriktiriladi (rasmiy &quot;gift&quot; bildirishnomasi bilan), 2–5 daqiqada faollashadi.
       Jo&apos;natuvchining o&apos;zida Premium bo&apos;lishi shart emas, anonim hadya ham
-      mumkin. Narxlar: <strong>3 oy — 168 000 so&apos;m</strong>, 6 oy — 228 000 so&apos;m,
-      12 oy — 408 000 so&apos;m.
+      mumkin. Narxlar: <strong>3 oy — {formatNumber(PREMIUM_PRICE[3])} so&apos;m</strong>, 6 oy — {formatNumber(PREMIUM_PRICE[6])} so&apos;m,
+      12 oy — {formatNumber(PREMIUM_PRICE[12])} so&apos;m.
     </p>
   )
 }
@@ -30,8 +32,8 @@ function RuAnswerBox() {
       <strong>UzCard/Humo/Click/Payme</strong>. Premium зачисляется на аккаунт получателя{' '}
       <strong>напрямую от Telegram</strong> (с официальным уведомлением о подарке),
       активация — за 2–5 минут. Отправителю самому быть Premium необязательно, возможен и
-      анонимный подарок. Цены: <strong>3 месяца — 168 000 сум</strong>, 6 месяцев —
-      228 000 сум, 12 месяцев — 408 000 сум.
+      анонимный подарок. Цены: <strong>3 месяца — {formatNumber(PREMIUM_PRICE[3])} сум</strong>, 6 месяцев —
+      {formatNumber(PREMIUM_PRICE[6])} сум, 12 месяцев — {formatNumber(PREMIUM_PRICE[12])} сум.
     </p>
   )
 }
@@ -68,14 +70,14 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
   const rows =
     lang === 'uz'
       ? [
-          ['3 oylik Premium', '168 000 so\'m', '$11.99 ≈ 141 000 so\'m', 'Eng arzon kirish'],
-          ['6 oylik Premium', '228 000 so\'m', '$15.99 ≈ 189 000 so\'m', 'Eng mashhur'],
-          ['12 oylik Premium', '408 000 so\'m', '$28.99 ≈ 342 000 so\'m', 'Yiliga eng katta tejam'],
+          ['3 oylik Premium', `${formatNumber(PREMIUM_PRICE[3])} so\'m`, '$11.99 ≈ 141 000 so\'m', 'Eng arzon kirish'],
+          ['6 oylik Premium', `${formatNumber(PREMIUM_PRICE[6])} so\'m`, '$15.99 ≈ 189 000 so\'m', 'Eng mashhur'],
+          ['12 oylik Premium', `${formatNumber(PREMIUM_PRICE[12])} so\'m`, '$28.99 ≈ 342 000 so\'m', 'Yiliga eng katta tejam'],
         ]
       : [
-          ['3 месяца Premium', '168 000 сум', '$11.99 ≈ 141 000 сум', 'Самый дешёвый старт'],
-          ['6 месяцев Premium', '228 000 сум', '$15.99 ≈ 189 000 сум', 'Самый популярный'],
-          ['12 месяцев Premium', '408 000 сум', '$28.99 ≈ 342 000 сум', 'Максимальная годовая экономия'],
+          ['3 месяца Premium', `${formatNumber(PREMIUM_PRICE[3])} сум`, '$11.99 ≈ 141 000 сум', 'Самый дешёвый старт'],
+          ['6 месяцев Premium', `${formatNumber(PREMIUM_PRICE[6])} сум`, '$15.99 ≈ 189 000 сум', 'Самый популярный'],
+          ['12 месяцев Premium', `${formatNumber(PREMIUM_PRICE[12])} сум`, '$28.99 ≈ 342 000 сум', 'Максимальная годовая экономия'],
         ]
   return (
     <div className="not-prose my-6 overflow-x-auto">
@@ -107,6 +109,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       <p className="mt-2 text-xs text-[var(--text-muted)]">
         {lang === 'uz'
           ? "Fragment narxi 2026-yil 7-oktabrda tekshirilgan, so'mga Markaziy bank kursi (11 790,79) bo'yicha o'tkazilgan; to'lov TON yoki USDT bilan. Uzgets narxi so'mda qat'iy."
@@ -370,9 +373,9 @@ function UzBody() {
         title="Muddatni tanlash (3 / 6 / 12 oy)"
         body={
           <>
-            Bot 3 ta paket ko&apos;rsatadi: <strong>3 oy — 168 000 so&apos;m</strong>,{' '}
-            <strong>6 oy — 228 000 so&apos;m</strong>,{' '}
-            <strong>12 oy — 408 000 so&apos;m</strong>. Bayram sovg&apos;asi uchun 3 oy ko&apos;pincha
+            Bot 3 ta paket ko&apos;rsatadi: <strong>3 oy — {formatNumber(PREMIUM_PRICE[3])} so&apos;m</strong>,{' '}
+            <strong>6 oy — {formatNumber(PREMIUM_PRICE[6])} so&apos;m</strong>,{' '}
+            <strong>12 oy — {formatNumber(PREMIUM_PRICE[12])} so&apos;m</strong>. Bayram sovg&apos;asi uchun 3 oy ko&apos;pincha
             yetarli; uzoq munosabat sovg&apos;asi uchun 12 oy eng tejamli.
           </>
         }
@@ -534,7 +537,7 @@ function UzBody() {
 
       <InlineBotCTA
         lang="uz"
-        text="Sovg'ani tayyorlang — 3 oylik 168 000 so'mdan boshlanadi."
+        text={`Sovg'ani tayyorlang — 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'mdan boshlanadi.`}
       />
 
       <h2 id="muhim">Muhim eslatmalar</h2>
@@ -694,9 +697,9 @@ function RuBody() {
         title="Выбрать срок (3 / 6 / 12 месяцев)"
         body={
           <>
-            Бот покажет 3 пакета: <strong>3 месяца — 168 000 сум</strong>,{' '}
-            <strong>6 месяцев — 228 000 сум</strong>,{' '}
-            <strong>12 месяцев — 408 000 сум</strong>. Для праздничного подарка обычно
+            Бот покажет 3 пакета: <strong>3 месяца — {formatNumber(PREMIUM_PRICE[3])} сум</strong>,{' '}
+            <strong>6 месяцев — {formatNumber(PREMIUM_PRICE[6])} сум</strong>,{' '}
+            <strong>12 месяцев — {formatNumber(PREMIUM_PRICE[12])} сум</strong>. Для праздничного подарка обычно
             хватает 3 месяцев; для подарка близкому — 12 месяцев самый экономный
             на месяц.
           </>
@@ -850,7 +853,7 @@ function RuBody() {
 
       <InlineBotCTA
         lang="ru"
-        text="Подготовьте подарок — от 168 000 сум за 3 месяца."
+        text={`Подготовьте подарок — от ${formatNumber(PREMIUM_PRICE[3])} сум за 3 месяца.`}
       />
 
       <h2 id="muhim">Важные замечания</h2>
@@ -889,7 +892,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: '2026-10-07',
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
@@ -898,7 +901,7 @@ export const post: BlogPost = {
         "O'zbekistondan Telegram Premium hadyasini qanday yuborish: @username kiritib, UzCard/Humo bilan to'lab, 2–5 daqiqada rasmiy Telegram bildirishnomasi bilan yetkaziladi. Narxlar, qadamlar, taqqoslash.",
       metaTitle: "Telegram Premium hadya — qanday yuboriladi 2026 | Uzgets",
       metaDescription:
-        "Telegram Premium hadyasini O'zbekistondan @username orqali yuboring — UzCard/Humo qabul qilinadi, Telegram rasmiy bildirishnomasi bilan 2–5 daqiqada faollashadi. 3 oy — 168 000 so'm.",
+        `Telegram Premium hadyasini O'zbekistondan @username orqali yuboring — UzCard/Humo qabul qilinadi, Telegram rasmiy bildirishnomasi bilan 2–5 daqiqada faollashadi. 3 oy — ${formatNumber(PREMIUM_PRICE[3])} so'm.`,
       ogDescription:
         "O'zbekistondan Telegram Premium hadyasini qanday yuborish — qadam-baqadam to'liq qo'llanma.",
       answerBoxTitle: 'Qisqa javob',
@@ -957,7 +960,7 @@ export const post: BlogPost = {
         'Как подарить Telegram Premium из Узбекистана: ввести @username, оплатить UzCard/Humo, за 2–5 минут официальное уведомление Telegram у получателя. Цены, шаги, сравнение.',
       metaTitle: 'Подарок Telegram Premium — как отправить 2026 | Uzgets',
       metaDescription:
-        'Подарите Telegram Premium из Узбекистана через @username — UzCard/Humo принимаются, активация за 2–5 минут с официальным уведомлением Telegram. 3 месяца — 168 000 сум.',
+        `Подарите Telegram Premium из Узбекистана через @username — UzCard/Humo принимаются, активация за 2–5 минут с официальным уведомлением Telegram. 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум.`,
       ogDescription:
         'Как отправить Telegram Premium в подарок из Узбекистана — пошаговая полная инструкция.',
       answerBoxTitle: 'Краткий ответ',

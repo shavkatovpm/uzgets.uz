@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
-import { formatUzs } from '@/lib/format'
+import { PREMIUM_PERIODS, PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatUzs, formatNumber } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import { localePath } from '@/i18n/config'
 import type { BlogPost } from '../types'
@@ -148,6 +148,7 @@ function UzgetsPriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -564,7 +565,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: '2026-10-07',
+  updatedAt: PRICES_DATE,
   type: 'cta',
   locales: {
     uz: {
@@ -573,7 +574,7 @@ export const post: BlogPost = {
         "Telegram Premium sotib olishning 6 ta usuli: App Store, Google Play, @PremiumBot, Fragment, Gift va O'zbek mahalliy bot. Narxlar, to'lovlar va O'zbekistondan ishlay oladimi.",
       metaTitle: "Telegram Premium sotib olish — barcha usullar 2026 (to'liq)",
       metaDescription:
-        "Telegram Premium sotib olishning 6 usuli: App Store $3.99/oy, Google Play, @PremiumBot, Fragment $11.99/3 oy, Gift va O'zbek bot — 168 000 so'm/3 oy.",
+        `Telegram Premium sotib olishning 6 usuli: App Store $3.99/oy, Google Play, @PremiumBot, Fragment $11.99/3 oy, Gift va O'zbek bot — ${formatNumber(PREMIUM_PRICE[3])} so'm/3 oy.`,
       ogDescription:
         "6 ta usul, narxlar va qaysi yo'l O'zbekistondan amalda ishlaydi — to'liq qo'llanma.",
       answerBoxTitle: 'Qisqa javob',
@@ -583,7 +584,7 @@ export const post: BlogPost = {
         {
           question: 'Telegram Premium sotib olishning eng arzon usuli qaysi?',
           answer:
-            "Fragment (TON crypto) — 2026-yil 7-oktabr holatiga $11.99 / 3 oy. Lekin Fragment uchun TON wallet va KYC kerak. O'zbek karta egalari uchun Fragment amalda ishlamaydi. Mahalliy karta bilan — uzgets botida 3 oylik 168 000 so'm.",
+            `Fragment (TON crypto) — 2026-yil 7-oktabr holatiga $11.99 / 3 oy. Lekin Fragment uchun TON wallet va KYC kerak. O'zbek karta egalari uchun Fragment amalda ishlamaydi. Mahalliy karta bilan — uzgets botida 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm.`,
         },
         {
           question: "O'zbek kartam (UzCard/Humo) bilan App Store'da Premium sotib ololamanmi?",
@@ -618,7 +619,7 @@ export const post: BlogPost = {
         {
           question: 'Qaysi muddat eng tejamli — 3, 6 yoki 12 oy?',
           answer:
-            "12 oylik paket bir oyga eng arzon. Uzgets'da: 3 oy = 56 000 so'm/oy, 6 oy = 38 000 so'm/oy, 12 oy = 34 000 so'm/oy. Premium'ni doimiy ishlatadiganlar uchun 12 oylik (408 000 so'm) — 3 oylikka nisbatan oyiga ~22 000 so'm tejam.",
+            `12 oylik paket bir oyga eng arzon. Uzgets'da: 3 oy = ${formatNumber(PREMIUM_PRICE[3] / 3)} so'm/oy, 6 oy = ${formatNumber(PREMIUM_PRICE[6] / 6)} so'm/oy, 12 oy = ${formatNumber(PREMIUM_PRICE[12] / 12)} so'm/oy. Premium'ni doimiy ishlatadiganlar uchun 12 oylik (${formatNumber(PREMIUM_PRICE[12])} so'm) — 3 oylikka nisbatan oyiga ~${formatNumber(PREMIUM_PRICE[3] / 3 - PREMIUM_PRICE[12] / 12)} so'm tejam.`,
         },
       ],
       finalCtaHeading: 'Premium sotib olishga tayyormisiz?',
@@ -631,7 +632,7 @@ export const post: BlogPost = {
         '6 способов купить Telegram Premium: App Store, Google Play, @PremiumBot, Fragment, Gift и узбекский локальный бот. Цены, оплата и работает ли из Узбекистана.',
       metaTitle: 'Купить Telegram Premium — все способы 2026 (полное)',
       metaDescription:
-        '6 способов: App Store $3.99/мес., Google Play, @PremiumBot, Fragment $11.99/3 мес., Gift и узб. бот — 168 000 сум за 3 мес.',
+        `6 способов: App Store $3.99/мес., Google Play, @PremiumBot, Fragment $11.99/3 мес., Gift и узб. бот — ${formatNumber(PREMIUM_PRICE[3])} сум за 3 мес.`,
       ogDescription:
         '6 способов, цены и какой путь реально работает из Узбекистана — полное руководство.',
       answerBoxTitle: 'Краткий ответ',
@@ -641,7 +642,7 @@ export const post: BlogPost = {
         {
           question: 'Какой самый дешёвый способ купить Telegram Premium?',
           answer:
-            'Fragment (TON-крипта) — $11.99 / 3 мес. на 7 октября 2026 года. Но для Fragment нужны TON-кошелёк и KYC. Для держателей узб. карт Fragment на практике не работает. С локальной картой — в боте uzgets 3-мес. за 168 000 сум.',
+            `Fragment (TON-крипта) — $11.99 / 3 мес. на 7 октября 2026 года. Но для Fragment нужны TON-кошелёк и KYC. Для держателей узб. карт Fragment на практике не работает. С локальной картой — в боте uzgets 3-мес. за ${formatNumber(PREMIUM_PRICE[3])} сум.`,
         },
         {
           question: 'Могу ли я купить Premium в App Store моей узб. картой (UzCard/Humo)?',
@@ -676,7 +677,7 @@ export const post: BlogPost = {
         {
           question: 'Какой срок выгоднее — 3, 6 или 12 месяцев?',
           answer:
-            '12-месячный пакет дешевле всего в пересчёте на месяц. В uzgets: 3 мес. = 56 000 сум/мес., 6 мес. = 38 000 сум/мес., 12 мес. = 34 000 сум/мес. Для постоянных пользователей 12-мес. (408 000 сум) — экономия ~22 000 сум/мес. по сравнению с 3-мес.',
+            `12-месячный пакет дешевле всего в пересчёте на месяц. В uzgets: 3 мес. = ${formatNumber(PREMIUM_PRICE[3] / 3)} сум/мес., 6 мес. = ${formatNumber(PREMIUM_PRICE[6] / 6)} сум/мес., 12 мес. = ${formatNumber(PREMIUM_PRICE[12] / 12)} сум/мес. Для постоянных пользователей 12-мес. (${formatNumber(PREMIUM_PRICE[12])} сум) — экономия ~${formatNumber(PREMIUM_PRICE[3] / 3 - PREMIUM_PRICE[12] / 12)} сум/мес. по сравнению с 3-мес.`,
         },
       ],
       finalCtaHeading: 'Готовы купить Premium?',

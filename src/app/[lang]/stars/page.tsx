@@ -8,7 +8,7 @@ import { BotCTA } from '@/components/BotCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { AnswerBox } from '@/components/AnswerBox'
 import { siteConfig } from '@/config/site'
-import { STARS_PACKS, STARS_BASE } from '@/config/products'
+import { STARS_PACKS, STARS_BASE, PRICE_NOTE } from '@/config/products'
 import { getStarsUseCases, getPaymentMethods } from '@/config/static-content'
 import { formatUzs, formatNumber } from '@/lib/format'
 import { type Locale, isLocale, localePath, localeUrl, alternatesFor } from '@/i18n/config'
@@ -482,6 +482,7 @@ export default async function StarsPage({
           ))}
         </div>
         <p className="mt-4 text-sm text-[var(--text-muted)]">{t.pricesGridFooter}</p>
+        <p className="mt-2 text-sm text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-12" aria-labelledby="amount-guide-heading">

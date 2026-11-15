@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
@@ -117,6 +117,7 @@ function UzBody() {
         amalga oshadi — saytning o&apos;zida to&apos;lov qilinmaydi. Masalan, 3 oylik paket ({formatUzs(P3.priceUzs)})
         uchun to&apos;lov tasdiqlangach, bot avtomatik ravishda ko&apos;rsatilgan @username&apos;ga Premium&apos;ni biriktiradi.
       </p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.uz}</p>
       <ol>
         <li>Botda <strong>&quot;Mening buyurtmalarim&quot;</strong> bo&apos;limini ochib, buyurtma holatini ko&apos;ring.</li>
         <li>Kiritilgan @username to&apos;g&apos;ri va profil ochiq (yashirin emas) ekanini tekshiring.</li>
@@ -241,6 +242,7 @@ function RuBody() {
         на самом сайте оплата не производится. Например, за пакет на 3 месяца ({formatUzs(P3.priceUzs)})
         после подтверждения оплаты бот автоматически привязывает Premium к указанному @username.
       </p>
+      <p className="text-sm text-[var(--text-muted)]">{PRICE_NOTE.ru}</p>
       <ol>
         <li>Откройте в боте раздел <strong>«Мои заказы»</strong> и посмотрите статус.</li>
         <li>Проверьте, что указан верный @username и профиль не скрыт.</li>
@@ -316,7 +318,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'problem',
   locales: {
     uz: {

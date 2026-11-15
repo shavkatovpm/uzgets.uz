@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
-import { PREMIUM_PERIODS } from '@/config/products'
+import { PREMIUM_PERIODS, PRICES_DATE, PRICE_NOTE } from '@/config/products'
 import { formatUzs } from '@/lib/format'
 import type { BlogPost } from '../types'
 
@@ -69,6 +69,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           </tr>
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -94,8 +95,8 @@ function Sources({ lang }: { lang: 'uz' | 'ru' }) {
       </ul>
       <p className="mt-3 text-[var(--text-muted)]">
         {uz
-          ? "Web research, Uzgets konfiguratsiyasi, xizmat shartlari va maxfiylik siyosati 2026-yil 18-avgustda tekshirildi. Narx o'zgarishi mumkin; to'lovdan oldin botdagi summani tekshiring."
-          : 'Веб-источники, конфигурация Uzgets, условия и политика конфиденциальности проверены 18 августа 2026 года. Цена может измениться — проверьте сумму в боте перед оплатой.'}
+          ? "Web research, Uzgets konfiguratsiyasi, xizmat shartlari va maxfiylik siyosati 2026-yil 18-avgustda, Uzgets narxlari 2026-yil 15-noyabrda tekshirildi. Narx o'zgarishi mumkin; to'lovdan oldin botdagi summani tekshiring."
+          : 'Веб-источники, конфигурация Uzgets, условия и политика конфиденциальности проверены 18 августа 2026 года, цены Uzgets — 15 ноября 2026 года. Цена может измениться — проверьте сумму в боте перед оплатой.'}
       </p>
     </div>
   )
@@ -116,7 +117,7 @@ function UzBody() {
       </nav>
 
       <h2 id="narxi">Telegram Premium 12 oylik narxi qancha?</h2>
-      <p>2026-yil 18-avgust holatiga Uzgets&apos;da 12 oylik Telegram Premium <strong>{formatUzs(P12.priceUzs)}</strong>. Jami narxni 12 ga bo&apos;lsak, <strong>{formatUzs(P12.perMonthHint)} oyiga</strong> tushadi. To&apos;lov har oy emas, buyurtma paytida bir marta amalga oshiriladi.</p>
+      <p>2026-yil 15-noyabr holatiga Uzgets&apos;da 12 oylik Telegram Premium <strong>{formatUzs(P12.priceUzs)}</strong>. Jami narxni 12 ga bo&apos;lsak, <strong>{formatUzs(P12.perMonthHint)} oyiga</strong> tushadi. To&apos;lov har oy emas, buyurtma paytida bir marta amalga oshiriladi.</p>
       <p>Bu Uzgets&apos;ning joriy narxi. Telegram rasmiy FAQ&apos;iga ko&apos;ra, narx mamlakat, xarid provayderi, do&apos;kon komissiyasi va soliqlarga qarab farqlanishi mumkin. Shu sababli Uzgets narxini App Store, Google Play yoki @PremiumBot narxi deb talqin qilmaslik kerak.</p>
       <InlineBotCTA lang="uz" text={`12 oylik Premium — ${formatUzs(P12.priceUzs)}. To'lovdan oldin joriy summani @uzgetsbot'da tekshiring.`} />
 
@@ -169,7 +170,7 @@ function RuBody() {
       </nav>
 
       <h2 id="narxi">Сколько стоит Telegram Premium на 12 месяцев?</h2>
-      <p>На 18 августа 2026 года пакет Uzgets на 12 месяцев стоит <strong>{formatUzs(P12.priceUzs)}</strong>, или <strong>{formatUzs(P12.perMonthHint)} в месяц</strong>. Полная сумма оплачивается один раз при заказе.</p>
+      <p>На 15 ноября 2026 года пакет Uzgets на 12 месяцев стоит <strong>{formatUzs(P12.priceUzs)}</strong>, или <strong>{formatUzs(P12.perMonthHint)} в месяц</strong>. Полная сумма оплачивается один раз при заказе.</p>
       <p>Это цена Uzgets. По официальному FAQ Telegram стоимость может зависеть от страны, провайдера, комиссии магазина и налогов. Поэтому она не является ценой App Store, Google Play или @PremiumBot.</p>
       <InlineBotCTA lang="ru" text={`Premium на 12 месяцев — ${formatUzs(P12.priceUzs)}. Перед оплатой проверьте актуальную сумму в @uzgetsbot.`} />
 
@@ -210,7 +211,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'comparison',
   locales: {
     uz: {
@@ -223,7 +224,7 @@ export const post: BlogPost = {
       answerBoxBody: UzAnswerBox,
       Body: UzBody,
       faq: [
-        { question: 'Telegram Premium 12 oylik narxi qancha?', answer: `2026-yil 18-avgust holatiga Uzgets'da ${formatUzs(P12.priceUzs)}, ya'ni oyiga ${formatUzs(P12.perMonthHint)}.` },
+        { question: 'Telegram Premium 12 oylik narxi qancha?', answer: `2026-yil 15-noyabr holatiga Uzgets'da ${formatUzs(P12.priceUzs)}, ya'ni oyiga ${formatUzs(P12.perMonthHint)}.` },
         { question: '12 oylik Premium bilan qancha tejash mumkin?', answer: `3 oylikni to'rt marta olishga nisbatan ${formatUzs(SAVING_VS_FOUR_P3)}, 6 oylikni ikki marta olishga nisbatan ${formatUzs(SAVING_VS_TWO_P6)} tejaysiz.` },
         { question: '12 oylik Premium avtomatik uzayadimi?', answer: "Uzgets'dagi paket avtomatik uzaymaydi. 12 oy tugagach davom ettirish uchun yangi buyurtma beriladi." },
         { question: "12 oylik Premium'ni sovg'a qilsa bo'ladimi?", answer: "Ha. Telegram 12 oyni rasmiy prepaid sovg'a muddatlaridan biri sifatida qo'llab-quvvatlaydi. Aniq @username kiriting." },
@@ -243,7 +244,7 @@ export const post: BlogPost = {
       answerBoxBody: RuAnswerBox,
       Body: RuBody,
       faq: [
-        { question: 'Сколько стоит Telegram Premium на 12 месяцев?', answer: `На 18 августа 2026 года в Uzgets — ${formatUzs(P12.priceUzs)}, или ${formatUzs(P12.perMonthHint)} в месяц.` },
+        { question: 'Сколько стоит Telegram Premium на 12 месяцев?', answer: `На 15 ноября 2026 года в Uzgets — ${formatUzs(P12.priceUzs)}, или ${formatUzs(P12.perMonthHint)} в месяц.` },
         { question: 'Сколько можно сэкономить с годовым пакетом?', answer: `Относительно четырёх пакетов по 3 месяца — ${formatUzs(SAVING_VS_FOUR_P3)}, относительно двух пакетов по 6 месяцев — ${formatUzs(SAVING_VS_TWO_P6)}.` },
         { question: 'Годовой пакет продлевается автоматически?', answer: 'Пакет Uzgets не продлевается автоматически. После 12 месяцев для продолжения нужно оформить новый заказ.' },
         { question: 'Можно подарить Premium на 12 месяцев?', answer: 'Да. Telegram официально поддерживает предоплаченный подарок Premium на 12 месяцев. Укажите точный @username.' },

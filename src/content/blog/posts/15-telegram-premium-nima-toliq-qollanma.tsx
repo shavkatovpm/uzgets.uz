@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { InlineBotCTA } from '@/components/InlineBotCTA'
 import type { BlogPost } from '../types'
+import { PREMIUM_PRICE, PRICES_DATE, PRICE_NOTE } from '@/config/products'
+import { formatNumber } from '@/lib/format'
 
 const SLUG = 'telegram-premium-nima-toliq-qollanma'
 const TODAY = '2026-05-16'
@@ -12,7 +14,7 @@ function UzAnswerBox() {
       Telegram Premium — Telegram&apos;ning rasmiy pullik obunasi. Obuna sotib olgan foydalanuvchi 4 GB gacha fayl
       yuborish, 1000 ta kanalga obuna bo&apos;lish, ovozli xabarlarni matnga aylantirish, chat tarjimoni, kuniga 100
       tagacha Story, kengaytirilgan Stories, reklamalarni o&apos;chirish va boshqa o&apos;nlab imkoniyatlarni oladi.
-      O&apos;zbekistondan 3 oylik obuna 168 000 so&apos;m, 6 oylik 228 000, 12 oylik 408 000 so&apos;m — UzCard,
+      O&apos;zbekistondan 3 oylik obuna {formatNumber(PREMIUM_PRICE[3])} so&apos;m, 6 oylik {formatNumber(PREMIUM_PRICE[6])}, 12 oylik {formatNumber(PREMIUM_PRICE[12])} so&apos;m — UzCard,
       Humo, Click yoki Payme bilan @uzgetsbot orqali rasmiy faollashtirish bilan sotib olinadi.
     </p>
   )
@@ -23,7 +25,7 @@ function RuAnswerBox() {
     <p>
       Telegram Premium — официальная платная подписка Telegram. Подписчик получает отправку файлов до 4 GB, до 1000
       каналов, расшифровку голосовых в текст, перевод чатов, до 100 Stories в день, расширенные Stories, отключение
-      рекламы и ещё десятки возможностей. В Узбекистане подписка стоит 168 000 сум за 3 месяца, 228 000 за 6 и 408 000
+      рекламы и ещё десятки возможностей. В Узбекистане подписка стоит {formatNumber(PREMIUM_PRICE[3])} сум за 3 месяца, {formatNumber(PREMIUM_PRICE[6])} за 6 и {formatNumber(PREMIUM_PRICE[12])}
       за 12 — оплата UzCard, Humo, Click или Payme через @uzgetsbot с официальной активацией.
     </p>
   )
@@ -113,9 +115,9 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
       ? ['Tarif', 'Narx', 'Bir oyga']
       : ['Тариф', 'Цена', 'В месяц']
   const rows = [
-    [lang === 'uz' ? '3 oylik' : '3 месяца', "168 000 so'm", '56 000'],
-    [lang === 'uz' ? '6 oylik' : '6 месяцев', "228 000 so'm", '38 000'],
-    [lang === 'uz' ? '12 oylik' : '12 месяцев', "408 000 so'm", '34 000'],
+    [lang === 'uz' ? '3 oylik' : '3 месяца', `${formatNumber(PREMIUM_PRICE[3])} so'm`, `${formatNumber(PREMIUM_PRICE[3] / 3)}`],
+    [lang === 'uz' ? '6 oylik' : '6 месяцев', `${formatNumber(PREMIUM_PRICE[6])} so'm`, `${formatNumber(PREMIUM_PRICE[6] / 6)}`],
+    [lang === 'uz' ? '12 oylik' : '12 месяцев', `${formatNumber(PREMIUM_PRICE[12])} so'm`, `${formatNumber(PREMIUM_PRICE[12] / 12)}`],
   ]
 
   return (
@@ -142,6 +144,7 @@ function PriceTable({ lang }: { lang: 'uz' | 'ru' }) {
           ))}
         </tbody>
       </table>
+      <p className="border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)]">{PRICE_NOTE[lang]}</p>
     </div>
   )
 }
@@ -336,7 +339,7 @@ function UzBody() {
         </li>
       </ul>
 
-      <InlineBotCTA lang="uz" text="Premium qarorini qabul qildingizmi — botda 3 oylik 168 000 so'mdan boshlanadi." />
+      <InlineBotCTA lang="uz" text={`Premium qarorini qabul qildingizmi — botda 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'mdan boshlanadi.`} />
 
       <h2 id="narxlar">Premium narxlari va paketlari</h2>
       <p>
@@ -349,7 +352,7 @@ function UzBody() {
       </p>
       <PriceTable lang="uz" />
       <p>
-        Eng tejamli variant — 12 oylik paket, oyiga 34 000 so&apos;mga teng. 6 oylik paket ham eng mashhur tanlov.
+        Eng tejamli variant — 12 oylik paket, oyiga {formatNumber(PREMIUM_PRICE[12] / 12)} so&apos;mga teng. 6 oylik paket ham eng mashhur tanlov.
         To&apos;lov UzCard, Humo, Click yoki Payme bilan amalga oshiriladi —{' '}
         <Link
           href="/blog/telegram-premium-toliq-qollanma-barcha-usullar"
@@ -559,7 +562,7 @@ function RuBody() {
         </li>
       </ul>
 
-      <InlineBotCTA lang="ru" text="Решили подписаться — в боте 3 месяца от 168 000 сум." />
+      <InlineBotCTA lang="ru" text={`Решили подписаться — в боте 3 месяца от ${formatNumber(PREMIUM_PRICE[3])} сум.`} />
 
       <h2 id="narxlar">Цены и тарифы Premium</h2>
       <p>
@@ -571,7 +574,7 @@ function RuBody() {
       </p>
       <PriceTable lang="ru" />
       <p>
-        Самый выгодный — 12-месячный пакет, по 34 000 сум в месяц. 6-месячный — самый популярный. Оплата UzCard,
+        Самый выгодный — 12-месячный пакет, по {formatNumber(PREMIUM_PRICE[12] / 12)} сум в месяц. 6-месячный — самый популярный. Оплата UzCard,
         Humo, Click или Payme —{' '}
         <Link
           href="/ru/blog/telegram-premium-toliq-qollanma-barcha-usullar"
@@ -629,7 +632,7 @@ function RuBody() {
 export const post: BlogPost = {
   slug: SLUG,
   publishedAt: TODAY,
-  updatedAt: TODAY,
+  updatedAt: PRICES_DATE,
   type: 'info',
   locales: {
     uz: {
@@ -663,7 +666,7 @@ export const post: BlogPost = {
         {
           question: "O'zbekistondan Telegram Premium qancha turadi?",
           answer:
-            "Uzgets orqali: 3 oylik 168 000 so'm, 6 oylik 228 000 so'm, 12 oylik 408 000 so'm. Oyiga hisoblaganda 12 oylik eng tejamli — 34 000 so'mga teng. To'lov UzCard, Humo, Click yoki Payme bilan amalga oshiriladi.",
+            `Uzgets orqali: 3 oylik ${formatNumber(PREMIUM_PRICE[3])} so'm, 6 oylik ${formatNumber(PREMIUM_PRICE[6])} so'm, 12 oylik ${formatNumber(PREMIUM_PRICE[12])} so'm. Oyiga hisoblaganda 12 oylik eng tejamli — ${formatNumber(PREMIUM_PRICE[12] / 12)} so'mga teng. To'lov UzCard, Humo, Click yoki Payme bilan amalga oshiriladi.`,
         },
         {
           question: "Premium'ni bo'lib-bo'lib to'lash mumkinmi?",
@@ -725,7 +728,7 @@ export const post: BlogPost = {
         {
           question: 'Сколько стоит Telegram Premium из Узбекистана?',
           answer:
-            'Через Uzgets: 3 месяца — 168 000 сум, 6 месяцев — 228 000 сум, 12 месяцев — 408 000 сум. В пересчёте на месяц 12-месячный пакет самый выгодный — 34 000 сум. Оплата UzCard, Humo, Click или Payme.',
+            `Через Uzgets: 3 месяца — ${formatNumber(PREMIUM_PRICE[3])} сум, 6 месяцев — ${formatNumber(PREMIUM_PRICE[6])} сум, 12 месяцев — ${formatNumber(PREMIUM_PRICE[12])} сум. В пересчёте на месяц 12-месячный пакет самый выгодный — ${formatNumber(PREMIUM_PRICE[12] / 12)} сум. Оплата UzCard, Humo, Click или Payme.`,
         },
         {
           question: 'Можно ли оплатить Premium в рассрочку?',
