@@ -23,6 +23,11 @@ const TXT = {
       'free-fire': "O'yinga kiring → chap yuqoridagi profil rasmiga bosing. Nik ostidagi raqam sizning UID'ingiz.",
     } as Record<string, string>,
     gift: "Standoff 2 uchun ID kerak emas: to'lovdan keyin aktivatsiya havolasi beriladi.",
+    giftCode: "Roblox uchun ID kerak emas: to'lovdan keyin Robux kodi beriladi, uni roblox.com/redeem sahifasida kiritasiz.",
+    zonePh: 'Zone', needZone: "Zone ID'ni kiriting",
+    codeTitle: 'Robux kodi', codeHint: "Kodni roblox.com/redeem sahifasida kiriting: Robux akkauntingizga tushadi. Kodni hech kimga bermang.", redeem: 'roblox.com/redeem ochish',
+    genericHelp: "O'yinda profilingizni oching: ID odatda nik ostida yoki sozlamalarda ko'rsatiladi.",
+    mlbbHelp: "O'yinda chap yuqoridagi avatarga bosing. ID va qavs ichidagi Zone ID ko'rinadi, masalan 12345678 (1234). Ikkalasini ham kiriting.",
     contactPh: 'Telegram @username yoki telefon', contactHint: "Muammo bo'lsa siz bilan bog'lanamiz",
     pay: "To'lash", pickPack: 'Paketni tanlang', enterId: "ID'ni kiriting", soon: 'Tez orada',
     unavailable: 'Vaqtincha mavjud emas', loading: 'Narxlar yuklanmoqda…',
@@ -39,8 +44,8 @@ const TXT = {
     expired: "To'lov vaqti tugadi. Pul o'tkazgan bo'lsangiz, chekni supportga yuboring.",
     support: 'Supportga yozish', again: 'Yana xarid qilish', order: 'Buyurtma',
     errNet: "Ulanishda xato. Internetni tekshirib qayta urinib ko'ring.", sum: "so'm",
-    sub: { 'pubg-mobile': 'UC va Prime', 'free-fire': 'Olmos', 'standoff-2': 'Gold' } as Record<string, string>,
-    unit: { UC: 'UC', Diamonds: 'olmos', Gold: 'Gold' } as Record<string, string>,
+    sub: { 'pubg-mobile': 'UC va Prime', 'free-fire': 'Olmos', 'standoff-2': 'Gold', 'mobile-legends': 'Olmos', roblox: 'Robux kodi', 'delta-force': 'Delta Coins', 'blood-strike': 'BC', 'honor-of-kings': 'Token', 'arena-breakout': 'Bonds' } as Record<string, string>,
+    unit: { UC: 'UC', Diamonds: 'olmos', Gold: 'Gold', 'Delta Coins': 'Delta Coins', BC: 'BC', Tokens: 'token', Bonds: 'Bonds', Robux: 'Robux' } as Record<string, string>,
   },
   ru: {
     s1: 'Выберите игру', s2: 'Выберите пакет', s3: 'ID игрока', s4: 'Контакт (необязательно)',
@@ -52,6 +57,11 @@ const TXT = {
       'free-fire': 'Зайдите в игру → нажмите на аватар слева вверху. Число под ником — ваш UID.',
     } as Record<string, string>,
     gift: 'Для Standoff 2 ID не нужен: после оплаты вы получите ссылку активации.',
+    giftCode: 'Для Roblox ID не нужен: после оплаты вы получите код Robux и активируете его на roblox.com/redeem.',
+    zonePh: 'Zone', needZone: 'Введите Zone ID',
+    codeTitle: 'Код Robux', codeHint: 'Введите код на roblox.com/redeem: Robux поступят на аккаунт. Никому не передавайте код.', redeem: 'Открыть roblox.com/redeem',
+    genericHelp: 'Откройте профиль в игре: ID обычно указан под ником или в настройках.',
+    mlbbHelp: 'Нажмите на аватар слева вверху. Будут видны ID и Zone ID в скобках, например 12345678 (1234). Введите оба.',
     contactPh: 'Telegram @username или телефон', contactHint: 'Свяжемся, если возникнет проблема',
     pay: 'Оплатить', pickPack: 'Выберите пакет', enterId: 'Введите ID', soon: 'Скоро',
     unavailable: 'Временно недоступно', loading: 'Загружаем цены…',
@@ -68,8 +78,8 @@ const TXT = {
     expired: 'Время оплаты истекло. Если вы перевели деньги, отправьте чек в поддержку.',
     support: 'Написать в поддержку', again: 'Купить ещё', order: 'Заказ',
     errNet: 'Ошибка соединения. Проверьте интернет и попробуйте снова.', sum: 'сум',
-    sub: { 'pubg-mobile': 'UC и Prime', 'free-fire': 'Алмазы', 'standoff-2': 'Gold' } as Record<string, string>,
-    unit: { UC: 'UC', Diamonds: 'алмазов', Gold: 'Gold' } as Record<string, string>,
+    sub: { 'pubg-mobile': 'UC и Prime', 'free-fire': 'Алмазы', 'standoff-2': 'Gold', 'mobile-legends': 'Алмазы', roblox: 'Код Robux', 'delta-force': 'Delta Coins', 'blood-strike': 'BC', 'honor-of-kings': 'Токены', 'arena-breakout': 'Bonds' } as Record<string, string>,
+    unit: { UC: 'UC', Diamonds: 'алмазов', Gold: 'Gold', 'Delta Coins': 'Delta Coins', BC: 'BC', Tokens: 'токенов', Bonds: 'Bonds', Robux: 'Robux' } as Record<string, string>,
   },
 }
 
@@ -82,6 +92,7 @@ const NAME_L10N: [RegExp, string, string][] = [
   [/^Newbie Bundle$/i, "Yangi o'yinchi to'plami", 'Набор новичка'],
   [/^Evo Access (\d+)d$/i, 'Evo Access · $1 kun', 'Evo Access · $1 дн'],
   [/^Level Up Package (\d+)$/i, 'Level Up · $1-daraja', 'Level Up · $1 ур.'],
+  [/^(\d+) \+ \d+ Diamonds \(First Top-Up Bonus\)$/i, "$1 olmos ×2 · 1-xarid bonusi", '$1 алмазов ×2 · бонус 1-й покупки'],
 ]
 
 type Order = {
@@ -94,6 +105,8 @@ type Order = {
   item?: string
   player_id?: string | null
   player_name?: string | null
+  server_id?: string | null
+  secret_kind?: 'link' | 'code' | null
   state?: 'awaiting_payment' | 'delivering' | 'delivered' | 'problem' | 'expired'
   link?: string | null
 }
@@ -106,6 +119,7 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
   const [slug, setSlug] = useState(initialGame || initial?.games[0]?.slug || 'pubg-mobile')
   const [itemId, setItemId] = useState('')
   const [pid, setPid] = useState('')
+  const [zone, setZone] = useState('')
   const [nick, setNick] = useState<{ text: string; kind: 'ok' | 'bad' | 'wait' } | null>(null)
   const [checkedFor, setCheckedFor] = useState('')
   const [contact, setContact] = useState('')
@@ -125,7 +139,7 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
 
   const parseName = useCallback(
     (name: string) => {
-      const m = String(name).match(/^([\d\s.,]+)\s+(UC|Diamonds|Gold)$/i)
+      const m = String(name).match(/^([\d\s.,+]+)\s+(UC|Diamonds|Gold|Delta Coins|BC|Tokens|Bonds|Robux)$/i)
       if (!m) return null
       const key = Object.keys(T.unit).find((k) => k.toLowerCase() === m[2].toLowerCase()) || m[2]
       return { qty: m[1].trim(), unit: T.unit[key] || m[2] }
@@ -189,18 +203,21 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
   }
 
   const cleanPid = (v: string) => v.trim().replace(/\s+/g, '')
+  const needsZone = Boolean(game?.needs_server)
+  const zoneVal = needsZone ? zone.trim().replace(/[\s()]/g, '') : ''
 
   async function checkPlayer(force = false): Promise<boolean> {
     if (!game?.needs_player_id) return true
     const id = cleanPid(pid)
     if (!id) { setNick({ text: T.needId, kind: 'bad' }); pidRef.current?.focus(); return false }
-    if (!force && checkedFor === `${slug}:${id}`) return true
+    if (needsZone && !/^\d{1,8}$/.test(zoneVal)) { setNick({ text: T.needZone, kind: 'bad' }); return false }
+    if (!force && checkedFor === `${slug}:${id}:${zoneVal}`) return true
     setNick({ text: T.checking, kind: 'wait' })
     try {
-      const { ok, d } = await api('/api/donat/check-player', { game: slug, player_id: id, item: item?.name })
+      const { ok, d } = await api('/api/donat/check-player', { game: slug, player_id: id, server_id: zoneVal || undefined, item: item?.name })
       if (!ok) { setNick({ text: d.error || T.errNet, kind: 'bad' }); setCheckedFor(''); return false }
       setNick({ text: d.player_name ? `✓ ${d.player_name}` : T.notVerified, kind: 'ok' })
-      setCheckedFor(`${slug}:${id}`)
+      setCheckedFor(`${slug}:${id}:${zoneVal}`)
       return true
     } catch { setNick({ text: T.errNet, kind: 'bad' }); return false }
   }
@@ -208,11 +225,11 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
   // yozib bo'lgach o'zi tekshiradi
   useEffect(() => {
     const id = cleanPid(pid)
-    if (!game?.needs_player_id || id.length < 6 || checkedFor === `${slug}:${id}`) return
+    if (!game?.needs_player_id || id.length < 6 || (needsZone && !zoneVal) || checkedFor === `${slug}:${id}:${zoneVal}`) return
     const t = window.setTimeout(() => { checkPlayer() }, 900)
     return () => window.clearTimeout(t)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pid, slug])
+  }, [pid, zone, slug])
 
   async function startOrder() {
     setErr('')
@@ -222,14 +239,14 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
     try {
       const id = cleanPid(pid)
       const { ok, d } = await api('/api/donat/order', {
-        game: slug, item: item.id, player_id: game.needs_player_id ? id : undefined,
+        game: slug, item: item.id, player_id: game.needs_player_id ? id : undefined, server_id: zoneVal || undefined,
         contact: contact.trim(), site: location.hostname, lang,
       })
       if (!ok) { setErr(d.error || T.errNet); return }
       try { localStorage.setItem(STORE_KEY, d.token) } catch {}
       history.replaceState(null, '', `${location.pathname}?order=${encodeURIComponent(d.token)}`)
       const name = nick?.kind === 'ok' && nick.text.startsWith('✓') ? nick.text.slice(2) : null
-      setOrder({ ...d, game: game.title, item: item.name, player_id: game.needs_player_id ? id : null, player_name: name, state: 'awaiting_payment' })
+      setOrder({ ...d, game: game.title, item: item.name, player_id: game.needs_player_id ? id : null, server_id: zoneVal || null, player_name: name, state: 'awaiting_payment' })
       scrollTop()
       poll(d.token)
     } catch { setErr(T.errNet) } finally { setBusy(false) }
@@ -282,7 +299,7 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
   const what = (o: Order) => (
     <>
       <b>{o.game} · {prettyName(o.item || '')}</b>
-      {o.player_id ? ` · ID ${o.player_id}` : ''}
+      {o.player_id ? ` · ID ${o.player_id}${o.server_id ? ` (${o.server_id})` : ''}` : ''}
       {o.player_name ? ` (${o.player_name})` : ''}
       {o.order_id ? ` · ${T.order} #${o.order_id}` : ''}
     </>
@@ -363,7 +380,18 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
         <div className="dn-status-ico">{ico}</div>
         <div className="dn-status-text">{text}</div>
         <div className="dn-what dn-center">{what(order)}</div>
-        {order.link && (
+        {order.link && order.secret_kind === 'code' && (
+          <div className="dn-linkbox">
+            <div className="dn-cap">🎟️ {T.codeTitle}</div>
+            <div className="dn-code-row">
+              <code className="dn-code">{order.link}</code>
+              <button type="button" className={`dn-copy${copied === 'code' ? ' is-ok' : ''}`} onClick={async () => { try { await navigator.clipboard.writeText(order.link || ''); setCopied('code'); setTimeout(() => setCopied(''), 1600) } catch {} }}>{copied === 'code' ? T.copied : T.copy}</button>
+            </div>
+            <a className="dn-ghost dn-pay-full" href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer">{T.redeem}</a>
+            <p className="dn-hint">{T.codeHint}</p>
+          </div>
+        )}
+        {order.link && order.secret_kind !== 'code' && /^https?:\/\//i.test(order.link) && (
           <div className="dn-linkbox">
             <div className="dn-cap">🔗 {T.linkTitle}</div>
             <a className="dn-pay dn-pay-full" href={order.link} target="_blank" rel="noopener noreferrer">{T.open}</a>
@@ -382,7 +410,7 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
   const LIMIT = 4
   const selIdx = other.findIndex((x) => x.id === itemId)
   const collapse = other.length > LIMIT + 1 && !showAll && selIdx < LIMIT
-  const help = T.idHelp[slug]
+  const help = T.idHelp[slug] || (slug === 'mobile-legends' ? T.mlbbHelp : game?.needs_player_id ? T.genericHelp : '')
   return (
     <div className="dn-app" ref={rootRef}>
       <div className="dn-sh is-done"><span className="dn-n">1</span>{T.s1}</div>
@@ -394,7 +422,7 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
             role="tab"
             aria-selected={g.slug === slug}
             className={`dn-game g-${g.slug}${g.slug === slug ? ' is-on' : ''}`}
-            onClick={() => { if (g.slug !== slug) { setSlug(g.slug); setItemId(''); setPid(''); setNick(null); setCheckedFor(''); setErr(''); setShowAll(false); setHelpOpen(false) } }}
+            onClick={() => { if (g.slug !== slug) { setSlug(g.slug); setItemId(''); setPid(''); setZone(''); setNick(null); setCheckedFor(''); setErr(''); setShowAll(false); setHelpOpen(false) } }}
           >
             <Image className="dn-game-art" src={`/images/donat/${g.slug}.png`} alt={g.title} width={64} height={64} />
             <span className="dn-game-name">{g.title}</span>
@@ -429,6 +457,7 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
             {help && <button type="button" className="dn-where" onClick={() => setHelpOpen((v) => !v)}>{T.idWhere}</button>}
           </div>
           {helpOpen && help && <div className="dn-help">{help}</div>}
+          <div className={`dn-idrow${needsZone ? ' has-zone' : ''}`}>
           <div className="dn-idwrap">
             <input
               ref={pidRef}
@@ -443,10 +472,23 @@ export function DonatApp({ lang, catalog: initial, initialGame }: { lang: Locale
             />
             <button type="button" className="dn-check" disabled={nick?.kind === 'wait'} onClick={() => checkPlayer(true)}>{T.check}</button>
           </div>
+          {needsZone && (
+            <input
+              className="dn-input dn-zone"
+              inputMode="numeric"
+              autoComplete="off"
+              maxLength={8}
+              placeholder={T.zonePh}
+              aria-label="Zone ID"
+              value={zone}
+              onChange={(e) => { setZone(e.target.value); setCheckedFor(''); setNick(null) }}
+            />
+          )}
+          </div>
           {nick && <div className={`dn-nick is-${nick.kind}`}>{nick.text}</div>}
         </div>
       ) : game ? (
-        <div className="dn-giftnote">🔗 {T.gift}</div>
+        <div className="dn-giftnote">🔗 {game.secret_kind === 'code' ? T.giftCode : T.gift}</div>
       ) : null}
 
       <details className="dn-contact">

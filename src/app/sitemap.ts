@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }),
     ),
     ...withLanguages('/donat', LAST_MODIFIED.donat, { changeFrequency: 'weekly', priority: 0.85 }),
-    ...['pubg-mobile', 'free-fire', 'standoff-2'].flatMap((g) =>
+    ...['pubg-mobile', 'free-fire', 'mobile-legends', 'standoff-2', 'roblox', 'delta-force', 'blood-strike', 'honor-of-kings', 'arena-breakout'].flatMap((g) =>
       withLanguages(`/donat/${g}`, LAST_MODIFIED.donat, { changeFrequency: 'weekly', priority: 0.8 }),
     ),
     ...withLanguages('/blog', LAST_MODIFIED.blogIndex, { changeFrequency: 'weekly', priority: 0.8 }),

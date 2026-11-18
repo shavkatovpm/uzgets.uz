@@ -162,3 +162,13 @@
 /* React versiyada .dn-step o'rami yo'q */
 .dn-app > .dn-sh:first-child { margin-top: 0; }
 .dn-app .dn-item.is-on { border-color: #0a6d65; }
+.dn-idrow.has-zone { display: grid; grid-template-columns: 1fr 104px; gap: 8px; }
+.dn-zone { text-align: center; letter-spacing: .4px; }
+.dn-code-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 12px; }
+.dn-code { flex: 1; font-family: ui-monospace, Menlo, monospace; font-size: 1.15rem; font-weight: 800; letter-spacing: 1px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; word-break: break-all; }
+.dn-games { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+@media (max-width: 600px) {
+  .dn-idrow.has-zone { grid-template-columns: 1fr 84px; gap: 6px; }
+  .dn-idrow.has-zone .dn-idwrap .dn-input { padding-right: 104px; }
+  .dn-idrow.has-zone .dn-check { padding: 0 10px; font-size: .85rem; }
+}
