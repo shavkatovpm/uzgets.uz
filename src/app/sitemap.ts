@@ -19,6 +19,7 @@ const LAST_MODIFIED = {
   privacy: new Date('2026-05-01'),
   terms: new Date('2026-05-01'),
   blogIndex: new Date('2026-05-06'),
+  donat: new Date('2026-11-18'),
 } as const
 
 function withLanguages(path: string, lastModified: Date, opts: { changeFrequency: Entry['changeFrequency']; priority: number }): Entry[] {
@@ -50,6 +51,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'monthly',
         priority: [50, 100, 500].includes(s.amount) ? 0.8 : 0.6,
       }),
+    ),
+    ...withLanguages('/donat', LAST_MODIFIED.donat, { changeFrequency: 'weekly', priority: 0.85 }),
+    ...['pubg-mobile', 'free-fire', 'standoff-2'].flatMap((g) =>
+      withLanguages(`/donat/${g}`, LAST_MODIFIED.donat, { changeFrequency: 'weekly', priority: 0.8 }),
     ),
     ...withLanguages('/blog', LAST_MODIFIED.blogIndex, { changeFrequency: 'weekly', priority: 0.8 }),
     ...getPostsSorted().flatMap((post) =>
