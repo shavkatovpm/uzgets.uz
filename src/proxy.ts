@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { LOCALES, DEFAULT_LOCALE, type Locale } from '@/i18n/config'
 
 const PUBLIC_FILE = /\.(.*)$/
-const SKIP_PREFIXES = ['/_next', '/api', '/icon.svg', '/apple-icon', '/opengraph-image', '/robots.txt', '/sitemap.xml', '/favicon']
+const SKIP_PREFIXES = ['/_next', '/api', '/donat-api', '/icon.svg', '/apple-icon', '/opengraph-image', '/robots.txt', '/sitemap.xml', '/favicon']
 
 const NON_DEFAULT_LOCALES: Locale[] = LOCALES.filter((l) => l !== DEFAULT_LOCALE) as Locale[]
 
