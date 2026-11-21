@@ -54,7 +54,7 @@ Foydalanuvchi talabi: ketma-ket bitta bo'limdan hammasini yozish emas — birinc
 | 36 | 7 | Telegram Premium'ni xalqaro bank kartasisiz eng arzon sotib olish mumkinmi | ❌ |
 | 37 | 2 | Ikkita Telegram akkauntga Premium qanday sotib olinadi — xatolardan saqlanish | ❌ |
 | 38 | 7 | Telegram Premium'ni oylik emas, yillik sotib olish qancha tejaydi — 2026 hisob-kitob | ❌ |
-| 39 | 7 | Telegram Stars'ni birinchi marta sotib olayotganlar uchun eng arzon va xavfsiz yo'l — qadam-baqadam | ❌ |
+| 39 | 7 | Telegram Stars'ni birinchi marta sotib olayotganlar uchun eng arzon va xavfsiz yo'l — qadam-baqadam | ✅ Yozildi (2026-11-21) — `telegram-stars-birinchi-marta-sotib-olish` (burchak: birinchi xarid checklisti, 7 qadam; asosiy "stars sotib olish" sahifalari bilan raqobat qilmaydi) |
 | 40 | 7 | Telegram Premium va Stars'ni birga sotib olishda tejash mumkinmi — amaliy maslahat | ❌ |
 
 ## Diqqat — dublikatsiz yozish uchun eslatmalar
