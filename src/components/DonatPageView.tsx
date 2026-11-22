@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DonatApp } from '@/components/DonatApp'
+import { DonatCta } from '@/components/DonatCta'
 import { JsonLd } from '@/components/JsonLd'
 import { siteConfig } from '@/config/site'
 import { type Locale, localePath, localeUrl } from '@/i18n/config'
@@ -102,7 +102,7 @@ export async function DonatPageView({ lang, slug }: { lang: Locale; slug?: Donat
             <span key={c} className="rounded-full border border-[var(--border)] bg-white px-3 py-1.5 text-sm font-semibold shadow-sm">{c}</span>
           ))}
         </div>
-        <DonatApp lang={lang} catalog={catalog} initialGame={slug} />
+        <DonatCta lang={lang} catalog={catalog} slug={slug} />
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-10">
