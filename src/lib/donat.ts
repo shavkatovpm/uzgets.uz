@@ -5,7 +5,7 @@
 import type { Locale } from '@/i18n/config'
 
 export const DONAT_API = 'https://stars.uzgets.uz'
-export const DONAT_SLUGS = ['pubg-mobile', 'free-fire', 'mobile-legends', 'standoff-2', 'roblox', 'delta-force', 'blood-strike', 'honor-of-kings', 'arena-breakout'] as const
+export const DONAT_SLUGS = ['pubg-mobile', 'free-fire', 'mobile-legends', 'roblox', 'delta-force', 'blood-strike', 'honor-of-kings', 'arena-breakout'] as const
 export type DonatSlug = (typeof DONAT_SLUGS)[number]
 
 export type DonatItem = { id: string; name: string; price: number }
@@ -45,13 +45,13 @@ export const DONAT_HUB_SEO: Record<Locale, Seo> = {
   uz: {
     title: "O'yinlarga donat — PUBG UC, Free Fire, Mobile Legends, Roblox | Uzgets",
     h1: "O'yinlarga donat",
-    desc: "PUBG Mobile UC, Free Fire va Mobile Legends olmos, Roblox Robux, Standoff 2 Gold va boshqa o'yinlar. Uzcard va Humo bilan to'lov, akkauntga avtomatik yetkazish.",
+    desc: "PUBG Mobile UC, Free Fire va Mobile Legends olmos, Roblox Robux va boshqa o'yinlar. Uzcard va Humo bilan to'lov, akkauntga avtomatik yetkazish.",
     lead: "O'yinni tanlang, ID'ni kiriting va kartadan to'lang. Donat akkauntingizga avtomatik tushadi.",
   },
   ru: {
     title: 'Донат в игры — UC PUBG, Free Fire, Mobile Legends, Roblox | Uzgets',
     h1: 'Донат в игры',
-    desc: 'Купить UC PUBG Mobile, алмазы Free Fire и Gold Standoff 2. Оплата Uzcard и Humo, автоматическое зачисление.',
+    desc: 'Купить UC PUBG Mobile, алмазы Free Fire и Mobile Legends. Оплата Uzcard и Humo, автоматическое зачисление.',
     lead: 'Выберите игру, введите ID и оплатите картой. Донат поступит на аккаунт автоматически.',
   },
 }
@@ -83,20 +83,6 @@ export const DONAT_GAME_SEO: Record<string, Record<Locale, Seo>> = {
       h1: 'Купить алмазы Free Fire',
       desc: 'Алмазы Free Fire по UID: от 110 до 6160 алмазов, недельная и месячная подписка. Оплата Uzcard или Humo, автоматическое зачисление.',
       lead: 'Введите UID, проверьте ник, выберите пакет и оплатите картой. Алмазы приходят обычно за 1–3 минуты.',
-    },
-  },
-  'standoff-2': {
-    uz: {
-      title: "Standoff 2 Gold sotib olish — Uzcard va Humo bilan | Uzgets",
-      h1: 'Standoff 2 Gold sotib olish',
-      desc: "Standoff 2 Gold sotib olish: 100 dan 10 000 Gold gacha. Uzcard va Humo bilan to'lov, aktivatsiya havolasi darhol beriladi.",
-      lead: "Paketni tanlang va kartadan to'lang. To'lovdan keyin shu sahifada aktivatsiya havolasi chiqadi, uni ochib Gold'ni olasiz.",
-    },
-    ru: {
-      title: 'Купить Gold Standoff 2 в Узбекистане — Uzcard и Humo | Uzgets',
-      h1: 'Купить Gold для Standoff 2',
-      desc: 'Gold Standoff 2: от 100 до 10 000 Gold. Оплата Uzcard или Humo, ссылка активации сразу после оплаты.',
-      lead: 'Выберите пакет и оплатите картой. После оплаты на этой странице появится ссылка активации, откройте её и получите Gold.',
     },
   },
 }
